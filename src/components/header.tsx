@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { services } from "@/data/site";
-import { ButtonLink } from "@/components/ui";
+import { ButtonLink, PhoneLink } from "@/components/ui";
 
 export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-[#102337]/10 bg-[#f5f1e8]/95 backdrop-blur">
-      <div className="container flex h-20 items-center justify-between gap-6">
+      <div className="container mt-12 flex h-20 items-center justify-between gap-6 sm:mt-0">
         <Link href="/" className="focus-ring flex items-center gap-3 rounded-[7px]">
           <span className="grid h-11 w-11 place-items-center rounded-[8px] bg-[#102337] text-lg font-black text-white">SN</span>
           <span>
@@ -29,8 +29,15 @@ export function Header() {
             </div>
           </div>
         </nav>
-        <div className="hidden sm:block">
+        <div className="hidden items-center gap-2 sm:flex">
+          <PhoneLink />
           <ButtonLink />
+        </div>
+        <div className="fixed inset-x-0 top-0 z-50 grid grid-cols-2 border-b border-[#102337]/10 bg-white sm:hidden">
+          <PhoneLink className="focus-ring flex h-12 items-center justify-center bg-[#102337] text-sm font-black text-white" />
+          <Link href="/demande-devis/" className="focus-ring flex h-12 items-center justify-center bg-[#bf593f] text-sm font-black text-white" data-track-cta>
+            Rappel gratuit
+          </Link>
         </div>
         <details className="relative lg:hidden">
           <summary className="focus-ring list-none rounded-[7px] border border-[#102337]/15 px-3 py-2 text-sm font-black text-[#102337]">

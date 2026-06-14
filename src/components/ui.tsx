@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MAIN_CTA } from "@/lib/constants";
+import { MAIN_CTA, PHONE_HREF } from "@/lib/constants";
 
 export function ButtonLink({
   href = "/demande-devis/",
@@ -25,6 +25,20 @@ export function ButtonLink({
         -&gt;
       </span>
     </Link>
+  );
+}
+
+export function PhoneLink({
+  children = "Appeler",
+  className = "",
+}: {
+  children?: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <a href={PHONE_HREF} className={className || "focus-ring inline-flex items-center justify-center rounded-[7px] bg-[#102337] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#18324c]"} data-track-phone>
+      {children}
+    </a>
   );
 }
 

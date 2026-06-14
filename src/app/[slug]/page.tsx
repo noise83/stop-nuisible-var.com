@@ -4,9 +4,10 @@ import { Breadcrumb } from "@/components/breadcrumb";
 import { CityCard, RelatedLinks, ServiceCard } from "@/components/cards";
 import { FAQ } from "@/components/faq";
 import { JsonLd } from "@/components/json-ld";
+import { LeadForm } from "@/components/lead-form";
 import { CTABand, EmergencyPanel, ProcessSteps } from "@/components/page-blocks";
-import { ButtonLink, Eyebrow, Section } from "@/components/ui";
-import { extensionCities, getService, globalPages, guides, priorityCities, services } from "@/data/site";
+import { ButtonLink, Eyebrow, PhoneLink, Section } from "@/components/ui";
+import { extensionCities, getCity, getLocalLanding, getService, globalPages, guides, localLandings, priorityCities, services } from "@/data/site";
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from "@/lib/jsonld";
 
 type Params = Promise<{ slug: string }>;
@@ -14,6 +15,7 @@ type Params = Promise<{ slug: string }>;
 export function generateStaticParams() {
   return [
     ...services.map((service) => ({ slug: service.slug })),
+    ...localLandings.map((landing) => ({ slug: landing.slug })),
     ...Object.keys(globalPages).map((slug) => ({ slug })),
   ];
 }
@@ -21,6 +23,14 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { slug } = await params;
   const service = getService(slug);
+  const landing = getLocalLanding(slug);
+  if (landing) {
+    return {
+      title: landing.title,
+      description: landing.description,
+      alternates: { canonical: `/${landing.slug}/` },
+    };
+  }
   if (service) {
     return {
       title: service.title,
@@ -42,6 +52,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 export default async function SlugPage({ params }: { params: Params }) {
   const { slug } = await params;
   const service = getService(slug);
+  const landing = getLocalLanding(slug);
+  if (landing) return <LocalLandingPage slug={slug} />;
   if (service) return <ServicePage slug={slug} />;
 
   if (slug === "traitement-nuisibles-var") return <HubPage />;
@@ -52,6 +64,79 @@ export default async function SlugPage({ params }: { params: Params }) {
   if (slug === "mentions-legales") return <LegalPage />;
 
   notFound();
+}
+
+function LocalLandingPage({ slug }: { slug: string }) {
+  const landing = getLocalLanding(slug);
+  if (!landing) notFound();
+  const service = getService(landing.serviceSlug);
+  const city = getCity(landing.citySlug);
+  if (!service || !city) notFound();
+  const crumbs = [
+    { name: "Accueil", href: "/" },
+    { name: service.shortName, href: `/${service.slug}/` },
+    { name: city.name, href: `/${landing.slug}/` },
+  ];
+  return (
+    <main>
+      <JsonLd data={[breadcrumbJsonLd(crumbs), faqJsonLd(landing.faq), serviceJsonLd(landing.h1, landing.description, `/${landing.slug}/`)]} />
+      <Breadcrumb items={crumbs} />
+      <Section>
+        <div className="container grid items-start gap-8 lg:grid-cols-[.9fr_1.1fr]">
+          <div>
+            <Eyebrow>{city.name} - {service.shortName}</Eyebrow>
+            <h1 className="text-4xl font-black leading-tight text-[#102337] sm:text-5xl">{landing.h1}</h1>
+            <p className="mt-5 text-lg leading-8 text-[#405160]">{landing.promise}</p>
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+              <PhoneLink />
+              <ButtonLink>Rappel gratuit</ButtonLink>
+            </div>
+            <div className="mt-7 grid gap-3 sm:grid-cols-3">
+              {landing.reassurance.map((item) => (
+                <div key={item} className="rounded-[7px] border border-[#102337]/10 bg-white px-4 py-3 text-sm font-bold text-[#102337]">
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+          <LeadForm />
+        </div>
+      </Section>
+      <Section tone="white">
+        <div className="container grid gap-8 lg:grid-cols-[1fr_360px]">
+          <article className="space-y-5 leading-8 text-[#405160]">
+            <h2 className="text-3xl font-black text-[#102337]">Intervention nuisibles autour de {city.name}</h2>
+            <p>
+              Cette page sert a formuler une demande courte pour {service.shortName.toLowerCase()} a {city.name}. Les communes proches comme {city.neighbours.join(", ")} peuvent aussi etre precisees dans le message si le probleme se situe a proximite.
+            </p>
+            <p>
+              Le but est simple : collecter les informations utiles, verifier le consentement RGPD et transmettre une demande exploitable a une entreprise partenaire specialisee, sans fausse promesse de delai ni faux avis.
+            </p>
+            <h2 className="text-3xl font-black text-[#102337]">Informations utiles avant le rappel</h2>
+            <ul className="space-y-3">
+              {[...service.risks.slice(0, 2), ...city.localAdvice.slice(0, 2)].map((item) => (
+                <li key={item}>- {item}</li>
+              ))}
+            </ul>
+          </article>
+          <RelatedLinks
+            links={[
+              { label: `${service.shortName} dans le Var`, href: `/${service.slug}/` },
+              { label: `Tous les nuisibles a ${city.name}`, href: `/villes/${city.slug}/` },
+              { label: "Demande de rappel", href: "/demande-devis/" },
+            ]}
+          />
+        </div>
+      </Section>
+      <Section>
+        <div className="container max-w-3xl">
+          <h2 className="mb-6 text-3xl font-black text-[#102337]">Questions frequentes</h2>
+          <FAQ items={landing.faq} />
+        </div>
+      </Section>
+      <CTABand title={`Besoin d'un rappel a ${city.name} ?`} text="Le formulaire court permet de qualifier la demande rapidement avec un telephone et un consentement clair." />
+    </main>
+  );
 }
 
 function ServicePage({ slug }: { slug: string }) {

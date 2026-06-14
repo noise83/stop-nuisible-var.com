@@ -17,6 +17,7 @@ Ces variables sont listees dans `.env.example` et doivent etre ajoutees dans Ver
 
 - `NEXT_PUBLIC_SITE_URL` : `https://stop-nuisible-var.com`
 - `NEXT_PUBLIC_GA_ID` : identifiant GA4, optionnel au debut.
+- `NEXT_PUBLIC_PHONE_NUMBER` : numero affiche dans les boutons d'appel.
 - `LEADS_RECIPIENT_EMAIL` : adresse qui recoit les demandes.
 - `ADMIN_EMAIL` : adresse de copie interne, optionnelle.
 - `RESEND_API_KEY` : cle API Resend pour envoyer les emails.

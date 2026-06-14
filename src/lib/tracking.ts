@@ -2,8 +2,12 @@
 
 export type TrackingEvent =
   | "lead_form_view"
+  | "lead_step_start"
+  | "lead_step_complete"
   | "lead_form_submit"
+  | "lead_created"
   | "cta_click"
+  | "phone_click"
   | "nuisible_select"
   | "city_page_view";
 

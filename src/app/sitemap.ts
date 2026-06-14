@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { globalPages, guides, priorityCities, services } from "@/data/site";
+import { globalPages, guides, localLandings, priorityCities, services } from "@/data/site";
 import { SITE_URL } from "@/lib/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "demande-devis",
     ...Object.keys(globalPages),
     ...services.map((service) => service.slug),
+    ...localLandings.map((landing) => landing.slug),
     ...priorityCities.map((city) => `villes/${city.slug}`),
     ...guides.map((guide) => `guides/${guide.slug}`),
   ];

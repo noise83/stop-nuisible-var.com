@@ -10,6 +10,9 @@ export function TrackingListener() {
       if (target?.closest("[data-track-cta]")) {
         trackEvent("cta_click");
       }
+      if (target?.closest("[data-track-phone]")) {
+        trackEvent("phone_click");
+      }
     }
 
     document.addEventListener("click", onClick);

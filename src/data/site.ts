@@ -36,6 +36,18 @@ export type Guide = {
   faq: FAQItem[];
 };
 
+export type LocalLanding = {
+  slug: string;
+  serviceSlug: string;
+  citySlug: string;
+  h1: string;
+  title: string;
+  description: string;
+  promise: string;
+  reassurance: string[];
+  faq: FAQItem[];
+};
+
 export const services: Service[] = [
   {
     slug: "punaises-de-lit-var",
@@ -601,4 +613,63 @@ export function getCity(slug: string) {
 
 export function getGuide(slug: string) {
   return guides.find((guide) => guide.slug === slug);
+}
+
+const landingServiceConfig: Record<string, { prefix: string; label: string; promise: string }> = {
+  "deratisation-var": {
+    prefix: "deratisation",
+    label: "Dératisation rapide",
+    promise: "Rats, souris, bruits dans les combles ou traces dans un local : decrivez la situation et soyez oriente vers un partenaire adapte au secteur.",
+  },
+  "punaises-de-lit-var": {
+    prefix: "traitement-punaises-de-lit",
+    label: "Traitement punaises de lit",
+    promise: "Piqures au reveil, traces sur literie ou doute apres un sejour : envoyez les signes observes pour obtenir un rappel qualifie.",
+  },
+  "cafards-blattes-var": {
+    prefix: "cafards",
+    label: "Traitement cafards",
+    promise: "Blattes en cuisine, parties communes ou commerce alimentaire : precisez le lieu et l'urgence pour une mise en relation rapide.",
+  },
+  "guepes-frelons-var": {
+    prefix: "guepes-frelons",
+    label: "Nid de guepes ou frelons",
+    promise: "Nid sous toiture, haie, volet ou terrasse : signalez l'emplacement sans prendre de risque et demandez un rappel.",
+  },
+};
+
+export const localLandings: LocalLanding[] = priorityCities.slice(0, 6).flatMap((city) =>
+  Object.entries(landingServiceConfig).map(([serviceSlug, config]) => {
+    const service = getService(serviceSlug);
+    const slug = `${config.prefix}-${city.slug}`;
+    const h1 = `${config.label} à ${city.name}`;
+    return {
+      slug,
+      serviceSlug,
+      citySlug: city.slug,
+      h1,
+      title: `${h1} - Rappel et devis nuisibles`,
+      description: `${config.label} a ${city.name} : demande de rappel locale pour ${service?.shortName.toLowerCase() ?? "nuisibles"}, devis clair et transmission a une entreprise partenaire.`,
+      promise: `${config.promise} A ${city.name}, les demandes concernent souvent ${city.buildingTypes.slice(0, 3).join(", ")}.`,
+      reassurance: [
+        "Demande courte et mobile-first",
+        "Transmission uniquement avec consentement RGPD",
+        "Pas de promesse impossible ni faux avis",
+      ],
+      faq: [
+        {
+          question: `Comment demander un devis a ${city.name} ?`,
+          answer: "Remplissez le formulaire court avec le nuisible, la ville, l'urgence et votre telephone. Votre demande pourra etre transmise a une entreprise partenaire specialisee.",
+        },
+        {
+          question: "Le rappel est-il une intervention garantie ?",
+          answer: "Non. Stop Nuisible Var facilite la mise en relation. Le partenaire vous recontacte pour confirmer la situation, expliquer les options et proposer un devis si possible.",
+        },
+      ],
+    };
+  }),
+);
+
+export function getLocalLanding(slug: string) {
+  return localLandings.find((landing) => landing.slug === slug);
 }

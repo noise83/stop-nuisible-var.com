@@ -13,7 +13,7 @@ async function getResend() {
   return resendClient;
 }
 
-export async function sendLeadEmail(lead: LeadPayload) {
+export async function sendLeadEmail(lead: LeadPayload, photo?: { filename: string; content: Buffer }) {
   const to = process.env.LEADS_RECIPIENT_EMAIL;
   const admin = process.env.ADMIN_EMAIL;
   const from = process.env.LEADS_FROM_EMAIL ?? "Stop Nuisible Var <onboarding@resend.dev>";
@@ -36,6 +36,7 @@ export async function sendLeadEmail(lead: LeadPayload) {
     subject: email.subject,
     text: email.text,
     html: email.html,
+    attachments: photo ? [{ filename: photo.filename, content: photo.content }] : undefined,
   });
 
   return { sent: true, dev: false };

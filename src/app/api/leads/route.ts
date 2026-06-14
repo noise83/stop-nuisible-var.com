@@ -24,12 +24,35 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: false, message: "Trop de demandes. Reessayez plus tard." }, { status: 429 });
   }
 
-  let body: unknown;
+  let body: Record<string, unknown>;
+  let photo: { filename: string; content: Buffer } | undefined;
   try {
-    body = await request.json();
+    const contentType = request.headers.get("content-type") ?? "";
+    if (contentType.includes("multipart/form-data")) {
+      const formData = await request.formData();
+      body = Object.fromEntries(formData.entries());
+      const file = formData.get("photo");
+      if (file instanceof File && file.size > 0) {
+        if (file.size > 4 * 1024 * 1024) {
+          return NextResponse.json({ ok: false, message: "La photo est trop lourde." }, { status: 400 });
+        }
+        photo = {
+          filename: file.name || "photo-lead",
+          content: Buffer.from(await file.arrayBuffer()),
+        };
+        body.photoName = photo.filename;
+      }
+    } else {
+      body = (await request.json()) as Record<string, unknown>;
+    }
   } catch {
     return NextResponse.json({ ok: false, message: "Format invalide." }, { status: 400 });
   }
+
+  body.leadId = crypto.randomUUID();
+  body.createdAt = new Date().toLocaleString("fr-FR", { timeZone: "Europe/Paris" });
+  body.status = "Nouveau";
+  body.consent = body.consent === true || body.consent === "on" || body.consent === "true";
 
   const parsed = leadSchema.safeParse(body);
   if (!parsed.success) {
@@ -41,9 +64,10 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    await sendLeadEmail(parsed.data);
+    await sendLeadEmail(parsed.data, photo);
     return NextResponse.json({
       ok: true,
+      leadId: parsed.data.leadId,
       message: "Votre demande a ete enregistree. Un professionnel ou partenaire specialise pourra vous recontacter.",
     });
   } catch (error) {
