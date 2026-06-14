@@ -50,7 +50,7 @@ export default async function CityPage({ params }: { params: Params }) {
         <div className="container grid gap-10 lg:grid-cols-[1fr_360px]">
           <div>
             <Eyebrow>{city.zone}</Eyebrow>
-            <h1 className="text-4xl font-black leading-tight text-[#102337] sm:text-5xl">Traitement nuisibles à {city.name}</h1>
+            <h1 className="text-4xl font-black leading-tight text-[#102337] sm:text-5xl">Problème de nuisibles à {city.name} ? Décrivez votre situation et soyez rappelé</h1>
             <p className="mt-6 text-lg leading-8 text-[#405160]">{city.intro}</p>
             <p className="mt-4 leading-8 text-[#405160]">
               La demande peut concerner {city.buildingTypes.join(", ")}. Précisez les signes observés, le type de lieu, les contraintes de rappel et l'urgence afin de faciliter la mise en relation.
@@ -68,6 +68,18 @@ export default async function CityPage({ params }: { params: Params }) {
         <div className="container grid gap-8 lg:grid-cols-[1fr_360px]">
           <article className="space-y-6 leading-8 text-[#405160]">
             <h2 className="text-3xl font-black text-[#102337]">Demandes fréquentes à {city.name}</h2>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {[
+                "Rats ou souris : bruits, crottes, caves, combles et locaux poubelles.",
+                "Cafards : cuisine, salle de bain, gaines techniques, copropriétés et restaurants.",
+                "Punaises de lit : piqûres au réveil, matelas, sommier, voyage et location saisonnière.",
+                "Guêpes ou frelons : nid en toiture, arbre, terrasse, hauteur ou passage fréquent.",
+              ].map((item) => (
+                <div key={item} className="rounded-[7px] border border-[#102337]/10 bg-[#f5f1e8] p-4 text-sm font-semibold leading-6 text-[#102337]">
+                  {item}
+                </div>
+              ))}
+            </div>
             <p>
               À {city.name}, le traitement nuisibles doit tenir compte de {city.angle}. Une demande de dératisation, de désinsectisation, de traitement punaises de lit ou de dépigeonnage ne se qualifie pas de la même façon selon qu'elle concerne un logement, un commerce, une résidence ou un jardin.
             </p>

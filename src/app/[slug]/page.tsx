@@ -311,7 +311,10 @@ function PartnersPage() {
             <Eyebrow>Réseau local</Eyebrow>
             <h1 className="text-5xl font-black text-[#102337]">Professionnels partenaires et mise en relation</h1>
             <p className="mt-6 text-lg leading-8 text-[#405160]">
-              Stop Nuisible Var travaille avec ou a vocation à travailler avec des professionnels et intermédiaires spécialisés dans le traitement des nuisibles. Aucun partenaire nommé n'est affiché sans accord signé.
+              Stop Nuisible Var sélectionne des professionnels et intermédiaires spécialisés selon leur zone d'intervention, leur capacité de rappel, leur expérience sur le nuisible concerné et la clarté de leurs devis.
+            </p>
+            <p className="mt-4 leading-8 text-[#405160]">
+              Aucun partenaire nommé n'est affiché sans accord signé, et aucune fausse agence locale n'est inventée.
             </p>
           </div>
           <EmergencyPanel />

@@ -43,12 +43,13 @@ export function ConversionHero({
 
 export function TrustBar() {
   const items = [
-    "Demande gratuite et sans engagement",
-    "Contact rapide selon disponibilité du partenaire",
+    "Demande gratuite",
+    "Sans engagement",
+    "Contact rapide selon disponibilité",
     "Transmission selon commune, nuisible et urgence",
-    "Données transmises uniquement avec consentement",
-    "Possibilité d'ajouter une photo",
-    "Pas de fausse agence locale affichée",
+    "Consentement obligatoire",
+    "Photo possible",
+    "Pas de fausse agence locale",
   ];
   return (
     <div className="border-y border-[#102337]/10 bg-white">

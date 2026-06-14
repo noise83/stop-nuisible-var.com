@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { CONSENT_TEXT } from "@/lib/constants";
+import { CONSENT_TEXT, PHONE_HREF, PHONE_NUMBER } from "@/lib/constants";
 import { trackEvent } from "@/lib/tracking";
 
 const pests = ["Punaises de lit", "Rats ou souris", "Cafards / blattes", "Guêpes ou frelons", "Termites / xylophages", "Moustique tigre", "Chenilles processionnaires", "Pigeons / goélands", "Je ne sais pas"];
@@ -63,6 +63,9 @@ export function LeadForm() {
       <div className="mb-5 rounded-[7px] bg-[#102337] px-4 py-3 text-white">
         <p className="text-sm font-black">Rappel gratuit</p>
         <p className="mt-1 text-xs text-white/75">Décrivez l'essentiel. Votre demande est transmise selon votre commune, le nuisible et l'urgence.</p>
+        <a href={PHONE_HREF} className="mt-3 inline-flex text-sm font-black text-[#dfcaa2] underline-offset-4 hover:underline" data-track-phone>
+          Appeler le {PHONE_NUMBER}
+        </a>
       </div>
       <div className="grid gap-5 md:grid-cols-2">
         <Select label="Type de nuisible" name="pest" options={pests} required />

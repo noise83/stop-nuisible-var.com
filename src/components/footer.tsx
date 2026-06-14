@@ -20,7 +20,7 @@ export function Footer() {
         <FooterColumn
           title="Confiance"
           links={[
-            { label: "Demande de devis", href: "/demande-devis/" },
+            { label: "Demande de rappel", href: "/demande-devis/" },
             { label: "Comment ça marche", href: "/comment-ca-marche/" },
             { label: "Partenaires", href: "/partenaires/" },
             { label: "Confidentialité", href: "/confidentialite/" },
