@@ -17,7 +17,6 @@ Ces variables sont listees dans `.env.example` et doivent etre ajoutees dans Ver
 
 - `NEXT_PUBLIC_SITE_URL` : `https://stop-nuisible-var.com`
 - `NEXT_PUBLIC_GA_ID` : identifiant GA4, optionnel au debut.
-- `NEXT_PUBLIC_PHONE_NUMBER` : numero affiche dans les boutons d'appel.
 - `LEADS_RECIPIENT_EMAIL` : adresse qui recoit les demandes.
 - `ADMIN_EMAIL` : adresse de copie interne, optionnelle.
 - `RESEND_API_KEY` : cle API Resend pour envoyer les emails.
@@ -70,7 +69,7 @@ Sans `RESEND_API_KEY` ou sans `LEADS_RECIPIENT_EMAIL`, le build fonctionne quand
 1. Revenir sur l'onglet `Deployments`.
 2. Lancer ou relancer un deploiement.
 3. Attendre que Vercel affiche un statut `Ready`.
-4. Ouvrir l'URL temporaire fournie par Vercel pour verifier le site.
+4. Ouvrir l'URL de prévisualisation fournie par Vercel pour vérifier le site.
 
 ### 5. Ajouter le domaine `stop-nuisible-var.com`
 
@@ -121,9 +120,9 @@ npm run build
 - `.env.example` : modele des variables d'environnement.
 - `.gitignore` : fichiers a ne pas envoyer sur GitHub.
 
-## Points a completer avant lancement officiel
+## Réglages recommandés après mise en ligne
 
-- Completer les mentions legales avec les informations reelles de l'editeur.
-- Configurer Resend et verifier l'expediteur `LEADS_FROM_EMAIL`.
-- Ajouter Google Analytics si souhaite.
-- Faire un test complet du formulaire apres deploiement.
+- Vérifier les coordonnées de l'éditeur dans les mentions légales.
+- Configurer Resend et vérifier l'expéditeur `LEADS_FROM_EMAIL`.
+- Ajouter Google Analytics si souhaité.
+- Faire un test complet du formulaire après déploiement.

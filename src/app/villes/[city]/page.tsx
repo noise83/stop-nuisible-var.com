@@ -5,8 +5,8 @@ import { RelatedLinks } from "@/components/cards";
 import { FAQ } from "@/components/faq";
 import { JsonLd } from "@/components/json-ld";
 import { CityPageViewTracker } from "@/components/page-view-tracker";
-import { CTABand, EmergencyPanel } from "@/components/page-blocks";
-import { ButtonLink, Eyebrow, Section } from "@/components/ui";
+import { CTABand, EmergencyPanel, TrustBar } from "@/components/page-blocks";
+import { ButtonLink, Eyebrow, PhoneLink, Section } from "@/components/ui";
 import { getCity, priorityCities, services } from "@/data/site";
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from "@/lib/jsonld";
 
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   if (!city) return {};
   return {
     title: `Traitement nuisibles ${city.name} - Devis et rappel`,
-    description: `Demande de rappel anti nuisibles a ${city.name} dans le Var : ${city.pests.join(", ")}. Mise en relation avec un professionnel partenaire.`,
+    description: `Demande de rappel anti nuisibles à ${city.name} dans le Var : ${city.pests.join(", ")}. Mise en relation avec un professionnel partenaire.`,
     alternates: { canonical: `/villes/${city.slug}/` },
   };
 }
@@ -32,8 +32,8 @@ export default async function CityPage({ params }: { params: Params }) {
   const city = getCity(slug);
   if (!city) notFound();
   const faq = [
-    { question: `Quels nuisibles sont frequents a ${city.name} ?`, answer: `Les demandes les plus probables concernent ${city.pests.join(", ")}, avec un contexte local marque par ${city.angle}.` },
-    { question: `Stop Nuisible Var intervient-il directement a ${city.name} ?`, answer: "Non. Le site transmet votre demande a un professionnel ou partenaire specialise susceptible de vous recontacter." },
+    { question: `Quels nuisibles sont fréquents à ${city.name} ?`, answer: `Les demandes les plus probables concernent ${city.pests.join(", ")}, avec un contexte local marqué par ${city.angle}.` },
+    { question: `Stop Nuisible Var intervient-il directement à ${city.name} ?`, answer: "Non. Le site transmet votre demande à un professionnel partenaire adapté selon votre commune, le type de nuisible et le niveau d'urgence." },
   ];
   const crumbs = [
     { name: "Accueil", href: "/" },
@@ -50,28 +50,29 @@ export default async function CityPage({ params }: { params: Params }) {
         <div className="container grid gap-10 lg:grid-cols-[1fr_360px]">
           <div>
             <Eyebrow>{city.zone}</Eyebrow>
-            <h1 className="text-4xl font-black leading-tight text-[#102337] sm:text-5xl">Traitement nuisibles a {city.name}</h1>
+            <h1 className="text-4xl font-black leading-tight text-[#102337] sm:text-5xl">Traitement nuisibles à {city.name}</h1>
             <p className="mt-6 text-lg leading-8 text-[#405160]">{city.intro}</p>
             <p className="mt-4 leading-8 text-[#405160]">
-              La demande peut concerner {city.buildingTypes.join(", ")}. Precisez les signes observes, le type de lieu, les contraintes de rappel et l'urgence afin de faciliter la mise en relation.
+              La demande peut concerner {city.buildingTypes.join(", ")}. Précisez les signes observés, le type de lieu, les contraintes de rappel et l'urgence afin de faciliter la mise en relation.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <ButtonLink />
-              <ButtonLink href="/traitement-nuisibles-var/" variant="secondary">Voir tous les nuisibles</ButtonLink>
+              <PhoneLink />
             </div>
           </div>
           <EmergencyPanel />
         </div>
       </Section>
+      <TrustBar />
       <Section tone="white">
         <div className="container grid gap-8 lg:grid-cols-[1fr_360px]">
           <article className="space-y-6 leading-8 text-[#405160]">
-            <h2 className="text-3xl font-black text-[#102337]">Demandes frequentes a {city.name}</h2>
+            <h2 className="text-3xl font-black text-[#102337]">Demandes fréquentes à {city.name}</h2>
             <p>
-              A {city.name}, le traitement nuisibles doit tenir compte de {city.angle}. Une demande de deratisation, de desinsectisation, de traitement punaises de lit ou de depigeonnage ne se qualifie pas de la meme facon selon qu'elle concerne un logement, un commerce, une residence ou un jardin.
+              À {city.name}, le traitement nuisibles doit tenir compte de {city.angle}. Une demande de dératisation, de désinsectisation, de traitement punaises de lit ou de dépigeonnage ne se qualifie pas de la même façon selon qu'elle concerne un logement, un commerce, une résidence ou un jardin.
             </p>
             <p>
-              Les communes proches comme {city.neighbours.join(", ")} peuvent aussi entrer dans le meme bassin de rappel. Cette precision geographique aide a transmettre la demande au bon interlocuteur sans inventer une agence locale fictive.
+              Les communes proches comme {city.neighbours.join(", ")} peuvent aussi entrer dans le même bassin de rappel. Cette précision géographique aide à transmettre la demande au bon interlocuteur sans inventer une agence locale fictive.
             </p>
             <h2 className="text-3xl font-black text-[#102337]">Conseils avant d'envoyer la demande</h2>
             <ul className="space-y-3">
@@ -92,7 +93,7 @@ export default async function CityPage({ params }: { params: Params }) {
           <FAQ items={faq} />
         </div>
       </Section>
-      <CTABand title={`Decrire un probleme de nuisibles a ${city.name}`} text="Votre demande sera transmise seulement avec votre consentement." />
+      <CTABand title={`Décrire un problème de nuisibles à ${city.name}`} text="Votre demande est transmise seulement avec votre consentement, selon votre commune, le nuisible et l'urgence." />
     </main>
   );
 }

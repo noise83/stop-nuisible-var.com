@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { priorityCities, services } from "@/data/site";
+import { PHONE_HREF, PHONE_NUMBER } from "@/lib/constants";
 
 export function Footer() {
   return (
@@ -8,8 +9,11 @@ export function Footer() {
         <div>
           <p className="text-xl font-black">Stop Nuisible Var</p>
           <p className="mt-4 max-w-sm text-sm leading-7 text-white/72">
-            Plateforme locale de demande de rappel et de mise en relation. Nous ne declarons pas intervenir directement : votre demande est transmise a un professionnel ou partenaire specialise.
+            Plateforme locale de demande de rappel et de mise en relation. Nous ne déclarons pas intervenir directement : votre demande est transmise à un professionnel partenaire adapté.
           </p>
+          <a href={PHONE_HREF} className="mt-5 inline-flex rounded-[7px] bg-[#bf593f] px-4 py-3 text-sm font-black text-white" data-track-phone>
+            Appeler le {PHONE_NUMBER}
+          </a>
         </div>
         <FooterColumn title="Nuisibles" links={services.slice(0, 8).map((s) => ({ label: s.shortName, href: `/${s.slug}/` }))} />
         <FooterColumn title="Villes" links={priorityCities.slice(0, 8).map((c) => ({ label: c.name, href: `/villes/${c.slug}/` }))} />
@@ -17,10 +21,10 @@ export function Footer() {
           title="Confiance"
           links={[
             { label: "Demande de devis", href: "/demande-devis/" },
-            { label: "Comment ca marche", href: "/comment-ca-marche/" },
+            { label: "Comment ça marche", href: "/comment-ca-marche/" },
             { label: "Partenaires", href: "/partenaires/" },
-            { label: "Confidentialite", href: "/confidentialite/" },
-            { label: "Mentions legales", href: "/mentions-legales/" },
+            { label: "Confidentialité", href: "/confidentialite/" },
+            { label: "Mentions légales", href: "/mentions-legales/" },
           ]}
         />
       </div>

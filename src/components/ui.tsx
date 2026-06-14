@@ -29,7 +29,7 @@ export function ButtonLink({
 }
 
 export function PhoneLink({
-  children = PHONE_NUMBER ? "Appeler" : "Rappel gratuit",
+  children = `Appeler le ${PHONE_NUMBER}`,
   className = "",
 }: {
   children?: React.ReactNode;
@@ -39,8 +39,7 @@ export function PhoneLink({
     <a
       href={PHONE_HREF}
       className={className || "focus-ring inline-flex items-center justify-center rounded-[7px] bg-[#102337] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#18324c]"}
-      data-track-phone={PHONE_NUMBER ? true : undefined}
-      data-track-cta={PHONE_NUMBER ? undefined : true}
+      data-track-phone
     >
       {children}
     </a>

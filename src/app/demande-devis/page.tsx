@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { JsonLd } from "@/components/json-ld";
 import { LeadForm } from "@/components/lead-form";
-import { Eyebrow, Section } from "@/components/ui";
+import { Eyebrow, PhoneLink, Section } from "@/components/ui";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "Demande de devis nuisibles Var",
+  title: "Demande de rappel nuisibles Var",
   description:
-    "Formulaire de demande de rappel pour nuisibles dans le Var : commune, nuisible, type de lieu, urgence et consentement RGPD.",
+    "Formulaire court de rappel anti-nuisibles dans le Var : nuisible, ville, code postal, urgence, téléphone et consentement RGPD.",
   alternates: { canonical: "/demande-devis/" },
 };
 
@@ -25,12 +25,15 @@ export default function QuotePage() {
         <div className="container grid gap-10 lg:grid-cols-[.8fr_1.2fr]">
           <div>
             <Eyebrow>Rappel / devis</Eyebrow>
-            <h1 className="text-5xl font-black leading-tight text-[#102337]">Decrire mon probleme de nuisibles</h1>
+            <h1 className="text-5xl font-black leading-tight text-[#102337]">Décrire mon problème de nuisibles</h1>
             <p className="mt-6 text-lg leading-8 text-[#405160]">
-              Completez les informations utiles. Votre demande ne sera transmise a un professionnel ou partenaire specialise qu'avec votre consentement.
+              Complétez les informations utiles. Votre demande est transmise à un professionnel partenaire adapté selon votre commune, le type de nuisible et le niveau d'urgence, uniquement avec votre consentement.
             </p>
+            <div className="mt-6">
+              <PhoneLink />
+            </div>
             <div className="mt-8 rounded-[8px] border border-[#102337]/10 bg-white p-6 text-sm leading-7 text-[#607080]">
-              Pas de promesse d'intervention immediate, pas de faux technicien affiche : le formulaire sert a qualifier la demande et faciliter un rappel adapte.
+              Pas de promesse d'intervention immédiate, pas de faux technicien affiché : le formulaire sert à qualifier la demande et faciliter un rappel adapté.
             </div>
           </div>
           <LeadForm />

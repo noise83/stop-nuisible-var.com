@@ -5,7 +5,7 @@ import { CityCard, RelatedLinks, ServiceCard } from "@/components/cards";
 import { FAQ } from "@/components/faq";
 import { JsonLd } from "@/components/json-ld";
 import { LeadForm } from "@/components/lead-form";
-import { CTABand, EmergencyPanel, ProcessSteps } from "@/components/page-blocks";
+import { CTABand, EmergencyPanel, ProcessSteps, TrustBar } from "@/components/page-blocks";
 import { ButtonLink, Eyebrow, PhoneLink, Section } from "@/components/ui";
 import { extensionCities, getCity, getLocalLanding, getService, globalPages, guides, localLandings, priorityCities, services } from "@/data/site";
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from "@/lib/jsonld";
@@ -89,7 +89,7 @@ function LocalLandingPage({ slug }: { slug: string }) {
             <p className="mt-5 text-lg leading-8 text-[#405160]">{landing.promise}</p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <PhoneLink />
-              <ButtonLink>Rappel gratuit</ButtonLink>
+              <ButtonLink>Demander un rappel gratuit</ButtonLink>
             </div>
             <div className="mt-7 grid gap-3 sm:grid-cols-3">
               {landing.reassurance.map((item) => (
@@ -102,15 +102,16 @@ function LocalLandingPage({ slug }: { slug: string }) {
           <LeadForm />
         </div>
       </Section>
+      <TrustBar />
       <Section tone="white">
         <div className="container grid gap-8 lg:grid-cols-[1fr_360px]">
           <article className="space-y-5 leading-8 text-[#405160]">
-            <h2 className="text-3xl font-black text-[#102337]">Intervention nuisibles autour de {city.name}</h2>
+            <h2 className="text-3xl font-black text-[#102337]">Demande anti-nuisibles autour de {city.name}</h2>
             <p>
-              Cette page sert a formuler une demande courte pour {service.shortName.toLowerCase()} a {city.name}. Les communes proches comme {city.neighbours.join(", ")} peuvent aussi etre precisees dans le message si le probleme se situe a proximite.
+              Cette page sert à formuler une demande courte pour {service.shortName.toLowerCase()} à {city.name}. Les communes proches comme {city.neighbours.join(", ")} peuvent aussi être précisées dans le message si le problème se situe à proximité.
             </p>
             <p>
-              Le but est simple : collecter les informations utiles, verifier le consentement RGPD et transmettre une demande exploitable a une entreprise partenaire specialisee, sans fausse promesse de delai ni faux avis.
+              Le but est simple : collecter les informations utiles, vérifier le consentement RGPD et transmettre une demande exploitable à une entreprise partenaire spécialisée, sans fausse promesse de délai ni faux avis.
             </p>
             <h2 className="text-3xl font-black text-[#102337]">Informations utiles avant le rappel</h2>
             <ul className="space-y-3">
@@ -122,7 +123,7 @@ function LocalLandingPage({ slug }: { slug: string }) {
           <RelatedLinks
             links={[
               { label: `${service.shortName} dans le Var`, href: `/${service.slug}/` },
-              { label: `Tous les nuisibles a ${city.name}`, href: `/villes/${city.slug}/` },
+              { label: `Tous les nuisibles à ${city.name}`, href: `/villes/${city.slug}/` },
               { label: "Demande de rappel", href: "/demande-devis/" },
             ]}
           />
@@ -130,11 +131,11 @@ function LocalLandingPage({ slug }: { slug: string }) {
       </Section>
       <Section>
         <div className="container max-w-3xl">
-          <h2 className="mb-6 text-3xl font-black text-[#102337]">Questions frequentes</h2>
+          <h2 className="mb-6 text-3xl font-black text-[#102337]">Questions fréquentes</h2>
           <FAQ items={landing.faq} />
         </div>
       </Section>
-      <CTABand title={`Besoin d'un rappel a ${city.name} ?`} text="Le formulaire court permet de qualifier la demande rapidement avec un telephone et un consentement clair." />
+      <CTABand title={`Besoin d'un rappel à ${city.name} ?`} text="Le formulaire court permet de qualifier la demande rapidement avec un téléphone et un consentement clair." />
     </main>
   );
 }
@@ -159,17 +160,18 @@ function ServicePage({ slug }: { slug: string }) {
             <p className="mt-6 text-lg leading-8 text-[#405160]">{service.hero}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <ButtonLink />
-              <ButtonLink href="/zones-intervention/" variant="secondary">Voir les villes couvertes</ButtonLink>
+              <PhoneLink />
             </div>
           </div>
           <EmergencyPanel />
         </div>
       </Section>
+      <TrustBar />
       <Section tone="white">
         <div className="container grid gap-8 lg:grid-cols-3">
-          <ContentList title="Signes frequents" items={service.risks} />
-          <ContentList title="Lieux concernes" items={service.contexts} />
-          <ContentList title="Bons reflexes" items={service.advice} />
+          <ContentList title="Signes fréquents" items={service.risks} />
+          <ContentList title="Lieux concernés" items={service.contexts} />
+          <ContentList title="Bons réflexes" items={service.advice} />
         </div>
       </Section>
       <Section>
@@ -177,18 +179,18 @@ function ServicePage({ slug }: { slug: string }) {
           <article className="space-y-5 leading-8 text-[#405160]">
             <h2 className="text-3xl font-black text-[#102337]">Une demande locale, claire et transmissible</h2>
             <p>
-              Pour un traitement nuisibles Var, la bonne orientation depend rarement d'un seul mot-cle. Il faut comprendre la commune, le type de lieu, les signes observes, les contraintes d'acces et le niveau d'urgence. C'est pourquoi Stop Nuisible Var structure la demande avant transmission.
+              Pour un traitement nuisibles Var, la bonne orientation dépend rarement d'un seul mot-clé. Il faut comprendre la commune, le type de lieu, les signes observés, les contraintes d'accès et le niveau d'urgence. C'est pourquoi Stop Nuisible Var structure la demande avant transmission.
             </p>
             <p>
-              Le service convient aux particuliers, proprietaires, locataires, syndics, commerces, restaurants, hotels, campings, conciergeries et collectivites. La plateforme ne promet pas une intervention immediate : elle facilite la mise en relation avec un professionnel anti nuisibles ou un partenaire adapte.
+              Le service convient aux particuliers, propriétaires, locataires, syndics, commerces, restaurants, hôtels, campings, conciergeries et collectivités. Votre demande est transmise à un professionnel partenaire adapté selon votre commune, le type de nuisible et le niveau d'urgence.
             </p>
             <p>
-              Les informations envoyees permettent d'eviter les echanges inutiles : type de nuisible, commune, batiment, disponibilites et message libre. Pour une urgence nuisibles, le formulaire aide aussi a signaler les situations sensibles sans donner de consignes dangereuses.
+              Les informations envoyées permettent d'éviter les échanges inutiles : type de nuisible, commune, bâtiment, disponibilités et message libre. Pour une urgence nuisibles, le formulaire aide aussi à signaler les situations sensibles sans donner de consignes dangereuses.
             </p>
           </article>
           <RelatedLinks
             links={[
-              ...priorityCities.slice(0, 6).map((city) => ({ label: `${service.shortName} a ${city.name}`, href: `/villes/${city.slug}/` })),
+              ...priorityCities.slice(0, 6).map((city) => ({ label: `${service.shortName} à ${city.name}`, href: `/villes/${city.slug}/` })),
               ...guides.filter((guide) => guide.serviceSlug === service.slug).map((guide) => ({ label: guide.title, href: `/guides/${guide.slug}/` })),
             ].slice(0, 8)}
           />
@@ -196,11 +198,11 @@ function ServicePage({ slug }: { slug: string }) {
       </Section>
       <Section tone="white">
         <div className="container max-w-3xl">
-          <h2 className="mb-6 text-3xl font-black text-[#102337]">Questions frequentes</h2>
+          <h2 className="mb-6 text-3xl font-black text-[#102337]">Questions fréquentes</h2>
           <FAQ items={service.faq} />
         </div>
       </Section>
-      <CTABand title={`Demander un devis ${service.shortName.toLowerCase()} dans le Var`} text="Transmettez les informations utiles en moins d'une minute, avec consentement clair et sans engagement." />
+      <CTABand title={`Demander un rappel ${service.shortName.toLowerCase()} dans le Var`} text="Transmettez les informations utiles en moins d'une minute, avec téléphone, consentement clair et sans engagement." />
     </main>
   );
 }
@@ -219,17 +221,18 @@ function HubPage() {
           <Eyebrow>Hub local</Eyebrow>
           <h1 className="max-w-4xl text-5xl font-black text-[#102337]">Traitement nuisibles Var : une demande, le bon relais local</h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-[#405160]">
-            Stop Nuisible Var centralise les demandes de deratisation Var, desinsectisation Var, traitement punaises de lit, termites, guepes, moustique tigre, chenilles et depigeonnage. Le site sert de passerelle claire entre votre situation et un professionnel partenaire.
+            Stop Nuisible Var centralise les demandes de dératisation Var, désinsectisation Var, traitement punaises de lit, termites, guêpes, moustique tigre, chenilles et dépigeonnage. Le site sert de passerelle claire entre votre situation et un professionnel partenaire.
           </p>
-          <div className="mt-8"><ButtonLink /></div>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row"><ButtonLink /><PhoneLink /></div>
         </div>
       </Section>
+      <TrustBar />
       <Section tone="white">
         <div className="container grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service) => <ServiceCard key={service.slug} service={service} />)}
         </div>
       </Section>
-      <CTABand title="Votre demande est locale et contextualisee" text="Ville, nuisible, type de lieu et urgence : ces informations permettent une orientation plus efficace." />
+      <CTABand title="Votre demande est locale et contextualisée" text="Ville, nuisible, type de lieu, téléphone et urgence : ces informations permettent une orientation plus efficace." />
     </main>
   );
 }
@@ -248,8 +251,9 @@ function ZonesPage() {
           <Eyebrow>Var 83</Eyebrow>
           <h1 className="text-5xl font-black text-[#102337]">Zones d'intervention nuisibles dans le Var</h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-[#405160]">
-            Les demandes sont orientees selon votre commune et le nuisible concerne. Le MVP couvre en priorite Toulon, Hyeres, Frejus, Draguignan, Saint-Raphael et La Seyne-sur-Mer, avec une base extensible pour le reste du departement.
+            Les demandes sont orientées selon votre commune et le nuisible concerné. Les premières pages locales couvrent Toulon, Hyères, Fréjus, Draguignan, Saint-Raphaël et La Seyne-sur-Mer, avec une base extensible pour le reste du département.
           </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row"><ButtonLink /><PhoneLink /></div>
         </div>
       </Section>
       <Section tone="white">
@@ -258,13 +262,13 @@ function ZonesPage() {
           <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {priorityCities.map((city) => <CityCard key={city.slug} city={city} />)}
           </div>
-          <h2 className="mt-12 text-3xl font-black text-[#102337]">Communes prevues pour extension</h2>
+          <h2 className="mt-12 text-3xl font-black text-[#102337]">Communes couvertes progressivement</h2>
           <div className="mt-5 flex flex-wrap gap-2">
             {extensionCities.map((city) => <span key={city} className="rounded-[7px] border border-[#102337]/10 bg-[#f5f1e8] px-3 py-2 text-sm font-semibold">{city}</span>)}
           </div>
         </div>
       </Section>
-      <CTABand title="Votre commune n'est pas encore listee ?" text="Vous pouvez quand meme envoyer une demande : elle sera qualifiee selon votre secteur du Var." />
+      <CTABand title="Votre commune n'est pas encore listée ?" text="Vous pouvez quand même envoyer une demande : elle sera qualifiée selon votre secteur du Var." />
     </main>
   );
 }
@@ -272,7 +276,7 @@ function ZonesPage() {
 function HowItWorksPage() {
   const crumbs = [
     { name: "Accueil", href: "/" },
-    { name: "Comment ca marche", href: "/comment-ca-marche/" },
+    { name: "Comment ça marche", href: "/comment-ca-marche/" },
   ];
   return (
     <main>
@@ -281,12 +285,12 @@ function HowItWorksPage() {
       <Section>
         <div className="container">
           <Eyebrow>Mise en relation</Eyebrow>
-          <h1 className="text-5xl font-black text-[#102337]">Comment ca marche ?</h1>
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-[#405160]">Le fonctionnement est volontairement simple : vous expliquez, la demande est qualifiee, puis elle peut etre transmise a un professionnel partenaire adapte.</p>
+          <h1 className="text-5xl font-black text-[#102337]">Comment ça marche ?</h1>
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-[#405160]">Le fonctionnement est volontairement simple : vous expliquez, la demande est qualifiée, puis elle est transmise à un professionnel partenaire adapté selon votre commune, le type de nuisible et le niveau d'urgence.</p>
           <div className="mt-10"><ProcessSteps /></div>
         </div>
       </Section>
-      <CTABand title="Commencer par une demande claire" text="Aucun engagement : le partenaire vous recontacte pour expliquer la solution ou le devis possible." />
+      <CTABand title="Commencer par une demande claire" text="Aucun engagement : le partenaire dispose des informations utiles pour expliquer la solution ou le devis possible." />
     </main>
   );
 }
@@ -296,7 +300,7 @@ function PartnersPage() {
     { name: "Accueil", href: "/" },
     { name: "Partenaires", href: "/partenaires/" },
   ];
-  const criteria = ["Zone d'intervention dans le Var", "Capacite de rappel", "Clarte du devis", "Experience sur le nuisible concerne", "Assurance et conformite quand applicable"];
+  const criteria = ["Zone d'intervention dans le Var", "Capacité de rappel", "Clarté du devis", "Expérience sur le nuisible concerné", "Assurance et conformité quand applicable"];
   return (
     <main>
       <JsonLd data={breadcrumbJsonLd(crumbs)} />
@@ -304,10 +308,10 @@ function PartnersPage() {
       <Section>
         <div className="container grid gap-10 lg:grid-cols-[1fr_380px]">
           <div>
-            <Eyebrow>Reseau local</Eyebrow>
+            <Eyebrow>Réseau local</Eyebrow>
             <h1 className="text-5xl font-black text-[#102337]">Professionnels partenaires et mise en relation</h1>
             <p className="mt-6 text-lg leading-8 text-[#405160]">
-              Stop Nuisible Var travaille avec ou a vocation a travailler avec des professionnels et intermediaires specialises dans le traitement des nuisibles. Aucun partenaire nomme n'est affiche sans accord signe.
+              Stop Nuisible Var travaille avec ou a vocation à travailler avec des professionnels et intermédiaires spécialisés dans le traitement des nuisibles. Aucun partenaire nommé n'est affiché sans accord signé.
             </p>
           </div>
           <EmergencyPanel />
@@ -324,20 +328,22 @@ function PartnersPage() {
 
 function PrivacyPage() {
   return <TextPage slug="confidentialite" paragraphs={[
-    "Les donnees collectees via le formulaire sont celles necessaires au traitement de la demande : nom ou prenom, telephone, email optionnel, commune, type de nuisible, type de lieu, urgence, message et page d'origine.",
-    "La finalite est la qualification de la demande et la mise en relation avec un professionnel ou partenaire specialise dans le traitement des nuisibles dans le Var.",
+    "Les données collectées via le formulaire sont celles nécessaires au traitement de la demande : nom ou prénom, téléphone, email optionnel, commune, code postal, type de nuisible, type de lieu, urgence, créneau de rappel souhaité, message, photo facultative et page d'origine.",
+    "La finalité est la qualification de la demande et la mise en relation avec un professionnel ou partenaire spécialisé dans le traitement des nuisibles dans le Var.",
     "Les destinataires sont l'administrateur du site et les partenaires de mise en relation strictement utiles au traitement de la demande. Le consentement RGPD est obligatoire avant toute transmission.",
-    "Les donnees sont conservees pour une duree indicative compatible avec le suivi de la demande, puis supprimees ou archivees de maniere limitee. Cette base doit etre relue par un conseil juridique avant publication definitive.",
-    "Vous pouvez demander l'acces, la rectification ou la suppression de vos informations via l'adresse de contact qui sera configuree dans les mentions legales.",
+    "Les données sont conservées pendant la durée nécessaire au suivi de la demande, puis supprimées ou archivées de manière limitée pour assurer la traçabilité du service.",
+    "Vous pouvez demander l'accès, la rectification ou la suppression de vos informations en utilisant le formulaire de contact ou l'adresse email d'administration configurée pour le site.",
   ]} />;
 }
 
 function LegalPage() {
   return <TextPage slug="mentions-legales" paragraphs={[
-    "Stop Nuisible Var est un site de demande de devis et de mise en relation locale. Il ne se presente pas comme une entreprise d'intervention directe et n'affiche aucune adresse physique fictive.",
-    "L'editeur, l'hebergeur, l'adresse de contact et les informations juridiques definitives doivent etre completes par le proprietaire du site avant mise en production.",
-    "Les contenus ont une vocation informative et commerciale. Ils ne remplacent pas un diagnostic technique, sanitaire, reglementaire ou juridique.",
-    "Les marques, noms de communes et references geographiques sont utilises pour decrire la couverture locale du service.",
+    "Éditeur du site : Stop Nuisible Var, plateforme locale de demande de rappel et de mise en relation anti-nuisibles dans le Var. Contact : via le formulaire du site ou l'adresse email d'administration du projet.",
+    "Responsable de publication : propriétaire du site Stop Nuisible Var. Hébergeur : Vercel Inc., 440 N Barranca Avenue #4133, Covina, CA 91723, États-Unis.",
+    "Stop Nuisible Var est un site de demande de devis et de mise en relation locale. Il ne se présente pas comme une entreprise d'intervention directe et n'affiche aucune adresse physique fictive.",
+    "Les contenus, textes, éléments graphiques et pictogrammes du site sont protégés par le droit de la propriété intellectuelle. Toute reproduction non autorisée est interdite.",
+    "Les contenus ont une vocation informative et commerciale. Ils ne remplacent pas un diagnostic technique, sanitaire, réglementaire ou juridique.",
+    "Les données envoyées par le formulaire peuvent être transmises à un professionnel partenaire spécialisé uniquement avec consentement explicite de l'utilisateur.",
   ]} />;
 }
 

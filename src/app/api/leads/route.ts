@@ -21,7 +21,7 @@ function rateLimit(ip: string) {
 export async function POST(request: NextRequest) {
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "local";
   if (!rateLimit(ip)) {
-    return NextResponse.json({ ok: false, message: "Trop de demandes. Reessayez plus tard." }, { status: 429 });
+    return NextResponse.json({ ok: false, message: "Trop de demandes. Réessayez plus tard." }, { status: 429 });
   }
 
   let body: Record<string, unknown>;
@@ -53,6 +53,18 @@ export async function POST(request: NextRequest) {
   body.createdAt = new Date().toLocaleString("fr-FR", { timeZone: "Europe/Paris" });
   body.status = "Nouveau";
   body.consent = body.consent === true || body.consent === "on" || body.consent === "true";
+  if (typeof body.sourceUrl === "string") {
+    try {
+      const source = new URL(body.sourceUrl);
+      body.utmSource = source.searchParams.get("utm_source") ?? "";
+      body.utmMedium = source.searchParams.get("utm_medium") ?? "";
+      body.utmCampaign = source.searchParams.get("utm_campaign") ?? "";
+    } catch {
+      body.utmSource = "";
+      body.utmMedium = "";
+      body.utmCampaign = "";
+    }
+  }
 
   const parsed = leadSchema.safeParse(body);
   if (!parsed.success) {
@@ -60,7 +72,7 @@ export async function POST(request: NextRequest) {
   }
 
   if (parsed.data.website) {
-    return NextResponse.json({ ok: true, message: "Votre demande a ete enregistree." });
+    return NextResponse.json({ ok: true, message: "Votre demande est enregistrée." });
   }
 
   try {
@@ -68,10 +80,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       ok: true,
       leadId: parsed.data.leadId,
-      message: "Votre demande a ete enregistree. Un professionnel ou partenaire specialise pourra vous recontacter.",
+      message: "Votre demande est enregistrée. Elle est transmise selon votre commune, le type de nuisible et le niveau d'urgence.",
     });
   } catch (error) {
     console.error("[lead:error]", error);
-    return NextResponse.json({ ok: false, message: "La demande n'a pas pu etre transmise." }, { status: 500 });
+    return NextResponse.json({ ok: false, message: "La demande n'a pas pu être transmise." }, { status: 500 });
   }
 }

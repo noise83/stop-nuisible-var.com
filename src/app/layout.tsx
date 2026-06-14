@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: "%s | Stop Nuisible Var",
   },
   description:
-    "Plateforme locale de demande de rappel pour punaises de lit, deratisation, cafards, guepes, termites, moustiques et autres nuisibles dans le Var.",
+    "Plateforme locale de demande de rappel pour punaises de lit, dératisation, cafards, guêpes, termites, moustiques et autres nuisibles dans le Var.",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     siteName: "Stop Nuisible Var",
     title: "Stop Nuisible Var - Trouver un professionnel anti-nuisibles dans le Var",
     description:
-      "Decrivez votre probleme et soyez recontacte par un professionnel partenaire adapte a votre commune du Var.",
+      "Décrivez votre problème et transmettez votre demande à un professionnel partenaire adapté à votre commune du Var.",
   },
 };
 

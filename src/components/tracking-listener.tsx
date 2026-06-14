@@ -11,6 +11,7 @@ export function TrackingListener() {
         trackEvent("cta_click");
       }
       if (target?.closest("[data-track-phone]")) {
+        trackEvent("call_click");
         trackEvent("phone_click");
       }
     }

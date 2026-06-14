@@ -68,7 +68,7 @@ export default async function GuidePage({ params }: { params: Params }) {
           />
         </article>
       </Section>
-      <CTABand title="Besoin d'un avis adapte a votre commune ?" text="Le formulaire transmet les informations utiles sans donner de consignes dangereuses." />
+      <CTABand title="Besoin d'un avis adapté à votre commune ?" text="Le formulaire transmet les informations utiles sans donner de consignes dangereuses." />
     </main>
   );
 }

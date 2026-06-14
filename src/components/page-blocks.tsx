@@ -1,4 +1,4 @@
-import { ButtonLink, Eyebrow, Section } from "@/components/ui";
+import { ButtonLink, Eyebrow, PhoneLink, Section } from "@/components/ui";
 import { VarMap } from "@/components/icons";
 
 export function ConversionHero({
@@ -20,8 +20,8 @@ export function ConversionHero({
           <h1 className="max-w-4xl text-4xl font-black leading-tight text-[#102337] sm:text-5xl lg:text-6xl">{title}</h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-[#405160]">{text}</p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink />
-            <ButtonLink href="/comment-ca-marche/" variant="secondary">Voir le fonctionnement</ButtonLink>
+            <ButtonLink>Demander un rappel gratuit</ButtonLink>
+            <PhoneLink>Appeler le 07 89 89 34 22</PhoneLink>
           </div>
           <ul className="mt-8 grid gap-3 text-sm font-semibold text-[#102337] sm:grid-cols-3">
             {bullets.map((bullet) => (
@@ -33,7 +33,7 @@ export function ConversionHero({
           <VarMap className="w-full shadow-[0_30px_80px_rgba(16,35,55,.18)]" />
           <div className="absolute -bottom-6 left-6 right-6 rounded-[8px] bg-[#102337] p-5 text-white shadow-xl">
             <p className="text-sm font-bold text-[#dfcaa2]">Plateforme de mise en relation</p>
-            <p className="mt-2 text-sm leading-6 text-white/78">Votre demande est qualifiee puis transmise a un professionnel partenaire adapte a votre secteur.</p>
+            <p className="mt-2 text-sm leading-6 text-white/78">Votre demande est transmise à un professionnel partenaire adapté selon votre commune, le type de nuisible et le niveau d'urgence.</p>
           </div>
         </div>
       </div>
@@ -42,13 +42,23 @@ export function ConversionHero({
 }
 
 export function TrustBar() {
-  const items = ["Demande en moins d'une minute", "Pas de fausse adresse affichee", "Partenaires selon secteur", "RGPD et consentement clair"];
+  const items = [
+    "Demande gratuite et sans engagement",
+    "Contact rapide selon disponibilité du partenaire",
+    "Transmission selon commune, nuisible et urgence",
+    "Données transmises uniquement avec consentement",
+    "Possibilité d'ajouter une photo",
+    "Pas de fausse agence locale affichée",
+  ];
   return (
     <div className="border-y border-[#102337]/10 bg-white">
-      <div className="container grid gap-3 py-5 text-sm font-bold text-[#102337] md:grid-cols-4">
-        {items.map((item) => (
-          <span key={item}>{item}</span>
-        ))}
+      <div className="container py-8">
+        <h2 className="text-2xl font-black text-[#102337]">Pourquoi passer par Stop Nuisible Var ?</h2>
+        <div className="mt-5 grid gap-3 text-sm font-bold text-[#102337] sm:grid-cols-2 lg:grid-cols-3">
+          {items.map((item) => (
+            <span key={item} className="rounded-[7px] bg-[#f5f1e8] px-4 py-3">{item}</span>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -56,9 +66,9 @@ export function TrustBar() {
 
 export function ProcessSteps() {
   const steps = [
-    ["1", "Vous decrivez le probleme", "Nuisible, commune, type de lieu, urgence et informations utiles."],
-    ["2", "La demande est qualifiee", "Les elements servent a identifier le bon secteur et le type de professionnel."],
-    ["3", "Un partenaire peut vous rappeler", "Le professionnel explique les options et propose un devis adapte."],
+    ["1", "Vous décrivez le problème", "Nuisible, commune, type de lieu, urgence et informations utiles."],
+    ["2", "La demande est qualifiée", "Les éléments servent à identifier le bon secteur et le type de professionnel."],
+    ["3", "Transmission au bon partenaire", "Votre demande est transmise à un professionnel partenaire adapté selon votre commune, le type de nuisible et le niveau d'urgence."],
   ];
   return (
     <div className="grid gap-4 md:grid-cols-3">
@@ -81,7 +91,10 @@ export function CTABand({ title, text }: { title: string; text: string }) {
           <h2 className="text-3xl font-black">{title}</h2>
           <p className="mt-3 max-w-2xl text-white/76">{text}</p>
         </div>
-        <ButtonLink variant="primary" />
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <PhoneLink>Appeler le 07 89 89 34 22</PhoneLink>
+          <ButtonLink variant="primary">Demander un rappel gratuit</ButtonLink>
+        </div>
       </div>
     </section>
   );
@@ -91,12 +104,13 @@ export function EmergencyPanel() {
   return (
     <aside className="rounded-[8px] border border-[#bf593f]/25 bg-[#fff8f2] p-6">
       <p className="text-sm font-black uppercase tracking-[.12em] text-[#bf593f]">Besoin d'un rappel</p>
-      <h2 className="mt-3 text-2xl font-black text-[#102337]">Decrivez le probleme sans attendre que la situation s'installe.</h2>
+      <h2 className="mt-3 text-2xl font-black text-[#102337]">Décrivez le problème sans attendre que la situation s'installe.</h2>
       <p className="mt-3 leading-7 text-[#607080]">
-        Le formulaire aide a transmettre les bonnes informations : commune, type de nuisible, lieu concerne et niveau d'urgence. Aucune intervention immediate n'est promise.
+        Le formulaire transmet les bonnes informations : commune, type de nuisible, lieu concerné, téléphone et niveau d'urgence. Aucune intervention immédiate n'est promise.
       </p>
-      <div className="mt-5">
-        <ButtonLink />
+      <div className="mt-5 flex flex-col gap-3">
+        <PhoneLink />
+        <ButtonLink>Demander un rappel gratuit</ButtonLink>
       </div>
     </aside>
   );

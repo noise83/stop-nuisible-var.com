@@ -16,7 +16,7 @@ export function Header() {
         <nav className="hidden items-center gap-5 text-sm font-semibold text-[#102337] lg:flex" aria-label="Navigation principale">
           <Link className="hover:text-[#bf593f]" href="/traitement-nuisibles-var/">Services</Link>
           <Link className="hover:text-[#bf593f]" href="/zones-intervention/">Zones</Link>
-          <Link className="hover:text-[#bf593f]" href="/comment-ca-marche/">Comment ca marche</Link>
+          <Link className="hover:text-[#bf593f]" href="/comment-ca-marche/">Comment ça marche</Link>
           <Link className="hover:text-[#bf593f]" href="/partenaires/">Partenaires</Link>
           <div className="group relative">
             <button className="font-semibold hover:text-[#bf593f]">Nuisibles</button>
@@ -34,7 +34,9 @@ export function Header() {
           <ButtonLink />
         </div>
         <div className="fixed inset-x-0 top-0 z-50 grid grid-cols-2 border-b border-[#102337]/10 bg-white sm:hidden">
-          <PhoneLink className="focus-ring flex h-12 items-center justify-center bg-[#102337] text-sm font-black text-white" />
+          <PhoneLink className="focus-ring flex h-12 items-center justify-center bg-[#102337] text-sm font-black text-white">
+            Appeler
+          </PhoneLink>
           <Link href="/demande-devis/" className="focus-ring flex h-12 items-center justify-center bg-[#bf593f] text-sm font-black text-white" data-track-cta>
             Rappel gratuit
           </Link>
@@ -46,9 +48,9 @@ export function Header() {
           <div className="absolute right-0 top-12 w-72 rounded-[8px] border border-[#102337]/10 bg-white p-3 text-sm font-semibold text-[#102337] shadow-xl">
             <Link className="block rounded-[6px] px-3 py-2 hover:bg-[#f5f1e8]" href="/traitement-nuisibles-var/">Services</Link>
             <Link className="block rounded-[6px] px-3 py-2 hover:bg-[#f5f1e8]" href="/zones-intervention/">Zones</Link>
-            <Link className="block rounded-[6px] px-3 py-2 hover:bg-[#f5f1e8]" href="/comment-ca-marche/">Comment ca marche</Link>
+            <Link className="block rounded-[6px] px-3 py-2 hover:bg-[#f5f1e8]" href="/comment-ca-marche/">Comment ça marche</Link>
             <Link className="block rounded-[6px] px-3 py-2 hover:bg-[#f5f1e8]" href="/partenaires/">Partenaires</Link>
-            <Link className="mt-2 block rounded-[6px] bg-[#bf593f] px-3 py-2 text-center text-white" href="/demande-devis/">Decrire mon probleme</Link>
+            <Link className="mt-2 block rounded-[6px] bg-[#bf593f] px-3 py-2 text-center text-white" href="/demande-devis/">Demander un rappel gratuit</Link>
           </div>
         </details>
       </div>

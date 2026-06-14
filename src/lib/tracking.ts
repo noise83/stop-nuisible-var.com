@@ -1,15 +1,18 @@
 "use client";
 
 export type TrackingEvent =
+  | "form_start"
+  | "form_submit"
+  | "call_click"
+  | "lead_created"
+  | "city_page_view"
   | "lead_form_view"
   | "lead_step_start"
   | "lead_step_complete"
   | "lead_form_submit"
-  | "lead_created"
   | "cta_click"
   | "phone_click"
-  | "nuisible_select"
-  | "city_page_view";
+  | "nuisible_select";
 
 export function trackEvent(eventName: TrackingEvent, params?: Record<string, string | number | boolean>) {
   if (typeof window === "undefined") return;
