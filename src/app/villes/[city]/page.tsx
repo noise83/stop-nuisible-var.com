@@ -5,7 +5,8 @@ import { RelatedLinks } from "@/components/cards";
 import { FAQ } from "@/components/faq";
 import { JsonLd } from "@/components/json-ld";
 import { CityPageViewTracker } from "@/components/page-view-tracker";
-import { CTABand, EmergencyPanel, TrustBar } from "@/components/page-blocks";
+import { CTABand, EmergencyPanel } from "@/components/page-blocks";
+import { TrustList } from "@/components/TrustList";
 import { ButtonLink, Eyebrow, PhoneLink, Section } from "@/components/ui";
 import { getCity, priorityCities, services } from "@/data/site";
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from "@/lib/jsonld";
@@ -63,7 +64,7 @@ export default async function CityPage({ params }: { params: Params }) {
           <EmergencyPanel />
         </div>
       </Section>
-      <TrustBar />
+      <TrustList />
       <Section tone="white">
         <div className="container grid gap-8 lg:grid-cols-[1fr_360px]">
           <article className="space-y-6 leading-8 text-[#405160]">

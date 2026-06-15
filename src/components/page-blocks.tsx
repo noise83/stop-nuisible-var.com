@@ -1,5 +1,5 @@
-import { ButtonLink, Eyebrow, PhoneLink, Section } from "@/components/ui";
 import { VarMap } from "@/components/icons";
+import { ButtonLink, Eyebrow, PhoneLink, Section } from "@/components/ui";
 
 export function ConversionHero({
   eyebrow,
@@ -38,30 +38,6 @@ export function ConversionHero({
         </div>
       </div>
     </Section>
-  );
-}
-
-export function TrustBar() {
-  const items = [
-    "Demande gratuite",
-    "Sans engagement",
-    "Contact rapide selon disponibilité",
-    "Transmission selon commune, nuisible et urgence",
-    "Consentement obligatoire",
-    "Photo possible",
-    "Pas de fausse agence locale",
-  ];
-  return (
-    <div className="border-y border-[#102337]/10 bg-white">
-      <div className="container py-8">
-        <h2 className="text-2xl font-black text-[#102337]">Pourquoi passer par Stop Nuisible Var ?</h2>
-        <div className="mt-5 grid gap-3 text-sm font-bold text-[#102337] sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((item) => (
-            <span key={item} className="rounded-[7px] bg-[#f5f1e8] px-4 py-3">{item}</span>
-          ))}
-        </div>
-      </div>
-    </div>
   );
 }
 

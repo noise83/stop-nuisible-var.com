@@ -5,7 +5,8 @@ import { CityCard, RelatedLinks, ServiceCard } from "@/components/cards";
 import { FAQ } from "@/components/faq";
 import { JsonLd } from "@/components/json-ld";
 import { LeadForm } from "@/components/lead-form";
-import { CTABand, EmergencyPanel, ProcessSteps, TrustBar } from "@/components/page-blocks";
+import { CTABand, EmergencyPanel, ProcessSteps } from "@/components/page-blocks";
+import { TrustList } from "@/components/TrustList";
 import { ButtonLink, Eyebrow, PhoneLink, Section } from "@/components/ui";
 import { extensionCities, getCity, getLocalLanding, getService, globalPages, guides, localLandings, priorityCities, services } from "@/data/site";
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from "@/lib/jsonld";
@@ -91,18 +92,11 @@ function LocalLandingPage({ slug }: { slug: string }) {
               <PhoneLink />
               <ButtonLink>Demander un rappel gratuit</ButtonLink>
             </div>
-            <div className="mt-7 grid gap-3 sm:grid-cols-3">
-              {landing.reassurance.map((item) => (
-                <div key={item} className="rounded-[7px] border border-[#102337]/10 bg-white px-4 py-3 text-sm font-bold text-[#102337]">
-                  {item}
-                </div>
-              ))}
-            </div>
           </div>
           <LeadForm />
         </div>
       </Section>
-      <TrustBar />
+      <TrustList />
       <Section tone="white">
         <div className="container grid gap-8 lg:grid-cols-[1fr_360px]">
           <article className="space-y-5 leading-8 text-[#405160]">
@@ -166,7 +160,7 @@ function ServicePage({ slug }: { slug: string }) {
           <EmergencyPanel />
         </div>
       </Section>
-      <TrustBar />
+      <TrustList />
       <Section tone="white">
         <div className="container grid gap-8 lg:grid-cols-3">
           <ContentList title="Signes fréquents" items={service.risks} />
@@ -226,7 +220,7 @@ function HubPage() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row"><ButtonLink /><PhoneLink /></div>
         </div>
       </Section>
-      <TrustBar />
+      <TrustList />
       <Section tone="white">
         <div className="container grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service) => <ServiceCard key={service.slug} service={service} />)}
