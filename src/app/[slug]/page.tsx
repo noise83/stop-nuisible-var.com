@@ -250,6 +250,7 @@ function ZonesPage() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row"><ButtonLink /><PhoneLink /></div>
         </div>
       </Section>
+      <TrustList />
       <Section tone="white">
         <div className="container">
           <h2 className="text-3xl font-black text-[#102337]">Villes prioritaires</h2>
