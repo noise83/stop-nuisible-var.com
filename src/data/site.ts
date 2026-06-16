@@ -44,7 +44,6 @@ export type LocalLanding = {
   title: string;
   description: string;
   promise: string;
-  reassurance: string[];
   faq: FAQItem[];
 };
 
@@ -655,11 +654,6 @@ const generatedLocalLandings: LocalLanding[] = priorityCities.slice(0, 6).flatMa
       title: `${h1} - Rappel et devis nuisibles`,
       description: `${config.label} à ${city.name} : demande de rappel locale pour ${service?.shortName.toLowerCase() ?? "nuisibles"}, téléphone, devis clair et transmission à une entreprise partenaire.`,
       promise: `${config.promise} À ${city.name}, les demandes concernent souvent ${city.buildingTypes.slice(0, 3).join(", ")}.`,
-      reassurance: [
-        "Demande gratuite et sans engagement",
-        "Contact rapide selon disponibilité du partenaire",
-        "Données transmises uniquement avec votre consentement",
-      ],
       faq: [
         {
           question: `Comment demander un rappel à ${city.name} ?`,
@@ -683,7 +677,6 @@ const extraLocalLandings: LocalLanding[] = [
     title: "Dératisation restaurant Var - Rappel rapide et devis",
     description: "Rats ou souris dans un restaurant du Var : local poubelle, réserve, cuisine, cave, urgence sanitaire, téléphone et demande de rappel gratuite.",
     promise: "Bruits, crottes, traces de rongement ou passage près d'une réserve alimentaire : décrivez votre restaurant, votre commune et l'urgence pour transmettre une demande exploitable.",
-    reassurance: ["Demande gratuite et sans engagement", "Contact rapide selon disponibilité du partenaire", "Données transmises uniquement avec votre consentement"],
     faq: [
       { question: "Que préciser pour un restaurant ?", answer: "Indiquez la commune, le type de local, les zones touchées, les horaires de rappel et si le problème concerne la cuisine, la réserve, la salle ou le local poubelle." },
       { question: "Le site affiche-t-il une fausse agence locale ?", answer: "Non. Stop Nuisible Var est une plateforme de demande de rappel et ne prétend pas intervenir directement." },
@@ -697,7 +690,6 @@ const extraLocalLandings: LocalLanding[] = [
     title: "Prix dératisation Var - Comprendre le devis",
     description: "Prix d'une dératisation dans le Var : facteurs qui influencent le devis, type de lieu, accès, urgence, surface et niveau d'infestation.",
     promise: "Le prix dépend du type de lieu, des accès, de la surface, des traces observées et du niveau d'urgence. Décrivez la situation pour obtenir un rappel et un devis adapté.",
-    reassurance: ["Devis avant décision", "Demande gratuite et sans engagement", "Téléphone obligatoire pour qualifier le rappel"],
     faq: [
       { question: "Peut-on donner un prix fixe sans voir le site ?", answer: "Un prix fiable dépend des accès, du type de bâtiment, de la surface et du niveau d'infestation. La demande sert à préparer un devis cohérent." },
       { question: "Quels éléments influencent le tarif ?", answer: "Maison, appartement, restaurant, cave, local poubelle, urgence, fréquence des passages et contraintes d'accès peuvent faire varier le prix." },
