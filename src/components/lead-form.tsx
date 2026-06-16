@@ -86,10 +86,9 @@ export function LeadForm() {
         <span className="text-sm font-bold text-[#102337]">Message facultatif</span>
         <textarea name="message" maxLength={1200} rows={3} className="mt-2 w-full rounded-[7px] border border-[#102337]/15 bg-[#f5f1e8] px-4 py-3 outline-none focus:border-[#bf593f]" placeholder="Exemple : traces dans la cuisine, nid sous toiture, piqûres au réveil..." />
       </label>
-      <label hidden aria-hidden="true" style={{ display: "none" }}>
-        Site web
-        <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" />
-      </label>
+      <div hidden aria-hidden="true" style={{ display: "none" }}>
+        <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
+      </div>
       <label className="mt-5 flex gap-3 rounded-[7px] bg-[#f5f1e8] p-4 text-sm leading-6 text-[#405160]">
         <input name="consent" type="checkbox" required className="mt-1 h-4 w-4 accent-[#bf593f]" />
         <span>{CONSENT_TEXT}</span>
