@@ -245,7 +245,7 @@ function ZonesPage() {
           <Eyebrow>Var 83</Eyebrow>
           <h1 className="text-5xl font-black text-[#102337]">Zones d'intervention nuisibles dans le Var</h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-[#405160]">
-            Les demandes sont orientées selon votre commune et le nuisible concerné. Les premières pages locales couvrent Toulon, Hyères, Fréjus, Draguignan, Saint-Raphaël et La Seyne-sur-Mer, avec une base extensible pour le reste du département.
+            Les demandes sont traitées en priorité sur les principales communes du Var. Même si votre commune n’est pas encore listée, vous pouvez envoyer une demande : elle sera qualifiée selon votre secteur, le nuisible et l’urgence.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row"><ButtonLink /><PhoneLink /></div>
         </div>
