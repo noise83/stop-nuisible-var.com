@@ -1,7 +1,53 @@
 # AGENTS.md — Stop Nuisible Var
 
 ## Mission du projet
+## Règle prioritaire pour Codex
+## Mode strict — règle prioritaire
 
+Quand une demande commence par “MODE STRICT”, cette demande est prioritaire sur les objectifs généraux du projet.
+
+Dans ce mode :
+- ne pas élargir le périmètre ;
+- ne pas refaire tout le site ;
+- ne pas modifier des fichiers non nécessaires ;
+- ne pas reformuler les textes exacts demandés ;
+- ne pas remplacer une consigne par une variante approximative ;
+- ne pas toucher au backend sauf demande explicite ;
+- vérifier que chaque point demandé est visible dans le rendu final.
+
+Si le prompt dit “home uniquement”, modifier uniquement la page d’accueil et les styles nécessaires.
+
+Avant commit :
+- vérifier que les textes exacts demandés sont présents ;
+- lancer npm run lint si disponible ;
+- lancer npm run typecheck si disponible ;
+- lancer npm run build si disponible.
+
+Réponse finale obligatoire :
+- fichiers modifiés ;
+- commandes lancées ;
+- résultat lint/typecheck/build ;
+- URL vérifiée ;
+- points non faits, s’il y en a.
+Quand une tâche précise est donnée, elle passe avant les objectifs généraux du projet.
+
+Ne pas élargir le périmètre.
+Si la tâche dit “home uniquement”, modifier uniquement la home et les styles nécessaires.
+Si la tâche donne des textes exacts, les reprendre exactement, sans reformulation.
+Ne pas considérer la tâche terminée tant que tous les points demandés ne sont pas visibles dans le rendu.
+
+Avant commit :
+- vérifier que les textes exacts demandés sont présents
+- lancer npm run lint si disponible
+- lancer npm run typecheck si disponible
+- lancer npm run build si disponible
+
+Réponse finale obligatoire :
+- fichiers modifiés
+- commandes lancées
+- résultat des tests/build
+- URL vérifiée
+- points non faits s’il y en a
 Créer un site internet complet, moderne, rapide et très optimisé SEO pour l’URL : `https://stop-nuisible-var.com`.
 
 Le site doit générer des prospects qualifiés dans le département du Var pour le traitement des nuisibles, puis permettre leur transmission par email à un acteur/intermédiaire qui gère les leads. Le site n’est pas une entreprise d’intervention directe : il doit se présenter clairement comme une plateforme locale de demande de rappel/devis et de mise en relation avec des professionnels partenaires.
