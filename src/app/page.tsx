@@ -45,12 +45,12 @@ const processSteps = [
 ];
 
 const urgentSigns = [
-  "Cafards visibles en plein jour dans une cuisine, une salle de bain ou un commerce.",
-  "Bruits dans les murs, combles, plafonds ou locaux poubelles.",
-  "Crottes, traces de rongement ou odeurs inhabituelles.",
-  "Suspicion de punaises de lit après piqûres au réveil ou traces sur la literie.",
-  "Nid de frelons ou de guêpes près d'un passage, d'une toiture ou d'une terrasse.",
-  "Situation dans un commerce, une location saisonnière ou une copropriété.",
+  "Cafards visibles en plein jour",
+  "Bruits dans les murs ou les combles",
+  "Crottes de rats ou de souris",
+  "Suspicion de punaises de lit",
+  "Nid de guêpes ou de frelons",
+  "Commerce, location ou copropriété concerné",
 ];
 
 const trustCards = [
@@ -82,7 +82,7 @@ const faqItems: FAQItem[] = [
       "Les demandes sont possibles dans les principales communes du Var, notamment Toulon, Hyères, La Seyne-sur-Mer, Fréjus, Saint-Raphaël, Draguignan, Brignoles et Saint-Tropez.",
   },
   {
-    question: "Suis-je obligé d'accepter le devis ?",
+    question: "Suis-je obligé d’accepter le devis ?",
     answer:
       "Non. Le rappel et la mise en relation ne vous obligent pas à accepter une proposition. Vous restez libre de choisir la suite à donner.",
   },
@@ -191,7 +191,7 @@ export default function HomePage() {
           <SectionTitle
             eyebrow="Photo utile"
             title="Vous ne savez pas quel nuisible vous avez trouvé ?"
-            text="Ajoutez une photo d'un insecte, d'un nid, de traces ou de dégâts visibles. La photo peut aider à pré-identifier le problème avant transmission de votre demande."
+            text="Ajoutez une photo d’un insecte, d’un nid, de traces ou de dégâts visibles. La photo peut aider à pré-identifier le problème avant transmission de votre demande."
           />
           <div className="rounded-[8px] border border-[#1F4D3A]/12 bg-[#F6F1E8] p-5 sm:p-6">
             <div className="grid aspect-[4/3] place-items-center rounded-[8px] border border-dashed border-[#1F4D3A]/30 bg-white text-center">
@@ -202,10 +202,10 @@ export default function HomePage() {
             </div>
             <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
               <CtaLink>Envoyer une photo</CtaLink>
-              <p className="text-sm leading-6 text-[#51606d]">L&apos;analyse reste indicative et ne remplace pas l&apos;avis d&apos;un professionnel.</p>
+              <p className="text-sm leading-6 text-[#51606d]">L’analyse reste indicative et ne remplace pas l’avis d’un professionnel.</p>
             </div>
             <p className="mt-4 rounded-[8px] bg-white px-4 py-3 text-sm font-semibold leading-6 text-[#51606d]">
-              Évitez d&apos;envoyer une photo contenant un visage, une personne, un document personnel ou tout élément permettant de vous identifier inutilement.
+              Évitez d’envoyer une photo contenant un visage, une personne, un document personnel ou tout élément permettant de vous identifier inutilement.
             </p>
           </div>
         </div>
