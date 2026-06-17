@@ -8,15 +8,47 @@ const pests = ["Punaises de lit", "Rats ou souris", "Cafards / blattes", "Guêpe
 const placeTypes = ["Maison", "Appartement", "Commerce", "Restaurant", "Hôtel / location", "Copropriété", "Jardin", "Autre"];
 const urgencies = ["Très urgent", "Aujourd'hui", "Cette semaine", "Simple renseignement"];
 const callbackSlots = ["Dès que possible", "Matin", "Midi", "Après-midi", "Soir"];
+const photoAccept = ".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp";
+const allowedPhotoTypes = new Set(["image/jpeg", "image/png", "image/webp"]);
+const maxPhotoSize = 4 * 1024 * 1024;
+const photoFormatError = "Format de photo non accepté. Utilisez JPG, PNG ou WEBP.";
+const photoSizeError = "La photo est trop lourde. Taille maximale : 4 Mo.";
 
 export function LeadForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
+  const [photoError, setPhotoError] = useState("");
+  const [photoName, setPhotoName] = useState("");
   const started = useRef(false);
 
   useEffect(() => {
     trackEvent("lead_form_view");
   }, []);
+
+  function validatePhoto(file: File | undefined) {
+    if (!file || file.size === 0) {
+      setPhotoError("");
+      setPhotoName("");
+      return true;
+    }
+    if (!allowedPhotoTypes.has(file.type)) {
+      setPhotoError(photoFormatError);
+      setPhotoName("");
+      return false;
+    }
+    if (file.size > maxPhotoSize) {
+      setPhotoError(photoSizeError);
+      setPhotoName("");
+      return false;
+    }
+    setPhotoError("");
+    setPhotoName(file.name);
+    return true;
+  }
+
+  function onPhotoChange(event: React.ChangeEvent<HTMLInputElement>) {
+    validatePhoto(event.currentTarget.files?.[0]);
+  }
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -24,6 +56,12 @@ export function LeadForm() {
     setMessage("");
     const form = event.currentTarget;
     const formData = new FormData(form);
+    const photo = formData.get("photo");
+    if (photo instanceof File && !validatePhoto(photo)) {
+      setStatus("error");
+      setMessage(photo.size > maxPhotoSize ? photoSizeError : photoFormatError);
+      return;
+    }
     formData.set("sourceUrl", window.location.href);
     formData.set("sourcePage", window.location.pathname);
 
@@ -41,6 +79,8 @@ export function LeadForm() {
       trackEvent("lead_created", { leadId: result.leadId ?? "" });
       trackEvent("lead_step_complete", { leadId: result.leadId ?? "", step: "form" });
       form.reset();
+      setPhotoError("");
+      setPhotoName("");
     } catch {
       setStatus("error");
       setMessage("La demande n'a pas pu être envoyée. Vérifiez les champs et réessayez.");
@@ -62,7 +102,7 @@ export function LeadForm() {
     >
       <div className="mb-5 rounded-[7px] bg-[#102337] px-4 py-3 text-white">
         <p className="text-sm font-black">Rappel gratuit</p>
-        <p className="mt-1 text-xs text-white/75">Décrivez l'essentiel. Votre demande est transmise selon votre commune, le nuisible et l'urgence.</p>
+        <p className="mt-1 text-xs text-white/75">Décrivez l&apos;essentiel. Votre demande est transmise selon votre commune, le nuisible et l&apos;urgence.</p>
         <a href={PHONE_HREF} className="mt-3 inline-flex text-sm font-black text-[#dfcaa2] underline-offset-4 hover:underline" data-track-phone>
           Appeler le {PHONE_NUMBER}
         </a>
@@ -77,9 +117,24 @@ export function LeadForm() {
         <Field label="Téléphone" name="phone" type="tel" required />
         <Field label="Email facultatif" name="email" type="email" />
         <Select label="Créneau de rappel préféré" name="callbackSlot" options={callbackSlots} />
-        <label className="block">
+        <label className="block md:col-span-2">
           <span className="text-sm font-bold text-[#102337]">Photo facultative</span>
-          <input name="photo" type="file" accept="image/*" className="mt-2 w-full rounded-[7px] border border-[#102337]/15 bg-[#f5f1e8] px-4 py-3 text-sm outline-none focus:border-[#bf593f]" />
+          <span className="mt-2 block text-sm leading-6 text-[#405160]">
+            Ajoutez une photo d’un insecte, d’un nid, de traces ou de dégâts visibles si vous souhaitez faciliter la pré-identification du problème.
+          </span>
+          <span className="mt-2 block text-sm leading-6 text-[#405160]">
+            Formats acceptés : JPG, PNG ou WEBP. Taille maximale : 4 Mo.
+          </span>
+          <span className="mt-2 block text-sm leading-6 text-[#405160]">
+            L’analyse reste indicative et ne remplace pas l’avis d’un professionnel.
+          </span>
+          <span className="mt-2 block text-sm leading-6 text-[#405160]">
+            Évitez d’envoyer une photo contenant un visage, une personne, un document personnel ou tout élément permettant de vous identifier inutilement.
+          </span>
+          <input name="photo" type="file" accept={photoAccept} onChange={onPhotoChange} aria-invalid={photoError ? "true" : "false"} aria-describedby="photo-help" className="mt-3 w-full rounded-[7px] border border-[#102337]/15 bg-[#f5f1e8] px-4 py-3 text-sm outline-none focus:border-[#bf593f]" />
+          <span id="photo-help" className={`mt-2 block text-sm font-semibold ${photoError ? "text-[#9a3e2e]" : "text-[#24493d]"}`} role={photoError ? "alert" : undefined}>
+            {photoError || (photoName ? `Fichier sélectionné : ${photoName}` : "Aucune photo sélectionnée.")}
+          </span>
         </label>
       </div>
       <label className="mt-5 block">

@@ -5,6 +5,8 @@ import { sendLeadEmail } from "@/lib/email";
 const attempts = new Map<string, { count: number; resetAt: number }>();
 const WINDOW_MS = 10 * 60 * 1000;
 const LIMIT = 5;
+const allowedPhotoTypes = new Set(["image/jpeg", "image/png", "image/webp"]);
+const maxPhotoSize = 4 * 1024 * 1024;
 
 function rateLimit(ip: string) {
   const now = Date.now();
@@ -33,8 +35,11 @@ export async function POST(request: NextRequest) {
       body = Object.fromEntries(formData.entries());
       const file = formData.get("photo");
       if (file instanceof File && file.size > 0) {
-        if (file.size > 4 * 1024 * 1024) {
-          return NextResponse.json({ ok: false, message: "La photo est trop lourde." }, { status: 400 });
+        if (!allowedPhotoTypes.has(file.type)) {
+          return NextResponse.json({ ok: false, message: "Format de photo non accepté. Utilisez JPG, PNG ou WEBP." }, { status: 400 });
+        }
+        if (file.size > maxPhotoSize) {
+          return NextResponse.json({ ok: false, message: "La photo est trop lourde. Taille maximale : 4 Mo." }, { status: 400 });
         }
         photo = {
           filename: file.name || "photo-lead",
