@@ -253,7 +253,12 @@ export default function HomePage() {
 
       <section className="bg-[#1F4D3A] py-14 text-white sm:py-18">
         <div className="container grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
-          <SectionTitle eyebrow="Urgence" title="Quand demander un rappel rapidement ?" text="Certaines situations méritent d'être décrites sans attendre pour faciliter l'orientation de la demande." />
+          <div>
+            <SectionTitle eyebrow="Urgence" title="Quand demander un rappel rapidement ?" text="Certaines situations méritent d'être décrites sans attendre pour faciliter l'orientation de la demande." />
+            <div className="mt-6">
+              <CtaLink>Décrire mon problème maintenant</CtaLink>
+            </div>
+          </div>
           <div className="grid gap-3 sm:grid-cols-2">
             {urgentSigns.map((item) => (
               <div key={item} className="rounded-[8px] border border-white/12 bg-white/8 p-4 text-sm font-semibold leading-6">
