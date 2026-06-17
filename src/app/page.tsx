@@ -204,6 +204,9 @@ export default function HomePage() {
               <CtaLink>Envoyer une photo</CtaLink>
               <p className="text-sm leading-6 text-[#51606d]">L&apos;analyse reste indicative et ne remplace pas l&apos;avis d&apos;un professionnel.</p>
             </div>
+            <p className="mt-4 rounded-[8px] bg-white px-4 py-3 text-sm font-semibold leading-6 text-[#51606d]">
+              Évitez d&apos;envoyer une photo contenant un visage, une personne, un document personnel ou tout élément permettant de vous identifier inutilement.
+            </p>
           </div>
         </div>
       </section>
