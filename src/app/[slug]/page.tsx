@@ -113,7 +113,7 @@ function LocalLandingPage({ slug }: { slug: string }) {
             </p>
             <h2 className="text-3xl font-black text-[#102337]">Avant de demander un rappel</h2>
             <p>
-              Les communes proches comme {city.neighbours.join(", ")} peuvent aussi être précisées si le problème se situe autour de Toulon ou dans le même bassin de rappel.
+              Les communes proches comme {city.neighbours.join(", ")} peuvent aussi être précisées si le problème se situe autour de {city.name} ou dans le même bassin de rappel.
             </p>
           </article>
           <RelatedLinks
@@ -191,7 +191,7 @@ function ServicePage({ slug }: { slug: string }) {
           <RelatedLinks
             links={[
               ...serviceLandings.map((landing) => ({ label: landing.h1, href: `/${landing.slug}/` })),
-              ...priorityCities.slice(0, 3).map((city) => ({ label: `${service.shortName} à ${city.name}`, href: `/villes/${city.slug}/` })),
+              ...priorityCities.slice(0, 3).map((city) => ({ label: `Nuisibles à ${city.name}`, href: `/villes/${city.slug}/` })),
               ...guides.filter((guide) => guide.serviceSlug === service.slug).map((guide) => ({ label: guide.title, href: `/guides/${guide.slug}/` })),
             ].slice(0, 8)}
           />

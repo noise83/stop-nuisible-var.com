@@ -52,6 +52,11 @@ export type LocalLanding = {
   faq: FAQItem[];
 };
 
+export type LegacyLocalLandingRedirect = {
+  source: string;
+  destination: string;
+};
+
 export const services: Service[] = [
   {
     slug: "punaises-de-lit-var",
@@ -737,6 +742,31 @@ export const localLandings: LocalLanding[] = [
   },
 ];
 
+const legacyLocalLandingCities = ["toulon", "hyeres", "frejus", "draguignan", "saint-raphael", "la-seyne-sur-mer"];
+
+export const legacyLocalLandingRedirects: LegacyLocalLandingRedirect[] = [
+  ...legacyLocalLandingCities
+    .filter((citySlug) => citySlug !== "toulon")
+    .map((citySlug) => ({ source: `deratisation-${citySlug}`, destination: "/deratisation-var/" })),
+  ...legacyLocalLandingCities
+    .filter((citySlug) => citySlug !== "toulon")
+    .map((citySlug) => ({ source: `punaises-de-lit-${citySlug}`, destination: "/punaises-de-lit-var/" })),
+  ...legacyLocalLandingCities.map((citySlug) => ({
+    source: `traitement-cafards-${citySlug}`,
+    destination: citySlug === "toulon" ? "/cafards-toulon/" : "/cafards-blattes-var/",
+  })),
+  ...legacyLocalLandingCities.map((citySlug) => ({
+    source: `destruction-nid-frelons-${citySlug}`,
+    destination: "/guepes-frelons-var/",
+  })),
+  { source: "deratisation-restaurant-var", destination: "/deratisation-var/" },
+  { source: "prix-deratisation-var", destination: "/deratisation-var/" },
+];
+
 export function getLocalLanding(slug: string) {
   return localLandings.find((landing) => landing.slug === slug);
+}
+
+export function getLegacyLocalLandingRedirect(slug: string) {
+  return legacyLocalLandingRedirects.find((redirect) => redirect.source === slug);
 }
