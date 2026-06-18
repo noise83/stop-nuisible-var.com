@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { CONSENT_TEXT, PHONE_HREF, PHONE_NUMBER } from "@/lib/constants";
 import { trackEvent } from "@/lib/tracking";
 
@@ -20,10 +20,6 @@ export function LeadForm() {
   const [photoError, setPhotoError] = useState("");
   const [photoName, setPhotoName] = useState("");
   const started = useRef(false);
-
-  useEffect(() => {
-    trackEvent("lead_form_view");
-  }, []);
 
   function validatePhoto(file: File | undefined) {
     if (!file || file.size === 0) {
@@ -47,7 +43,10 @@ export function LeadForm() {
   }
 
   function onPhotoChange(event: React.ChangeEvent<HTMLInputElement>) {
-    validatePhoto(event.currentTarget.files?.[0]);
+    const isValid = validatePhoto(event.currentTarget.files?.[0]);
+    if (isValid && event.currentTarget.files?.[0]) {
+      trackEvent("photo_selected", { form_location: "lead_form", has_photo: true });
+    }
   }
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -74,10 +73,7 @@ export function LeadForm() {
       if (!response.ok || !result.ok) throw new Error(result.message || "Erreur");
       setStatus("success");
       setMessage(result.message || "Votre demande est enregistrée.");
-      trackEvent("form_submit", { leadId: result.leadId ?? "" });
-      trackEvent("lead_form_submit", { leadId: result.leadId ?? "" });
-      trackEvent("lead_created", { leadId: result.leadId ?? "" });
-      trackEvent("lead_step_complete", { leadId: result.leadId ?? "", step: "form" });
+      trackEvent("form_submit_success", { form_location: "lead_form", has_photo: photo instanceof File && photo.size > 0 });
       form.reset();
       setPhotoError("");
       setPhotoName("");
@@ -92,8 +88,7 @@ export function LeadForm() {
       onFocus={() => {
         if (!started.current) {
           started.current = true;
-          trackEvent("form_start", { step: "form" });
-          trackEvent("lead_step_start", { step: "form" });
+          trackEvent("form_start", { form_location: "lead_form" });
         }
       }}
       onSubmit={onSubmit}

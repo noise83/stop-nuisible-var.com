@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { StickyMobileCTA } from "@/components/sticky-mobile-cta";
 import { TrackingListener } from "@/components/tracking-listener";
+import { GoogleTagManagerConsent } from "@/components/google-tag-manager-consent";
 import { JsonLd } from "@/components/json-ld";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/jsonld";
 import "./globals.css";
@@ -34,15 +34,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="fr">
       <body>
+        <GoogleTagManagerConsent />
         <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
         <Header />
         <TrackingListener />
         {children}
         <Footer />
         <StickyMobileCTA />
-        {process.env.NEXT_PUBLIC_GA_ID ? (
-          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
-        ) : null}
       </body>
     </html>
   );
