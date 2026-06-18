@@ -7,7 +7,7 @@ export function StickyMobileCTA() {
       <PhoneLink className="focus-ring flex h-12 items-center justify-center rounded-[7px] bg-[#102337] text-sm font-black text-white">
         Appeler maintenant
       </PhoneLink>
-      <Link href="/demande-devis/" className="focus-ring flex h-12 items-center justify-center rounded-[7px] bg-[#bf593f] text-sm font-black text-white" data-track-cta>
+      <Link href="/demande-devis/" className="focus-ring flex h-12 items-center justify-center rounded-[7px] bg-[#bf593f] text-sm font-black !text-white" data-track-cta>
         Demande de rappel
       </Link>
     </div>

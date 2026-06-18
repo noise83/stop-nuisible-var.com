@@ -37,7 +37,7 @@ export function Header() {
           <PhoneLink className="focus-ring flex h-12 items-center justify-center bg-[#102337] text-sm font-black text-white">
             Appeler
           </PhoneLink>
-          <Link href="/demande-devis/" className="focus-ring flex h-12 items-center justify-center bg-[#bf593f] text-sm font-black text-white" data-track-cta>
+          <Link href="/demande-devis/" className="focus-ring flex h-12 items-center justify-center bg-[#bf593f] text-sm font-black !text-white" data-track-cta>
             Rappel gratuit
           </Link>
         </div>
@@ -50,7 +50,7 @@ export function Header() {
             <Link className="block rounded-[6px] px-3 py-2 hover:bg-[#f5f1e8]" href="/zones-intervention/">Zones</Link>
             <Link className="block rounded-[6px] px-3 py-2 hover:bg-[#f5f1e8]" href="/comment-ca-marche/">Comment ça marche</Link>
             <Link className="block rounded-[6px] px-3 py-2 hover:bg-[#f5f1e8]" href="/partenaires/">Partenaires</Link>
-            <Link className="mt-2 block rounded-[6px] bg-[#bf593f] px-3 py-2 text-center text-white" href="/demande-devis/">Demander un rappel gratuit</Link>
+            <Link className="mt-2 block rounded-[6px] bg-[#bf593f] px-3 py-2 text-center !text-white" href="/demande-devis/">Demander un rappel gratuit</Link>
           </div>
         </details>
       </div>

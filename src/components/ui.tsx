@@ -13,9 +13,9 @@ export function ButtonLink({
   const base =
     "focus-ring inline-flex items-center justify-center rounded-[7px] px-5 py-3 text-sm font-bold transition";
   const variants = {
-    primary: "bg-[#bf593f] text-white shadow-[0_12px_30px_rgba(191,89,63,.24)] hover:bg-[#a94833]",
+    primary: "bg-[#bf593f] !text-white shadow-[0_12px_30px_rgba(191,89,63,.24)] hover:bg-[#a94833]",
     secondary: "border border-[#24493d]/25 bg-white/75 text-[#102337] hover:bg-white",
-    dark: "bg-[#102337] text-white hover:bg-[#18324c]",
+    dark: "bg-[#102337] !text-white hover:bg-[#18324c]",
   };
 
   return (
@@ -38,7 +38,7 @@ export function PhoneLink({
   return (
     <a
       href={PHONE_HREF}
-      className={className || "focus-ring inline-flex items-center justify-center rounded-[7px] bg-[#102337] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#18324c]"}
+      className={className ? `${className} !text-white` : "focus-ring inline-flex items-center justify-center rounded-[7px] bg-[#102337] px-5 py-3 text-sm font-bold !text-white transition hover:bg-[#18324c]"}
       data-track-phone
     >
       {children}
