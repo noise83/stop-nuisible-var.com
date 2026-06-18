@@ -1,5 +1,5 @@
 export const SITE_NAME = "Stop Nuisible Var";
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://stop-nuisible-var.com";
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.stop-nuisible-var.com";
 export const MAIN_CTA = "Demander un rappel gratuit";
 export const PHONE_NUMBER = "07 89 89 34 22";
 export const PHONE_HREF = "tel:+33789893422";

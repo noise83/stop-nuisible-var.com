@@ -8,7 +8,7 @@ import { JsonLd } from "@/components/json-ld";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/jsonld";
 import "./globals.css";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://stop-nuisible-var.com";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.stop-nuisible-var.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
