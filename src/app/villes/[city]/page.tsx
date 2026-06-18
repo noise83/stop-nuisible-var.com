@@ -8,7 +8,7 @@ import { CityPageViewTracker } from "@/components/page-view-tracker";
 import { CTABand, EmergencyPanel } from "@/components/page-blocks";
 import { TrustList } from "@/components/TrustList";
 import { ButtonLink, Eyebrow, PhoneLink, Section } from "@/components/ui";
-import { getCity, priorityCities, services } from "@/data/site";
+import { getCity, localLandings, priorityCities, services } from "@/data/site";
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from "@/lib/jsonld";
 
 type Params = Promise<{ city: string }>;
@@ -32,6 +32,7 @@ export default async function CityPage({ params }: { params: Params }) {
   const { city: slug } = await params;
   const city = getCity(slug);
   if (!city) notFound();
+  const cityLandings = localLandings.filter((landing) => landing.citySlug === city.slug);
   const faq = [
     { question: `Quels nuisibles sont fréquents à ${city.name} ?`, answer: `Les demandes les plus probables concernent ${city.pests.join(", ")}, avec un contexte local marqué par ${city.angle}.` },
     { question: `Stop Nuisible Var intervient-il directement à ${city.name} ?`, answer: "Non. Le site transmet votre demande à un professionnel partenaire adapté selon votre commune, le type de nuisible et le niveau d'urgence." },
@@ -94,9 +95,10 @@ export default async function CityPage({ params }: { params: Params }) {
           </article>
           <RelatedLinks
             links={[
+              ...cityLandings.map((landing) => ({ label: landing.h1, href: `/${landing.slug}/` })),
               ...services.slice(0, 6).map((service) => ({ label: `${service.shortName} dans le Var`, href: `/${service.slug}/` })),
               { label: "Demande de devis nuisibles", href: "/demande-devis/" },
-            ]}
+            ].slice(0, 8)}
           />
         </div>
       </Section>

@@ -73,10 +73,16 @@ function LocalLandingPage({ slug }: { slug: string }) {
   const service = getService(landing.serviceSlug);
   const city = getCity(landing.citySlug);
   if (!service || !city) notFound();
+  const siblingLandings = localLandings.filter((item) => item.citySlug === city.slug && item.slug !== landing.slug);
+  const relatedLinks = [
+    ...landing.associatedLinks,
+    ...siblingLandings.map((item) => ({ label: item.h1, href: `/${item.slug}/` })),
+  ];
   const crumbs = [
     { name: "Accueil", href: "/" },
     { name: service.shortName, href: `/${service.slug}/` },
-    { name: city.name, href: `/${landing.slug}/` },
+    { name: city.name, href: `/villes/${city.slug}/` },
+    { name: landing.h1, href: `/${landing.slug}/` },
   ];
   return (
     <main>
@@ -100,27 +106,26 @@ function LocalLandingPage({ slug }: { slug: string }) {
       <Section tone="white">
         <div className="container grid gap-8 lg:grid-cols-[1fr_360px]">
           <article className="space-y-5 leading-8 text-[#405160]">
-            <h2 className="text-3xl font-black text-[#102337]">Demande anti-nuisibles autour de {city.name}</h2>
+            <h2 className="text-3xl font-black text-[#102337]">Contexte local à {city.name}</h2>
+            <p>{landing.localContext}</p>
             <p>
-              Cette page sert à formuler une demande courte pour {service.shortName.toLowerCase()} à {city.name}. Les communes proches comme {city.neighbours.join(", ")} peuvent aussi être précisées dans le message si le problème se situe à proximité.
+              Stop Nuisible Var reste une plateforme de mise en relation : la demande est qualifiée selon la commune, le nuisible, le type de lieu et l&apos;urgence, puis elle peut être transmise à un professionnel partenaire avec votre consentement.
             </p>
+            <h2 className="text-3xl font-black text-[#102337]">Avant de demander un rappel</h2>
             <p>
-              Le but est simple : collecter les informations utiles, vérifier le consentement RGPD et transmettre une demande exploitable à une entreprise partenaire spécialisée, sans fausse promesse de délai ni faux avis.
+              Les communes proches comme {city.neighbours.join(", ")} peuvent aussi être précisées si le problème se situe autour de Toulon ou dans le même bassin de rappel.
             </p>
-            <h2 className="text-3xl font-black text-[#102337]">Informations utiles avant le rappel</h2>
-            <ul className="space-y-3">
-              {[...service.risks.slice(0, 2), ...city.localAdvice.slice(0, 2)].map((item) => (
-                <li key={item}>- {item}</li>
-              ))}
-            </ul>
           </article>
           <RelatedLinks
-            links={[
-              { label: `${service.shortName} dans le Var`, href: `/${service.slug}/` },
-              { label: `Tous les nuisibles à ${city.name}`, href: `/villes/${city.slug}/` },
-              { label: "Demande de rappel", href: "/demande-devis/" },
-            ]}
+            links={relatedLinks}
           />
+        </div>
+      </Section>
+      <Section>
+        <div className="container grid gap-8 lg:grid-cols-3">
+          <ContentList title="Signes observés" items={landing.observedSigns} />
+          <ContentList title="Lieux concernés" items={landing.concernedPlaces} />
+          <ContentList title="Conseils avant rappel" items={landing.callbackAdvice} />
         </div>
       </Section>
       <Section>
@@ -137,6 +142,7 @@ function LocalLandingPage({ slug }: { slug: string }) {
 function ServicePage({ slug }: { slug: string }) {
   const service = getService(slug);
   if (!service) notFound();
+  const serviceLandings = localLandings.filter((landing) => landing.serviceSlug === service.slug);
   const crumbs = [
     { name: "Accueil", href: "/" },
     { name: "Traitement nuisibles Var", href: "/traitement-nuisibles-var/" },
@@ -184,7 +190,8 @@ function ServicePage({ slug }: { slug: string }) {
           </article>
           <RelatedLinks
             links={[
-              ...priorityCities.slice(0, 6).map((city) => ({ label: `${service.shortName} à ${city.name}`, href: `/villes/${city.slug}/` })),
+              ...serviceLandings.map((landing) => ({ label: landing.h1, href: `/${landing.slug}/` })),
+              ...priorityCities.slice(0, 3).map((city) => ({ label: `${service.shortName} à ${city.name}`, href: `/villes/${city.slug}/` })),
               ...guides.filter((guide) => guide.serviceSlug === service.slug).map((guide) => ({ label: guide.title, href: `/guides/${guide.slug}/` })),
             ].slice(0, 8)}
           />

@@ -44,6 +44,11 @@ export type LocalLanding = {
   title: string;
   description: string;
   promise: string;
+  localContext: string;
+  observedSigns: string[];
+  concernedPlaces: string[];
+  callbackAdvice: string[];
+  associatedLinks: Array<{ label: string; href: string }>;
   faq: FAQItem[];
 };
 
@@ -618,86 +623,119 @@ export function getGuide(slug: string) {
   return guides.find((guide) => guide.slug === slug);
 }
 
-const landingServiceConfig: Record<string, { prefix: string; label: string; promise: string }> = {
-  "deratisation-var": {
-    prefix: "deratisation",
-    label: "Dératisation rapide",
-    promise: "Rats, souris, bruits dans les combles ou traces dans un local poubelle : décrivez la situation et demandez un rappel selon votre secteur.",
-  },
-  "punaises-de-lit-var": {
-    prefix: "punaises-de-lit",
-    label: "Traitement punaises de lit",
-    promise: "Piqûres au réveil, traces sur literie ou doute après un séjour : envoyez les signes observés pour obtenir un rappel qualifié.",
-  },
-  "cafards-blattes-var": {
-    prefix: "traitement-cafards",
-    label: "Traitement cafards",
-    promise: "Blattes en cuisine, salle de bain, parties communes ou commerce alimentaire : précisez le lieu et l'urgence pour une mise en relation rapide.",
-  },
-  "guepes-frelons-var": {
-    prefix: "destruction-nid-frelons",
-    label: "Destruction nid de frelons",
-    promise: "Nid sous toiture, arbre, haie, volet ou terrasse : signalez l'emplacement sans prendre de risque et demandez un rappel.",
-  },
-};
-
-const generatedLocalLandings: LocalLanding[] = priorityCities.slice(0, 6).flatMap((city) =>
-  Object.entries(landingServiceConfig).map(([serviceSlug, config]) => {
-    const service = getService(serviceSlug);
-    const slug = `${config.prefix}-${city.slug}`;
-    const h1 = `${config.label} à ${city.name}`;
-    return {
-      slug,
-      serviceSlug,
-      citySlug: city.slug,
-      h1,
-      title: `${h1} - Rappel et devis nuisibles`,
-      description: `${config.label} à ${city.name} : demande de rappel locale pour ${service?.shortName.toLowerCase() ?? "nuisibles"}, téléphone, devis clair et transmission à une entreprise partenaire.`,
-      promise: `${config.promise} À ${city.name}, les demandes concernent souvent ${city.buildingTypes.slice(0, 3).join(", ")}.`,
-      faq: [
-        {
-          question: `Comment demander un rappel à ${city.name} ?`,
-          answer: "Remplissez le formulaire court avec le nuisible, la ville, le code postal, l'urgence et votre téléphone. Votre demande est transmise à une entreprise partenaire spécialisée avec votre consentement.",
-        },
-        {
-          question: "Le rappel est-il une intervention garantie ?",
-          answer: "Non. Stop Nuisible Var facilite la mise en relation. Le partenaire confirme la situation, explique les options et propose un devis si possible.",
-        },
-      ],
-    };
-  }),
-);
-
-const extraLocalLandings: LocalLanding[] = [
+export const localLandings: LocalLanding[] = [
   {
-    slug: "deratisation-restaurant-var",
+    slug: "deratisation-toulon",
     serviceSlug: "deratisation-var",
     citySlug: "toulon",
-    h1: "Dératisation restaurant dans le Var",
-    title: "Dératisation restaurant Var - Rappel rapide et devis",
-    description: "Rats ou souris dans un restaurant du Var : local poubelle, réserve, cuisine, cave, urgence sanitaire, téléphone et demande de rappel gratuite.",
-    promise: "Bruits, crottes, traces de rongement ou passage près d'une réserve alimentaire : décrivez votre restaurant, votre commune et l'urgence pour transmettre une demande exploitable.",
+    h1: "Dératisation à Toulon : rats et souris",
+    title: "Dératisation Toulon - Rats, souris et demande de rappel",
+    description: "Rats ou souris à Toulon : bruits, crottes, local poubelle, cave ou commerce. Décrivez la situation et demandez un rappel gratuit sans engagement.",
+    promise: "Bruits nocturnes, crottes près d'un local poubelle, traces dans une cave ou passage dans un commerce : décrivez votre situation à Toulon pour transmettre une demande claire à un partenaire adapté.",
+    localContext:
+      "À Toulon, la densité urbaine, les immeubles anciens, les restaurants, les commerces de quartier et la proximité du port rendent les demandes de dératisation très différentes d'un logement à l'autre. Une demande utile précise le secteur, l'étage, les accès possibles et le type de bâtiment concerné.",
+    observedSigns: [
+      "Bruits dans les murs, plafonds, caves ou combles, surtout la nuit.",
+      "Crottes visibles près d'une réserve, d'un local poubelle, d'un garage ou d'une arrière-cuisine.",
+      "Traces de rongement sur cartons, gaines, isolants, sacs ou plinthes.",
+      "Passage suspect dans une copropriété, un commerce alimentaire ou un logement proche d'un axe dense.",
+    ],
+    concernedPlaces: [
+      "Appartements et immeubles collectifs du centre de Toulon.",
+      "Restaurants, snacks, commerces alimentaires et réserves.",
+      "Caves, garages, locaux techniques et locaux poubelles.",
+      "Maisons avec jardin, dépendances ou accès par vide sanitaire.",
+    ],
+    callbackAdvice: [
+      "Indiquez si les traces reviennent plusieurs jours de suite ou si un animal a été vu.",
+      "Précisez l'étage, le type d'accès et la présence éventuelle d'un syndic.",
+      "Évitez de manipuler les déjections à mains nues et conservez les indices visibles si possible.",
+      "Mentionnez les contraintes horaires si la demande concerne un commerce ouvert au public.",
+    ],
+    associatedLinks: [
+      { label: "Dératisation dans le Var", href: "/deratisation-var/" },
+      { label: "Nuisibles à Toulon", href: "/villes/toulon/" },
+    ],
     faq: [
-      { question: "Que préciser pour un restaurant ?", answer: "Indiquez la commune, le type de local, les zones touchées, les horaires de rappel et si le problème concerne la cuisine, la réserve, la salle ou le local poubelle." },
-      { question: "Le site affiche-t-il une fausse agence locale ?", answer: "Non. Stop Nuisible Var est une plateforme de demande de rappel et ne prétend pas intervenir directement." },
+      { question: "Stop Nuisible Var intervient-il pour une dératisation à Toulon ?", answer: "Non. Le site sert à transmettre votre demande à un professionnel partenaire selon votre secteur, le nuisible et l'urgence." },
+      { question: "Que faut-il préciser pour des rats ou souris à Toulon ?", answer: "Indiquez les signes observés, le type de lieu, l'étage, les accès possibles, la présence d'un local poubelle et le niveau d'urgence." },
     ],
   },
   {
-    slug: "prix-deratisation-var",
-    serviceSlug: "deratisation-var",
+    slug: "cafards-toulon",
+    serviceSlug: "cafards-blattes-var",
     citySlug: "toulon",
-    h1: "Prix dératisation dans le Var",
-    title: "Prix dératisation Var - Comprendre le devis",
-    description: "Prix d'une dératisation dans le Var : facteurs qui influencent le devis, type de lieu, accès, urgence, surface et niveau d'infestation.",
-    promise: "Le prix dépend du type de lieu, des accès, de la surface, des traces observées et du niveau d'urgence. Décrivez la situation pour obtenir un rappel et un devis adapté.",
+    h1: "Cafards à Toulon : demande de rappel pour blattes",
+    title: "Cafards Toulon - Blattes, logement et commerce",
+    description: "Cafards à Toulon : blattes en cuisine, salle de bain, restaurant ou copropriété. Demandez un rappel gratuit pour qualifier la situation.",
+    promise: "Cafards visibles en cuisine, blattes dans une salle de bain, parties communes touchées ou commerce alimentaire concerné : décrivez le contexte à Toulon pour une mise en relation claire.",
+    localContext:
+      "À Toulon, les cafards et blattes sont souvent signalés dans des appartements, restaurants, commerces, gaines techniques ou copropriétés. Le contexte change fortement selon que la demande concerne un logement isolé, un immeuble entier, une cuisine professionnelle ou une résidence avec parties communes.",
+    observedSigns: [
+      "Cafards visibles en plein jour dans une cuisine ou une salle de bain.",
+      "Petites blattes près des plinthes, appareils électroménagers, gaines ou évacuations.",
+      "Odeur inhabituelle, traces sombres ou insectes morts dans les placards.",
+      "Signalements répétés dans plusieurs logements ou parties communes d'une copropriété.",
+    ],
+    concernedPlaces: [
+      "Appartements, studios et logements en immeuble dense.",
+      "Restaurants, snacks, bars, réserves et cuisines professionnelles.",
+      "Salles de bain, buanderies, gaines techniques et locaux poubelles.",
+      "Copropriétés, résidences étudiantes et locaux commerciaux.",
+    ],
+    callbackAdvice: [
+      "Précisez si les cafards sont vus de jour, de nuit ou dans plusieurs pièces.",
+      "Signalez les parties communes touchées et l'éventuelle implication du syndic.",
+      "Indiquez si le lieu est un commerce alimentaire ou un logement occupé.",
+      "Évitez les traitements improvisés qui peuvent disperser les blattes avant avis professionnel.",
+    ],
+    associatedLinks: [
+      { label: "Cafards et blattes dans le Var", href: "/cafards-blattes-var/" },
+      { label: "Nuisibles à Toulon", href: "/villes/toulon/" },
+    ],
     faq: [
-      { question: "Peut-on donner un prix fixe sans voir le site ?", answer: "Un prix fiable dépend des accès, du type de bâtiment, de la surface et du niveau d'infestation. La demande sert à préparer un devis cohérent." },
-      { question: "Quels éléments influencent le tarif ?", answer: "Maison, appartement, restaurant, cave, local poubelle, urgence, fréquence des passages et contraintes d'accès peuvent faire varier le prix." },
+      { question: "Voir un cafard en plein jour est-il urgent ?", answer: "Cela peut indiquer une présence déjà installée. La demande doit préciser les pièces touchées, la fréquence et le type de lieu." },
+      { question: "La plateforme promet-elle une intervention immédiate à Toulon ?", answer: "Non. Stop Nuisible Var transmet une demande qualifiée à un partenaire, qui peut rappeler selon disponibilité et pertinence du secteur." },
+    ],
+  },
+  {
+    slug: "punaises-de-lit-toulon",
+    serviceSlug: "punaises-de-lit-var",
+    citySlug: "toulon",
+    h1: "Punaises de lit à Toulon : demande de rappel",
+    title: "Punaises de lit Toulon - Logement, hôtel et location",
+    description: "Punaises de lit à Toulon : piqûres, traces sur matelas, retour de voyage ou location touchée. Demandez un rappel gratuit sans engagement.",
+    promise: "Piqûres au réveil, traces sur le matelas, doute après un voyage ou logement loué à Toulon : détaillez les signes pour faciliter la pré-qualification de votre demande.",
+    localContext:
+      "À Toulon, les demandes liées aux punaises de lit concernent autant les appartements occupés que les locations saisonnières, hôtels, résidences et logements proches des zones de passage. La qualification doit tenir compte des chambres touchées, des déplacements récents et des contraintes d'occupation.",
+    observedSigns: [
+      "Piqûres groupées au réveil ou démangeaisons récurrentes.",
+      "Petites traces sombres sur matelas, sommier, tête de lit ou draps.",
+      "Insecte visible dans une chambre, un canapé ou un bagage.",
+      "Doute après un séjour, une location courte durée ou l'arrivée d'un nouveau meuble.",
+    ],
+    concernedPlaces: [
+      "Chambres, sommiers, matelas, canapés et têtes de lit.",
+      "Appartements occupés, colocations et résidences.",
+      "Hôtels, locations saisonnières et logements de passage.",
+      "Résidences secondaires ou logements entre deux occupants.",
+    ],
+    callbackAdvice: [
+      "Indiquez le nombre de pièces ou couchages concernés.",
+      "Mentionnez un retour de voyage, une location récente ou un meuble d'occasion si c'est le cas.",
+      "Évitez de déplacer matelas, sacs ou linge dans d'autres pièces avant avis professionnel.",
+      "Ajoutez une photo des traces visibles si elle peut aider à qualifier la demande.",
+    ],
+    associatedLinks: [
+      { label: "Punaises de lit dans le Var", href: "/punaises-de-lit-var/" },
+      { label: "Nuisibles à Toulon", href: "/villes/toulon/" },
+    ],
+    faq: [
+      { question: "Une piqûre suffit-elle à confirmer des punaises de lit ?", answer: "Non. Les piqûres doivent être croisées avec d'autres signes comme traces sur literie, insecte visible ou contexte de voyage." },
+      { question: "Puis-je envoyer une demande pour une location à Toulon ?", answer: "Oui. Le formulaire permet de préciser le type de logement, les dates importantes et les signes observés, sans promettre une intervention directe du site." },
     ],
   },
 ];
-
-export const localLandings: LocalLanding[] = [...generatedLocalLandings, ...extraLocalLandings];
 
 export function getLocalLanding(slug: string) {
   return localLandings.find((landing) => landing.slug === slug);
