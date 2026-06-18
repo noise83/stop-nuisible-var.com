@@ -73,11 +73,7 @@ function LocalLandingPage({ slug }: { slug: string }) {
   const service = getService(landing.serviceSlug);
   const city = getCity(landing.citySlug);
   if (!service || !city) notFound();
-  const siblingLandings = localLandings.filter((item) => item.citySlug === city.slug && item.slug !== landing.slug);
-  const relatedLinks = [
-    ...landing.associatedLinks,
-    ...siblingLandings.map((item) => ({ label: item.h1, href: `/${item.slug}/` })),
-  ];
+  const relatedLinks = landing.associatedLinks;
   const crumbs = [
     { name: "Accueil", href: "/" },
     { name: service.shortName, href: `/${service.slug}/` },

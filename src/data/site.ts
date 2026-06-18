@@ -660,6 +660,9 @@ export const localLandings: LocalLanding[] = [
     associatedLinks: [
       { label: "Dératisation dans le Var", href: "/deratisation-var/" },
       { label: "Nuisibles à Toulon", href: "/villes/toulon/" },
+      { label: "Demande de rappel", href: "/demande-devis/" },
+      { label: "Cafards à Toulon", href: "/cafards-toulon/" },
+      { label: "Guêpes et frelons à Toulon", href: "/guepes-frelons-toulon/" },
     ],
     faq: [
       { question: "Stop Nuisible Var intervient-il pour une dératisation à Toulon ?", answer: "Non. Le site sert à transmettre votre demande à un professionnel partenaire selon votre secteur, le nuisible et l'urgence." },
@@ -697,6 +700,9 @@ export const localLandings: LocalLanding[] = [
     associatedLinks: [
       { label: "Cafards et blattes dans le Var", href: "/cafards-blattes-var/" },
       { label: "Nuisibles à Toulon", href: "/villes/toulon/" },
+      { label: "Demande de rappel", href: "/demande-devis/" },
+      { label: "Dératisation à Toulon", href: "/deratisation-toulon/" },
+      { label: "Cafards à La Seyne-sur-Mer", href: "/cafards-la-seyne-sur-mer/" },
     ],
     faq: [
       { question: "Voir un cafard en plein jour est-il urgent ?", answer: "Cela peut indiquer une présence déjà installée. La demande doit préciser les pièces touchées, la fréquence et le type de lieu." },
@@ -734,17 +740,301 @@ export const localLandings: LocalLanding[] = [
     associatedLinks: [
       { label: "Punaises de lit dans le Var", href: "/punaises-de-lit-var/" },
       { label: "Nuisibles à Toulon", href: "/villes/toulon/" },
+      { label: "Demande de rappel", href: "/demande-devis/" },
+      { label: "Punaises de lit à Hyères", href: "/punaises-de-lit-hyeres/" },
+      { label: "Punaises de lit à Fréjus", href: "/punaises-de-lit-frejus/" },
     ],
     faq: [
       { question: "Une piqûre suffit-elle à confirmer des punaises de lit ?", answer: "Non. Les piqûres doivent être croisées avec d'autres signes comme traces sur literie, insecte visible ou contexte de voyage." },
       { question: "Puis-je envoyer une demande pour une location à Toulon ?", answer: "Oui. Le formulaire permet de préciser le type de logement, les dates importantes et les signes observés, sans promettre une intervention directe du site." },
     ],
   },
+  {
+    slug: "guepes-frelons-toulon",
+    serviceSlug: "guepes-frelons-var",
+    citySlug: "toulon",
+    h1: "Guêpes et frelons à Toulon : demande de rappel",
+    title: "Guêpes et frelons Toulon - Nid en toiture, commerce ou jardin",
+    description: "Nid de guêpes ou frelons à Toulon : toiture, terrasse, commerce, immeuble ou jardin. Décrivez l'emplacement et demandez un rappel gratuit.",
+    promise: "Nid sous toiture, allers-retours près d'une terrasse, commerce exposé ou passage fréquent dans un immeuble : décrivez la situation à Toulon sans prendre de risque.",
+    localContext:
+      "À Toulon, les demandes concernent souvent des immeubles denses, restaurants, commerces, toitures basses, jardins urbains et secteurs proches du port. L'enjeu est de préciser l'emplacement du nid, la hauteur et les passages exposés sans tenter d'intervenir soi-même.",
+    observedSigns: [
+      "Allers-retours répétés de guêpes ou frelons au même point d'une façade, toiture ou haie.",
+      "Nid visible sous une avancée de toit, dans un volet, un arbre ou près d'une terrasse.",
+      "Présence proche d'une entrée d'immeuble, d'un restaurant, d'un commerce ou d'une cour.",
+      "Insectes nombreux près d'un passage client, d'un local professionnel ou d'un logement occupé.",
+    ],
+    concernedPlaces: [
+      "Toitures, volets, façades et cours d'immeubles à Toulon.",
+      "Restaurants, terrasses, commerces et zones de passage.",
+      "Jardins urbains, haies, cabanons et dépendances.",
+      "Copropriétés, résidences et logements proches du port ou du centre.",
+    ],
+    callbackAdvice: [
+      "Indiquez la hauteur approximative et l'accès possible depuis la rue, une terrasse ou un jardin.",
+      "Ne tentez pas de décrocher, brûler ou arroser le nid.",
+      "Précisez si le nid expose des clients, enfants, animaux ou parties communes.",
+      "Ajoutez une photo prise à distance si elle ne vous met pas en danger.",
+    ],
+    associatedLinks: [
+      { label: "Guêpes et frelons dans le Var", href: "/guepes-frelons-var/" },
+      { label: "Nuisibles à Toulon", href: "/villes/toulon/" },
+      { label: "Demande de rappel", href: "/demande-devis/" },
+      { label: "Guêpes et frelons à Saint-Raphaël", href: "/guepes-frelons-saint-raphael/" },
+      { label: "Dératisation à Toulon", href: "/deratisation-toulon/" },
+    ],
+    faq: [
+      { question: "Stop Nuisible Var détruit-il directement les nids à Toulon ?", answer: "Non. La plateforme transmet votre demande à un professionnel partenaire selon l'emplacement, le type de nid et le secteur." },
+      { question: "Que préciser pour un nid de guêpes ou frelons ?", answer: "Indiquez la hauteur, l'accès, le support du nid, les passages exposés et si le lieu concerne un commerce, une copropriété ou un logement." },
+    ],
+  },
+  {
+    slug: "punaises-de-lit-hyeres",
+    serviceSlug: "punaises-de-lit-var",
+    citySlug: "hyeres",
+    h1: "Punaises de lit à Hyères : logement, villa ou location",
+    title: "Punaises de lit Hyères - Location, résidence et retour de voyage",
+    description: "Punaises de lit à Hyères : piqûres, literie suspecte, retour de voyage, villa ou location saisonnière. Demandez un rappel gratuit.",
+    promise: "Piqûres au réveil, traces sur la literie ou doute après un séjour à Hyères : précisez le logement, les couchages et le contexte pour faciliter la mise en relation.",
+    localContext:
+      "À Hyères, les demandes de punaises de lit concernent souvent des locations saisonnières, villas, résidences proches du littoral et retours de voyage. Les dates d'occupation, le nombre de chambres et le type de logement sont essentiels pour qualifier la demande.",
+    observedSigns: [
+      "Piqûres groupées au réveil après une nuit en chambre ou canapé-lit.",
+      "Traces sombres ou petits points sur matelas, sommier, draps ou tête de lit.",
+      "Doute après un voyage, l'accueil de vacanciers ou un changement d'occupants.",
+      "Insecte observé dans un bagage, une chambre, une location ou une résidence.",
+    ],
+    concernedPlaces: [
+      "Locations saisonnières, villas et résidences à Hyères.",
+      "Chambres, canapés-lits, sommiers et linge de lit.",
+      "Logements proches du littoral, résidences secondaires et hébergements touristiques.",
+      "Appartements occupés ou logements entre deux séjours.",
+    ],
+    callbackAdvice: [
+      "Indiquez les dates d'arrivée ou de départ si le logement est loué.",
+      "Précisez le nombre de couchages concernés et les pièces suspectes.",
+      "Évitez de déplacer les sacs, matelas ou linge dans d'autres pièces avant avis professionnel.",
+      "Mentionnez tout retour de voyage ou séjour récent pouvant aider à comprendre le contexte.",
+    ],
+    associatedLinks: [
+      { label: "Punaises de lit dans le Var", href: "/punaises-de-lit-var/" },
+      { label: "Nuisibles à Hyères", href: "/villes/hyeres/" },
+      { label: "Demande de rappel", href: "/demande-devis/" },
+      { label: "Punaises de lit à Toulon", href: "/punaises-de-lit-toulon/" },
+      { label: "Punaises de lit à Fréjus", href: "/punaises-de-lit-frejus/" },
+    ],
+    faq: [
+      { question: "Une location saisonnière à Hyères peut-elle faire une demande ?", answer: "Oui. Le formulaire permet de préciser les dates, les pièces touchées et le contexte avant transmission à un partenaire adapté." },
+      { question: "Faut-il traiter soi-même avant le rappel ?", answer: "Il vaut mieux éviter les traitements improvisés qui peuvent disperser les insectes. Décrivez les signes et conservez les indices visibles si possible." },
+    ],
+  },
+  {
+    slug: "deratisation-la-seyne-sur-mer",
+    serviceSlug: "deratisation-var",
+    citySlug: "la-seyne-sur-mer",
+    h1: "Dératisation à La Seyne-sur-Mer : rats et souris",
+    title: "Dératisation La Seyne-sur-Mer - Immeuble, commerce et local poubelle",
+    description: "Rats ou souris à La Seyne-sur-Mer : copropriété, local poubelle, commerce, cave ou logement. Demandez un rappel gratuit sans engagement.",
+    promise: "Bruits, crottes, traces de passage ou problème près d'un local poubelle à La Seyne-sur-Mer : détaillez le lieu et l'urgence pour orienter la demande.",
+    localContext:
+      "À La Seyne-sur-Mer, l'habitat collectif, les copropriétés, les commerces, les locaux techniques et les zones proches de la rade peuvent générer des demandes de dératisation très différentes. La demande doit préciser si le problème touche un logement, une cave, un commerce ou des parties communes.",
+    observedSigns: [
+      "Crottes près d'un local poubelle, d'une cave, d'un garage ou d'une réserve.",
+      "Bruits dans les cloisons, plafonds, combles ou locaux techniques.",
+      "Rongements sur cartons, sacs, portes, gaines ou isolants.",
+      "Signalements répétés dans une copropriété ou un commerce de quartier.",
+    ],
+    concernedPlaces: [
+      "Copropriétés, immeubles collectifs et parties communes.",
+      "Locaux poubelles, caves, garages et locaux techniques.",
+      "Commerces, réserves alimentaires et arrière-cuisines.",
+      "Maisons de quartier, dépendances et jardins proches de zones de passage.",
+    ],
+    callbackAdvice: [
+      "Précisez si le syndic ou plusieurs occupants sont déjà informés.",
+      "Indiquez les accès possibles : cave, toiture, local poubelle, vide sanitaire ou canalisation.",
+      "Conservez les traces visibles sans manipuler les déjections à mains nues.",
+      "Mentionnez les contraintes horaires si la demande concerne un commerce.",
+    ],
+    associatedLinks: [
+      { label: "Dératisation dans le Var", href: "/deratisation-var/" },
+      { label: "Nuisibles à La Seyne-sur-Mer", href: "/villes/la-seyne-sur-mer/" },
+      { label: "Demande de rappel", href: "/demande-devis/" },
+      { label: "Cafards à La Seyne-sur-Mer", href: "/cafards-la-seyne-sur-mer/" },
+      { label: "Dératisation à Toulon", href: "/deratisation-toulon/" },
+    ],
+    faq: [
+      { question: "Une copropriété à La Seyne-sur-Mer peut-elle faire une demande ?", answer: "Oui. Indiquez les parties communes touchées, le rôle du syndic, les accès et les signes observés pour qualifier la demande." },
+      { question: "Le site promet-il une dératisation immédiate ?", answer: "Non. Stop Nuisible Var transmet la demande à un partenaire selon votre secteur, le nuisible et la disponibilité de rappel." },
+    ],
+  },
+  {
+    slug: "cafards-la-seyne-sur-mer",
+    serviceSlug: "cafards-blattes-var",
+    citySlug: "la-seyne-sur-mer",
+    h1: "Cafards à La Seyne-sur-Mer : demande de rappel",
+    title: "Cafards La Seyne-sur-Mer - Blattes en logement ou copropriété",
+    description: "Cafards à La Seyne-sur-Mer : blattes en appartement, copropriété, commerce, cuisine ou local poubelle. Demandez un rappel gratuit.",
+    promise: "Blattes en cuisine, salle de bain, parties communes ou commerce à La Seyne-sur-Mer : décrivez les signes pour transmettre une demande exploitable.",
+    localContext:
+      "À La Seyne-sur-Mer, les cafards sont souvent signalés dans l'habitat collectif, les commerces, les locaux poubelles, les gaines techniques et les logements en immeuble. Il faut distinguer un signalement isolé d'un problème qui touche plusieurs appartements ou parties communes.",
+    observedSigns: [
+      "Cafards visibles la nuit ou en plein jour dans une cuisine ou salle de bain.",
+      "Petites blattes près des plinthes, gaines, évacuations ou appareils électroménagers.",
+      "Présence dans un local poubelle, une réserve, une cage d'escalier ou un commerce.",
+      "Signalements de voisins ou répétition dans plusieurs pièces.",
+    ],
+    concernedPlaces: [
+      "Appartements, immeubles collectifs et résidences.",
+      "Locaux poubelles, caves, gaines techniques et parties communes.",
+      "Commerces, snacks, restaurants et réserves.",
+      "Salles d'eau, cuisines, buanderies et arrière-cuisines.",
+    ],
+    callbackAdvice: [
+      "Précisez si le problème concerne votre logement seul ou des parties communes.",
+      "Indiquez si les insectes sont vus de jour, de nuit ou après nettoyage.",
+      "Mentionnez les zones touchées : cuisine, salle de bain, local poubelle ou commerce.",
+      "Évitez les traitements dispersés qui peuvent déplacer les blattes avant qualification.",
+    ],
+    associatedLinks: [
+      { label: "Cafards et blattes dans le Var", href: "/cafards-blattes-var/" },
+      { label: "Nuisibles à La Seyne-sur-Mer", href: "/villes/la-seyne-sur-mer/" },
+      { label: "Demande de rappel", href: "/demande-devis/" },
+      { label: "Dératisation à La Seyne-sur-Mer", href: "/deratisation-la-seyne-sur-mer/" },
+      { label: "Cafards à Toulon", href: "/cafards-toulon/" },
+    ],
+    faq: [
+      { question: "Les cafards peuvent-ils venir des parties communes ?", answer: "Oui. Les gaines techniques, locaux poubelles, caves et logements voisins peuvent faire partie du contexte à préciser dans la demande." },
+      { question: "Que faut-il indiquer pour un commerce ?", answer: "Mentionnez le type d'activité, les zones touchées, les horaires de rappel et les contraintes d'ouverture au public." },
+    ],
+  },
+  {
+    slug: "punaises-de-lit-frejus",
+    serviceSlug: "punaises-de-lit-var",
+    citySlug: "frejus",
+    h1: "Punaises de lit à Fréjus : résidence, camping ou location",
+    title: "Punaises de lit Fréjus - Tourisme, camping et location",
+    description: "Punaises de lit à Fréjus : piqûres, literie suspecte, résidence, camping ou location saisonnière. Demandez un rappel gratuit.",
+    promise: "Piqûres, traces sur literie ou doute dans un hébergement à Fréjus : décrivez le logement, les couchages et l'urgence liée à l'occupation.",
+    localContext:
+      "À Fréjus, le tourisme, les résidences secondaires, campings, hôtels et locations saisonnières rendent la qualification des punaises de lit très dépendante des dates d'occupation. Une demande utile précise les chambres touchées, le type d'hébergement et les délais avant arrivée ou départ.",
+    observedSigns: [
+      "Piqûres groupées au réveil ou démangeaisons après une nuit en hébergement.",
+      "Traces sombres sur matelas, sommier, draps, tête de lit ou canapé.",
+      "Insecte suspect aperçu dans un couchage, bagage ou logement de passage.",
+      "Doute après un séjour, une arrivée de vacanciers ou un changement d'occupants.",
+    ],
+    concernedPlaces: [
+      "Locations saisonnières, résidences secondaires et appartements.",
+      "Campings, mobil-homes, hôtels et hébergements touristiques.",
+      "Chambres, canapés-lits, sommiers et linge de lit.",
+      "Logements occupés ou entre deux réservations.",
+    ],
+    callbackAdvice: [
+      "Indiquez la date d'arrivée des prochains occupants si elle est connue.",
+      "Précisez le nombre de couchages, chambres ou logements concernés.",
+      "Ne déplacez pas les matelas, sacs et textiles dans d'autres pièces avant avis.",
+      "Ajoutez une photo des traces visibles si elle peut aider à qualifier le problème.",
+    ],
+    associatedLinks: [
+      { label: "Punaises de lit dans le Var", href: "/punaises-de-lit-var/" },
+      { label: "Nuisibles à Fréjus", href: "/villes/frejus/" },
+      { label: "Demande de rappel", href: "/demande-devis/" },
+      { label: "Punaises de lit à Hyères", href: "/punaises-de-lit-hyeres/" },
+      { label: "Punaises de lit à Toulon", href: "/punaises-de-lit-toulon/" },
+    ],
+    faq: [
+      { question: "Une demande peut-elle concerner un camping à Fréjus ?", answer: "Oui. Le formulaire permet de préciser le type d'hébergement, les couchages touchés, les dates et les signes observés." },
+      { question: "Stop Nuisible Var intervient-il directement ?", answer: "Non. La plateforme transmet une demande qualifiée à un professionnel partenaire selon le secteur et la situation décrite." },
+    ],
+  },
+  {
+    slug: "guepes-frelons-saint-raphael",
+    serviceSlug: "guepes-frelons-var",
+    citySlug: "saint-raphael",
+    h1: "Guêpes et frelons à Saint-Raphaël : nid et demande de rappel",
+    title: "Guêpes et frelons Saint-Raphaël - Villas, jardins et littoral",
+    description: "Nid de guêpes ou frelons à Saint-Raphaël : villa, jardin, toiture, terrasse ou résidence secondaire. Demandez un rappel gratuit.",
+    promise: "Nid dans un jardin, toiture, volet ou terrasse à Saint-Raphaël : indiquez l'emplacement, la hauteur et les passages exposés avant transmission.",
+    localContext:
+      "À Saint-Raphaël, les demandes concernent souvent des villas, jardins, résidences secondaires, terrasses et secteurs littoraux où la discrétion et la sécurité des occupants comptent. La description doit aider à évaluer l'accès au nid sans prise de risque.",
+    observedSigns: [
+      "Allers-retours au même endroit dans une haie, toiture, volet, arbre ou cabanon.",
+      "Nid visible près d'une terrasse, piscine, entrée de villa ou résidence.",
+      "Présence de guêpes ou frelons à proximité d'enfants, animaux ou vacanciers.",
+      "Insectes nombreux sur un passage fréquent, une façade ou un espace extérieur.",
+    ],
+    concernedPlaces: [
+      "Villas, jardins, terrasses, piscines et dépendances.",
+      "Résidences secondaires, locations et logements littoraux.",
+      "Toitures, volets, arbres, haies et cabanons.",
+      "Commerces, restaurants et hébergements exposés aux passages clients.",
+    ],
+    callbackAdvice: [
+      "Décrivez la hauteur, le support du nid et l'accès possible.",
+      "Ne tentez pas de traiter le nid seul, surtout en hauteur ou près d'un passage.",
+      "Précisez si le logement est occupé par des vacanciers ou entre deux séjours.",
+      "Mentionnez les allergies connues ou la présence d'enfants et animaux à proximité.",
+    ],
+    associatedLinks: [
+      { label: "Guêpes et frelons dans le Var", href: "/guepes-frelons-var/" },
+      { label: "Nuisibles à Saint-Raphaël", href: "/villes/saint-raphael/" },
+      { label: "Demande de rappel", href: "/demande-devis/" },
+      { label: "Guêpes et frelons à Toulon", href: "/guepes-frelons-toulon/" },
+      { label: "Punaises de lit à Fréjus", href: "/punaises-de-lit-frejus/" },
+    ],
+    faq: [
+      { question: "Que faire si le nid est près d'une terrasse ?", answer: "Évitez de vous approcher. Décrivez l'emplacement, la hauteur et les passages exposés pour faciliter l'orientation vers un partenaire." },
+      { question: "La demande convient-elle pour une résidence secondaire ?", answer: "Oui. Précisez si le logement est occupé, les dates importantes et les contraintes d'accès." },
+    ],
+  },
+  {
+    slug: "termites-draguignan",
+    serviceSlug: "termites-var",
+    citySlug: "draguignan",
+    h1: "Termites à Draguignan : bois, caves et charpentes",
+    title: "Termites Draguignan - Signes dans maison, cave ou charpente",
+    description: "Termites à Draguignan : bois fragilisé, plinthes, cave, combles ou charpente. Décrivez les signes et demandez un rappel gratuit.",
+    promise: "Bois qui sonne creux, traces suspectes, cave humide ou charpente concernée à Draguignan : détaillez les éléments visibles avant transmission.",
+    localContext:
+      "À Draguignan, les maisons, caves, combles, garages, bâtis anciens et charpentes expliquent de nombreuses demandes liées aux termites et insectes xylophages. La qualification doit préserver les indices et distinguer humidité, bois fragilisé et signes actifs.",
+    observedSigns: [
+      "Bois qui sonne creux, plinthes fragilisées ou huisseries abîmées.",
+      "Cordonnets terreux, galeries, poussières ou éléments de bois friables.",
+      "Doute dans une cave, un garage, des combles, une charpente ou une dépendance.",
+      "Dégradation progressive dans une maison ancienne ou un bâtiment avec zones humides.",
+    ],
+    concernedPlaces: [
+      "Maisons, caves, combles, garages et dépendances.",
+      "Charpentes, poutres, plinthes, huisseries et planchers.",
+      "Bâtiments anciens, zones humides et annexes peu visitées.",
+      "Logements en vente, rénovation ou surveillance après découverte de bois fragilisé.",
+    ],
+    callbackAdvice: [
+      "Ne grattez pas largement les zones suspectes avant avis pour conserver les indices.",
+      "Photographiez les traces visibles et indiquez l'âge approximatif du bâtiment.",
+      "Précisez cave, combles, charpente, dépendance ou pièce humide concernée.",
+      "Signalez si la demande est liée à une vente, une rénovation ou un diagnostic à prévoir.",
+    ],
+    associatedLinks: [
+      { label: "Termites dans le Var", href: "/termites-var/" },
+      { label: "Nuisibles à Draguignan", href: "/villes/draguignan/" },
+      { label: "Demande de rappel", href: "/demande-devis/" },
+    ],
+    faq: [
+      { question: "Un bois abîmé suffit-il à confirmer des termites ?", answer: "Non. Il faut croiser plusieurs indices et faire vérifier la situation par un professionnel qualifié, surtout en cas de vente ou de rénovation." },
+      { question: "Stop Nuisible Var réalise-t-il un diagnostic réglementaire ?", answer: "Non. Le site transmet votre demande ; les obligations formelles doivent être confirmées par un diagnostiqueur ou un professionnel habilité." },
+    ],
+  },
 ];
 
 const legacyLocalLandingCities = ["toulon", "hyeres", "frejus", "draguignan", "saint-raphael", "la-seyne-sur-mer"];
 
-export const legacyLocalLandingRedirects: LegacyLocalLandingRedirect[] = [
+const activeLocalLandingSlugs = new Set(localLandings.map((landing) => landing.slug));
+const localLandingDestination = (slug: string, fallback: string) => (activeLocalLandingSlugs.has(slug) ? `/${slug}/` : fallback);
+
+const legacyLocalLandingRedirectCandidates: LegacyLocalLandingRedirect[] = [
   ...legacyLocalLandingCities
     .filter((citySlug) => citySlug !== "toulon")
     .map((citySlug) => ({ source: `deratisation-${citySlug}`, destination: "/deratisation-var/" })),
@@ -753,15 +1043,19 @@ export const legacyLocalLandingRedirects: LegacyLocalLandingRedirect[] = [
     .map((citySlug) => ({ source: `punaises-de-lit-${citySlug}`, destination: "/punaises-de-lit-var/" })),
   ...legacyLocalLandingCities.map((citySlug) => ({
     source: `traitement-cafards-${citySlug}`,
-    destination: citySlug === "toulon" ? "/cafards-toulon/" : "/cafards-blattes-var/",
+    destination: localLandingDestination(`cafards-${citySlug}`, "/cafards-blattes-var/"),
   })),
   ...legacyLocalLandingCities.map((citySlug) => ({
     source: `destruction-nid-frelons-${citySlug}`,
-    destination: "/guepes-frelons-var/",
+    destination: localLandingDestination(`guepes-frelons-${citySlug}`, "/guepes-frelons-var/"),
   })),
   { source: "deratisation-restaurant-var", destination: "/deratisation-var/" },
   { source: "prix-deratisation-var", destination: "/deratisation-var/" },
 ];
+
+export const legacyLocalLandingRedirects: LegacyLocalLandingRedirect[] = legacyLocalLandingRedirectCandidates.filter(
+  (redirect) => !activeLocalLandingSlugs.has(redirect.source),
+);
 
 export function getLocalLanding(slug: string) {
   return localLandings.find((landing) => landing.slug === slug);
