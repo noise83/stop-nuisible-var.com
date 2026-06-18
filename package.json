@@ -10,7 +10,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "check:local-pages": "node --experimental-strip-types scripts/check-local-pages.ts"
   },
   "dependencies": {
     "@next/third-parties": "^16.1.5",
