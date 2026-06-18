@@ -33,7 +33,7 @@ export function ConversionHero({
           <VarMap className="w-full shadow-[0_30px_80px_rgba(16,35,55,.18)]" />
           <div className="absolute -bottom-6 left-6 right-6 rounded-[8px] bg-[#102337] p-5 text-white shadow-xl">
             <p className="text-sm font-bold text-[#dfcaa2]">Plateforme de mise en relation</p>
-            <p className="mt-2 text-sm leading-6 text-white/78">Votre demande est transmise à un professionnel partenaire adapté selon votre commune, le type de nuisible et le niveau d'urgence.</p>
+            <p className="mt-2 text-sm leading-6 text-white/78">Votre demande est transmise à un professionnel partenaire adapté selon votre commune, le type de nuisible et le niveau d&apos;urgence.</p>
           </div>
         </div>
       </div>
@@ -80,10 +80,10 @@ export function CTABand({ title, text }: { title: string; text: string }) {
 export function EmergencyPanel() {
   return (
     <aside className="rounded-[8px] border border-[#bf593f]/25 bg-[#fff8f2] p-6">
-      <p className="text-sm font-black uppercase tracking-[.12em] text-[#bf593f]">Besoin d'un rappel</p>
-      <h2 className="mt-3 text-2xl font-black text-[#102337]">Décrivez le problème sans attendre que la situation s'installe.</h2>
+      <p className="text-sm font-black uppercase tracking-[.12em] text-[#bf593f]">Besoin d&apos;un rappel</p>
+      <h2 className="mt-3 text-2xl font-black text-[#102337]">Décrivez le problème sans attendre que la situation s&apos;installe.</h2>
       <p className="mt-3 leading-7 text-[#607080]">
-        Le formulaire transmet les bonnes informations : commune, type de nuisible, lieu concerné, téléphone et niveau d'urgence. Aucune intervention immédiate n'est promise.
+        Le formulaire transmet les bonnes informations : commune, type de nuisible, lieu concerné, téléphone et niveau d&apos;urgence. Aucune intervention immédiate n&apos;est promise.
       </p>
       <div className="mt-5 flex flex-col gap-3">
         <PhoneLink />

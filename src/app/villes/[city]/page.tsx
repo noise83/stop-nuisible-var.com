@@ -54,7 +54,7 @@ export default async function CityPage({ params }: { params: Params }) {
             <h1 className="text-4xl font-black leading-tight text-[#102337] sm:text-5xl">Problème de nuisibles à {city.name} ? Décrivez votre situation et soyez rappelé</h1>
             <p className="mt-6 text-lg leading-8 text-[#405160]">{city.intro}</p>
             <p className="mt-4 leading-8 text-[#405160]">
-              La demande peut concerner {city.buildingTypes.join(", ")}. Précisez les signes observés, le type de lieu, les contraintes de rappel et l'urgence afin de faciliter la mise en relation.
+              La demande peut concerner {city.buildingTypes.join(", ")}. Précisez les signes observés, le type de lieu, les contraintes de rappel et l&apos;urgence afin de faciliter la mise en relation.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <ButtonLink />
@@ -82,12 +82,12 @@ export default async function CityPage({ params }: { params: Params }) {
               ))}
             </div>
             <p>
-              À {city.name}, le traitement nuisibles doit tenir compte de {city.angle}. Une demande de dératisation, de désinsectisation, de traitement punaises de lit ou de dépigeonnage ne se qualifie pas de la même façon selon qu'elle concerne un logement, un commerce, une résidence ou un jardin.
+              À {city.name}, le traitement nuisibles doit tenir compte de {city.angle}. Une demande de dératisation, de désinsectisation, de traitement punaises de lit ou de dépigeonnage ne se qualifie pas de la même façon selon qu&apos;elle concerne un logement, un commerce, une résidence ou un jardin.
             </p>
             <p>
               Les communes proches comme {city.neighbours.join(", ")} peuvent aussi entrer dans le même bassin de rappel. Cette précision géographique aide à transmettre la demande au bon interlocuteur sans inventer une agence locale fictive.
             </p>
-            <h2 className="text-3xl font-black text-[#102337]">Conseils avant d'envoyer la demande</h2>
+            <h2 className="text-3xl font-black text-[#102337]">Conseils avant d&apos;envoyer la demande</h2>
             <ul className="space-y-3">
               {city.localAdvice.map((item) => <li key={item}>- {item}</li>)}
             </ul>

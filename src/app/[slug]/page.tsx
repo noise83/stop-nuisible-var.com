@@ -173,13 +173,13 @@ function ServicePage({ slug }: { slug: string }) {
           <article className="space-y-5 leading-8 text-[#405160]">
             <h2 className="text-3xl font-black text-[#102337]">Une demande locale, claire et transmissible</h2>
             <p>
-              Pour un traitement nuisibles Var, la bonne orientation dépend rarement d'un seul mot-clé. Il faut comprendre la commune, le type de lieu, les signes observés, les contraintes d'accès et le niveau d'urgence. C'est pourquoi Stop Nuisible Var structure la demande avant transmission.
+              Pour un traitement nuisibles Var, la bonne orientation dépend rarement d&apos;un seul mot-clé. Il faut comprendre la commune, le type de lieu, les signes observés, les contraintes d&apos;accès et le niveau d&apos;urgence. C&apos;est pourquoi Stop Nuisible Var structure la demande avant transmission.
             </p>
             <p>
-              Le service convient aux particuliers, propriétaires, locataires, syndics, commerces, restaurants, hôtels, campings, conciergeries et collectivités. Votre demande est transmise à un professionnel partenaire adapté selon votre commune, le type de nuisible et le niveau d'urgence.
+              Le service convient aux particuliers, propriétaires, locataires, syndics, commerces, restaurants, hôtels, campings, conciergeries et collectivités. Votre demande est transmise à un professionnel partenaire adapté selon votre commune, le type de nuisible et le niveau d&apos;urgence.
             </p>
             <p>
-              Les informations envoyées permettent d'éviter les échanges inutiles : type de nuisible, commune, bâtiment, disponibilités et message libre. Pour une urgence nuisibles, le formulaire aide aussi à signaler les situations sensibles sans donner de consignes dangereuses.
+              Les informations envoyées permettent d&apos;éviter les échanges inutiles : type de nuisible, commune, bâtiment, disponibilités et message libre. Pour une urgence nuisibles, le formulaire aide aussi à signaler les situations sensibles sans donner de consignes dangereuses.
             </p>
           </article>
           <RelatedLinks
@@ -243,7 +243,7 @@ function ZonesPage() {
       <Section>
         <div className="container">
           <Eyebrow>Var 83</Eyebrow>
-          <h1 className="text-5xl font-black text-[#102337]">Zones d'intervention nuisibles dans le Var</h1>
+          <h1 className="text-5xl font-black text-[#102337]">Zones d&apos;intervention nuisibles dans le Var</h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-[#405160]">
             Les demandes sont traitées en priorité sur les principales communes du Var. Même si votre commune n’est pas encore listée, vous pouvez envoyer une demande : elle sera qualifiée selon votre secteur, le nuisible et l’urgence.
           </p>
@@ -281,7 +281,7 @@ function HowItWorksPage() {
         <div className="container">
           <Eyebrow>Mise en relation</Eyebrow>
           <h1 className="text-5xl font-black text-[#102337]">Comment ça marche ?</h1>
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-[#405160]">Le fonctionnement est volontairement simple : vous expliquez, la demande est qualifiée, puis elle est transmise à un professionnel partenaire adapté selon votre commune, le type de nuisible et le niveau d'urgence.</p>
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-[#405160]">Le fonctionnement est volontairement simple : vous expliquez, la demande est qualifiée, puis elle est transmise à un professionnel partenaire adapté selon votre commune, le type de nuisible et le niveau d&apos;urgence.</p>
           <div className="mt-10"><ProcessSteps /></div>
         </div>
       </Section>
@@ -306,10 +306,10 @@ function PartnersPage() {
             <Eyebrow>Réseau local</Eyebrow>
             <h1 className="text-5xl font-black text-[#102337]">Professionnels partenaires et mise en relation</h1>
             <p className="mt-6 text-lg leading-8 text-[#405160]">
-              Stop Nuisible Var sélectionne des professionnels et intermédiaires spécialisés selon leur zone d'intervention, leur capacité de rappel, leur expérience sur le nuisible concerné et la clarté de leurs devis.
+              Stop Nuisible Var sélectionne des professionnels et intermédiaires spécialisés selon leur zone d&apos;intervention, leur capacité de rappel, leur expérience sur le nuisible concerné et la clarté de leurs devis.
             </p>
             <p className="mt-4 leading-8 text-[#405160]">
-              Aucun partenaire nommé n'est affiché sans accord signé, et aucune fausse agence locale n'est inventée.
+              Aucun partenaire nommé n&apos;est affiché sans accord signé, et aucune fausse agence locale n&apos;est inventée.
             </p>
           </div>
           <EmergencyPanel />
