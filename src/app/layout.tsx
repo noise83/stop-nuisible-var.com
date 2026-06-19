@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   description:
     "Plateforme locale de demande de rappel pour punaises de lit, dératisation, cafards, guêpes, termites, moustiques et autres nuisibles dans le Var.",
   alternates: { canonical: "/" },
+  verification: {
+    google: "SwaYKQISlrcllDu3_lpH00QZvupFIyKkXiH736JsmzM",
+  },
   openGraph: {
     type: "website",
     locale: "fr_FR",
