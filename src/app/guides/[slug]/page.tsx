@@ -95,7 +95,7 @@ function IllustratedGuidePage({
       <JsonLd data={[breadcrumbJsonLd(crumbs), faqJsonLd(guide.faq), articleJsonLd(guide.title, guide.description, `/guides/${guide.slug}/`, guide.published)]} />
       <Breadcrumb items={crumbs} />
       <Section className="py-10 sm:py-18">
-        <div className="container grid gap-8 lg:grid-cols-[1fr_360px] lg:items-start">
+        <div className="container grid max-w-[calc(100vw-32px)] gap-8 lg:max-w-[1160px] lg:grid-cols-[1fr_360px] lg:items-start">
           <div className="min-w-0">
             <Eyebrow>Guide illustré</Eyebrow>
             <h1 className="break-words text-[2rem] font-black leading-tight text-[#102337] sm:text-5xl">{content.h1}</h1>
@@ -118,7 +118,7 @@ function IllustratedGuidePage({
       </Section>
 
       <Section tone="white" className="py-10 sm:py-16">
-        <div className="container grid gap-8 lg:grid-cols-[260px_1fr] lg:items-start">
+        <div className="container grid max-w-[calc(100vw-32px)] gap-8 lg:max-w-[1160px] lg:grid-cols-[260px_1fr] lg:items-start">
           <nav className="rounded-[8px] border border-[#102337]/10 bg-[#f5f1e8] p-5 lg:sticky lg:top-24" aria-label="Sommaire du guide">
             <p className="font-black text-[#102337]">Sommaire</p>
             <ul className="mt-4 grid gap-2 text-sm font-bold text-[#24493d]">
@@ -141,7 +141,7 @@ function IllustratedGuidePage({
       </Section>
 
       <Section className="py-10 sm:py-16">
-        <div id="photo" className="container grid gap-8 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
+        <div id="photo" className="container grid max-w-[calc(100vw-32px)] gap-8 lg:max-w-[1160px] lg:grid-cols-[.9fr_1.1fr] lg:items-center">
           <Image
             src={content.photoBlock.image}
             alt={content.photoBlock.imageAlt}
@@ -170,7 +170,7 @@ function IllustratedGuidePage({
       </Section>
 
       <Section tone="white" className="py-10 sm:py-16">
-        <div className="container grid gap-8 lg:grid-cols-[1fr_360px]">
+        <div className="container grid max-w-[calc(100vw-32px)] gap-8 lg:max-w-[1160px] lg:grid-cols-[1fr_360px]">
           <article>
             <Eyebrow>Var 83</Eyebrow>
             <h2 className="text-3xl font-black text-[#102337]">{content.localContext.title}</h2>
@@ -181,7 +181,7 @@ function IllustratedGuidePage({
       </Section>
 
       <Section className="py-10 sm:py-16">
-        <div className="container grid gap-8 lg:grid-cols-[.9fr_1.1fr]">
+        <div className="container grid max-w-[calc(100vw-32px)] gap-8 lg:max-w-[1160px] lg:grid-cols-[.9fr_1.1fr]">
           <div>
             <Eyebrow>Rappel</Eyebrow>
             <h2 className="text-3xl font-black text-[#102337]">{content.reminder.title}</h2>
@@ -197,14 +197,14 @@ function IllustratedGuidePage({
       </Section>
 
       <Section tone="white" className="py-10 sm:py-16">
-        <div className="container max-w-3xl">
+        <div className="container max-w-[calc(100vw-32px)] lg:max-w-3xl">
           <h2 className="mb-6 text-3xl font-black text-[#102337]">Questions fréquentes</h2>
           <FAQ items={guide.faq} />
         </div>
       </Section>
 
       <section className="bg-[#102337] py-12 text-white sm:py-16">
-        <div className="container flex flex-col justify-between gap-6 md:flex-row md:items-center">
+        <div className="container flex max-w-[calc(100vw-32px)] flex-col justify-between gap-6 md:flex-row md:items-center lg:max-w-[1160px]">
           <div>
             <p className="text-xs font-bold uppercase tracking-[.14em] text-[#f2c94c]">Demande claire</p>
             <h2 className="mt-3 max-w-2xl text-3xl font-black leading-tight">{content.cta.title}</h2>
