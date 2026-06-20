@@ -176,12 +176,12 @@ export default function HomePage() {
 
           <div className="order-first rounded-[8px] border border-[#1F4D3A]/12 bg-white p-3 shadow-[0_22px_60px_rgba(31,77,58,.14)] lg:order-none">
             <Image
-              src="/images/home/home-hero-identification.svg"
-              alt="Illustration sobre d'une demande d'identification de nuisible dans un logement du Var"
-              width={880}
-              height={680}
+              src="/images/home/home-hero-inspection-cuisine-var.webp"
+              alt="Inspection visuelle dans une cuisine pour identifier des signes de nuisibles dans le Var"
+              width={1200}
+              height={928}
               priority
-              unoptimized
+              sizes="(min-width: 1024px) 46vw, 100vw"
               className="h-auto w-full rounded-[6px]"
             />
           </div>
