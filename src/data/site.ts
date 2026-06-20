@@ -5,6 +5,7 @@ export type Service = {
   name: string;
   shortName: string;
   icon: string;
+  leadFormPest: string;
   title: string;
   description: string;
   hero: string;
@@ -72,6 +73,7 @@ export const services: Service[] = [
     name: "Punaises de lit",
     shortName: "Punaises de lit",
     icon: "bedbug",
+    leadFormPest: "Punaises de lit",
     title: "Traitement des punaises de lit dans le Var",
     description:
       "Demande de rappel pour une suspicion de punaises de lit dans un logement, hôtel, location saisonnière ou résidence du Var.",
@@ -103,6 +105,7 @@ export const services: Service[] = [
     name: "Dératisation rats et souris",
     shortName: "Dératisation",
     icon: "rodent",
+    leadFormPest: "Rats ou souris",
     title: "Dératisation dans le Var : rats et souris",
     description:
       "Mise en relation pour rats, souris, bruits dans les combles, traces de passage et demandes de dératisation dans le Var.",
@@ -134,6 +137,7 @@ export const services: Service[] = [
     name: "Cafards et blattes",
     shortName: "Cafards",
     icon: "roach",
+    leadFormPest: "Cafards / blattes",
     title: "Traitement cafards et blattes dans le Var",
     description:
       "Demande de devis nuisibles pour cafards, blattes germaniques, blattes orientales et infestations en logement ou local professionnel.",
@@ -165,6 +169,7 @@ export const services: Service[] = [
     name: "Guêpes, frelons et frelon asiatique",
     shortName: "Guêpes et frelons",
     icon: "wasp",
+    leadFormPest: "Guêpes ou frelons",
     title: "Nid de guêpes ou frelons dans le Var",
     description:
       "Orientation vers un professionnel partenaire pour nid de guêpes, frelons européens ou suspicion de frelon asiatique dans le Var.",
@@ -196,6 +201,7 @@ export const services: Service[] = [
     name: "Termites et xylophages",
     shortName: "Termites",
     icon: "termite",
+    leadFormPest: "Termites / xylophages",
     title: "Termites et insectes xylophages dans le Var",
     description:
       "Demande de rappel pour signes de termites, bois fragilisé, charpente, plinthes creuses ou diagnostic xylophage dans le Var.",
@@ -226,6 +232,7 @@ export const services: Service[] = [
     name: "Moustique tigre et demoustication",
     shortName: "Moustique tigre",
     icon: "mosquito",
+    leadFormPest: "Moustique tigre",
     title: "Moustique tigre dans le Var",
     description:
       "Mise en relation pour invasion de moustique tigre, jardins, terrasses, piscines, campings et locations saisonnières.",
@@ -256,6 +263,7 @@ export const services: Service[] = [
     name: "Chenilles processionnaires",
     shortName: "Chenilles",
     icon: "caterpillar",
+    leadFormPest: "Chenilles processionnaires",
     title: "Chenilles processionnaires dans le Var",
     description:
       "Demande de rappel pour nids de chenilles processionnaires, pins, jardins, copropriétés et espaces fréquentés par enfants ou animaux.",
@@ -286,6 +294,7 @@ export const services: Service[] = [
     name: "Pigeons, goélands et dépigeonnage",
     shortName: "Dépigeonnage",
     icon: "bird",
+    leadFormPest: "Pigeons / goélands",
     title: "Dépigeonnage dans le Var",
     description:
       "Mise en relation pour pigeons, goélands, fientes, balcons, toitures, enseignes, commerces et copropriétés dans le Var.",

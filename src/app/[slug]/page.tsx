@@ -97,7 +97,7 @@ function LocalLandingPage({ slug }: { slug: string }) {
             </div>
           </div>
           <div className="space-y-4">
-            <LeadForm defaultCity={landing.formDefaults?.city} defaultPest={landing.formDefaults?.pest} />
+            <LeadForm defaultCity={landing.formDefaults?.city ?? city.name} defaultPest={landing.formDefaults?.pest ?? service.leadFormPest} />
             <LocalLandingTrustBox />
           </div>
         </div>
@@ -124,9 +124,9 @@ function LocalLandingPage({ slug }: { slug: string }) {
             </p>
             {landing.localAreas?.length ? (
               <div className="rounded-[8px] border border-[#102337]/10 bg-white p-5">
-                <h2 className="text-3xl font-black text-[#102337]">Dératisation à Hyères : secteurs concernés</h2>
+                <h2 className="text-3xl font-black text-[#102337]">{service.shortName} à {city.name} : secteurs concernés</h2>
                 <p className="mt-4">
-                  Les demandes peuvent venir du centre-ville, du port, de Giens, de L&apos;Ayguade, de La Capte, de Costebelle, des Salins ou de logements proches du littoral. Le contexte n&apos;est pas le même entre une villa avec jardin, une location saisonnière, un garage, un local poubelle ou un commerce.
+                  Les demandes peuvent venir de plusieurs secteurs de {city.name}, notamment {formatAreas(landing.localAreas)}. Le contexte n&apos;est pas le même selon qu&apos;il s&apos;agit d&apos;une maison, d&apos;un appartement, d&apos;une location, d&apos;un commerce, d&apos;un garage, d&apos;un jardin ou de parties communes.
                 </p>
                 <ul className="mt-4 flex flex-wrap gap-2">
                   {landing.localAreas.map((area) => (
@@ -186,6 +186,11 @@ function LocalLandingTrustBox() {
       </ul>
     </div>
   );
+}
+
+function formatAreas(areas: string[]) {
+  if (areas.length <= 1) return areas.join("");
+  return `${areas.slice(0, -1).join(", ")} et ${areas[areas.length - 1]}`;
 }
 
 function ServicePage({ slug }: { slug: string }) {
