@@ -1,23 +1,56 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { FAQ } from "@/components/faq";
 import { PestIcon } from "@/components/icons";
+import { PhoneLink } from "@/components/ui";
 import { priorityCities, services, type FAQItem } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Nuisibles Var : dératisation, cafards, punaises de lit, frelons",
+  title: "Nuisibles Var : demande de rappel et identification",
   description:
-    "Rats, cafards, punaises de lit, guêpes, frelons ou termites dans le Var ? Décrivez votre problème et demandez un rappel gratuit sans engagement.",
+    "Rats, souris, cafards, punaises de lit, guêpes, frelons ou doute sur le nuisible dans le Var : décrivez le problème et demandez un rappel gratuit.",
   alternates: { canonical: "/" },
 };
 
-const serviceLinks = [
-  { label: "Rats et souris", slug: "deratisation-var", icon: "rodent" },
-  { label: "Punaises de lit", slug: "punaises-de-lit-var", icon: "bedbug" },
-  { label: "Cafards / blattes", slug: "cafards-blattes-var", icon: "roach" },
-  { label: "Guêpes et frelons", slug: "guepes-frelons-var", icon: "wasp" },
-  { label: "Termites", slug: "termites-var", icon: "termite" },
-  { label: "Moustique tigre", slug: "moustique-tigre-var", icon: "mosquito" },
+const pestChoices = [
+  { label: "Punaises de lit", href: "/punaises-de-lit-var/", icon: "bedbug", hint: "Piqûres, literie, bagages" },
+  { label: "Rats ou souris", href: "/deratisation-var/", icon: "rodent", hint: "Bruits, crottes, rongements" },
+  { label: "Cafards / blattes", href: "/cafards-blattes-var/", icon: "roach", hint: "Cuisine, gaines, parties communes" },
+  { label: "Guêpes ou frelons", href: "/guepes-frelons-var/", icon: "wasp", hint: "Nid, terrasse, jardin, hauteur" },
+  { label: "Termites", href: "/termites-var/", icon: "termite", hint: "Bois, charpente, traces" },
+  { label: "Moustique tigre", href: "/moustique-tigre-var/", icon: "mosquito", hint: "Jardin, terrasse, eau stagnante" },
+  { label: "Chenilles processionnaires", href: "/chenilles-processionnaires-var/", icon: "caterpillar", hint: "Pins, cocons, zone fréquentée" },
+  { label: "Pigeons / goélands", href: "/depigeonnage-var/", icon: "bird", hint: "Fientes, balcon, toiture" },
+  { label: "Je ne sais pas", href: "/guides/identifier-un-nuisible-var/", icon: "bedbug", hint: "Comparer les signes observés" },
+];
+
+const trustItems = [
+  "Demande gratuite et sans engagement",
+  "Photo facultative",
+  "Plateforme locale dédiée au Var",
+  "Transmission uniquement avec consentement",
+  "Pas de fausse agence locale affichée",
+  "Rappel selon commune, nuisible et disponibilité",
+];
+
+const audienceCards = [
+  {
+    title: "Particuliers",
+    text: "Précisez la commune, les pièces touchées, les signes visibles et depuis quand le problème revient.",
+  },
+  {
+    title: "Professionnels",
+    text: "Indiquez le type d'activité, les zones concernées, les horaires possibles et les contraintes d'ouverture.",
+  },
+  {
+    title: "Locations saisonnières",
+    text: "Ajoutez les dates d'arrivée ou de départ, le nombre de couchages et les contraintes d'accès au logement.",
+  },
+  {
+    title: "Copropriétés",
+    text: "Signalez les parties communes, gaines, caves, locaux poubelles et si un syndic ou gestionnaire est informé.",
+  },
 ];
 
 const requestedCities = [
@@ -37,66 +70,38 @@ const requestedCities = [
   "Le Pradet",
 ];
 
-const processSteps = [
-  ["1", "Vous décrivez le problème", "Commune, type de nuisible, lieu touché, urgence et signes observés."],
-  ["2", "Votre demande est qualifiée", "Les informations sont structurées pour orienter la demande sans vous faire répéter."],
-  ["3", "Un partenaire adapté peut vous rappeler", "La mise en relation dépend de votre secteur, du nuisible et des disponibilités."],
-  ["4", "Vous restez libre de choisir", "Le rappel est sans engagement et ne vous oblige pas à accepter un devis."],
-];
-
-const urgentSigns = [
-  "Cafards visibles en plein jour",
-  "Bruits dans les murs ou les combles",
-  "Crottes de rats ou de souris",
-  "Suspicion de punaises de lit",
-  "Nid de guêpes ou de frelons",
-  "Commerce, location ou copropriété concerné",
-];
-
-const trustCards = [
-  ["Une demande claire", "Le formulaire rassemble les informations utiles avant toute transmission."],
-  ["Un partenaire selon votre secteur", "La commune, le nuisible et l'urgence orientent la mise en relation."],
-  ["Un rappel sans engagement", "Vous pouvez échanger, comparer et décider librement après le contact."],
-  ["Une plateforme transparente", "Stop Nuisible Var facilite la demande sans se présenter comme intervenant direct."],
+const recentLocalPages = [
+  { label: "Punaises de lit à La Seyne-sur-Mer", href: "/punaises-de-lit-la-seyne-sur-mer/" },
+  { label: "Dératisation à Hyères", href: "/deratisation-hyeres/" },
+  { label: "Cafards à Fréjus", href: "/cafards-frejus/" },
+  { label: "Dératisation à Saint-Raphaël", href: "/deratisation-saint-raphael/" },
+  { label: "Cafards à Saint-Raphaël", href: "/cafards-saint-raphael/" },
+  { label: "Guêpes et frelons à Fréjus", href: "/guepes-frelons-frejus/" },
+  { label: "Dératisation à Brignoles", href: "/deratisation-brignoles/" },
+  { label: "Cafards à Brignoles", href: "/cafards-brignoles/" },
 ];
 
 const faqItems: FAQItem[] = [
   {
-    question: "Le rappel est-il gratuit ?",
-    answer:
-      "Oui, la demande de rappel est gratuite et sans engagement. Le professionnel partenaire peut ensuite proposer un devis adapté à la situation.",
-  },
-  {
     question: "Stop Nuisible Var intervient-il directement ?",
     answer:
-      "Non. Stop Nuisible Var est une plateforme locale de demande de rappel et de mise en relation avec des professionnels partenaires.",
+      "Non. Stop Nuisible Var est une plateforme locale de mise en relation. Votre demande peut être transmise à un professionnel partenaire selon votre commune, le nuisible concerné et les disponibilités.",
   },
   {
-    question: "Quels nuisibles sont concernés ?",
+    question: "La demande de rappel est-elle gratuite ?",
     answer:
-      "Les demandes peuvent concerner rats, souris, cafards, blattes, punaises de lit, guêpes, frelons, termites, moustique tigre et autres nuisibles fréquents dans le Var.",
+      "Oui. La demande est gratuite et sans engagement. Vous restez libre de la suite donnée après le rappel.",
   },
   {
-    question: "Dans quelles villes du Var le service fonctionne-t-il ?",
+    question: "Puis-je envoyer une photo si je ne reconnais pas le nuisible ?",
     answer:
-      "Les demandes sont possibles dans les principales communes du Var, notamment Toulon, Hyères, La Seyne-sur-Mer, Fréjus, Saint-Raphaël, Draguignan, Brignoles et Saint-Tropez.",
+      "Oui, la photo est facultative. Elle peut aider à mieux orienter la demande, mais l'analyse reste indicative et ne remplace pas l'avis d'un professionnel.",
   },
   {
-    question: "Suis-je obligé d’accepter le devis ?",
+    question: "Quelles informations faut-il préciser ?",
     answer:
-      "Non. Le rappel et la mise en relation ne vous obligent pas à accepter une proposition. Vous restez libre de choisir la suite à donner.",
+      "Indiquez la commune, le type de lieu, les signes observés, les zones touchées, l'urgence ressentie et un créneau de rappel possible.",
   },
-];
-
-const recentLocalPages = [
-  { label: "Punaises de lit à La Seyne-sur-Mer", href: "/punaises-de-lit-la-seyne-sur-mer/" },
-  { label: "Punaises de lit à Draguignan", href: "/punaises-de-lit-draguignan/" },
-  { label: "Dératisation à Saint-Raphaël", href: "/deratisation-saint-raphael/" },
-  { label: "Cafards à Saint-Raphaël", href: "/cafards-saint-raphael/" },
-  { label: "Guêpes et frelons à Fréjus", href: "/guepes-frelons-frejus/" },
-  { label: "Guêpes et frelons à Draguignan", href: "/guepes-frelons-draguignan/" },
-  { label: "Dératisation à Brignoles", href: "/deratisation-brignoles/" },
-  { label: "Cafards à Brignoles", href: "/cafards-brignoles/" },
 ];
 
 function CtaLink({
@@ -106,17 +111,18 @@ function CtaLink({
 }: {
   href?: string;
   children: React.ReactNode;
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "dark";
 }) {
-  const styles =
-    variant === "primary"
-      ? "bg-[#E86A33] text-white shadow-[0_16px_34px_rgba(232,106,51,.25)] hover:bg-[#cf5524]"
-      : "border border-[#1F4D3A]/20 bg-white text-[#1F2933] hover:border-[#E86A33] hover:text-[#E86A33]";
+  const styles = {
+    primary: "bg-[#E86A33] text-white shadow-[0_14px_32px_rgba(232,106,51,.22)] hover:bg-[#cf5524]",
+    secondary: "border border-[#1F4D3A]/25 bg-white text-[#1F2933] hover:border-[#E86A33] hover:text-[#E86A33]",
+    dark: "bg-[#1F4D3A] text-white hover:bg-[#173c2d]",
+  };
 
   return (
     <Link
       href={href}
-      className={`focus-ring inline-flex min-h-12 items-center justify-center rounded-[8px] px-5 py-3 text-sm font-black transition ${styles}`}
+      className={`focus-ring inline-flex min-h-12 items-center justify-center rounded-[8px] px-5 py-3 text-sm font-black transition ${styles[variant]}`}
       data-track-cta
     >
       {children}
@@ -127,15 +133,7 @@ function CtaLink({
   );
 }
 
-function SectionTitle({
-  eyebrow,
-  title,
-  text,
-}: {
-  eyebrow: string;
-  title: string;
-  text?: string;
-}) {
+function SectionTitle({ eyebrow, title, text }: { eyebrow: string; title: string; text?: string }) {
   return (
     <div className="max-w-3xl">
       <p className="text-xs font-black uppercase tracking-[.14em] text-[#E86A33]">{eyebrow}</p>
@@ -146,163 +144,194 @@ function SectionTitle({
 }
 
 export default function HomePage() {
-  const availableServices = serviceLinks
-    .map((item) => {
-      const service = services.find((entry) => entry.slug === item.slug);
-      return service ? { ...item, service } : null;
-    })
-    .filter((item): item is NonNullable<typeof item> => Boolean(item));
-
   const cityMap = new Map(priorityCities.map((city) => [city.name, city]));
 
   return (
-    <main className="bg-[#F6F1E8] text-[#1F2933]">
-      <section className="relative overflow-hidden bg-[#F6F1E8]">
-        <div className="container grid min-h-[calc(100vh-80px)] items-center gap-10 py-14 lg:grid-cols-[1.05fr_.95fr] lg:py-20">
+    <main className="overflow-x-hidden bg-[#F6F1E8] text-[#1F2933]">
+      <section className="bg-[#F6F1E8] py-10 sm:py-16">
+        <div className="container grid items-center gap-10 lg:grid-cols-[1fr_.92fr]">
           <div>
-            <div className="flex flex-wrap gap-2">
-              {["Sans engagement", "Var 83", "Mise en relation transparente"].map((badge) => (
-                <span key={badge} className="rounded-full border border-[#1F4D3A]/15 bg-white px-3 py-2 text-xs font-black text-[#1F4D3A]">
-                  {badge}
-                </span>
-              ))}
-            </div>
-            <h1 className="mt-6 max-w-4xl text-4xl font-black leading-[1.05] text-[#1F2933] sm:text-5xl lg:text-6xl">
-              Nuisibles dans le Var ? Décrivez votre problème et demandez un rappel
+            <p className="inline-flex rounded-full border border-[#1F4D3A]/15 bg-white px-3 py-2 text-xs font-black uppercase tracking-[.12em] text-[#1F4D3A]">
+              Stop Nuisible Var
+            </p>
+            <h1 className="mt-6 max-w-4xl text-4xl font-black leading-[1.06] text-[#1F2933] sm:text-5xl lg:text-6xl">
+              Un nuisible chez vous dans le Var ? Décrivez le problème et demandez un rappel
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[#51606d]">
-              Rats, souris, cafards, punaises de lit, guêpes, frelons, termites ou moustiques : Stop Nuisible Var vous aide à transmettre une demande claire à un professionnel partenaire selon votre commune, le nuisible concerné et le niveau d&apos;urgence.
+              Rats, souris, cafards, punaises de lit, guêpes, frelons ou doute sur le nuisible : Stop Nuisible Var vous aide à qualifier votre demande avant transmission à un professionnel partenaire.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-7 rounded-[8px] border border-[#1F4D3A]/15 bg-white px-4 py-3 text-sm font-black text-[#1F4D3A]">
+              Plateforme locale de mise en relation — pas une entreprise d’intervention directe.
+            </div>
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <CtaLink>Demander un rappel gratuit</CtaLink>
-              <CtaLink variant="secondary">Identifier un nuisible avec une photo</CtaLink>
+              <CtaLink href="/guides/identifier-un-nuisible-var/" variant="secondary">
+                Identifier le nuisible
+              </CtaLink>
+            </div>
+            <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+              <PhoneLink className="focus-ring inline-flex min-h-12 items-center justify-center rounded-[8px] bg-[#1F4D3A] px-5 py-3 text-sm font-black text-white transition hover:bg-[#173c2d]" />
             </div>
           </div>
 
-          <div className="relative rounded-[8px] bg-[#1F4D3A] p-5 text-white shadow-[0_24px_70px_rgba(31,77,58,.22)] sm:p-7">
-            <div className="absolute right-5 top-5 h-16 w-16 rounded-full bg-[#F2C94C]/85" />
-            <p className="text-sm font-black uppercase tracking-[.14em] text-[#F2C94C]">Plateforme locale</p>
-            <h2 className="mt-6 max-w-md text-3xl font-black leading-tight">Une demande qualifiée avant transmission</h2>
-            <div className="mt-8 grid gap-3">
-              {["Commune et type de lieu", "Nuisible ou signes observés", "Urgence et créneau de rappel", "Consentement obligatoire"].map((item) => (
-                <div key={item} className="rounded-[8px] border border-white/12 bg-white/8 p-4 text-sm font-bold">
-                  {item}
-                </div>
-              ))}
-            </div>
-            <p className="mt-6 text-sm leading-7 text-white/76">
-              Stop Nuisible Var ne se présente pas comme une entreprise d&apos;intervention directe. Votre demande peut être transmise à un partenaire adapté.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white py-14 sm:py-18">
-        <div className="container grid gap-8 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
-          <SectionTitle
-            eyebrow="Photo utile"
-            title="Vous ne savez pas quel nuisible vous avez trouvé ?"
-            text="Ajoutez une photo d’un insecte, d’un nid, de traces ou de dégâts visibles. La photo peut aider à pré-identifier le problème avant transmission de votre demande."
-          />
-          <div className="rounded-[8px] border border-[#1F4D3A]/12 bg-[#F6F1E8] p-5 sm:p-6">
-            <div className="grid aspect-[4/3] place-items-center rounded-[8px] border border-dashed border-[#1F4D3A]/30 bg-white text-center">
-              <div className="px-6">
-                <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-[#F2C94C] text-2xl font-black text-[#1F2933]">+</span>
-                <p className="mt-4 font-black text-[#1F2933]">Photo d&apos;insecte, nid, trace ou dégât</p>
-              </div>
-            </div>
-            <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <CtaLink>Envoyer une photo</CtaLink>
-              <p className="text-sm leading-6 text-[#51606d]">L’analyse reste indicative et ne remplace pas l’avis d’un professionnel.</p>
-            </div>
-            <p className="mt-4 rounded-[8px] bg-white px-4 py-3 text-sm font-semibold leading-6 text-[#51606d]">
-              Évitez d’envoyer une photo contenant un visage, une personne, un document personnel ou tout élément permettant de vous identifier inutilement.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#F6F1E8] py-14 sm:py-18">
-        <div className="container">
-          <SectionTitle eyebrow="Fonctionnement" title="Comment ça marche" />
-          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {processSteps.map(([number, title, text]) => (
-              <article key={number} className="rounded-[8px] border border-[#1F4D3A]/12 bg-white p-5">
-                <span className="grid h-10 w-10 place-items-center rounded-full bg-[#1F4D3A] font-black text-white">{number}</span>
-                <h3 className="mt-5 text-xl font-black text-[#1F2933]">{title}</h3>
-                <p className="mt-3 text-sm leading-7 text-[#51606d]">{text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white py-14 sm:py-18">
-        <div className="container">
-          <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
-            <SectionTitle
-              eyebrow="Nuisibles"
-              title="Les demandes les plus fréquentes"
-              text="Accédez aux pages existantes pour préciser le type de nuisible avant d'envoyer votre demande."
+          <div className="order-first rounded-[8px] border border-[#1F4D3A]/12 bg-white p-3 shadow-[0_22px_60px_rgba(31,77,58,.14)] lg:order-none">
+            <Image
+              src="/images/home/home-hero-identification.svg"
+              alt="Illustration sobre d'une demande d'identification de nuisible dans un logement du Var"
+              width={880}
+              height={680}
+              priority
+              unoptimized
+              className="h-auto w-full rounded-[6px]"
             />
-            <Link className="font-black text-[#E86A33] hover:text-[#cf5524]" href="/traitement-nuisibles-var/">
-              Voir tous les services -&gt;
-            </Link>
           </div>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {availableServices.map(({ label, icon, service }) => (
+        </div>
+      </section>
+
+      <section className="bg-white py-12 sm:py-16">
+        <div className="container">
+          <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
+            <SectionTitle
+              eyebrow="Choix rapide"
+              title="Quel est votre problème ?"
+              text="Sélectionnez le cas le plus proche de votre situation pour consulter les signes utiles avant de demander un rappel."
+            />
+            <CtaLink href="/demande-devis/" variant="dark">
+              Demander un rappel
+            </CtaLink>
+          </div>
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {pestChoices.map((item) => (
               <Link
-                key={service.slug}
-                href={`/${service.slug}/`}
-                className="focus-ring rounded-[8px] border border-[#1F4D3A]/12 bg-white p-5 transition hover:-translate-y-1 hover:border-[#E86A33] hover:shadow-xl"
+                key={item.href}
+                href={item.href}
+                className="focus-ring group flex min-h-[92px] items-center gap-4 rounded-[8px] border border-[#1F4D3A]/12 bg-[#F6F1E8] p-4 transition hover:border-[#E86A33] hover:bg-white"
               >
-                <PestIcon name={icon} className="h-11 w-11 text-[#E86A33]" />
-                <h3 className="mt-5 text-xl font-black text-[#1F2933]">{label}</h3>
-                <p className="mt-3 text-sm leading-7 text-[#51606d]">{service.description}</p>
+                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-[8px] bg-white text-[#1F4D3A] ring-1 ring-[#1F4D3A]/10 group-hover:text-[#E86A33]">
+                  <PestIcon name={item.icon} className="h-8 w-8" />
+                </span>
+                <span className="min-w-0">
+                  <span className="block text-base font-black leading-5 text-[#1F2933]">{item.label}</span>
+                  <span className="mt-1 block text-sm leading-5 text-[#51606d]">{item.hint}</span>
+                </span>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-[#1F4D3A] py-14 text-white sm:py-18">
-        <div className="container grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
-          <div>
-            <SectionTitle eyebrow="Urgence" title="Quand demander un rappel rapidement ?" text="Certaines situations méritent d'être décrites sans attendre pour faciliter l'orientation de la demande." />
-            <div className="mt-6">
-              <CtaLink>Décrire mon problème maintenant</CtaLink>
+      <section className="bg-[#F6F1E8] py-12 sm:py-16">
+        <div className="container grid gap-8 lg:grid-cols-[.86fr_1.14fr] lg:items-center">
+          <SectionTitle
+            eyebrow="Photo facultative"
+            title="Vous pouvez aussi joindre une photo"
+            text="Une photo d’un insecte, d’un nid, de traces ou de dégâts peut aider à mieux orienter votre demande. Elle reste facultative."
+          />
+          <div className="rounded-[8px] border border-[#1F4D3A]/12 bg-white p-5 sm:p-6">
+            <div className="grid gap-4 sm:grid-cols-[1fr_auto] sm:items-center">
+              <div>
+                <h3 className="text-xl font-black text-[#1F2933]">Photo d’insecte, nid, trace ou dégât</h3>
+                <p className="mt-3 text-sm leading-7 text-[#51606d]">
+                  Évitez d’envoyer une photo contenant un visage, une personne, un document personnel ou tout élément permettant de vous identifier inutilement.
+                </p>
+              </div>
+              <div className="grid h-20 w-20 place-items-center rounded-[8px] bg-[#F2C94C] text-3xl font-black text-[#1F2933]">+</div>
+            </div>
+            <p className="mt-4 rounded-[8px] bg-[#F6F1E8] px-4 py-3 text-sm font-semibold leading-6 text-[#51606d]">
+              L’analyse reste indicative et ne remplace pas l’avis d’un professionnel.
+            </p>
+            <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+              <CtaLink href="/demande-devis/">Ajouter une photo dans ma demande</CtaLink>
+              <CtaLink href="/guides/identifier-un-nuisible-var/" variant="secondary">
+                Voir le guide d’identification
+              </CtaLink>
             </div>
           </div>
-          <div className="grid gap-3 sm:grid-cols-2">
-            {urgentSigns.map((item) => (
-              <div key={item} className="rounded-[8px] border border-white/12 bg-white/8 p-4 text-sm font-semibold leading-6">
-                {item}
+        </div>
+      </section>
+
+      <section className="bg-white py-12 sm:py-16">
+        <div className="container">
+          <SectionTitle eyebrow="Confiance" title="Des preuves simples, sans promesse artificielle" />
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {trustItems.map((item) => (
+              <div key={item} className="flex gap-3 rounded-[8px] border border-[#1F4D3A]/12 bg-[#F6F1E8] p-4 text-sm font-black leading-6 text-[#1F2933]">
+                <span aria-hidden="true" className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#E86A33]" />
+                <span>{item}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-[#F6F1E8] py-14 sm:py-18">
+      <section className="bg-[#F6F1E8] py-12 sm:py-16">
         <div className="container">
           <SectionTitle
-            eyebrow="Var 83"
-            title="Communes couvertes dans le Var"
-            text="Les communes avec une page dédiée sont cliquables. Les autres peuvent être indiquées dans le formulaire de demande."
+            eyebrow="Pour qui ?"
+            title="Une demande utile selon votre situation"
+            text="Le bon relais dépend du lieu, du niveau d’urgence, de l’accès et des personnes à coordonner."
           />
-          <div className="mt-8 flex flex-wrap gap-2">
+          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {audienceCards.map((card) => (
+              <article key={card.title} className="rounded-[8px] border border-[#1F4D3A]/12 bg-white p-5">
+                <h3 className="text-xl font-black text-[#1F2933]">{card.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-[#51606d]">{card.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-12 sm:py-16">
+        <div className="container">
+          <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
+            <SectionTitle
+              eyebrow="Services"
+              title="Services principaux dans le Var"
+              text="Retrouvez les pages mères existantes pour préciser les signes, les lieux touchés et les informations utiles avant rappel."
+            />
+            <Link className="font-black text-[#E86A33] hover:text-[#cf5524]" href="/traitement-nuisibles-var/">
+              Voir tous les traitements -&gt;
+            </Link>
+          </div>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {services.slice(0, 8).map((service) => (
+              <Link
+                key={service.slug}
+                href={`/${service.slug}/`}
+                className="focus-ring rounded-[8px] border border-[#1F4D3A]/12 bg-white p-5 transition hover:border-[#E86A33] hover:shadow-[0_14px_38px_rgba(31,77,58,.12)]"
+              >
+                <PestIcon name={service.icon} className="h-10 w-10 text-[#1F4D3A]" />
+                <h3 className="mt-4 text-lg font-black text-[#1F2933]">{service.shortName}</h3>
+                <p className="mt-2 text-sm leading-6 text-[#51606d]">{service.description}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#1F4D3A] py-12 text-white sm:py-16">
+        <div className="container grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[.14em] text-[#F2C94C]">Var 83</p>
+            <h2 className="mt-3 text-3xl font-black leading-tight sm:text-4xl">Villes et zones couvertes progressivement</h2>
+            <p className="mt-4 leading-8 text-white/78">
+              Les communes avec une page dédiée sont cliquables. Les autres peuvent être précisées dans le formulaire.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2">
             {requestedCities.map((name) => {
               const city = cityMap.get(name);
               return city ? (
                 <Link
                   key={name}
                   href={`/villes/${city.slug}/`}
-                  className="focus-ring rounded-full border border-[#1F4D3A]/15 bg-white px-4 py-2 text-sm font-black text-[#1F4D3A] transition hover:border-[#E86A33] hover:text-[#E86A33]"
+                  className="focus-ring rounded-full border border-white/15 bg-white px-4 py-2 text-sm font-black text-[#1F4D3A] transition hover:bg-[#F2C94C]"
                 >
                   {name}
                 </Link>
               ) : (
-                <span key={name} className="rounded-full border border-[#1F4D3A]/10 bg-white/60 px-4 py-2 text-sm font-bold text-[#51606d]">
+                <span key={name} className="rounded-full border border-white/15 bg-white/8 px-4 py-2 text-sm font-bold text-white/82">
                   {name}
                 </span>
               );
@@ -311,69 +340,62 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-white py-14 sm:py-18">
+      <section className="bg-[#F6F1E8] py-12 sm:py-16">
         <div className="container">
-          <SectionTitle eyebrow="Confiance" title="Pourquoi passer par Stop Nuisible Var ?" />
-          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {trustCards.map(([title, text]) => (
-              <article key={title} className="rounded-[8px] border border-[#1F4D3A]/12 bg-[#F6F1E8] p-5">
-                <h3 className="text-lg font-black text-[#1F2933]">{title}</h3>
-                <p className="mt-3 text-sm leading-7 text-[#51606d]">{text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#F6F1E8] py-14 sm:py-18">
-        <div className="container grid gap-8 lg:grid-cols-[.85fr_1.15fr]">
-          <SectionTitle eyebrow="Questions" title="FAQ courte" />
-          <FAQ items={faqItems} />
-        </div>
-      </section>
-
-      <section className="bg-white py-12 sm:py-14">
-        <div className="container">
-          <div className="rounded-[8px] border border-[#1F4D3A]/12 bg-[#F6F1E8] p-5 sm:p-6">
-            <h2 className="text-2xl font-black text-[#1F2933]">Dernières pages locales utiles</h2>
-            <p className="mt-3 max-w-2xl text-sm leading-7 text-[#51606d]">
-              Quelques pages récemment ajoutées pour préciser votre demande selon la ville et le nuisible.
-            </p>
-            <div className="mt-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
-              {recentLocalPages.map((page) => (
-                <Link
-                  key={page.href}
-                  href={page.href}
-                  className="focus-ring rounded-[8px] border border-[#1F4D3A]/12 bg-white px-4 py-3 text-sm font-black text-[#1F4D3A] transition hover:border-[#E86A33] hover:text-[#E86A33]"
-                >
-                  {page.label}
-                </Link>
-              ))}
+          <div className="rounded-[8px] border border-[#1F4D3A]/12 bg-white p-5 sm:p-6">
+            <div className="grid gap-6 lg:grid-cols-[.8fr_1.2fr]">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[.14em] text-[#E86A33]">Pages locales</p>
+                <h2 className="mt-3 text-3xl font-black leading-tight text-[#1F2933]">Pages locales récentes</h2>
+                <p className="mt-4 text-sm leading-7 text-[#51606d]">
+                  Quelques pages utiles pour qualifier la demande selon la ville et le nuisible, sans changer les URLs existantes.
+                </p>
+              </div>
+              <div className="grid gap-2 sm:grid-cols-2">
+                {recentLocalPages.map((page) => (
+                  <Link
+                    key={page.href}
+                    href={page.href}
+                    className="focus-ring rounded-[8px] border border-[#1F4D3A]/12 bg-[#F6F1E8] px-4 py-3 text-sm font-black text-[#1F4D3A] transition hover:border-[#E86A33] hover:text-[#E86A33]"
+                  >
+                    {page.label}
+                  </Link>
+                ))}
+              </div>
             </div>
-            <div className="mt-5 rounded-[8px] border border-[#1F4D3A]/10 bg-white p-4">
-              <h3 className="text-lg font-black text-[#1F2933]">Besoin d&apos;identifier un nuisible ?</h3>
+            <div className="mt-6 rounded-[8px] border border-[#1F4D3A]/10 bg-[#F6F1E8] p-4">
+              <h3 className="text-lg font-black text-[#1F2933]">Besoin d’identifier un nuisible ?</h3>
               <p className="mt-2 text-sm leading-7 text-[#51606d]">
-                Consultez notre guide pour reconnaître les signes fréquents : rats, cafards, punaises de lit, guêpes, frelons, termites et autres nuisibles dans le Var.
+                Le guide d’identification aide à comparer les signes observés avant d’envoyer une demande.
               </p>
-              <Link className="mt-3 inline-flex font-black text-[#E86A33] hover:text-[#cf5524]" href="/guides/identifier-un-nuisible-var/">
-                Lire le guide d&apos;identification -&gt;
+              <Link className="mt-3 inline-flex font-black text-[#E86A33] hover:text-[#cf5524]" href="/guides/identifier-un-nuisible-var/" data-track-cta>
+                Lire le guide d’identification -&gt;
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-[#1F4D3A] py-14 text-white sm:py-18">
+      <section className="bg-white py-12 sm:py-16">
+        <div className="container grid gap-8 lg:grid-cols-[.85fr_1.15fr]">
+          <SectionTitle eyebrow="Questions" title="Questions fréquentes" />
+          <FAQ items={faqItems} />
+        </div>
+      </section>
+
+      <section className="bg-[#1F4D3A] py-12 text-white sm:py-16">
         <div className="container flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
           <div>
             <p className="text-xs font-black uppercase tracking-[.14em] text-[#F2C94C]">Demande de rappel</p>
             <h2 className="mt-3 max-w-2xl text-3xl font-black leading-tight sm:text-4xl">
-              Besoin d&apos;un rappel pour un problème de nuisibles dans le Var ?
+              Décrivez le problème, la commune et les signes observés.
             </h2>
           </div>
           <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-            <CtaLink>Demander un rappel gratuit</CtaLink>
-            <CtaLink variant="secondary">Ajouter une photo</CtaLink>
+            <CtaLink href="/demande-devis/">Demander un rappel gratuit</CtaLink>
+            <CtaLink href="/guides/identifier-un-nuisible-var/" variant="secondary">
+              Identifier le nuisible
+            </CtaLink>
           </div>
         </div>
       </section>

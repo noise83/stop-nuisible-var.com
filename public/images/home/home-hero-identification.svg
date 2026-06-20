@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 680" role="img" aria-labelledby="title desc">
+  <title id="title">Identification d'un nuisible dans un logement du Var</title>
+  <desc id="desc">Illustration sobre montrant un logement, un jardin, une cuisine, des traces, un nid à distance, un téléphone et une carte du Var.</desc>
+  <rect width="880" height="680" rx="18" fill="#F6F1E8"/>
+  <rect x="42" y="50" width="796" height="580" rx="14" fill="#FFFFFF" stroke="#D9D3C6" stroke-width="2"/>
+  <path d="M86 380c66-57 129-83 191-77 70 7 110 56 182 52 77-4 114-64 190-59 58 4 106 43 145 99v184H86V380Z" fill="#E6F0EA"/>
+  <path d="M86 579h708" stroke="#1F4D3A" stroke-width="3" stroke-linecap="round" opacity=".18"/>
+
+  <g transform="translate(86 105)">
+    <rect x="0" y="72" width="298" height="236" rx="10" fill="#F6F1E8" stroke="#D9D3C6" stroke-width="2"/>
+    <path d="M28 75 148 0l122 75" fill="none" stroke="#1F4D3A" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="48" y="140" width="76" height="168" rx="7" fill="#FFFFFF" stroke="#1F4D3A" stroke-width="3"/>
+    <rect x="158" y="128" width="82" height="70" rx="7" fill="#FFFFFF" stroke="#1F4D3A" stroke-width="3"/>
+    <path d="M158 163h82M199 128v70" stroke="#D9D3C6" stroke-width="3"/>
+    <path d="M42 235h70M168 236h85" stroke="#E86A33" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="250" cy="260" r="8" fill="#1F4D3A" opacity=".32"/>
+    <circle cx="266" cy="248" r="5" fill="#1F4D3A" opacity=".24"/>
+  </g>
+
+  <g transform="translate(502 88)">
+    <rect x="0" y="0" width="222" height="334" rx="24" fill="#102337"/>
+    <rect x="18" y="24" width="186" height="286" rx="12" fill="#FFFFFF"/>
+    <path d="M57 70h108M57 102h78" stroke="#1F4D3A" stroke-width="9" stroke-linecap="round"/>
+    <rect x="46" y="138" width="130" height="82" rx="10" fill="#F6F1E8" stroke="#D9D3C6" stroke-width="2"/>
+    <path d="M68 180c25-28 54-39 90-31" fill="none" stroke="#1F4D3A" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="94" cy="176" r="7" fill="#E86A33"/>
+    <circle cx="135" cy="160" r="7" fill="#E86A33"/>
+    <rect x="46" y="242" width="130" height="36" rx="8" fill="#E86A33"/>
+    <path d="M82 260h58" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="111" cy="322" r="5" fill="#FFFFFF" opacity=".72"/>
+  </g>
+
+  <g transform="translate(518 420)">
+    <rect x="0" y="0" width="238" height="118" rx="12" fill="#1F4D3A"/>
+    <path d="M39 73c20-34 48-53 87-58 31-4 61 4 80 27" fill="none" stroke="#F6F1E8" stroke-width="8" stroke-linecap="round"/>
+    <path d="M28 90c44 13 89 12 136-3 23-8 36-18 52-31" fill="none" stroke="#E86A33" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="88" cy="63" r="6" fill="#F2C94C"/>
+    <circle cx="137" cy="45" r="6" fill="#F2C94C"/>
+    <circle cx="163" cy="76" r="6" fill="#F2C94C"/>
+  </g>
+
+  <g transform="translate(121 456)">
+    <rect x="0" y="0" width="260" height="86" rx="12" fill="#FFFFFF" stroke="#D9D3C6" stroke-width="2"/>
+    <path d="M31 35h94M31 56h64" stroke="#1F4D3A" stroke-width="8" stroke-linecap="round"/>
+    <path d="M164 49c12-17 26-25 43-23 16 2 26 13 31 29" fill="none" stroke="#E86A33" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="205" cy="49" r="6" fill="#1F4D3A"/>
+    <path d="M220 45h21" stroke="#1F4D3A" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <g transform="translate(368 262)">
+    <path d="M71 32c31-23 78-15 98 18 21 34 3 77-35 87-38 11-78-16-86-54-3-18 4-37 23-51Z" fill="#F2C94C" opacity=".72"/>
+    <path d="M42 114c12-28 34-47 67-56" fill="none" stroke="#1F4D3A" stroke-width="6" stroke-linecap="round"/>
+    <path d="M130 19c14 11 22 25 25 42" fill="none" stroke="#1F4D3A" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="101" cy="73" r="8" fill="#E86A33"/>
+    <path d="M101 73c-20-9-35-8-46 4M101 73c21-5 36-1 47 12" stroke="#1F4D3A" stroke-width="5" stroke-linecap="round"/>
+  </g>
+
+  <g transform="translate(624 550)">
+    <path d="M20 15c32-18 70-17 104 3" fill="none" stroke="#1F4D3A" stroke-width="7" stroke-linecap="round"/>
+    <path d="M31 34c26-13 55-12 83 2" fill="none" stroke="#1F4D3A" stroke-width="7" stroke-linecap="round" opacity=".6"/>
+    <circle cx="72" cy="53" r="10" fill="#E86A33"/>
+  </g>
+
+  <g transform="translate(116 596)">
+    <rect x="0" y="0" width="210" height="38" rx="19" fill="#1F4D3A"/>
+    <path d="M31 19h148" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+  </g>
+</svg>
