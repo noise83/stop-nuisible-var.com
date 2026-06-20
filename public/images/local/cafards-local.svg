@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-labelledby="title desc">
+  <title id="title">Demande locale pour cafards</title>
+  <desc id="desc">Illustration sobre d'une cuisine et d'un commerce avec indices discrets de blattes.</desc>
+  <rect width="960" height="520" fill="#F6F1E8"/>
+  <path d="M0 382c112-34 209-34 291 0 82 35 179 35 291 0 125-39 251-32 378 21v117H0Z" fill="#E3EAD9"/>
+  <g transform="translate(118 126)">
+    <rect width="406" height="272" rx="8" fill="#FFFFFF" stroke="#1F4D3A" stroke-width="6"/>
+    <rect x="36" y="54" width="128" height="88" fill="#EAF1EC" stroke="#1F4D3A" stroke-width="5"/>
+    <path d="M36 98h128M100 54v88" stroke="#1F4D3A" stroke-width="4"/>
+    <rect x="210" y="52" width="140" height="90" fill="#E8DDC8" stroke="#1F4D3A" stroke-width="5"/>
+    <path d="M210 96h140M280 52v90" stroke="#1F4D3A" stroke-width="4"/>
+    <rect x="36" y="178" width="314" height="52" fill="#D5C29F" stroke="#1F4D3A" stroke-width="5"/>
+    <circle cx="86" cy="204" r="6" fill="#1F4D3A"/>
+    <circle cx="212" cy="204" r="6" fill="#1F4D3A"/>
+    <path d="M54 258h286" stroke="#1F4D3A" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(592 150)">
+    <rect x="0" y="52" width="234" height="190" fill="#FFFDF8" stroke="#1F4D3A" stroke-width="6"/>
+    <path d="M0 58 116 0l118 58" fill="#1F4D3A"/>
+    <rect x="38" y="96" width="70" height="88" fill="#EAF1EC" stroke="#1F4D3A" stroke-width="5"/>
+    <rect x="137" y="96" width="58" height="146" fill="#D5C29F" stroke="#1F4D3A" stroke-width="5"/>
+    <path d="M137 170h58" stroke="#1F4D3A" stroke-width="4"/>
+  </g>
+  <g fill="#1F4D3A" opacity=".86">
+    <ellipse cx="446" cy="388" rx="18" ry="9"/>
+    <path d="M429 388h-24M463 388h24M436 381l-18-15M456 381l18-15M436 395l-18 15M456 395l18 15" stroke="#1F4D3A" stroke-width="4" stroke-linecap="round"/>
+    <ellipse cx="536" cy="414" rx="14" ry="7"/>
+    <path d="M523 414h-18M549 414h18M529 408l-14-11M543 408l14-11M529 420l-14 11M543 420l14 11" stroke="#1F4D3A" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="384" cy="424" r="4"/>
+    <circle cx="407" cy="433" r="4"/>
+    <circle cx="585" cy="390" r="4"/>
+  </g>
+  <g transform="translate(660 70)">
+    <rect width="190" height="84" rx="8" fill="#FFFFFF" stroke="#1F4D3A" stroke-width="5"/>
+    <path d="M28 32h132M28 56h96" stroke="#1F4D3A" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <circle cx="116" cy="92" r="30" fill="#F2C94C" opacity=".75"/>
+</svg>
