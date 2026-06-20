@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { CityCard, RelatedLinks, ServiceCard } from "@/components/cards";
@@ -95,18 +96,47 @@ function LocalLandingPage({ slug }: { slug: string }) {
               <ButtonLink>Demander un rappel gratuit</ButtonLink>
             </div>
           </div>
-          <LeadForm />
+          <div className="space-y-4">
+            <LeadForm defaultCity={landing.formDefaults?.city} defaultPest={landing.formDefaults?.pest} />
+            <LocalLandingTrustBox />
+          </div>
         </div>
       </Section>
       <TrustList />
       <Section tone="white">
         <div className="container grid gap-8 lg:grid-cols-[1fr_360px]">
           <article className="space-y-5 leading-8 text-[#405160]">
+            {landing.heroImage ? (
+              <Image
+                src={landing.heroImage.src}
+                alt={landing.heroImage.alt}
+                width={960}
+                height={520}
+                loading="lazy"
+                unoptimized
+                className="w-full rounded-[8px] border border-[#102337]/10 bg-[#f5f1e8] object-cover shadow-sm"
+              />
+            ) : null}
             <h2 className="text-3xl font-black text-[#102337]">Contexte local à {city.name}</h2>
             <p>{landing.localContext}</p>
             <p>
               Stop Nuisible Var reste une plateforme de mise en relation : la demande est qualifiée selon la commune, le nuisible, le type de lieu et l&apos;urgence, puis elle peut être transmise à un professionnel partenaire avec votre consentement.
             </p>
+            {landing.localAreas?.length ? (
+              <div className="rounded-[8px] border border-[#102337]/10 bg-white p-5">
+                <h2 className="text-3xl font-black text-[#102337]">Dératisation à Hyères : secteurs concernés</h2>
+                <p className="mt-4">
+                  Les demandes peuvent venir du centre-ville, du port, de Giens, de L&apos;Ayguade, de La Capte, de Costebelle, des Salins ou de logements proches du littoral. Le contexte n&apos;est pas le même entre une villa avec jardin, une location saisonnière, un garage, un local poubelle ou un commerce.
+                </p>
+                <ul className="mt-4 flex flex-wrap gap-2">
+                  {landing.localAreas.map((area) => (
+                    <li key={area} className="rounded-full bg-[#f5f1e8] px-3 py-1 text-sm font-bold text-[#102337]">
+                      {area}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
             <h2 className="text-3xl font-black text-[#102337]">Avant de demander un rappel</h2>
             <p>
               Les communes proches comme {city.neighbours.join(", ")} peuvent aussi être précisées si le problème se situe autour de {city.name} ou dans le même bassin de rappel.
@@ -132,6 +162,29 @@ function LocalLandingPage({ slug }: { slug: string }) {
       </Section>
       <CTABand title={`Besoin d'un rappel à ${city.name} ?`} text="Le formulaire court permet de qualifier la demande rapidement avec un téléphone et un consentement clair." />
     </main>
+  );
+}
+
+function LocalLandingTrustBox() {
+  const items = [
+    "Demande gratuite et sans engagement",
+    "Photo facultative",
+    "Transmission uniquement avec consentement",
+    "Rappel selon commune, nuisible et disponibilités",
+    "Stop Nuisible Var reste une plateforme de mise en relation",
+  ];
+
+  return (
+    <div className="rounded-[8px] border border-[#102337]/10 bg-[#f5f1e8] p-4 text-sm font-semibold leading-6 text-[#102337]">
+      <ul className="grid gap-2">
+        {items.map((item) => (
+          <li key={item} className="flex gap-2">
+            <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#bf593f]" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-labelledby="title desc">
+  <title id="title">Demande de deratisation a Hyeres</title>
+  <desc id="desc">Illustration sobre d'une villa avec jardin, garage et indices discrets de passage de rongeurs.</desc>
+  <rect width="960" height="520" fill="#F6F1E8"/>
+  <path d="M0 382c90-42 174-34 252-18 102 21 188 13 286-22 134-49 278-34 422 22v156H0Z" fill="#D8E4D7"/>
+  <path d="M84 340c45-80 108-126 188-138 75-11 148 15 218 48 89 42 181 57 285 28 48-13 88-8 124 17v150H84Z" fill="#E9DFCC"/>
+  <g transform="translate(210 145)">
+    <path d="M35 150h430v190H35Z" fill="#FFFDF8" stroke="#1F4D3A" stroke-width="6"/>
+    <path d="M8 160 250 18l242 142Z" fill="#1F4D3A"/>
+    <path d="M70 177h110v82H70Z" fill="#E8F1ED" stroke="#1F4D3A" stroke-width="5"/>
+    <path d="M305 184h112v156H305Z" fill="#D9CAB1" stroke="#1F4D3A" stroke-width="5"/>
+    <path d="M98 203h54M125 177v82" stroke="#1F4D3A" stroke-width="4"/>
+    <path d="M305 260h112" stroke="#1F4D3A" stroke-width="5"/>
+    <circle cx="382" cy="260" r="5" fill="#1F4D3A"/>
+  </g>
+  <g transform="translate(105 292)">
+    <path d="M0 74h170V24c0-13 11-24 24-24h142c13 0 24 11 24 24v160H0Z" fill="#EDE4D5" stroke="#1F4D3A" stroke-width="6"/>
+    <path d="M42 111h106v73H42Z" fill="#C9B899" stroke="#1F4D3A" stroke-width="5"/>
+    <path d="M204 48h98v136h-98Z" fill="#F7F2E8" stroke="#1F4D3A" stroke-width="5"/>
+    <path d="M42 138h106" stroke="#1F4D3A" stroke-width="4"/>
+  </g>
+  <g fill="#1F4D3A" opacity=".86">
+    <circle cx="152" cy="436" r="5"/>
+    <circle cx="176" cy="424" r="4"/>
+    <circle cx="202" cy="437" r="5"/>
+    <circle cx="232" cy="426" r="4"/>
+    <path d="M706 403c18-10 41-8 58 4" fill="none" stroke="#1F4D3A" stroke-width="5" stroke-linecap="round"/>
+    <ellipse cx="786" cy="415" rx="21" ry="10"/>
+    <circle cx="810" cy="411" r="7"/>
+    <path d="M770 410c-10-8-22-9-34-4" fill="none" stroke="#1F4D3A" stroke-width="4" stroke-linecap="round"/>
+    <path d="M823 411h17" stroke="#1F4D3A" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(642 88)">
+    <rect x="0" y="0" width="212" height="126" rx="8" fill="#FFFFFF" stroke="#1F4D3A" stroke-width="5"/>
+    <path d="M31 38h150M31 67h118M31 96h82" stroke="#1F4D3A" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="174" cy="93" r="18" fill="#E86A33"/>
+    <path d="m166 93 6 6 12-16" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <path d="M78 382c35-35 81-52 136-48M742 354c45-23 89-26 132-8" fill="none" stroke="#1F4D3A" stroke-width="8" stroke-linecap="round" opacity=".32"/>
+  <circle cx="126" cy="128" r="34" fill="#F2C94C" opacity=".8"/>
+</svg>

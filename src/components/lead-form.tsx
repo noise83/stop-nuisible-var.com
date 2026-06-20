@@ -14,7 +14,7 @@ const maxPhotoSize = 4 * 1024 * 1024;
 const photoFormatError = "Format de photo non accepté. Utilisez JPG, PNG ou WEBP.";
 const photoSizeError = "La photo est trop lourde. Taille maximale : 4 Mo.";
 
-export function LeadForm() {
+export function LeadForm({ defaultCity = "", defaultPest = "" }: { defaultCity?: string; defaultPest?: string }) {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
   const [photoError, setPhotoError] = useState("");
@@ -103,8 +103,8 @@ export function LeadForm() {
         </a>
       </div>
       <div className="grid gap-5 md:grid-cols-2">
-        <Select label="Type de nuisible" name="pest" options={pests} required />
-        <Field label="Ville" name="city" required />
+        <Select label="Type de nuisible" name="pest" options={pests} required defaultValue={defaultPest} />
+        <Field label="Ville" name="city" required defaultValue={defaultCity} />
         <Field label="Code postal" name="postalCode" inputMode="numeric" required />
         <Select label="Urgence" name="urgency" options={urgencies} required />
         <Select label="Type de lieu" name="placeType" options={placeTypes} required />
@@ -155,20 +155,20 @@ export function LeadForm() {
   );
 }
 
-function Field({ label, name, type = "text", inputMode, required = false }: { label: string; name: string; type?: string; inputMode?: React.HTMLAttributes<HTMLInputElement>["inputMode"]; required?: boolean }) {
+function Field({ label, name, type = "text", inputMode, required = false, defaultValue = "" }: { label: string; name: string; type?: string; inputMode?: React.HTMLAttributes<HTMLInputElement>["inputMode"]; required?: boolean; defaultValue?: string }) {
   return (
     <label className="block">
       <span className="text-sm font-bold text-[#102337]">{label}</span>
-      <input name={name} type={type} inputMode={inputMode} required={required} className="mt-2 w-full rounded-[7px] border border-[#102337]/15 bg-[#f5f1e8] px-4 py-3 outline-none focus:border-[#bf593f]" />
+      <input name={name} type={type} inputMode={inputMode} required={required} defaultValue={defaultValue} className="mt-2 w-full rounded-[7px] border border-[#102337]/15 bg-[#f5f1e8] px-4 py-3 outline-none focus:border-[#bf593f]" />
     </label>
   );
 }
 
-function Select({ label, name, options, required = false, className = "" }: { label: string; name: string; options: string[]; required?: boolean; className?: string }) {
+function Select({ label, name, options, required = false, className = "", defaultValue = "" }: { label: string; name: string; options: string[]; required?: boolean; className?: string; defaultValue?: string }) {
   return (
     <label className={`block ${className}`}>
       <span className="text-sm font-bold text-[#102337]">{label}</span>
-      <select name={name} required={required} onChange={() => name === "pest" && trackEvent("nuisible_select")} className="mt-2 w-full rounded-[7px] border border-[#102337]/15 bg-[#f5f1e8] px-4 py-3 outline-none focus:border-[#bf593f]">
+      <select name={name} required={required} defaultValue={defaultValue} onChange={() => name === "pest" && trackEvent("nuisible_select")} className="mt-2 w-full rounded-[7px] border border-[#102337]/15 bg-[#f5f1e8] px-4 py-3 outline-none focus:border-[#bf593f]">
         <option value="">Choisir</option>
         {options.map((option) => <option key={option} value={option}>{option}</option>)}
       </select>

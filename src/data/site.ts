@@ -50,6 +50,15 @@ export type LocalLanding = {
   callbackAdvice: string[];
   associatedLinks: Array<{ label: string; href: string }>;
   faq: FAQItem[];
+  formDefaults?: {
+    city?: string;
+    pest?: string;
+  };
+  heroImage?: {
+    src: string;
+    alt: string;
+  };
+  localAreas?: string[];
 };
 
 export type LegacyLocalLandingRedirect = {
@@ -834,40 +843,54 @@ export const localLandings: LocalLanding[] = [
     serviceSlug: "deratisation-var",
     citySlug: "hyeres",
     h1: "Dératisation à Hyères : rats et souris",
-    title: "Dératisation Hyères - Villas, jardins et locations",
-    description: "Rats ou souris à Hyères : villa, jardin, location, résidence ou local technique. Décrivez les signes et demandez un rappel gratuit.",
-    promise: "Bruits dans les combles, crottes près d'un garage, traces autour d'une villa ou doute dans une location à Hyères : détaillez le contexte pour faciliter l'orientation.",
+    title: "Dératisation Hyères : rats, souris, villa et jardin",
+    description: "Rats ou souris à Hyères : bruits nocturnes, crottes, rongements, garage, cave, jardin ou villa. Décrivez les signes et demandez un rappel gratuit.",
+    promise: "Bruits nocturnes, crottes près des poubelles, traces grasses dans un garage ou rongements dans une villa à Hyères : détaillez la situation pour transmettre une demande précise.",
     localContext:
-      "À Hyères, les demandes de dératisation concernent souvent des villas avec jardin, résidences proches du littoral, locations saisonnières, garages et dépendances. La qualification doit distinguer un passage extérieur, un accès par toiture ou vide sanitaire, et un problème déjà installé dans le logement.",
+      "À Hyères, les demandes de dératisation ne se ressemblent pas entre le centre-ville, le port, Giens, L'Ayguade, La Capte, Costebelle, les Salins et les logements proches du littoral. Une villa avec jardin, une location saisonnière, un garage, une cave, un local poubelle ou un commerce ne présentent pas les mêmes accès ni les mêmes contraintes de rappel.",
     observedSigns: [
-      "Bruits nocturnes dans les combles, cloisons, garages ou dépendances.",
-      "Crottes visibles près d'un local poubelle, d'une cuisine, d'un cellier ou d'une terrasse.",
-      "Rongements sur sacs, cartons, gaines, isolants ou réserves alimentaires.",
-      "Passage suspect autour d'une villa, d'une location occupée ou d'un jardin avec dépendance.",
+      "Bruits nocturnes dans les combles, cloisons, caves, garages ou faux plafonds.",
+      "Crottes visibles près des poubelles, d'une cave, d'un garage, d'un cellier ou d'une terrasse.",
+      "Rongements sur sacs, cartons, gaines, isolants, portes ou réserves alimentaires.",
+      "Traces grasses le long des murs, passages répétés ou odeur inhabituelle dans une zone fermée.",
+      "Indices autour d'une villa avec jardin, d'une location occupée, d'un commerce ou d'un local technique.",
     ],
     concernedPlaces: [
-      "Villas, maisons avec jardin, garages et cabanons.",
+      "Villas, maisons avec jardin, garages, cabanons et dépendances.",
       "Locations saisonnières, résidences et logements proches du littoral.",
-      "Caves, combles, vides sanitaires et locaux techniques.",
-      "Commerces, réserves et petites copropriétés avec locaux poubelles.",
+      "Caves, combles, vides sanitaires, locaux poubelles et locaux techniques.",
+      "Commerces, réserves, restaurants et petites copropriétés.",
     ],
     callbackAdvice: [
-      "Précisez si les traces sont à l'intérieur, à l'extérieur ou autour d'un accès au bâti.",
-      "Indiquez les dates d'occupation si la demande concerne une location.",
+      "Indiquez le secteur de Hyères concerné et si les signes sont à l'intérieur, à l'extérieur ou autour d'un accès au bâti.",
+      "Précisez les zones touchées : poubelles, cave, garage, combles, jardin, cuisine, réserve ou local technique.",
+      "Notez depuis quand les bruits, crottes, rongements, traces grasses ou odeurs inhabituelles sont observés.",
       "Ne manipulez pas les déjections à mains nues et conservez les indices visibles si possible.",
-      "Mentionnez les accès : jardin, toiture, garage, vide sanitaire ou local poubelle.",
+      "Mentionnez les contraintes d'accès ou d'occupation si la demande concerne une location saisonnière, un commerce ou une copropriété.",
     ],
     associatedLinks: [
       { label: "Dératisation dans le Var", href: "/deratisation-var/" },
       { label: "Nuisibles à Hyères", href: "/villes/hyeres/" },
       { label: "Demande de rappel", href: "/demande-devis/" },
+      { label: "Dératisation à Fréjus", href: "/deratisation-frejus/" },
       { label: "Cafards à Hyères", href: "/cafards-hyeres/" },
-      { label: "Punaises de lit à Hyères", href: "/punaises-de-lit-hyeres/" },
     ],
     faq: [
-      { question: "Une villa à Hyères peut-elle faire une demande de dératisation ?", answer: "Oui. Indiquez les traces observées, les accès possibles, les dépendances et si le problème touche l'intérieur ou les extérieurs." },
-      { question: "Stop Nuisible Var intervient-il directement à Hyères ?", answer: "Non. La plateforme transmet votre demande à un professionnel partenaire selon la commune, le nuisible et l'urgence." },
+      { question: "Quels signes de rats ou souris signaler à Hyères ?", answer: "Les bruits nocturnes, crottes, rongements, traces grasses, odeurs inhabituelles et passages près des poubelles, caves, garages ou combles sont utiles à préciser." },
+      { question: "Une villa avec jardin à Hyères peut-elle faire une demande ?", answer: "Oui. Indiquez les accès possibles, les dépendances, le garage, le jardin et si les traces sont vues à l'intérieur ou autour du logement." },
+      { question: "Que faire avant le rappel ?", answer: "Conservez les indices visibles, évitez de manipuler les déjections à mains nues et notez les zones touchées, la fréquence et les contraintes d'accès." },
+      { question: "Stop Nuisible Var intervient-il directement à Hyères ?", answer: "Non. La plateforme qualifie votre demande puis peut la transmettre à un professionnel partenaire selon la commune, le nuisible et l'urgence." },
+      { question: "La demande est-elle obligatoire après le rappel ?", answer: "Non. La demande de rappel est gratuite et sans engagement ; vous restez libre d'accepter ou non la suite proposée." },
     ],
+    formDefaults: {
+      city: "Hyères",
+      pest: "Rats ou souris",
+    },
+    heroImage: {
+      src: "/images/local/deratisation-hyeres.svg",
+      alt: "Illustration d’une demande de dératisation à Hyères dans une villa avec jardin et garage",
+    },
+    localAreas: ["centre-ville", "port", "Giens", "L'Ayguade", "La Capte", "Costebelle", "Salins"],
   },
   {
     slug: "cafards-hyeres",
