@@ -10,7 +10,7 @@ import { LeadForm } from "@/components/lead-form";
 import { CTABand, EmergencyPanel, ProcessSteps } from "@/components/page-blocks";
 import { TrustList } from "@/components/TrustList";
 import { ButtonLink, Eyebrow, PhoneLink, Section } from "@/components/ui";
-import { extensionCities, getCity, getLocalLanding, getService, globalPages, guides, localLandings, priorityCities, services } from "@/data/site";
+import { cityProfiles, extensionCities, getCity, getLocalLanding, getService, globalPages, guides, localLandings, pestProfileByServiceSlug, priorityCities, services } from "@/data/site";
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from "@/lib/jsonld";
 
 type Params = Promise<{ slug: string }>;
@@ -76,6 +76,7 @@ function LocalLandingPage({ slug }: { slug: string }) {
   const city = getCity(landing.citySlug);
   if (!service || !city) notFound();
   const relatedLinks = landing.associatedLinks;
+  const differentiationPoints = getDifferentiationPoints(landing, city.name, service.shortName);
   const crumbs = [
     { name: "Accueil", href: "/" },
     { name: service.shortName, href: `/${service.slug}/` },
@@ -138,6 +139,19 @@ function LocalLandingPage({ slug }: { slug: string }) {
                 </ul>
               </div>
             ) : null}
+            {differentiationPoints.length ? (
+              <div className="rounded-[8px] border border-[#102337]/10 bg-[#f5f1e8] p-5">
+                <h2 className="text-2xl font-black text-[#102337] sm:text-3xl">Ce qui change à {city.name} pour {service.shortName.toLowerCase()}</h2>
+                <ul className="mt-4 space-y-3">
+                  {differentiationPoints.map((point) => (
+                    <li key={point} className="flex gap-3">
+                      <span aria-hidden="true" className="mt-3 h-2 w-2 shrink-0 rounded-full bg-[#bf593f]" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
             <h2 className="text-2xl font-black text-[#102337] sm:text-3xl">Avant de demander un rappel</h2>
             <p>
               Les communes proches comme {city.neighbours.join(", ")} peuvent aussi être précisées si le problème se situe autour de {city.name} ou dans le même bassin de rappel.
@@ -192,6 +206,29 @@ function LocalLandingTrustBox() {
 function formatAreas(areas: string[]) {
   if (areas.length <= 1) return areas.join("");
   return `${areas.slice(0, -1).join(", ")} et ${areas[areas.length - 1]}`;
+}
+
+function getDifferentiationPoints(
+  landing: NonNullable<ReturnType<typeof getLocalLanding>>,
+  cityName: string,
+  serviceName: string,
+) {
+  if (landing.differentiationPoints?.length) return landing.differentiationPoints.slice(0, 5);
+
+  const cityProfile = cityProfiles[landing.citySlug];
+  const pestProfile = pestProfileByServiceSlug[landing.serviceSlug];
+  if (!cityProfile || !pestProfile) return [];
+
+  const areas = landing.localAreas?.slice(0, 3).join(", ");
+  return [
+    cityProfile.localIntroAngle,
+    areas
+      ? `Les secteurs comme ${areas} ne posent pas les mêmes contraintes d'accès, d'occupation et de rappel.`
+      : `Le type de lieu à ${cityName} doit être précisé avant transmission.`,
+    `Pour ${serviceName.toLowerCase()}, les signes à décrire en priorité sont : ${pestProfile.typicalSigns.slice(0, 3).join(", ")}.`,
+    `Les lieux sensibles à signaler sont notamment ${pestProfile.sensitivePlaces.slice(0, 3).join(", ")}, surtout si ${cityProfile.decisionMakers.slice(0, 2).join(" ou ")} doivent être coordonnés.`,
+    pestProfile.photoAdvice,
+  ];
 }
 
 function ServicePage({ slug }: { slug: string }) {

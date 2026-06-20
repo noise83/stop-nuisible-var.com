@@ -107,6 +107,166 @@ export type LocalLanding = {
     alt: string;
   };
   localAreas?: string[];
+  differentiationPoints?: string[];
+};
+
+export type CityProfile = {
+  cityType: string;
+  localAngles: string[];
+  commonPlaces: string[];
+  decisionMakers: string[];
+  localIntroAngle: string;
+};
+
+export type PestProfile = {
+  typicalSigns: string[];
+  sensitivePlaces: string[];
+  urgencySignals: string[];
+  photoAdvice: string;
+  localVariationHints: string[];
+};
+
+export const cityProfiles: Record<string, CityProfile> = {
+  toulon: {
+    cityType: "ville urbaine dense",
+    localAngles: ["appartements", "commerces", "restaurants", "immeubles", "port"],
+    commonPlaces: ["cuisines", "caves", "locaux poubelles", "parties communes", "rez-de-chaussée commerciaux"],
+    decisionMakers: ["occupants", "propriétaires", "syndics", "commerçants", "gestionnaires"],
+    localIntroAngle: "À Toulon, la densité urbaine et les immeubles mixtes rendent utile de distinguer logement, commerce et parties communes.",
+  },
+  hyeres: {
+    cityType: "ville littorale avec villas, jardins et locations",
+    localAngles: ["villas", "jardins", "littoral", "locations saisonnières", "résidences"],
+    commonPlaces: ["jardins", "garages", "terrasses", "cuisines", "locaux techniques"],
+    decisionMakers: ["occupants", "propriétaires", "conciergeries", "gestionnaires de location", "commerçants"],
+    localIntroAngle: "À Hyères, la qualification change souvent entre villa avec jardin, résidence proche du littoral et logement loué entre deux séjours.",
+  },
+  frejus: {
+    cityType: "ville touristique avec hébergements et résidences",
+    localAngles: ["tourisme", "résidences secondaires", "campings", "locations", "commerces saisonniers"],
+    commonPlaces: ["hébergements", "terrasses", "sanitaires collectifs", "réserves", "parties communes"],
+    decisionMakers: ["propriétaires", "conciergeries", "gestionnaires d'hébergement", "commerçants", "occupants"],
+    localIntroAngle: "À Fréjus, la rotation d'occupants et les hébergements touristiques imposent de préciser les dates, les accès et les zones exposées.",
+  },
+  draguignan: {
+    cityType: "ville intérieure avec maisons, caves et dépendances",
+    localAngles: ["maisons", "caves", "combles", "garages", "dépendances"],
+    commonPlaces: ["garages", "combles", "caves", "jardins", "locaux de stockage"],
+    decisionMakers: ["occupants", "propriétaires", "commerçants", "gestionnaires de bâtiment", "responsables de site"],
+    localIntroAngle: "À Draguignan, les demandes concernent souvent des maisons, dépendances ou locaux avec accès techniques à décrire clairement.",
+  },
+  "saint-raphael": {
+    cityType: "ville touristique avec résidences et littoral",
+    localAngles: ["tourisme", "résidences secondaires", "locations", "restaurants", "quartiers littoraux"],
+    commonPlaces: ["cuisines", "terrasses", "résidences", "garages", "locaux poubelles"],
+    decisionMakers: ["propriétaires", "conciergeries", "gestionnaires de résidence", "commerçants", "occupants"],
+    localIntroAngle: "À Saint-Raphaël, il faut souvent articuler logement occupé, résidence secondaire, commerce et disponibilité entre deux occupations.",
+  },
+  "la-seyne-sur-mer": {
+    cityType: "ville urbaine et littorale avec habitat collectif",
+    localAngles: ["copropriétés", "habitat collectif", "commerces", "logements proches du littoral", "parties communes"],
+    commonPlaces: ["appartements", "locaux poubelles", "caves", "gaines", "commerces"],
+    decisionMakers: ["occupants", "syndics", "bailleurs", "commerçants", "gestionnaires"],
+    localIntroAngle: "À La Seyne-sur-Mer, l'habitat collectif et les parties communes doivent être distingués d'un problème limité à un seul logement.",
+  },
+  brignoles: {
+    cityType: "ville intérieure avec maisons, jardins et zones d'activité",
+    localAngles: ["maisons", "jardins", "garages", "dépendances", "zones commerciales"],
+    commonPlaces: ["garages", "combles", "réserves", "locaux techniques", "stockages"],
+    decisionMakers: ["occupants", "propriétaires", "commerçants", "responsables de stockage", "gestionnaires"],
+    localIntroAngle: "À Brignoles, les maisons, dépendances et locaux de stockage demandent de préciser les accès et l'usage du lieu.",
+  },
+  "saint-tropez": {
+    cityType: "ville touristique avec locations, hôtels et besoin de discrétion",
+    localAngles: ["locations saisonnières", "hôtels", "résidences", "commerces", "discrétion"],
+    commonPlaces: ["chambres", "cuisines", "terrasses", "réserves", "espaces clients"],
+    decisionMakers: ["conciergeries", "propriétaires", "hôteliers", "gestionnaires", "commerçants"],
+    localIntroAngle: "À Saint-Tropez, le contexte de location ou d'hébergement rend les dates, l'accès et la discrétion particulièrement utiles à préciser.",
+  },
+  "six-fours-les-plages": {
+    cityType: "ville littorale avec résidences, jardins et locations",
+    localAngles: ["résidences", "locations", "jardins", "littoral", "commerces"],
+    commonPlaces: ["terrasses", "jardins", "cuisines", "locaux poubelles", "garages"],
+    decisionMakers: ["occupants", "propriétaires", "conciergeries", "syndics", "commerçants"],
+    localIntroAngle: "À Six-Fours-les-Plages, les demandes peuvent varier entre résidence, maison avec extérieur et logement loué.",
+  },
+  "la-garde": {
+    cityType: "ville urbaine avec habitat collectif, commerces et zones d'activité",
+    localAngles: ["copropriétés", "commerces", "zones d'activité", "habitat collectif", "maisons"],
+    commonPlaces: ["cuisines", "locaux poubelles", "réserves", "garages", "parties communes"],
+    decisionMakers: ["occupants", "syndics", "commerçants", "gestionnaires", "propriétaires"],
+    localIntroAngle: "À La Garde, la demande gagne à séparer logement, commerce, zone d'activité et parties communes.",
+  },
+};
+
+export const pestProfiles: Record<string, PestProfile> = {
+  punaises: {
+    typicalSigns: ["piqûres au réveil", "traces sombres sur literie", "insecte près d'un couchage", "doute après voyage"],
+    sensitivePlaces: ["chambres", "canapés-lits", "bagages", "locations", "résidences"],
+    urgencySignals: ["changement d'occupants proche", "plusieurs couchages touchés", "retour de voyage récent"],
+    photoAdvice: "Une photo peut aider si elle montre un insecte ou une trace près du couchage, sans déplacer matelas, linge ou bagages.",
+    localVariationHints: ["dates d'arrivée et de départ", "nombre de couchages", "rotation d'occupants", "résidence secondaire ou location"],
+  },
+  "rats-souris": {
+    typicalSigns: ["bruits nocturnes", "crottes", "rongements", "traces grasses", "odeur inhabituelle"],
+    sensitivePlaces: ["garages", "caves", "combles", "poubelles", "réserves"],
+    urgencySignals: ["activité répétée", "réserve alimentaire touchée", "commerce concerné", "accès intérieur au bâti"],
+    photoAdvice: "Une photo des traces, rongements ou passages peut aider, sans manipuler les déjections à mains nues.",
+    localVariationHints: ["accès au bâti", "jardin ou dépendance", "local poubelle", "stockage ou réserve"],
+  },
+  cafards: {
+    typicalSigns: ["blattes en cuisine", "présence près des gaines", "traces sombres", "odeur inhabituelle", "observation en plein jour"],
+    sensitivePlaces: ["cuisines", "commerces", "gaines", "parties communes", "locaux poubelles"],
+    urgencySignals: ["commerce alimentaire", "plusieurs pièces touchées", "parties communes signalées", "observation de jour"],
+    photoAdvice: "Une photo d'un insecte ou des traces peut aider si elle est prise sans disperser les objets ou pulvériser de produit.",
+    localVariationHints: ["cuisine ou salle d'eau", "gaines techniques", "commerce ou réserve", "logement voisin ou parties communes"],
+  },
+  "guepes-frelons": {
+    typicalSigns: ["allers-retours au même point", "nid visible", "activité en hauteur", "présence près d'une terrasse"],
+    sensitivePlaces: ["jardins", "terrasses", "toitures", "arbres", "zones de passage"],
+    urgencySignals: ["nid proche d'un passage", "enfants ou animaux exposés", "commerce ou hébergement concerné", "hauteur difficile"],
+    photoAdvice: "Une photo est utile seulement si elle peut être prise à distance, sans s'approcher du nid ni se mettre en danger.",
+    localVariationHints: ["hauteur du nid", "support", "accès depuis jardin ou rue", "passages exposés"],
+  },
+  termites: {
+    typicalSigns: ["bois fragilisé", "galeries", "plinthes ou huisseries suspectes", "ailes ou indices près du bois"],
+    sensitivePlaces: ["charpentes", "planchers", "caves", "huisseries", "dépendances"],
+    urgencySignals: ["élément bois fragilisé", "vente ou travaux prévus", "plusieurs pièces concernées"],
+    photoAdvice: "Une photo des bois ou indices visibles peut aider, sans casser ni gratter les éléments porteurs.",
+    localVariationHints: ["type de bois", "zone humide", "maison ancienne", "travaux ou vente en cours"],
+  },
+  "moustique-tigre": {
+    typicalSigns: ["piqûres répétées en journée", "présence autour d'eau stagnante", "activité sur terrasse ou jardin"],
+    sensitivePlaces: ["jardins", "terrasses", "balcons", "récipients d'eau", "abords de piscine"],
+    urgencySignals: ["piqûres quotidiennes", "zone extérieure inutilisable", "hébergement ou commerce exposé"],
+    photoAdvice: "Une photo du contexte extérieur peut aider, surtout les zones d'eau stagnante, sans manipulation risquée.",
+    localVariationHints: ["jardin ou balcon", "points d'eau", "occupation saisonnière", "terrasse ou piscine"],
+  },
+  chenilles: {
+    typicalSigns: ["cocons dans les pins", "chenilles en procession", "poils urticants suspectés", "activité près d'un jardin"],
+    sensitivePlaces: ["pins", "jardins", "écoles", "terrasses", "zones fréquentées par animaux"],
+    urgencySignals: ["enfants ou animaux exposés", "passage fréquent", "cocon accessible", "poils urticants suspectés"],
+    photoAdvice: "Une photo à distance du pin ou du cocon peut aider, sans toucher les chenilles ni les branches.",
+    localVariationHints: ["présence de pins", "distance des passages", "animaux ou enfants", "hauteur du cocon"],
+  },
+  depigeonnage: {
+    typicalSigns: ["fientes répétées", "nids", "bruits sous toiture", "salissures sur balcon ou façade"],
+    sensitivePlaces: ["balcons", "toitures", "rebords", "combles", "enseignes"],
+    urgencySignals: ["accès d'un commerce touché", "salissures répétées", "nid sur zone de passage", "locataire ou client exposé"],
+    photoAdvice: "Une photo des salissures ou de la zone occupée peut aider, sans monter en hauteur ni déranger les oiseaux.",
+    localVariationHints: ["hauteur d'accès", "balcon ou toiture", "commerce ou immeuble", "fréquence des salissures"],
+  },
+};
+
+export const pestProfileByServiceSlug: Record<string, PestProfile> = {
+  "punaises-de-lit-var": pestProfiles.punaises,
+  "deratisation-var": pestProfiles["rats-souris"],
+  "cafards-blattes-var": pestProfiles.cafards,
+  "guepes-frelons-var": pestProfiles["guepes-frelons"],
+  "termites-var": pestProfiles.termites,
+  "moustique-tigre-var": pestProfiles["moustique-tigre"],
+  "chenilles-processionnaires-var": pestProfiles.chenilles,
+  "depigeonnage-var": pestProfiles.depigeonnage,
 };
 
 export type LegacyLocalLandingRedirect = {
@@ -1202,9 +1362,8 @@ export const localLandings: LocalLanding[] = [
     faq: [
       { question: "Quels signes de rats ou souris signaler à Hyères ?", answer: "Les bruits nocturnes, crottes, rongements, traces grasses, odeurs inhabituelles et passages près des poubelles, caves, garages ou combles sont utiles à préciser." },
       { question: "Une villa avec jardin à Hyères peut-elle faire une demande ?", answer: "Oui. Indiquez les accès possibles, les dépendances, le garage, le jardin et si les traces sont vues à l'intérieur ou autour du logement." },
-      { question: "Que faire avant le rappel ?", answer: "Conservez les indices visibles, évitez de manipuler les déjections à mains nues et notez les zones touchées, la fréquence et les contraintes d'accès." },
+      { question: "Que préciser pour une location ou résidence à Hyères ?", answer: "Mentionnez les dates d'occupation, les contraintes d'accès, le local poubelle, les parties communes et la personne à rappeler." },
       { question: "Stop Nuisible Var intervient-il directement à Hyères ?", answer: "Non. La plateforme qualifie votre demande puis peut la transmettre à un professionnel partenaire selon la commune, le nuisible et l'urgence." },
-      { question: "La demande est-elle obligatoire après le rappel ?", answer: "Non. La demande de rappel est gratuite et sans engagement ; vous restez libre d'accepter ou non la suite proposée." },
     ],
     formDefaults: {
       city: "Hyères",
@@ -1214,6 +1373,13 @@ export const localLandings: LocalLanding[] = [
       src: "/images/local/deratisation-hyeres.svg",
       alt: "Illustration d’une demande de dératisation à Hyères dans une villa avec jardin et garage",
     },
+    differentiationPoints: [
+      "À Hyères, une demande de dératisation peut concerner une villa avec jardin, une résidence proche du littoral ou une location saisonnière avec contraintes d'accès.",
+      "Les secteurs centre-ville, port, Giens et L'Ayguade doivent être précisés car garages, caves, jardins et locaux poubelles ne se traitent pas comme un même contexte.",
+      "Pour rats ou souris, les signes utiles sont les bruits nocturnes, crottes, rongements, traces grasses et passages près des poubelles ou réserves.",
+      "Les propriétaires, conciergeries ou gestionnaires de location doivent parfois coordonner le rappel si le logement est occupé ou entre deux séjours.",
+    ],
+
     localAreas: ["centre-ville", "port", "Giens", "L'Ayguade", "La Capte", "Costebelle", "Salins"],
   },
   {
@@ -1255,14 +1421,21 @@ export const localLandings: LocalLanding[] = [
     ],
     faq: [
       { question: "Une location à Hyères peut-elle demander un rappel pour des cafards ?", answer: "Oui. Le formulaire permet de préciser les dates, les zones touchées et les contraintes d'accès avant transmission à un partenaire." },
+      { question: "Que préciser pour une résidence à Hyères ?", answer: "Indiquez les parties communes, gaines, locaux poubelles, logements voisins et si un syndic ou gestionnaire est déjà informé." },
+      { question: "Un commerce à Hyères doit-il détailler les zones touchées ?", answer: "Oui. La cuisine, l'arrière-boutique, la réserve, les horaires et les contraintes d'ouverture aident à qualifier la demande." },
       { question: "Voir une blatte suffit-il à confirmer une infestation ?", answer: "Non. La fréquence, les pièces touchées, les parties communes et les traces observées aident à mieux qualifier la situation." },
-      { question: "Que préciser si une résidence est concernée ?", answer: "Indiquez les parties communes, gaines, locaux poubelles, logements voisins et si un syndic ou gestionnaire est déjà informé." },
-      { question: "Stop Nuisible Var intervient-il directement ?", answer: "Non. La plateforme transmet une demande qualifiée à un professionnel partenaire selon la commune, le nuisible et la disponibilité." },
     ],
     heroImage: {
       src: "/images/local/cafards-local.svg",
       alt: "Illustration d’une demande pour cafards à Hyères dans un logement ou commerce",
     },
+    differentiationPoints: [
+      "À Hyères, les cafards peuvent concerner une résidence proche du littoral, une villa divisée, une location saisonnière ou un commerce avec réserve.",
+      "Le centre-ville, le port, Giens et La Capte impliquent des situations différentes entre logement occupé, parties communes et cuisine professionnelle.",
+      "Les points à décrire sont la cuisine, la salle d'eau, les gaines, le local poubelle et la fréquence d'observation de jour ou de nuit.",
+      "Si une conciergerie, un syndic ou un commerce est concerné, indiquez les contraintes d'accès et les dates d'occupation avant le rappel.",
+    ],
+
     localAreas: ["centre-ville", "port", "Giens", "L'Ayguade", "La Capte", "Costebelle", "Salins"],
   },
   {
@@ -1435,15 +1608,22 @@ export const localLandings: LocalLanding[] = [
       { label: "Identifier les signes d'un nuisible dans le Var", href: "/guides/identifier-un-nuisible-var/" },
     ],
     faq: [
-      { question: "Une copropriété peut-elle envoyer une demande pour un nid ?", answer: "Oui. Il faut préciser les parties communes concernées, la hauteur, l'accès et les passages exposés." },
+      { question: "Une copropriété à La Seyne-sur-Mer peut-elle envoyer une demande pour un nid ?", answer: "Oui. Il faut préciser les parties communes concernées, la hauteur, l'accès et les passages exposés." },
+      { question: "Que préciser aux Sablettes ou à Tamaris pour un nid ?", answer: "Indiquez le support du nid, l'accès depuis la rue ou le jardin, les passages exposés et la présence d'enfants, animaux ou clients." },
+      { question: "Que préciser pour un commerce ou restaurant à La Seyne-sur-Mer ?", answer: "Indiquez les horaires, l'exposition des clients, l'emplacement du nid et les contraintes d'accès." },
       { question: "Faut-il approcher le nid pour le photographier ?", answer: "Non. Une photo n'est utile que si elle peut être prise à distance sans risque. La description de l'emplacement suffit souvent à qualifier la demande." },
-      { question: "Que préciser pour un commerce ou restaurant ?", answer: "Indiquez les horaires, l'exposition des clients, l'emplacement du nid et les contraintes d'accès." },
-      { question: "Stop Nuisible Var intervient-il directement ?", answer: "Non. La plateforme transmet la demande à un professionnel partenaire selon le secteur, le nuisible et la disponibilité." },
     ],
     heroImage: {
       src: "/images/local/guepes-frelons-local.svg",
       alt: "Illustration d’un nid de guêpes ou frelons à La Seyne-sur-Mer près d’un jardin",
     },
+    differentiationPoints: [
+      "À La Seyne-sur-Mer, un nid peut toucher une copropriété, une façade, un jardin, une terrasse de commerce ou une résidence proche du littoral.",
+      "Les Sablettes, Tamaris, Mar Vivo et Balaguier ne présentent pas les mêmes accès selon que le nid est en hauteur, côté rue, côté jardin ou en parties communes.",
+      "Pour guêpes ou frelons, décrivez les allers-retours, la hauteur, le support du nid et les passages exposés sans vous approcher.",
+      "Le syndic, le commerçant ou le gestionnaire du lieu doit être identifié si plusieurs occupants, clients ou voisins sont exposés.",
+    ],
+
     localAreas: ["centre-ville", "Les Sablettes", "Tamaris", "Mar Vivo", "Berthe", "Balaguier"],
   },
   {
@@ -1526,14 +1706,21 @@ export const localLandings: LocalLanding[] = [
     ],
     faq: [
       { question: "Un camping à Fréjus peut-il faire une demande de dératisation ?", answer: "Oui. Le formulaire permet de préciser les zones collectives, les hébergements concernés, les dates d'occupation et les signes observés." },
+      { question: "Quels signes indiquer en priorité à Fréjus ?", answer: "Bruits nocturnes, crottes, rongements, traces grasses, odeurs et zones de passage près des locaux poubelles ou réserves." },
+      { question: "Une résidence ou un commerce à Fréjus peut-il être concerné ?", answer: "Oui. Il faut préciser les parties communes, les accès, les horaires et les contraintes liées à l'accueil du public." },
       { question: "Le rappel est-il obligatoire après l'envoi ?", answer: "Non. La demande reste sans engagement ; un partenaire peut rappeler selon le secteur et la situation décrite." },
-      { question: "Quels signes indiquer en priorité ?", answer: "Bruits nocturnes, crottes, rongements, traces grasses, odeurs et zones de passage près des locaux poubelles ou réserves." },
-      { question: "Une résidence ou un commerce peut-il être concerné ?", answer: "Oui. Il faut préciser les parties communes, les accès, les horaires et les contraintes liées à l'accueil du public." },
     ],
     heroImage: {
       src: "/images/local/deratisation-local.svg",
       alt: "Illustration d’une demande de dératisation à Fréjus dans une maison avec garage",
     },
+    differentiationPoints: [
+      "À Fréjus, la dératisation varie fortement entre camping, résidence, commerce, garage, local poubelle et hébergement touristique.",
+      "Le centre historique, Fréjus-Plage, Port-Fréjus et Saint-Aygulf demandent de préciser si les traces sont en intérieur, extérieur ou parties communes.",
+      "Pour rats ou souris, signalez crottes, bruits, rongements, traces grasses et accès possibles depuis caves, combles, réserves ou locaux techniques.",
+      "Les dates d'occupation, l'ouverture au public et la présence d'un gestionnaire sont importantes pour prioriser le rappel sans promettre d'intervention.",
+    ],
+
     localAreas: ["centre historique", "Fréjus-Plage", "Port-Fréjus", "Saint-Aygulf", "Tour de Mare", "Caïs"],
   },
   {
@@ -1576,15 +1763,22 @@ export const localLandings: LocalLanding[] = [
       { label: "Identifier les signes d'un nuisible dans le Var", href: "/guides/identifier-un-nuisible-var/" },
     ],
     faq: [
-      { question: "Les cafards dans un hébergement à Fréjus sont-ils urgents ?", answer: "La demande doit être qualifiée rapidement si des occupants sont présents ou attendus, surtout en cuisine, sanitaires ou parties communes." },
-      { question: "Que faut-il préciser pour un commerce ?", answer: "Indiquez les zones touchées, la fréquence d'observation, les horaires de rappel et les contraintes d'ouverture au public." },
-      { question: "Les parties communes peuvent-elles être concernées ?", answer: "Oui. Gaines, locaux poubelles, sanitaires collectifs et logements voisins peuvent faire partie du contexte à signaler." },
-      { question: "Stop Nuisible Var promet-il une intervention immédiate ?", answer: "Non. Le site transmet une demande qualifiée à un partenaire qui peut rappeler selon le secteur et la disponibilité." },
+      { question: "Les cafards dans un hébergement à Fréjus sont-ils urgents ?", answer: "La demande doit préciser les dates d'occupation, les zones touchées et la présence éventuelle de clients ou vacanciers." },
+      { question: "Que faut-il préciser pour un commerce à Fréjus ?", answer: "Mentionnez la cuisine, la réserve, les horaires, l'accès et si les blattes sont visibles de jour ou dans plusieurs zones." },
+      { question: "Les parties communes d'une résidence à Fréjus peuvent-elles être concernées ?", answer: "Oui. Gaine, local poubelle, sanitaire collectif ou logement voisin doivent être signalés si ces zones sont touchées." },
+      { question: "Stop Nuisible Var promet-il une intervention immédiate ?", answer: "Non. La plateforme qualifie la demande puis peut la transmettre à un professionnel partenaire selon le secteur et les disponibilités." },
     ],
     heroImage: {
       src: "/images/local/cafards-local.svg",
       alt: "Illustration d’une demande pour cafards à Fréjus dans une résidence ou un commerce",
     },
+    differentiationPoints: [
+      "À Fréjus, les cafards peuvent concerner une résidence, un camping, un sanitaire collectif, une location ou un commerce en période d'occupation.",
+      "Fréjus-Plage, Port-Fréjus, Saint-Aygulf et Tour de Mare imposent de distinguer logement, parties communes, cuisine professionnelle et hébergement touristique.",
+      "Décrivez les blattes visibles, les gaines, les évacuations, le local poubelle et toute observation en plein jour.",
+      "Les gestionnaires d'hébergement, conciergeries ou commerçants doivent préciser les dates, horaires et contraintes d'accès.",
+    ],
+
     localAreas: ["centre historique", "Fréjus-Plage", "Port-Fréjus", "Saint-Aygulf", "Tour de Mare", "Caïs"],
   },
   {
@@ -1666,15 +1860,22 @@ export const localLandings: LocalLanding[] = [
       { label: "Termites à Draguignan", href: "/termites-draguignan/" },
     ],
     faq: [
-      { question: "Que préciser pour des bruits dans les combles à Draguignan ?", answer: "Indiquez les horaires, la fréquence, les accès possibles, les traces visibles et si des dépendances ou caves sont concernées." },
-      { question: "La plateforme garantit-elle une intervention ?", answer: "Non. Stop Nuisible Var transmet une demande qualifiée à un partenaire qui peut rappeler selon le secteur et la disponibilité." },
-      { question: "Quels lieux sont souvent concernés ?", answer: "Maisons, caves, combles, garages, dépendances, locaux techniques, commerces et zones de stockage peuvent être signalés." },
-      { question: "Faut-il nettoyer avant le rappel ?", answer: "Limitez les risques sanitaires, mais conservez si possible les indices visibles et évitez de manipuler les déjections à mains nues." },
+      { question: "Que préciser pour des bruits dans les combles à Draguignan ?", answer: "Indiquez la zone touchée, les horaires des bruits, les accès possibles et les indices visibles autour du logement." },
+      { question: "Quels lieux sont souvent concernés à Draguignan ?", answer: "Maisons, garages, caves, combles, dépendances, commerces et locaux techniques peuvent être signalés selon les traces observées." },
+      { question: "Une dépendance ou un commerce à Draguignan peut-il faire une demande ?", answer: "Oui. Décrivez le stockage, les accès, les horaires et la personne pouvant faciliter le rappel." },
+      { question: "Faut-il nettoyer avant le rappel ?", answer: "Vous pouvez limiter les risques, mais conservez les indices visibles si possible et évitez de manipuler les déjections à mains nues." },
     ],
     heroImage: {
       src: "/images/local/deratisation-local.svg",
       alt: "Illustration d’une demande de dératisation à Draguignan dans une maison avec cave et combles",
     },
+    differentiationPoints: [
+      "À Draguignan, les demandes de dératisation concernent souvent maisons, combles, garages, caves, dépendances et zones d'activité.",
+      "Centre-ville, Les Collettes, Saint-Hermentaire et Chabran impliquent des accès différents entre logement, stockage, commerce ou local technique.",
+      "Les signes à décrire sont les bruits nocturnes, crottes, rongements, traces grasses et passages autour du bâti.",
+      "Précisez si un propriétaire, un commerçant ou un responsable de site doit organiser l'accès à une dépendance, réserve ou partie technique.",
+    ],
+
     localAreas: ["centre-ville", "Les Collettes", "Saint-Hermentaire", "Chabran", "Sainte-Barbe", "zones d'activité"],
   },
   {
@@ -1716,15 +1917,22 @@ export const localLandings: LocalLanding[] = [
       { label: "Cafards à La Seyne-sur-Mer", href: "/cafards-la-seyne-sur-mer/" },
     ],
     faq: [
-      { question: "Les caves peuvent-elles favoriser les cafards ?", answer: "Les zones humides, sombres ou reliées à des gaines peuvent faire partie du contexte. Il faut préciser les pièces et accès concernés." },
-      { question: "Une demande pour un commerce à Draguignan est-elle possible ?", answer: "Oui. Indiquez le type d'activité, les zones touchées, les horaires de rappel et les contraintes d'ouverture." },
-      { question: "Voir des cafards en plein jour est-il important ?", answer: "Oui. Cela peut signaler une présence déjà installée. Précisez la fréquence, les pièces et les zones humides ou chaudes." },
-      { question: "La plateforme intervient-elle directement ?", answer: "Non. Stop Nuisible Var transmet la demande à un partenaire selon le secteur, le nuisible et la disponibilité." },
+      { question: "Les caves à Draguignan peuvent-elles favoriser les cafards ?", answer: "Oui. Caves, gaines, locaux techniques et zones humides doivent être décrits si des blattes y sont observées." },
+      { question: "Une demande pour un commerce à Draguignan est-elle possible ?", answer: "Oui. Mentionnez le type d'activité, les zones touchées, les horaires et les contraintes d'ouverture." },
+      { question: "Que préciser pour un logement à Draguignan ?", answer: "Indiquez cuisine, salle d'eau, fréquence, observation de jour ou de nuit et présence éventuelle en parties communes." },
+      { question: "Voir des cafards en plein jour est-il important ?", answer: "Oui. Cela peut indiquer une présence installée. Précisez les zones et la fréquence." },
     ],
     heroImage: {
       src: "/images/local/cafards-local.svg",
       alt: "Illustration d’une demande pour cafards à Draguignan dans un logement ou commerce",
     },
+    differentiationPoints: [
+      "À Draguignan, les cafards se qualifient différemment entre appartement, maison, cave, commerce, réserve et zone d'activité.",
+      "Les Collettes, Saint-Hermentaire, Chabran et le centre-ville demandent de préciser cuisines, salles d'eau, gaines, caves et parties communes.",
+      "Les observations en plein jour, traces sombres, odeur inhabituelle et présence près des évacuations sont importantes à signaler.",
+      "Si le lieu est un commerce ou une réserve, indiquez les horaires, les zones touchées et les contraintes d'ouverture.",
+    ],
+
     localAreas: ["centre-ville", "Les Collettes", "Saint-Hermentaire", "Chabran", "Sainte-Barbe", "zones d'activité"],
   },
   {
@@ -1806,14 +2014,21 @@ export const localLandings: LocalLanding[] = [
     ],
     faq: [
       { question: "Quels signes signaler pour des punaises de lit à La Seyne-sur-Mer ?", answer: "Piqûres au réveil, traces sur literie, insecte visible, retour de voyage, changement d'occupant ou doute dans une location sont utiles à préciser." },
-      { question: "Une location saisonnière peut-elle faire une demande ?", answer: "Oui. Indiquez les dates d'occupation, le nombre de couchages et les pièces concernées avant transmission à un partenaire." },
+      { question: "Une location aux Sablettes ou à Tamaris peut-elle faire une demande ?", answer: "Oui. Indiquez les dates d'occupation, le nombre de couchages et les pièces concernées avant transmission à un partenaire." },
+      { question: "Que préciser pour un appartement à La Seyne-sur-Mer ?", answer: "Mentionnez les couchages, bagages, voisins ou parties communes si le contexte collectif peut aider à qualifier la demande." },
       { question: "Faut-il déplacer le linge ou le matelas ?", answer: "Il vaut mieux éviter de déplacer les textiles ou couchages dans d'autres pièces avant avis, pour ne pas disperser le problème." },
-      { question: "Stop Nuisible Var intervient-il directement ?", answer: "Non. La plateforme qualifie la demande puis peut la transmettre à un professionnel partenaire selon le secteur et la situation." },
     ],
     heroImage: {
       src: "/images/local/punaises-lit-local.svg",
       alt: "Illustration d’une demande pour punaises de lit à La Seyne-sur-Mer dans un logement",
     },
+    differentiationPoints: [
+      "À La Seyne-sur-Mer, les punaises de lit doivent être contextualisées entre appartement, location proche du littoral, résidence et changement d'occupants.",
+      "Les secteurs Les Sablettes, Tamaris, Mar Vivo et centre-ville demandent de préciser les couchages, bagages et dates d'occupation.",
+      "Les signes à signaler sont les piqûres au réveil, traces sur literie, insecte près du couchage et doute après voyage ou séjour.",
+      "Une conciergerie, un propriétaire ou un occupant doit pouvoir préciser si le logement est occupé, entre deux séjours ou partagé.",
+    ],
+
     localAreas: ["centre-ville", "Les Sablettes", "Tamaris", "Mar Vivo", "Berthe", "Balaguier"],
   },
   {
@@ -1904,14 +2119,21 @@ export const localLandings: LocalLanding[] = [
     ],
     faq: [
       { question: "Quels signes signaler pour des rats ou souris à Saint-Raphaël ?", answer: "Bruits nocturnes, crottes, rongements, traces grasses, odeur inhabituelle et passages près des poubelles ou garages sont utiles." },
-      { question: "Une résidence secondaire peut-elle faire une demande ?", answer: "Oui. Précisez si le logement est occupé, les dates importantes et les contraintes d'accès." },
-      { question: "Le site intervient-il directement ?", answer: "Non. Stop Nuisible Var transmet une demande qualifiée à un partenaire selon le secteur et la disponibilité." },
+      { question: "Une résidence secondaire à Saint-Raphaël peut-elle faire une demande ?", answer: "Oui. Précisez si le logement est occupé, les dates importantes et les contraintes d'accès." },
+      { question: "Que préciser à Valescure, Boulouris ou Agay ?", answer: "Indiquez si les traces sont dans un jardin, garage, local poubelle, réserve, commerce ou parties communes." },
       { question: "Faut-il nettoyer avant le rappel ?", answer: "Limitez les risques, mais conservez les indices visibles si possible et évitez de manipuler les déjections à mains nues." },
     ],
     heroImage: {
       src: "/images/local/deratisation-local.svg",
       alt: "Illustration d’une demande de dératisation à Saint-Raphaël dans une villa avec garage",
     },
+    differentiationPoints: [
+      "À Saint-Raphaël, la dératisation peut concerner villa, résidence secondaire, jardin, garage, commerce ou local poubelle.",
+      "Le centre-ville, Valescure, Boulouris, Agay et Le Dramont changent le contexte entre logement occupé, résidence secondaire et commerce du littoral.",
+      "Les signes utiles sont les crottes, bruits nocturnes, rongements, traces grasses et passages autour des poubelles, garages ou réserves.",
+      "Précisez si une conciergerie, un propriétaire ou un commerçant doit faciliter l'accès, surtout entre deux occupations.",
+    ],
+
     localAreas: ["centre-ville", "Valescure", "Boulouris", "Agay", "Le Dramont", "Santa Lucia"],
   },
   {
@@ -1954,14 +2176,21 @@ export const localLandings: LocalLanding[] = [
     ],
     faq: [
       { question: "Que préciser pour des cafards à Saint-Raphaël ?", answer: "Indiquez les pièces touchées, la fréquence, les parties communes éventuelles, le type de logement et les contraintes d'occupation." },
-      { question: "Un restaurant peut-il faire une demande ?", answer: "Oui. Précisez les zones touchées, horaires de rappel et contraintes d'ouverture au public." },
+      { question: "Un restaurant à Saint-Raphaël peut-il faire une demande ?", answer: "Oui. Précisez les zones touchées, horaires de rappel et contraintes d'ouverture au public." },
+      { question: "Que signaler pour une résidence à Valescure, Boulouris ou Agay ?", answer: "Mentionnez les gaines, locaux poubelles, logements voisins, dates d'occupation et présence en parties communes." },
       { question: "Les cafards viennent-ils forcément d'un manque d'hygiène ?", answer: "Non. Les blattes peuvent circuler par gaines, livraisons, cartons, parties communes et logements voisins." },
-      { question: "La demande est-elle sans engagement ?", answer: "Oui. La demande de rappel est gratuite et sans engagement." },
     ],
     heroImage: {
       src: "/images/local/cafards-local.svg",
       alt: "Illustration d’une demande pour cafards à Saint-Raphaël dans une résidence ou un commerce",
     },
+    differentiationPoints: [
+      "À Saint-Raphaël, les cafards peuvent toucher résidence secondaire, location, restaurant, commerce, cuisine ou parties communes proches du littoral.",
+      "Valescure, Boulouris, Agay, Le Dramont et Santa Lucia demandent de préciser occupation, accès, gaines et locaux poubelles.",
+      "Décrivez les blattes visibles, la fréquence, les pièces humides, les réserves et toute observation dans les parties communes.",
+      "Les propriétaires, conciergeries ou commerçants doivent indiquer les dates d'occupation et les contraintes de rappel.",
+    ],
+
     localAreas: ["centre-ville", "Valescure", "Boulouris", "Agay", "Le Dramont", "Santa Lucia"],
   },
   {
@@ -2003,14 +2232,21 @@ export const localLandings: LocalLanding[] = [
     ],
     faq: [
       { question: "Que préciser pour un nid à Fréjus ?", answer: "Indiquez l'emplacement, la hauteur, les accès possibles, les passages exposés et si le lieu reçoit du public." },
-      { question: "Un camping peut-il faire une demande ?", answer: "Oui. Il faut préciser les zones collectives, hébergements concernés, contraintes d'occupation et sécurité des clients." },
+      { question: "Un camping ou une résidence à Fréjus peut-il faire une demande ?", answer: "Oui. Il faut préciser les zones collectives, hébergements concernés, contraintes d'occupation et sécurité des clients." },
+      { question: "Que signaler à Fréjus-Plage ou Port-Fréjus ?", answer: "Précisez si le nid est près d'une terrasse, d'un passage, d'une toiture, d'un arbre ou d'un espace fréquenté." },
       { question: "Faut-il s'approcher du nid ?", answer: "Non. Décrivez à distance et ajoutez une photo uniquement si elle peut être prise sans risque." },
-      { question: "Stop Nuisible Var détruit-il directement le nid ?", answer: "Non. La plateforme transmet une demande qualifiée à un professionnel partenaire." },
     ],
     heroImage: {
       src: "/images/local/guepes-frelons-local.svg",
       alt: "Illustration d’un nid de guêpes ou frelons à Fréjus près d’un jardin ou camping",
     },
+    differentiationPoints: [
+      "À Fréjus, un nid de guêpes ou frelons peut concerner camping, résidence, terrasse, toiture, jardin ou commerce recevant du public.",
+      "Fréjus-Plage, Port-Fréjus, Saint-Aygulf et Tour de Mare changent les contraintes d'accès entre rue, jardin, façade, arbre et zone collective.",
+      "Les informations utiles sont la hauteur, le support du nid, les allers-retours et la présence d'enfants, animaux, clients ou vacanciers.",
+      "Une photo n'est utile que prise à distance ; la sécurité des passages exposés prime sur l'identification visuelle.",
+    ],
+
     localAreas: ["centre historique", "Fréjus-Plage", "Port-Fréjus", "Saint-Aygulf", "Tour de Mare", "Caïs"],
   },
   {
@@ -2102,14 +2338,21 @@ export const localLandings: LocalLanding[] = [
     ],
     faq: [
       { question: "Quels signes de rats ou souris signaler à Brignoles ?", answer: "Bruits nocturnes, crottes, rongements, traces grasses, odeurs et passages près des garages, combles ou dépendances." },
-      { question: "Une dépendance ou un local agricole peut-il être concerné ?", answer: "Oui. Décrivez les accès, le stockage, les zones touchées et la fréquence des signes." },
-      { question: "Stop Nuisible Var intervient-il directement ?", answer: "Non. La plateforme transmet votre demande à un professionnel partenaire selon le secteur et la situation." },
+      { question: "Une dépendance ou un local agricole à Brignoles peut-il être concerné ?", answer: "Oui. Décrivez les accès, le stockage, les zones touchées et la fréquence des signes." },
+      { question: "Que préciser pour Nicopolis ou une zone commerciale ?", answer: "Indiquez le type de local, les horaires, les réserves touchées, le local poubelle et la personne à rappeler." },
       { question: "La demande est-elle sans engagement ?", answer: "Oui. La demande de rappel est gratuite et vous restez libre de la suite proposée." },
     ],
     heroImage: {
       src: "/images/local/deratisation-local.svg",
       alt: "Illustration d’une demande de dératisation à Brignoles dans une maison avec garage",
     },
+    differentiationPoints: [
+      "À Brignoles, la dératisation concerne souvent maisons, garages, combles, dépendances, stockages et zones commerciales.",
+      "La Tour, Les Censies, Nicopolis et les quartiers résidentiels ne posent pas les mêmes contraintes entre logement, réserve, jardin et local professionnel.",
+      "Pour rats ou souris, signalez crottes, bruits, rongements, traces grasses, odeurs et accès possibles depuis garage, cave ou jardin.",
+      "Un propriétaire, commerçant ou responsable de stockage doit préciser les horaires et les zones concernées si l'accès dépend d'un tiers.",
+    ],
+
     localAreas: ["centre-ville", "La Tour", "Les Censies", "Nicopolis", "zones commerciales", "quartiers résidentiels"],
   },
   {
