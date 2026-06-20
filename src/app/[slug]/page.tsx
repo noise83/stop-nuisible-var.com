@@ -85,12 +85,12 @@ function LocalLandingPage({ slug }: { slug: string }) {
     <main>
       <JsonLd data={[breadcrumbJsonLd(crumbs), faqJsonLd(landing.faq), serviceJsonLd(landing.h1, landing.description, `/${landing.slug}/`)]} />
       <Breadcrumb items={crumbs} />
-      <Section>
+      <Section className="py-10 sm:py-20">
         <div className="container grid items-start gap-8 lg:grid-cols-[.9fr_1.1fr]">
           <div>
             <Eyebrow>{city.name} - {service.shortName}</Eyebrow>
-            <h1 className="text-4xl font-black leading-tight text-[#102337] sm:text-5xl">{landing.h1}</h1>
-            <p className="mt-5 text-lg leading-8 text-[#405160]">{landing.promise}</p>
+            <h1 className="text-3xl font-black leading-tight text-[#102337] sm:text-5xl">{landing.h1}</h1>
+            <p className="mt-4 text-base leading-7 text-[#405160] sm:mt-5 sm:text-lg sm:leading-8">{landing.promise}</p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <PhoneLink />
               <ButtonLink>Demander un rappel gratuit</ButtonLink>
@@ -103,9 +103,9 @@ function LocalLandingPage({ slug }: { slug: string }) {
         </div>
       </Section>
       <TrustList />
-      <Section tone="white">
+      <Section tone="white" className="py-10 sm:py-20">
         <div className="container grid gap-8 lg:grid-cols-[1fr_360px]">
-          <article className="space-y-5 leading-8 text-[#405160]">
+          <article className="space-y-5 text-base leading-7 text-[#405160] sm:leading-8">
             {landing.heroImage ? (
               <Image
                 src={landing.heroImage.src}
@@ -114,17 +114,17 @@ function LocalLandingPage({ slug }: { slug: string }) {
                 height={520}
                 loading="lazy"
                 unoptimized
-                className="w-full rounded-[8px] border border-[#102337]/10 bg-[#f5f1e8] object-cover shadow-sm"
+                className="aspect-[16/10] w-full rounded-[8px] border border-[#102337]/10 bg-[#f5f1e8] object-cover shadow-sm sm:aspect-auto"
               />
             ) : null}
-            <h2 className="text-3xl font-black text-[#102337]">Contexte local à {city.name}</h2>
+            <h2 className="text-2xl font-black text-[#102337] sm:text-3xl">Contexte local à {city.name}</h2>
             <p>{landing.localContext}</p>
             <p>
               Stop Nuisible Var reste une plateforme de mise en relation : la demande est qualifiée selon la commune, le nuisible, le type de lieu et l&apos;urgence, puis elle peut être transmise à un professionnel partenaire avec votre consentement.
             </p>
             {landing.localAreas?.length ? (
               <div className="rounded-[8px] border border-[#102337]/10 bg-white p-5">
-                <h2 className="text-3xl font-black text-[#102337]">{service.shortName} à {city.name} : secteurs concernés</h2>
+                <h2 className="text-2xl font-black text-[#102337] sm:text-3xl">{service.shortName} à {city.name} : secteurs concernés</h2>
                 <p className="mt-4">
                   Les demandes peuvent venir de plusieurs secteurs de {city.name}, notamment {formatAreas(landing.localAreas)}. Le contexte n&apos;est pas le même selon qu&apos;il s&apos;agit d&apos;une maison, d&apos;un appartement, d&apos;une location, d&apos;un commerce, d&apos;un garage, d&apos;un jardin ou de parties communes.
                 </p>
@@ -137,7 +137,7 @@ function LocalLandingPage({ slug }: { slug: string }) {
                 </ul>
               </div>
             ) : null}
-            <h2 className="text-3xl font-black text-[#102337]">Avant de demander un rappel</h2>
+            <h2 className="text-2xl font-black text-[#102337] sm:text-3xl">Avant de demander un rappel</h2>
             <p>
               Les communes proches comme {city.neighbours.join(", ")} peuvent aussi être précisées si le problème se situe autour de {city.name} ou dans le même bassin de rappel.
             </p>
@@ -147,14 +147,14 @@ function LocalLandingPage({ slug }: { slug: string }) {
           />
         </div>
       </Section>
-      <Section>
+      <Section className="py-10 sm:py-20">
         <div className="container grid gap-8 lg:grid-cols-3">
           <ContentList title="Signes observés" items={landing.observedSigns} />
           <ContentList title="Lieux concernés" items={landing.concernedPlaces} />
           <ContentList title="Conseils avant rappel" items={landing.callbackAdvice} />
         </div>
       </Section>
-      <Section>
+      <Section className="py-10 sm:py-20">
         <div className="container max-w-3xl">
           <h2 className="mb-6 text-3xl font-black text-[#102337]">Questions fréquentes</h2>
           <FAQ items={landing.faq} />

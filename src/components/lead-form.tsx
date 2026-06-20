@@ -92,17 +92,17 @@ export function LeadForm({ defaultCity = "", defaultPest = "" }: { defaultCity?:
         }
       }}
       onSubmit={onSubmit}
-      className="rounded-[8px] border border-[#102337]/10 bg-white p-5 shadow-xl sm:p-6"
+      className="rounded-[8px] border border-[#102337]/10 bg-white p-4 shadow-xl sm:p-6"
       noValidate
     >
-      <div className="mb-5 rounded-[7px] bg-[#102337] px-4 py-3 text-white">
+      <div className="mb-4 rounded-[7px] bg-[#102337] px-4 py-3 text-white sm:mb-5">
         <p className="text-sm font-black">Rappel gratuit</p>
         <p className="mt-1 text-xs text-white/75">Décrivez l&apos;essentiel. Votre demande est transmise selon votre commune, le nuisible et l&apos;urgence.</p>
         <a href={PHONE_HREF} className="mt-3 inline-flex text-sm font-black text-[#dfcaa2] underline-offset-4 hover:underline" data-track-phone>
           Appeler le {PHONE_NUMBER}
         </a>
       </div>
-      <div className="grid gap-5 md:grid-cols-2">
+      <div className="grid gap-4 sm:gap-5 md:grid-cols-2">
         <Select label="Type de nuisible" name="pest" options={pests} required defaultValue={defaultPest} />
         <Field label="Ville" name="city" required defaultValue={defaultCity} />
         <Field label="Code postal" name="postalCode" inputMode="numeric" required />
@@ -159,7 +159,7 @@ function Field({ label, name, type = "text", inputMode, required = false, defaul
   return (
     <label className="block">
       <span className="text-sm font-bold text-[#102337]">{label}</span>
-      <input name={name} type={type} inputMode={inputMode} required={required} defaultValue={defaultValue} className="mt-2 w-full rounded-[7px] border border-[#102337]/15 bg-[#f5f1e8] px-4 py-3 outline-none focus:border-[#bf593f]" />
+      <input name={name} type={type} inputMode={inputMode} required={required} defaultValue={defaultValue} className="mt-2 min-h-12 w-full rounded-[7px] border border-[#102337]/15 bg-[#f5f1e8] px-4 py-3 outline-none focus:border-[#bf593f]" />
     </label>
   );
 }
@@ -168,7 +168,7 @@ function Select({ label, name, options, required = false, className = "", defaul
   return (
     <label className={`block ${className}`}>
       <span className="text-sm font-bold text-[#102337]">{label}</span>
-      <select name={name} required={required} defaultValue={defaultValue} onChange={() => name === "pest" && trackEvent("nuisible_select")} className="mt-2 w-full rounded-[7px] border border-[#102337]/15 bg-[#f5f1e8] px-4 py-3 outline-none focus:border-[#bf593f]">
+      <select name={name} required={required} defaultValue={defaultValue} onChange={() => name === "pest" && trackEvent("nuisible_select")} className="mt-2 min-h-12 w-full rounded-[7px] border border-[#102337]/15 bg-[#f5f1e8] px-4 py-3 outline-none focus:border-[#bf593f]">
         <option value="">Choisir</option>
         {options.map((option) => <option key={option} value={option}>{option}</option>)}
       </select>
