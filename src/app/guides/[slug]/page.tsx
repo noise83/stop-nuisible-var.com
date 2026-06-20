@@ -44,7 +44,7 @@ export default async function GuidePage({ params }: { params: Params }) {
   }
 
   return (
-    <main>
+    <main className="overflow-x-hidden">
       <JsonLd data={[breadcrumbJsonLd(crumbs), faqJsonLd(guide.faq), articleJsonLd(guide.title, guide.description, `/guides/${guide.slug}/`, guide.published)]} />
       <Breadcrumb items={crumbs} />
       <Section>
@@ -96,9 +96,9 @@ function IllustratedGuidePage({
       <Breadcrumb items={crumbs} />
       <Section className="py-10 sm:py-18">
         <div className="container grid gap-8 lg:grid-cols-[1fr_360px] lg:items-start">
-          <div>
+          <div className="min-w-0">
             <Eyebrow>Guide illustré</Eyebrow>
-            <h1 className="text-3xl font-black leading-tight text-[#102337] sm:text-5xl">{content.h1}</h1>
+            <h1 className="break-words text-[2rem] font-black leading-tight text-[#102337] sm:text-5xl">{content.h1}</h1>
             <p className="mt-5 text-base leading-7 text-[#405160] sm:text-lg sm:leading-8">{content.introduction}</p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <ButtonLink>Demander un rappel gratuit</ButtonLink>
@@ -112,7 +112,7 @@ function IllustratedGuidePage({
             height={540}
             priority
             unoptimized
-            className="aspect-[16/10] w-full rounded-[8px] border border-[#102337]/10 bg-white object-cover shadow-sm"
+            className="min-w-0 aspect-[16/10] w-full rounded-[8px] border border-[#102337]/10 bg-white object-cover shadow-sm"
           />
         </div>
       </Section>
