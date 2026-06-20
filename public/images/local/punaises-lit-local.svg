@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-labelledby="title desc">
+  <title id="title">Demande locale pour punaises de lit</title>
+  <desc id="desc">Illustration sobre d'une chambre et d'une literie avec indices discrets.</desc>
+  <rect width="960" height="520" fill="#F6F1E8"/>
+  <path d="M0 384c112-38 218-38 318 0 91 35 186 32 286-8 119-47 237-40 356 22v122H0Z" fill="#E4EAD9"/>
+  <g transform="translate(122 132)">
+    <rect width="352" height="260" rx="8" fill="#FFFFFF" stroke="#1F4D3A" stroke-width="6"/>
+    <rect x="42" y="58" width="268" height="122" rx="8" fill="#EAF1EC" stroke="#1F4D3A" stroke-width="5"/>
+    <rect x="42" y="126" width="268" height="90" fill="#D5C29F" stroke="#1F4D3A" stroke-width="5"/>
+    <rect x="64" y="78" width="82" height="46" rx="6" fill="#FFFDF8" stroke="#1F4D3A" stroke-width="4"/>
+    <rect x="164" y="78" width="82" height="46" rx="6" fill="#FFFDF8" stroke="#1F4D3A" stroke-width="4"/>
+    <path d="M42 216h268" stroke="#1F4D3A" stroke-width="6"/>
+  </g>
+  <g transform="translate(566 126)">
+    <rect width="242" height="170" rx="8" fill="#FFFDF8" stroke="#1F4D3A" stroke-width="6"/>
+    <path d="M34 48h170M34 82h132M34 116h94" stroke="#1F4D3A" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="198" cy="118" r="18" fill="#E86A33"/>
+    <path d="m190 118 6 6 13-17" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g fill="#1F4D3A" opacity=".86">
+    <ellipse cx="514" cy="374" rx="15" ry="8"/>
+    <path d="M500 374h-18M528 374h18M506 368l-12-11M522 368l12-11M506 380l-12 11M522 380l12 11" stroke="#1F4D3A" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="384" cy="392" r="4"/>
+    <circle cx="410" cy="380" r="4"/>
+    <circle cx="442" cy="397" r="4"/>
+    <circle cx="476" cy="386" r="4"/>
+  </g>
+  <path d="M116 420h690" stroke="#1F4D3A" stroke-width="8" stroke-linecap="round" opacity=".18"/>
+  <circle cx="118" cy="92" r="32" fill="#F2C94C" opacity=".75"/>
+</svg>
