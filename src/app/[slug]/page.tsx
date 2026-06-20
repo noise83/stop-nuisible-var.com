@@ -245,6 +245,7 @@ function ServicePage({ slug }: { slug: string }) {
           </article>
           <RelatedLinks
             links={[
+              { label: "identifier les signes d'un nuisible dans le Var", href: "/guides/identifier-un-nuisible-var/" },
               ...serviceLandings.map((landing) => ({ label: landing.h1, href: `/${landing.slug}/` })),
               ...priorityCities.slice(0, 3).map((city) => ({ label: `Nuisibles à ${city.name}`, href: `/villes/${city.slug}/` })),
               ...guides.filter((guide) => guide.serviceSlug === service.slug).map((guide) => ({ label: guide.title, href: `/guides/${guide.slug}/` })),
@@ -292,8 +293,8 @@ function HubPage() {
       {identificationGuide ? (
         <Section>
           <div className="container rounded-[8px] border border-[#102337]/10 bg-white p-6">
-            <Eyebrow>Guide illustré</Eyebrow>
-            <h2 className="max-w-3xl text-3xl font-black text-[#102337]">{identificationGuide.title}</h2>
+            <Eyebrow>Ressource pratique</Eyebrow>
+            <h2 className="max-w-3xl text-3xl font-black text-[#102337]">Guide utile avant de demander un rappel</h2>
             <p className="mt-4 max-w-3xl leading-8 text-[#405160]">{identificationGuide.description}</p>
             <Link
               href={`/guides/${identificationGuide.slug}/`}

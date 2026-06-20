@@ -350,12 +350,15 @@ export default function HomePage() {
                 </Link>
               ))}
             </div>
-            <p className="mt-5 text-sm font-semibold leading-6 text-[#51606d]">
-              Guide utile :{" "}
-              <Link className="font-black text-[#E86A33] hover:text-[#cf5524]" href="/guides/identifier-un-nuisible-var/">
-                Identifier un nuisible dans le Var
+            <div className="mt-5 rounded-[8px] border border-[#1F4D3A]/10 bg-white p-4">
+              <h3 className="text-lg font-black text-[#1F2933]">Besoin d&apos;identifier un nuisible ?</h3>
+              <p className="mt-2 text-sm leading-7 text-[#51606d]">
+                Consultez notre guide pour reconnaître les signes fréquents : rats, cafards, punaises de lit, guêpes, frelons, termites et autres nuisibles dans le Var.
+              </p>
+              <Link className="mt-3 inline-flex font-black text-[#E86A33] hover:text-[#cf5524]" href="/guides/identifier-un-nuisible-var/">
+                Lire le guide d&apos;identification -&gt;
               </Link>
-            </p>
+            </div>
           </div>
         </div>
       </section>

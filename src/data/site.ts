@@ -1197,6 +1197,7 @@ export const localLandings: LocalLanding[] = [
       { label: "Demande de rappel", href: "/demande-devis/" },
       { label: "Dératisation à Fréjus", href: "/deratisation-frejus/" },
       { label: "Cafards à Hyères", href: "/cafards-hyeres/" },
+      { label: "Identifier les signes d'un nuisible dans le Var", href: "/guides/identifier-un-nuisible-var/" },
     ],
     faq: [
       { question: "Quels signes de rats ou souris signaler à Hyères ?", answer: "Les bruits nocturnes, crottes, rongements, traces grasses, odeurs inhabituelles et passages près des poubelles, caves, garages ou combles sont utiles à préciser." },
@@ -1431,6 +1432,7 @@ export const localLandings: LocalLanding[] = [
       { label: "Demande de rappel", href: "/demande-devis/" },
       { label: "Dératisation à La Seyne-sur-Mer", href: "/deratisation-la-seyne-sur-mer/" },
       { label: "Guêpes et frelons à Toulon", href: "/guepes-frelons-toulon/" },
+      { label: "Identifier les signes d'un nuisible dans le Var", href: "/guides/identifier-un-nuisible-var/" },
     ],
     faq: [
       { question: "Une copropriété peut-elle envoyer une demande pour un nid ?", answer: "Oui. Il faut préciser les parties communes concernées, la hauteur, l'accès et les passages exposés." },
@@ -1571,6 +1573,7 @@ export const localLandings: LocalLanding[] = [
       { label: "Demande de rappel", href: "/demande-devis/" },
       { label: "Dératisation à Fréjus", href: "/deratisation-frejus/" },
       { label: "Cafards à Hyères", href: "/cafards-hyeres/" },
+      { label: "Identifier les signes d'un nuisible dans le Var", href: "/guides/identifier-un-nuisible-var/" },
     ],
     faq: [
       { question: "Les cafards dans un hébergement à Fréjus sont-ils urgents ?", answer: "La demande doit être qualifiée rapidement si des occupants sont présents ou attendus, surtout en cuisine, sanitaires ou parties communes." },
@@ -1799,6 +1802,7 @@ export const localLandings: LocalLanding[] = [
       { label: "Demande de rappel", href: "/demande-devis/" },
       { label: "Punaises de lit à Toulon", href: "/punaises-de-lit-toulon/" },
       { label: "Punaises de lit à Fréjus", href: "/punaises-de-lit-frejus/" },
+      { label: "Identifier les signes d'un nuisible dans le Var", href: "/guides/identifier-un-nuisible-var/" },
     ],
     faq: [
       { question: "Quels signes signaler pour des punaises de lit à La Seyne-sur-Mer ?", answer: "Piqûres au réveil, traces sur literie, insecte visible, retour de voyage, changement d'occupant ou doute dans une location sont utiles à préciser." },
@@ -1946,6 +1950,7 @@ export const localLandings: LocalLanding[] = [
       { label: "Demande de rappel", href: "/demande-devis/" },
       { label: "Cafards à Fréjus", href: "/cafards-frejus/" },
       { label: "Cafards à Draguignan", href: "/cafards-draguignan/" },
+      { label: "Identifier les signes d'un nuisible dans le Var", href: "/guides/identifier-un-nuisible-var/" },
     ],
     faq: [
       { question: "Que préciser pour des cafards à Saint-Raphaël ?", answer: "Indiquez les pièces touchées, la fréquence, les parties communes éventuelles, le type de logement et les contraintes d'occupation." },
@@ -2093,6 +2098,7 @@ export const localLandings: LocalLanding[] = [
       { label: "Demande de rappel", href: "/demande-devis/" },
       { label: "Dératisation à Draguignan", href: "/deratisation-draguignan/" },
       { label: "Dératisation à Hyères", href: "/deratisation-hyeres/" },
+      { label: "Identifier les signes d'un nuisible dans le Var", href: "/guides/identifier-un-nuisible-var/" },
     ],
     faq: [
       { question: "Quels signes de rats ou souris signaler à Brignoles ?", answer: "Bruits nocturnes, crottes, rongements, traces grasses, odeurs et passages près des garages, combles ou dépendances." },

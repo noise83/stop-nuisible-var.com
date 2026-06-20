@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRef, useState } from "react";
 import { CONSENT_TEXT, PHONE_HREF, PHONE_NUMBER } from "@/lib/constants";
 import { trackEvent } from "@/lib/tracking";
@@ -119,6 +120,12 @@ export function LeadForm({ defaultCity = "", defaultPest = "" }: { defaultCity?:
           </span>
           <span className="mt-2 block text-sm leading-6 text-[#405160]">
             Formats acceptés : JPG, PNG ou WEBP. Taille maximale : 4 Mo.
+          </span>
+          <span className="mt-2 block text-sm leading-6 text-[#405160]">
+            Pour comparer les traces, piqûres, crottes ou nids, vous pouvez consulter le{" "}
+            <Link className="font-bold text-[#bf593f] underline-offset-4 hover:underline" href="/guides/identifier-un-nuisible-var/">
+              guide pour identifier les signes d&apos;un nuisible dans le Var
+            </Link>.
           </span>
           <span className="mt-2 block text-sm leading-6 text-[#405160]">
             L’analyse reste indicative et ne remplace pas l’avis d’un professionnel.
