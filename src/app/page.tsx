@@ -88,6 +88,17 @@ const faqItems: FAQItem[] = [
   },
 ];
 
+const recentLocalPages = [
+  { label: "Punaises de lit à La Seyne-sur-Mer", href: "/punaises-de-lit-la-seyne-sur-mer/" },
+  { label: "Punaises de lit à Draguignan", href: "/punaises-de-lit-draguignan/" },
+  { label: "Dératisation à Saint-Raphaël", href: "/deratisation-saint-raphael/" },
+  { label: "Cafards à Saint-Raphaël", href: "/cafards-saint-raphael/" },
+  { label: "Guêpes et frelons à Fréjus", href: "/guepes-frelons-frejus/" },
+  { label: "Guêpes et frelons à Draguignan", href: "/guepes-frelons-draguignan/" },
+  { label: "Dératisation à Brignoles", href: "/deratisation-brignoles/" },
+  { label: "Cafards à Brignoles", href: "/cafards-brignoles/" },
+];
+
 function CtaLink({
   href = "/demande-devis/",
   children,
@@ -318,6 +329,28 @@ export default function HomePage() {
         <div className="container grid gap-8 lg:grid-cols-[.85fr_1.15fr]">
           <SectionTitle eyebrow="Questions" title="FAQ courte" />
           <FAQ items={faqItems} />
+        </div>
+      </section>
+
+      <section className="bg-white py-12 sm:py-14">
+        <div className="container">
+          <div className="rounded-[8px] border border-[#1F4D3A]/12 bg-[#F6F1E8] p-5 sm:p-6">
+            <h2 className="text-2xl font-black text-[#1F2933]">Dernières pages locales utiles</h2>
+            <p className="mt-3 max-w-2xl text-sm leading-7 text-[#51606d]">
+              Quelques pages récemment ajoutées pour préciser votre demande selon la ville et le nuisible.
+            </p>
+            <div className="mt-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+              {recentLocalPages.map((page) => (
+                <Link
+                  key={page.href}
+                  href={page.href}
+                  className="focus-ring rounded-[8px] border border-[#1F4D3A]/12 bg-white px-4 py-3 text-sm font-black text-[#1F4D3A] transition hover:border-[#E86A33] hover:text-[#E86A33]"
+                >
+                  {page.label}
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

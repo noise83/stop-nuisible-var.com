@@ -2,22 +2,56 @@ import type { MetadataRoute } from "next";
 import { globalPages, guides, localLandings, priorityCities, services } from "@/data/site";
 import { SITE_URL } from "@/lib/constants";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
-  const urls = [
-    "",
-    "demande-devis",
-    ...Object.keys(globalPages),
-    ...services.map((service) => service.slug),
-    ...localLandings.map((landing) => landing.slug),
-    ...priorityCities.map((city) => `villes/${city.slug}`),
-    ...guides.map((guide) => `guides/${guide.slug}`),
-  ];
+const DEFAULT_LAST_MODIFIED = "2026-06-13T00:00:00+02:00";
+const HOME_LAST_MODIFIED = "2026-06-20T11:09:00+02:00";
 
-  return urls.map((url) => ({
-    url: url ? `${SITE_URL}/${url}/` : `${SITE_URL}/`,
-    lastModified: now,
-    changeFrequency: (url.includes("guides") ? "monthly" : "weekly") as "monthly" | "weekly",
-    priority: url === "" ? 1 : url.includes("demande-devis") ? 0.9 : 0.7,
-  }));
+function stableDate(value?: string) {
+  return new Date(value ?? DEFAULT_LAST_MODIFIED);
+}
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  return [
+    {
+      url: `${SITE_URL}/`,
+      lastModified: stableDate(HOME_LAST_MODIFIED),
+      changeFrequency: "weekly",
+      priority: 1,
+    },
+    {
+      url: `${SITE_URL}/demande-devis/`,
+      lastModified: stableDate(DEFAULT_LAST_MODIFIED),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    ...Object.keys(globalPages).map((slug) => ({
+      url: `${SITE_URL}/${slug}/`,
+      lastModified: stableDate(DEFAULT_LAST_MODIFIED),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    })),
+    ...services.map((service) => ({
+      url: `${SITE_URL}/${service.slug}/`,
+      lastModified: stableDate(service.updatedAt),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    })),
+    ...localLandings.map((landing) => ({
+      url: `${SITE_URL}/${landing.slug}/`,
+      lastModified: stableDate(landing.updatedAt),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    })),
+    ...priorityCities.map((city) => ({
+      url: `${SITE_URL}/villes/${city.slug}/`,
+      lastModified: stableDate(DEFAULT_LAST_MODIFIED),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    })),
+    ...guides.map((guide) => ({
+      url: `${SITE_URL}/guides/${guide.slug}/`,
+      lastModified: stableDate(guide.updatedAt ?? guide.published),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+  ];
 }

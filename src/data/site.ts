@@ -6,6 +6,7 @@ export type Service = {
   shortName: string;
   icon: string;
   leadFormPest: string;
+  updatedAt?: string;
   title: string;
   description: string;
   hero: string;
@@ -33,6 +34,7 @@ export type Guide = {
   description: string;
   serviceSlug: string;
   published: string;
+  updatedAt?: string;
   sections: Array<{ heading: string; body: string }>;
   faq: FAQItem[];
 };
@@ -41,6 +43,7 @@ export type LocalLanding = {
   slug: string;
   serviceSlug: string;
   citySlug: string;
+  updatedAt?: string;
   h1: string;
   title: string;
   description: string;
@@ -1452,6 +1455,7 @@ export const localLandings: LocalLanding[] = [
     slug: "punaises-de-lit-la-seyne-sur-mer",
     serviceSlug: "punaises-de-lit-var",
     citySlug: "la-seyne-sur-mer",
+    updatedAt: "2026-06-20T11:09:00+02:00",
     h1: "Punaises de lit à La Seyne-sur-Mer : logement et location",
     title: "Punaises de lit La Seyne-sur-Mer : logement, résidence et location",
     description: "Punaises de lit à La Seyne-sur-Mer : piqûres, traces sur literie, résidence, location ou logement collectif. Demandez un rappel gratuit.",
@@ -1501,6 +1505,7 @@ export const localLandings: LocalLanding[] = [
     slug: "punaises-de-lit-draguignan",
     serviceSlug: "punaises-de-lit-var",
     citySlug: "draguignan",
+    updatedAt: "2026-06-20T11:09:00+02:00",
     h1: "Punaises de lit à Draguignan : logement et literie",
     title: "Punaises de lit Draguignan : piqûres, literie et logement",
     description: "Punaises de lit à Draguignan : piqûres, traces sur matelas, logement, chambre, canapé ou retour de voyage. Demandez un rappel gratuit.",
@@ -1549,6 +1554,7 @@ export const localLandings: LocalLanding[] = [
     slug: "deratisation-saint-raphael",
     serviceSlug: "deratisation-var",
     citySlug: "saint-raphael",
+    updatedAt: "2026-06-20T11:09:00+02:00",
     h1: "Dératisation à Saint-Raphaël : rats et souris",
     title: "Dératisation Saint-Raphaël : rats, souris, villa et commerce",
     description: "Rats ou souris à Saint-Raphaël : villa, résidence, commerce, garage, jardin ou local poubelle. Décrivez les signes et demandez un rappel.",
@@ -1597,6 +1603,7 @@ export const localLandings: LocalLanding[] = [
     slug: "cafards-saint-raphael",
     serviceSlug: "cafards-blattes-var",
     citySlug: "saint-raphael",
+    updatedAt: "2026-06-20T11:09:00+02:00",
     h1: "Cafards à Saint-Raphaël : blattes en logement ou commerce",
     title: "Cafards Saint-Raphaël : blattes, résidence et commerce",
     description: "Cafards à Saint-Raphaël : blattes en cuisine, résidence, location, commerce ou restaurant. Demandez un rappel gratuit sans engagement.",
@@ -1645,6 +1652,7 @@ export const localLandings: LocalLanding[] = [
     slug: "guepes-frelons-frejus",
     serviceSlug: "guepes-frelons-var",
     citySlug: "frejus",
+    updatedAt: "2026-06-20T11:09:00+02:00",
     h1: "Guêpes et frelons à Fréjus : nid et demande de rappel",
     title: "Guêpes et frelons Fréjus : nid, jardin, camping et terrasse",
     description: "Nid de guêpes ou frelons à Fréjus : jardin, toiture, terrasse, camping, commerce ou résidence. Décrivez l'emplacement et demandez un rappel.",
@@ -1693,6 +1701,7 @@ export const localLandings: LocalLanding[] = [
     slug: "guepes-frelons-draguignan",
     serviceSlug: "guepes-frelons-var",
     citySlug: "draguignan",
+    updatedAt: "2026-06-20T11:09:00+02:00",
     h1: "Guêpes et frelons à Draguignan : nid et jardin",
     title: "Guêpes et frelons Draguignan : nid, jardin et toiture",
     description: "Nid de guêpes ou frelons à Draguignan : jardin, toiture, arbre, cabanon, commerce ou maison. Décrivez l'emplacement et demandez un rappel.",
@@ -1741,6 +1750,7 @@ export const localLandings: LocalLanding[] = [
     slug: "deratisation-brignoles",
     serviceSlug: "deratisation-var",
     citySlug: "brignoles",
+    updatedAt: "2026-06-20T11:09:00+02:00",
     h1: "Dératisation à Brignoles : rats et souris",
     title: "Dératisation Brignoles : rats, souris, maison et garage",
     description: "Rats ou souris à Brignoles : bruits, crottes, rongements, maison, garage, combles, commerce ou dépendance. Demandez un rappel gratuit.",
@@ -1789,6 +1799,7 @@ export const localLandings: LocalLanding[] = [
     slug: "cafards-brignoles",
     serviceSlug: "cafards-blattes-var",
     citySlug: "brignoles",
+    updatedAt: "2026-06-20T11:09:00+02:00",
     h1: "Cafards à Brignoles : blattes en logement ou commerce",
     title: "Cafards Brignoles : blattes, maison, commerce et réserve",
     description: "Cafards à Brignoles : blattes en cuisine, salle d'eau, commerce, réserve, logement ou local technique. Demandez un rappel gratuit.",
