@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { CityCard, RelatedLinks, ServiceCard } from "@/components/cards";
@@ -267,6 +268,7 @@ function HubPage() {
     { name: "Accueil", href: "/" },
     { name: "Traitement nuisibles Var", href: "/traitement-nuisibles-var/" },
   ];
+  const identificationGuide = guides.find((guide) => guide.slug === "identifier-un-nuisible-var");
   return (
     <main>
       <JsonLd data={breadcrumbJsonLd(crumbs)} />
@@ -287,6 +289,21 @@ function HubPage() {
           {services.map((service) => <ServiceCard key={service.slug} service={service} />)}
         </div>
       </Section>
+      {identificationGuide ? (
+        <Section>
+          <div className="container rounded-[8px] border border-[#102337]/10 bg-white p-6">
+            <Eyebrow>Guide illustré</Eyebrow>
+            <h2 className="max-w-3xl text-3xl font-black text-[#102337]">{identificationGuide.title}</h2>
+            <p className="mt-4 max-w-3xl leading-8 text-[#405160]">{identificationGuide.description}</p>
+            <Link
+              href={`/guides/${identificationGuide.slug}/`}
+              className="focus-ring mt-5 inline-flex rounded-[7px] bg-[#102337] px-5 py-3 text-sm font-bold !text-white transition hover:bg-[#18324c]"
+            >
+              Lire le guide -&gt;
+            </Link>
+          </div>
+        </Section>
+      ) : null}
       <CTABand title="Votre demande est locale et contextualisée" text="Ville, nuisible, type de lieu, téléphone et urgence : ces informations permettent une orientation plus efficace." />
     </main>
   );

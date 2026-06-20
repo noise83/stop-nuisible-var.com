@@ -3,7 +3,7 @@ import { globalPages, guides, localLandings, priorityCities, services } from "@/
 import { SITE_URL } from "@/lib/constants";
 
 const DEFAULT_LAST_MODIFIED = "2026-06-13T00:00:00+02:00";
-const HOME_LAST_MODIFIED = "2026-06-20T11:09:00+02:00";
+const HOME_LAST_MODIFIED = "2026-06-20T12:00:00+02:00";
 
 function stableDate(value?: string) {
   return new Date(value ?? DEFAULT_LAST_MODIFIED);

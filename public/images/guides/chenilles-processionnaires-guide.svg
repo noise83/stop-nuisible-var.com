@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+  <title id="title">Chenilles processionnaires</title>
+  <desc id="desc">Illustration sobre de pins avec nid blanc et procession au sol.</desc>
+  <rect width="720" height="420" rx="24" fill="#F6F1E8"/>
+  <path d="M130 330h460" stroke="#1F4D3A" stroke-width="12" stroke-linecap="round" opacity=".25"/>
+  <path d="M238 318V118M448 318V88" stroke="#7A5234" stroke-width="18" stroke-linecap="round"/>
+  <path d="M238 94 132 230h212zM238 50 160 172h156zM448 64 332 224h232zM448 22 358 158h180z" fill="#1F4D3A"/>
+  <ellipse cx="497" cy="142" rx="36" ry="24" fill="#fff" stroke="#D9D3C5" stroke-width="4"/>
+  <g fill="#E86A33">
+    <circle cx="250" cy="340" r="9"/><circle cx="273" cy="342" r="9"/><circle cx="296" cy="344" r="9"/><circle cx="319" cy="345" r="9"/><circle cx="342" cy="345" r="9"/>
+  </g>
+  <text x="70" y="65" fill="#1F2933" font-family="Arial, sans-serif" font-size="28" font-weight="800">Nids dans les pins</text>
+  <text x="70" y="98" fill="#51606D" font-family="Arial, sans-serif" font-size="17">Distance, animaux, zones de passage</text>
+</svg>

@@ -350,6 +350,12 @@ export default function HomePage() {
                 </Link>
               ))}
             </div>
+            <p className="mt-5 text-sm font-semibold leading-6 text-[#51606d]">
+              Guide utile :{" "}
+              <Link className="font-black text-[#E86A33] hover:text-[#cf5524]" href="/guides/identifier-un-nuisible-var/">
+                Identifier un nuisible dans le Var
+              </Link>
+            </p>
           </div>
         </div>
       </section>

@@ -1,5 +1,48 @@
 export type FAQItem = { question: string; answer: string };
 
+export type GuideLink = { label: string; href: string };
+
+export type IllustratedGuidePest = {
+  id: string;
+  title: string;
+  image: string;
+  imageAlt: string;
+  signs: string[];
+  places: string[];
+  advice: string[];
+  links: GuideLink[];
+};
+
+export type IllustratedGuide = {
+  h1: string;
+  introduction: string;
+  heroImage: string;
+  heroImageAlt: string;
+  summary: GuideLink[];
+  pests: IllustratedGuidePest[];
+  photoBlock: {
+    title: string;
+    image: string;
+    imageAlt: string;
+    text: string;
+    checklist: string[];
+  };
+  localContext: {
+    title: string;
+    text: string;
+    links: GuideLink[];
+  };
+  reminder: {
+    title: string;
+    items: string[];
+  };
+  cta: {
+    title: string;
+    text: string;
+    links: GuideLink[];
+  };
+};
+
 export type Service = {
   slug: string;
   name: string;
@@ -37,6 +80,7 @@ export type Guide = {
   updatedAt?: string;
   sections: Array<{ heading: string; body: string }>;
   faq: FAQItem[];
+  illustratedGuide?: IllustratedGuide;
 };
 
 export type LocalLanding = {
@@ -494,6 +538,273 @@ export const extensionCities = [
 ];
 
 export const guides: Guide[] = [
+  {
+    slug: "identifier-un-nuisible-var",
+    title: "Identifier un nuisible dans le Var : rats, cafards, punaises, frelons",
+    description:
+      "Traces, piqûres, crottes, insectes ou nid ? Guide pratique pour identifier un nuisible dans le Var et préparer une demande de rappel avec photo si besoin.",
+    serviceSlug: "traitement-nuisibles-var",
+    published: "2026-06-20",
+    updatedAt: "2026-06-20T12:00:00+02:00",
+    sections: [],
+    illustratedGuide: {
+      h1: "Identifier un nuisible dans le Var : rats, cafards, punaises, frelons",
+      introduction:
+        "Un bruit dans les combles, des piqûres au réveil, des traces noires sur un matelas, des crottes près d'un local poubelle ou un nid sous toiture ne demandent pas la même réponse. Ce guide aide à reconnaître les signes les plus utiles avant de transmettre une demande claire, sans promettre un diagnostic à distance.",
+      heroImage: "/images/guides/identifier-nuisible-var-infographie.svg",
+      heroImageAlt: "Infographie pour identifier les nuisibles fréquents dans le Var",
+      summary: [
+        { label: "Rats et souris", href: "#rats-souris" },
+        { label: "Cafards et blattes", href: "#cafards-blattes" },
+        { label: "Punaises de lit", href: "#punaises-lit" },
+        { label: "Guêpes et frelons", href: "#guepes-frelons" },
+        { label: "Termites et xylophages", href: "#termites-xylophages" },
+        { label: "Moustique tigre", href: "#moustique-tigre" },
+        { label: "Chenilles processionnaires", href: "#chenilles-processionnaires" },
+        { label: "Pigeons et goélands", href: "#pigeons-goelands" },
+        { label: "Envoyer une photo", href: "#photo" },
+      ],
+      pests: [
+        {
+          id: "rats-souris",
+          title: "Rats et souris : bruits, crottes et passages",
+          image: "/images/local/deratisation-local.svg",
+          imageAlt: "Illustration sobre de signes de rats ou souris dans un logement avec garage",
+          signs: [
+            "Bruits nocturnes dans les murs, combles, cloisons ou faux plafonds.",
+            "Crottes foncées près d'un local poubelle, d'un garage, d'une cave ou d'une réserve.",
+            "Rongements sur cartons, gaines, sacs, isolants ou denrées stockées.",
+          ],
+          places: ["Maison avec jardin", "Garage ou cave", "Commerce alimentaire", "Copropriété ou local poubelle"],
+          advice: [
+            "Préciser si les traces sont intérieures, extérieures ou proches d'un accès.",
+            "Ne pas manipuler les déjections à mains nues.",
+            "Ajouter une photo des traces si elle peut être prise sans risque.",
+          ],
+          links: [
+            { label: "Dératisation dans le Var", href: "/deratisation-var/" },
+            { label: "Dératisation à Hyères", href: "/deratisation-hyeres/" },
+          ],
+        },
+        {
+          id: "cafards-blattes",
+          title: "Cafards et blattes : cuisine, gaines et humidité",
+          image: "/images/local/cafards-local.svg",
+          imageAlt: "Illustration sobre de cafards dans un logement ou commerce",
+          signs: [
+            "Insectes visibles la nuit ou en plein jour près d'une cuisine ou salle d'eau.",
+            "Petites blattes près des plinthes, gaines, évacuations ou appareils électroménagers.",
+            "Odeur inhabituelle, traces sombres ou insectes morts dans les placards.",
+          ],
+          places: ["Appartement", "Restaurant ou commerce", "Local poubelle", "Réserve ou arrière-cuisine"],
+          advice: [
+            "Indiquer si les cafards sont vus de jour, de nuit ou après nettoyage.",
+            "Préciser si plusieurs logements ou parties communes sont concernés.",
+            "Éviter les traitements dispersés avant qualification.",
+          ],
+          links: [
+            { label: "Cafards et blattes dans le Var", href: "/cafards-blattes-var/" },
+            { label: "Cafards à Fréjus", href: "/cafards-frejus/" },
+          ],
+        },
+        {
+          id: "punaises-lit",
+          title: "Punaises de lit : piqûres, literie et retour de voyage",
+          image: "/images/local/punaises-lit-local.svg",
+          imageAlt: "Illustration sobre de literie avec signes possibles de punaises de lit",
+          signs: [
+            "Piqûres groupées au réveil ou démangeaisons répétées après la nuit.",
+            "Traces sombres sur matelas, sommier, tête de lit, canapé ou draps.",
+            "Doute après un voyage, un changement d'occupant ou un meuble d'occasion.",
+          ],
+          places: ["Chambre", "Canapé-lit", "Location saisonnière", "Résidence ou logement collectif"],
+          advice: [
+            "Ne pas déplacer matelas, sacs ou linge dans d'autres pièces sans avis.",
+            "Préciser le nombre de couchages touchés et les dates d'apparition.",
+            "Photographier les traces sans montrer de personne ni document personnel.",
+          ],
+          links: [
+            { label: "Punaises de lit dans le Var", href: "/punaises-de-lit-var/" },
+            { label: "Punaises de lit à La Seyne-sur-Mer", href: "/punaises-de-lit-la-seyne-sur-mer/" },
+          ],
+        },
+        {
+          id: "guepes-frelons",
+          title: "Guêpes et frelons : nid, allers-retours et hauteur",
+          image: "/images/local/guepes-frelons-local.svg",
+          imageAlt: "Illustration sobre d'un nid de guêpes ou frelons près d'un jardin",
+          signs: [
+            "Allers-retours répétés au même point d'une toiture, haie, volet ou arbre.",
+            "Nid visible près d'une terrasse, entrée, piscine, commerce ou cabanon.",
+            "Présence d'insectes en nombre près d'enfants, animaux, clients ou vacanciers.",
+          ],
+          places: ["Jardin", "Toiture ou volet", "Terrasse", "Camping ou commerce"],
+          advice: [
+            "Rester à distance et ne pas tenter de décrocher ou brûler le nid.",
+            "Décrire la hauteur, le support et l'accès possible.",
+            "Envoyer une photo uniquement si elle est prise à distance sans risque.",
+          ],
+          links: [
+            { label: "Guêpes et frelons dans le Var", href: "/guepes-frelons-var/" },
+            { label: "Guêpes et frelons à Fréjus", href: "/guepes-frelons-frejus/" },
+          ],
+        },
+        {
+          id: "termites-xylophages",
+          title: "Termites et xylophages : bois fragilisé et traces discrètes",
+          image: "/images/guides/termites-xylophages-guide.svg",
+          imageAlt: "Illustration de bois et charpente avec indices de termites ou xylophages",
+          signs: [
+            "Bois qui sonne creux, plinthes fragilisées ou petits trous dans une pièce humide.",
+            "Cordonnets terreux, sciure fine ou traces proches d'une cave, charpente ou menuiserie.",
+            "Doute lors d'une vente, rénovation ou découverte dans une maison ancienne.",
+          ],
+          places: ["Maison ancienne", "Cave ou vide sanitaire", "Charpente", "Menuiseries et plinthes"],
+          advice: [
+            "Ne pas détruire les indices avant avis.",
+            "Photographier les zones suspectes et préciser le type de bois touché.",
+            "Demander un avis adapté si un diagnostic réglementaire peut être nécessaire.",
+          ],
+          links: [
+            { label: "Termites dans le Var", href: "/termites-var/" },
+            { label: "Termites à Draguignan", href: "/termites-draguignan/" },
+          ],
+        },
+        {
+          id: "moustique-tigre",
+          title: "Moustique tigre : piqûres répétées et eaux stagnantes",
+          image: "/images/guides/moustique-tigre-guide.svg",
+          imageAlt: "Illustration de moustique tigre autour d'un jardin avec point d'eau",
+          signs: [
+            "Piqûres en journée, souvent autour des jambes ou bras.",
+            "Présence près d'une terrasse, piscine, jardin, récupérateur d'eau ou soucoupe.",
+            "Gêne répétée dans un extérieur malgré un logement propre.",
+          ],
+          places: ["Jardin", "Terrasse", "Piscine", "Résidence ou camping"],
+          advice: [
+            "Chercher les petites eaux stagnantes autour du logement.",
+            "Préciser les zones extérieures concernées et les horaires de gêne.",
+            "Éviter de décrire des traitements chimiques improvisés.",
+          ],
+          links: [
+            { label: "Moustique tigre dans le Var", href: "/moustique-tigre-var/" },
+            { label: "Demander un rappel", href: "/demande-devis/" },
+          ],
+        },
+        {
+          id: "chenilles-processionnaires",
+          title: "Chenilles processionnaires : pins, nids blancs et animaux",
+          image: "/images/guides/chenilles-processionnaires-guide.svg",
+          imageAlt: "Illustration de pins avec nid de chenilles processionnaires",
+          signs: [
+            "Nids blancs visibles dans des pins ou arbres exposés.",
+            "Processions au sol en saison, surtout près d'un jardin ou chemin.",
+            "Risque pour chiens, enfants ou zones de passage.",
+          ],
+          places: ["Jardin avec pins", "Résidence", "École ou collectivité", "Chemin et espace vert"],
+          advice: [
+            "Tenir les animaux et enfants à distance.",
+            "Ne pas toucher les chenilles ni les nids.",
+            "Préciser la hauteur, le nombre d'arbres et la zone de passage.",
+          ],
+          links: [
+            { label: "Chenilles processionnaires dans le Var", href: "/chenilles-processionnaires-var/" },
+            { label: "Demander un rappel", href: "/demande-devis/" },
+          ],
+        },
+        {
+          id: "pigeons-goelands",
+          title: "Pigeons et goélands : fientes, nids et accès bâtiment",
+          image: "/images/guides/depigeonnage-guide.svg",
+          imageAlt: "Illustration de pigeons et goélands près d'une toiture",
+          signs: [
+            "Fientes répétées sur balcon, rebord, toiture, enseigne ou cour.",
+            "Nid ou stationnement régulier près d'une fenêtre, climatisation ou commerce.",
+            "Gêne pour clients, copropriété, logement loué ou bâtiment public.",
+          ],
+          places: ["Balcon", "Toiture", "Commerce", "Copropriété ou résidence"],
+          advice: [
+            "Décrire la zone touchée et les accès possibles.",
+            "Préciser si le problème concerne un commerce ou une copropriété.",
+            "Ne pas détruire un nid sans avis sur le cadre applicable.",
+          ],
+          links: [
+            { label: "Dépigeonnage dans le Var", href: "/depigeonnage-var/" },
+            { label: "Zones d'intervention", href: "/zones-intervention/" },
+          ],
+        },
+      ],
+      photoBlock: {
+        title: "Envoyer une photo pour faciliter la pré-identification",
+        image: "/images/guides/photo-nuisible-guide.svg",
+        imageAlt: "Illustration d'un envoi de photo de traces de nuisible depuis un téléphone",
+        text:
+          "Une photo peut aider à comprendre s'il s'agit d'un insecte, d'un nid, de traces, de crottes ou de dégâts visibles. Elle reste facultative et ne remplace pas l'avis d'un professionnel.",
+        checklist: [
+          "Photographier de près uniquement si cela ne présente pas de risque.",
+          "Éviter les visages, personnes, documents personnels ou éléments identifiants.",
+          "Ajouter le contexte : pièce, commune, date d'apparition et urgence ressentie.",
+        ],
+      },
+      localContext: {
+        title: "Contexte local dans le Var",
+        text:
+          "Dans le Var, le contexte change fortement entre un appartement à Toulon, une villa à Hyères, une location saisonnière à Fréjus, une résidence secondaire à Saint-Raphaël, une maison à Draguignan ou un commerce à La Seyne-sur-Mer. Le littoral, les jardins, les logements collectifs, les campings et les locaux poubelles influencent les signes observés et le niveau d'urgence.",
+        links: [
+          { label: "Nuisibles à Toulon", href: "/villes/toulon/" },
+          { label: "Nuisibles à Hyères", href: "/villes/hyeres/" },
+          { label: "Nuisibles à Fréjus", href: "/villes/frejus/" },
+          { label: "Nuisibles à Draguignan", href: "/villes/draguignan/" },
+        ],
+      },
+      reminder: {
+        title: "Quand demander un rappel rapidement ?",
+        items: [
+          "Cafards visibles en plein jour ou dans plusieurs pièces.",
+          "Bruits répétés dans les murs, combles ou cloisons.",
+          "Piqûres nocturnes avec traces sur literie ou canapé.",
+          "Nid de guêpes ou frelons près d'un passage, d'enfants, de clients ou d'animaux.",
+          "Commerce, location saisonnière, copropriété ou hébergement concerné.",
+        ],
+      },
+      cta: {
+        title: "Besoin d'identifier un nuisible dans le Var ?",
+        text:
+          "Décrivez les signes observés, votre commune, le type de lieu et ajoutez une photo si elle peut aider. Stop Nuisible Var transmet une demande claire à un professionnel partenaire avec votre consentement.",
+        links: [
+          { label: "Demander un rappel gratuit", href: "/demande-devis/" },
+          { label: "Voir tous les traitements nuisibles", href: "/traitement-nuisibles-var/" },
+        ],
+      },
+    },
+    faq: [
+      {
+        question: "Une photo suffit-elle à identifier un nuisible ?",
+        answer:
+          "Non. Une photo peut aider la pré-identification, mais elle doit être croisée avec le contexte, les signes observés, la pièce touchée et l'avis d'un professionnel.",
+      },
+      {
+        question: "Quels signes décrire dans une demande de rappel ?",
+        answer:
+          "Indiquez les piqûres, crottes, bruits, traces, dégâts, nids, insectes visibles, la commune, le type de lieu et la date d'apparition.",
+      },
+      {
+        question: "Stop Nuisible Var intervient-il directement ?",
+        answer:
+          "Non. Stop Nuisible Var est une plateforme de mise en relation. La demande peut être transmise à un professionnel partenaire selon la commune, le nuisible et l'urgence.",
+      },
+      {
+        question: "Puis-je envoyer une demande si je ne sais pas quel nuisible c'est ?",
+        answer:
+          "Oui. Décrivez les signes et ajoutez une photo si possible. La demande sera qualifiée avant transmission éventuelle à un partenaire.",
+      },
+      {
+        question: "Quels nuisibles sont fréquents dans le Var ?",
+        answer:
+          "Les demandes concernent souvent rats, souris, cafards, punaises de lit, guêpes, frelons, termites, moustique tigre, chenilles processionnaires, pigeons et goélands.",
+      },
+    ],
+  },
   {
     slug: "prix-traitement-punaises-de-lit-var",
     title: "Prix d'un traitement contre les punaises de lit dans le Var",
