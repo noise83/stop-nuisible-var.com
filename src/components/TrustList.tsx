@@ -4,7 +4,7 @@ const trustItems = [
   "Transmission selon votre commune, le nuisible et l’urgence",
   "Données transmises uniquement avec votre consentement",
   "Possibilité d’ajouter une photo",
-  "Pas de fausse agence locale affichée",
+  "Positionnement transparent : mise en relation avec des partenaires",
 ];
 
 export function TrustList() {
@@ -12,7 +12,7 @@ export function TrustList() {
     <section className="mx-auto max-w-6xl px-4 py-10">
       <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
         <h2 className="text-2xl font-bold tracking-tight text-slate-950">
-          Pourquoi passer par Stop Nuisible Var ?
+          Un service clair, local et sans engagement
         </h2>
 
         <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">

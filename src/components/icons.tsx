@@ -58,6 +58,13 @@ const paths: Record<string, React.ReactNode> = {
       <path d="m30 30 10 10M18 18c1-4 8-5 10-1 3 5-5 7-5 12M23 35h.01" />
     </>
   ),
+  camera: (
+    <>
+      <path d="M14 17h5l2-4h6l2 4h5a5 5 0 0 1 5 5v11a5 5 0 0 1-5 5H14a5 5 0 0 1-5-5V22a5 5 0 0 1 5-5Z" />
+      <circle cx="24" cy="28" r="6" />
+      <path d="M33 22h.01" />
+    </>
+  ),
 };
 
 export function PestIcon({ name, className = "" }: { name: string; className?: string }) {

@@ -14,15 +14,15 @@ export const metadata: Metadata = {
 };
 
 const pestChoices = [
-  { label: "Punaises de lit", href: "/punaises-de-lit-var/", icon: "bedbug", hint: "Piqûres au réveil, traces sur literie, doute après séjour" },
-  { label: "Rats ou souris", href: "/deratisation-var/", icon: "rodent", hint: "Bruits nocturnes, crottes, rongements, garage ou combles" },
-  { label: "Cafards / blattes", href: "/cafards-blattes-var/", icon: "roach", hint: "Cuisine, salle d’eau, gaines, parties communes" },
-  { label: "Guêpes ou frelons", href: "/guepes-frelons-var/", icon: "wasp", hint: "Nid, terrasse, jardin, toiture, passage exposé" },
-  { label: "Termites", href: "/termites-var/", icon: "termite", hint: "Bois fragilisé, plinthes, poutres, traces suspectes" },
-  { label: "Moustique tigre", href: "/moustique-tigre-var/", icon: "mosquito", hint: "Jardin, terrasse, eau stagnante, piqûres en journée" },
-  { label: "Chenilles processionnaires", href: "/chenilles-processionnaires-var/", icon: "caterpillar", hint: "Pins, cocons, zone fréquentée, animaux exposés" },
-  { label: "Pigeons / goélands", href: "/depigeonnage-var/", icon: "bird", hint: "Fientes, balcon, toiture, façade ou enseigne" },
-  { label: "Je ne sais pas", href: "/guides/identifier-un-nuisible-var/", icon: "question", hint: "Comparez les signes ou ajoutez une photo à votre demande", featured: true },
+  { label: "Punaises de lit", href: "/punaises-de-lit-var/", icon: "bedbug", hint: "Piqûres au réveil, traces sur literie" },
+  { label: "Rats ou souris", href: "/deratisation-var/", icon: "rodent", hint: "Bruits nocturnes, crottes, rongements" },
+  { label: "Cafards / blattes", href: "/cafards-blattes-var/", icon: "roach", hint: "Cuisine, salle d’eau, gaines" },
+  { label: "Guêpes ou frelons", href: "/guepes-frelons-var/", icon: "wasp", hint: "Nid, terrasse, toiture" },
+  { label: "Termites", href: "/termites-var/", icon: "termite", hint: "Bois fragile, plinthes, poutres" },
+  { label: "Moustique tigre", href: "/moustique-tigre-var/", icon: "mosquito", hint: "Eau stagnante, piqûres en journée" },
+  { label: "Chenilles processionnaires", href: "/chenilles-processionnaires-var/", icon: "caterpillar", hint: "Pins, cocons, animaux exposés" },
+  { label: "Pigeons / goélands", href: "/depigeonnage-var/", icon: "bird", hint: "Fientes, balcon, façade" },
+  { label: "Je ne sais pas", href: "/guides/identifier-un-nuisible-var/", icon: "question", hint: "Comparez les signes ou ajoutez une photo", featured: true },
 ];
 
 const trustItems = [
@@ -30,7 +30,7 @@ const trustItems = [
   "Photo facultative",
   "Plateforme locale dédiée au Var",
   "Transmission uniquement avec consentement",
-  "Pas de fausse agence locale affichée",
+  "Positionnement transparent : mise en relation avec des partenaires",
   "Rappel selon commune, nuisible et disponibilité",
 ];
 
@@ -253,7 +253,9 @@ export default function HomePage() {
                   Évitez d’envoyer une photo contenant un visage, une personne, un document personnel ou tout élément permettant de vous identifier inutilement.
                 </p>
               </div>
-              <div className="grid h-20 w-20 place-items-center rounded-[8px] bg-[#F2C94C] text-3xl font-black text-[#1F2933]">+</div>
+              <div className="grid h-20 w-20 place-items-center rounded-[8px] border border-[#1F4D3A]/12 bg-[#F6F1E8] text-[#1F4D3A] shadow-[0_12px_28px_rgba(31,77,58,.08)]">
+                <PestIcon name="camera" className="h-10 w-10" />
+              </div>
             </div>
             <p className="mt-4 rounded-[8px] bg-[#F6F1E8] px-4 py-3 text-sm font-semibold leading-6 text-[#51606d]">
               L’analyse reste indicative et ne remplace pas l’avis d’un professionnel.
@@ -270,7 +272,7 @@ export default function HomePage() {
 
       <section className="bg-white py-12 sm:py-16">
         <div className="container">
-          <SectionTitle eyebrow="Confiance" title="Des preuves simples, sans promesse artificielle" />
+          <SectionTitle eyebrow="Confiance" title="Un service clair, local et sans engagement" />
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {trustItems.map((item) => (
               <div key={item} className="flex gap-3 rounded-[8px] border border-[#1F4D3A]/12 bg-[#F6F1E8] p-4 text-sm font-black leading-6 text-[#1F2933]">
@@ -332,7 +334,7 @@ export default function HomePage() {
         <div className="container grid gap-8 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
           <div>
             <p className="text-xs font-black uppercase tracking-[.14em] text-[#F2C94C]">Var 83</p>
-            <h2 className="mt-3 text-3xl font-black leading-tight sm:text-4xl">Villes et zones couvertes progressivement</h2>
+            <h2 className="mt-3 text-3xl font-black leading-tight sm:text-4xl">Demandes possibles dans le Var</h2>
             <p className="mt-4 leading-8 text-white/78">
               Les communes avec une page dédiée sont cliquables. Les autres peuvent être précisées dans le formulaire.
             </p>
@@ -364,7 +366,7 @@ export default function HomePage() {
             <div className="grid gap-6 lg:grid-cols-[.8fr_1.2fr]">
               <div>
                 <p className="text-xs font-black uppercase tracking-[.14em] text-[#E86A33]">Pages locales</p>
-                <h2 className="mt-3 text-3xl font-black leading-tight text-[#1F2933]">Pages locales récentes</h2>
+                <h2 className="mt-3 text-3xl font-black leading-tight text-[#1F2933]">Demandes fréquentes dans le Var</h2>
                 <p className="mt-4 text-sm leading-7 text-[#51606d]">
                   Quelques pages utiles pour qualifier la demande selon la ville et le nuisible, sans changer les URLs existantes.
                 </p>
