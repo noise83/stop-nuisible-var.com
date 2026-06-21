@@ -52,6 +52,12 @@ const paths: Record<string, React.ReactNode> = {
       <path d="M28 18c5-6 9-8 14-8-1 6-5 10-11 12M40 23l6 2-6 3" />
     </>
   ),
+  question: (
+    <>
+      <circle cx="21" cy="21" r="11" />
+      <path d="m30 30 10 10M18 18c1-4 8-5 10-1 3 5-5 7-5 12M23 35h.01" />
+    </>
+  ),
 };
 
 export function PestIcon({ name, className = "" }: { name: string; className?: string }) {

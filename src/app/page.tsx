@@ -14,15 +14,15 @@ export const metadata: Metadata = {
 };
 
 const pestChoices = [
-  { label: "Punaises de lit", href: "/punaises-de-lit-var/", icon: "bedbug", hint: "Piqûres, literie, bagages" },
-  { label: "Rats ou souris", href: "/deratisation-var/", icon: "rodent", hint: "Bruits, crottes, rongements" },
-  { label: "Cafards / blattes", href: "/cafards-blattes-var/", icon: "roach", hint: "Cuisine, gaines, parties communes" },
-  { label: "Guêpes ou frelons", href: "/guepes-frelons-var/", icon: "wasp", hint: "Nid, terrasse, jardin, hauteur" },
-  { label: "Termites", href: "/termites-var/", icon: "termite", hint: "Bois, charpente, traces" },
-  { label: "Moustique tigre", href: "/moustique-tigre-var/", icon: "mosquito", hint: "Jardin, terrasse, eau stagnante" },
-  { label: "Chenilles processionnaires", href: "/chenilles-processionnaires-var/", icon: "caterpillar", hint: "Pins, cocons, zone fréquentée" },
-  { label: "Pigeons / goélands", href: "/depigeonnage-var/", icon: "bird", hint: "Fientes, balcon, toiture" },
-  { label: "Je ne sais pas", href: "/guides/identifier-un-nuisible-var/", icon: "bedbug", hint: "Comparer les signes observés" },
+  { label: "Punaises de lit", href: "/punaises-de-lit-var/", icon: "bedbug", hint: "Piqûres au réveil, traces sur literie, doute après séjour" },
+  { label: "Rats ou souris", href: "/deratisation-var/", icon: "rodent", hint: "Bruits nocturnes, crottes, rongements, garage ou combles" },
+  { label: "Cafards / blattes", href: "/cafards-blattes-var/", icon: "roach", hint: "Cuisine, salle d’eau, gaines, parties communes" },
+  { label: "Guêpes ou frelons", href: "/guepes-frelons-var/", icon: "wasp", hint: "Nid, terrasse, jardin, toiture, passage exposé" },
+  { label: "Termites", href: "/termites-var/", icon: "termite", hint: "Bois fragilisé, plinthes, poutres, traces suspectes" },
+  { label: "Moustique tigre", href: "/moustique-tigre-var/", icon: "mosquito", hint: "Jardin, terrasse, eau stagnante, piqûres en journée" },
+  { label: "Chenilles processionnaires", href: "/chenilles-processionnaires-var/", icon: "caterpillar", hint: "Pins, cocons, zone fréquentée, animaux exposés" },
+  { label: "Pigeons / goélands", href: "/depigeonnage-var/", icon: "bird", hint: "Fientes, balcon, toiture, façade ou enseigne" },
+  { label: "Je ne sais pas", href: "/guides/identifier-un-nuisible-var/", icon: "question", hint: "Comparez les signes ou ajoutez une photo à votre demande", featured: true },
 ];
 
 const trustItems = [
@@ -200,19 +200,37 @@ export default function HomePage() {
               Demander un rappel
             </CtaLink>
           </div>
-          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {pestChoices.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="focus-ring group flex min-h-[92px] items-center gap-4 rounded-[8px] border border-[#1F4D3A]/12 bg-[#F6F1E8] p-4 transition hover:border-[#E86A33] hover:bg-white"
+                className={`focus-ring group relative isolate flex min-h-[132px] overflow-hidden rounded-[8px] border bg-white p-5 shadow-[0_12px_28px_rgba(31,77,58,.08)] transition duration-200 hover:-translate-y-0.5 hover:border-[#E86A33] hover:shadow-[0_18px_38px_rgba(31,77,58,.12)] active:translate-y-0 active:scale-[.99] ${
+                  item.featured
+                    ? "border-[#E86A33]/45 bg-[#FFF9F4] ring-1 ring-[#E86A33]/10"
+                    : "border-[#1F4D3A]/12"
+                }`}
               >
-                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-[8px] bg-white text-[#1F4D3A] ring-1 ring-[#1F4D3A]/10 group-hover:text-[#E86A33]">
-                  <PestIcon name={item.icon} className="h-8 w-8" />
-                </span>
-                <span className="min-w-0">
-                  <span className="block text-base font-black leading-5 text-[#1F2933]">{item.label}</span>
-                  <span className="mt-1 block text-sm leading-5 text-[#51606d]">{item.hint}</span>
+                <PestIcon
+                  name={item.icon}
+                  className={`pointer-events-none absolute -bottom-5 -right-4 z-0 h-28 w-28 transition duration-200 group-hover:scale-105 sm:h-32 sm:w-32 ${
+                    item.featured
+                      ? "text-[#E86A33] opacity-[.12] group-hover:opacity-[.16]"
+                      : "text-[#1F4D3A] opacity-[.08] group-hover:text-[#E86A33] group-hover:opacity-[.12]"
+                  }`}
+                />
+                <span className="relative z-10 flex min-w-0 flex-col pr-16">
+                  <span
+                    className={`grid h-11 w-11 shrink-0 place-items-center rounded-[8px] bg-[#F6F1E8] ring-1 transition group-hover:text-[#E86A33] ${
+                      item.featured
+                        ? "text-[#E86A33] ring-[#E86A33]/20"
+                        : "text-[#1F4D3A] ring-[#1F4D3A]/10"
+                    }`}
+                  >
+                    <PestIcon name={item.icon} className="h-7 w-7" />
+                  </span>
+                  <span className="mt-4 block text-base font-black leading-5 text-[#1F2933]">{item.label}</span>
+                  <span className="mt-2 block text-sm leading-6 text-[#51606d]">{item.hint}</span>
                 </span>
               </Link>
             ))}
