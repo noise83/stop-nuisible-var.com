@@ -97,26 +97,26 @@ export function LeadForm({ defaultCity = "", defaultPest = "" }: { defaultCity?:
       noValidate
     >
       <div className="mb-4 rounded-[7px] bg-[#102337] px-4 py-3 text-white sm:mb-5">
-        <p className="text-sm font-black">Rappel gratuit</p>
-        <p className="mt-1 text-xs text-white/75">Décrivez l&apos;essentiel. Votre demande est transmise selon votre commune, le nuisible et l&apos;urgence.</p>
+        <p className="text-sm font-black">Demande de rappel gratuite</p>
+        <p className="mt-1 text-xs leading-5 text-white/75">Plus la commune, le nuisible et les signes sont précis, plus la demande peut être orientée efficacement.</p>
         <a href={PHONE_HREF} className="mt-3 inline-flex text-sm font-black text-[#dfcaa2] underline-offset-4 hover:underline" data-track-phone>
           Appeler le {PHONE_NUMBER}
         </a>
       </div>
       <div className="grid gap-4 sm:gap-5 md:grid-cols-2">
-        <Select label="Type de nuisible" name="pest" options={pests} required defaultValue={defaultPest} />
-        <Field label="Ville" name="city" required defaultValue={defaultCity} />
-        <Field label="Code postal" name="postalCode" inputMode="numeric" required />
-        <Select label="Urgence" name="urgency" options={urgencies} required />
+        <Select label="Type de nuisible" name="pest" options={pests} required defaultValue={defaultPest} helper="Choisissez “Je ne sais pas” en cas de doute." />
+        <Field label="Ville" name="city" required defaultValue={defaultCity} placeholder="Ex. Toulon" helper="Indiquez la commune concernée." />
+        <Field label="Code postal" name="postalCode" inputMode="numeric" required placeholder="Ex. 83000" />
+        <Select label="Urgence" name="urgency" options={urgencies} required helper="Sélectionnez le délai de rappel souhaité." />
         <Select label="Type de lieu" name="placeType" options={placeTypes} required />
-        <Field label="Nom" name="name" required />
-        <Field label="Téléphone" name="phone" type="tel" required />
-        <Field label="Email facultatif" name="email" type="email" />
+        <Field label="Nom" name="name" required placeholder="Votre nom" />
+        <Field label="Téléphone" name="phone" type="tel" required placeholder="Votre numéro de rappel" helper="Utilisé uniquement pour organiser le rappel." />
+        <Field label="Email facultatif" name="email" type="email" placeholder="utile si vous préférez un retour écrit" />
         <Select label="Créneau de rappel préféré" name="callbackSlot" options={callbackSlots} />
         <label className="block md:col-span-2">
           <span className="text-sm font-bold text-[#102337]">Photo facultative</span>
           <span className="mt-2 block text-sm leading-6 text-[#405160]">
-            Ajoutez une photo d’un insecte, d’un nid, de traces ou de dégâts visibles si vous souhaitez faciliter la pré-identification du problème.
+            Ajoutez une photo d’un insecte, d’un nid, de traces ou de dégâts visibles si cela peut aider à comprendre la situation.
           </span>
           <span className="mt-2 block text-sm leading-6 text-[#405160]">
             Formats acceptés : JPG, PNG ou WEBP. Taille maximale : 4 Mo.
@@ -141,7 +141,7 @@ export function LeadForm({ defaultCity = "", defaultPest = "" }: { defaultCity?:
       </div>
       <label className="mt-5 block">
         <span className="text-sm font-bold text-[#102337]">Message facultatif</span>
-        <textarea name="message" maxLength={1200} rows={3} className="mt-2 w-full rounded-[7px] border border-[#102337]/15 bg-[#f5f1e8] px-4 py-3 outline-none focus:border-[#bf593f]" placeholder="Exemple : traces dans la cuisine, nid sous toiture, piqûres au réveil..." />
+        <textarea name="message" maxLength={1200} rows={3} className="mt-2 w-full rounded-[7px] border border-[#102337]/15 bg-[#f5f1e8] px-4 py-3 outline-none focus:border-[#bf593f]" placeholder="Exemple : traces dans la cuisine, bruits la nuit, nid sous toiture, piqûres au réveil..." />
       </label>
       <div hidden aria-hidden="true" style={{ display: "none" }}>
         <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
@@ -151,7 +151,7 @@ export function LeadForm({ defaultCity = "", defaultPest = "" }: { defaultCity?:
         <span>{CONSENT_TEXT}</span>
       </label>
       <button disabled={status === "loading"} className="focus-ring mt-6 w-full rounded-[7px] bg-[#bf593f] px-5 py-4 font-black text-white transition hover:bg-[#a94833] disabled:cursor-not-allowed disabled:opacity-70">
-        {status === "loading" ? "Envoi en cours..." : "Être rappelé gratuitement"}
+        {status === "loading" ? "Envoi en cours..." : "Demander mon rappel gratuit"}
       </button>
       {message ? (
         <p className={`mt-4 rounded-[7px] p-4 text-sm font-semibold ${status === "success" ? "bg-[#eaf3ed] text-[#24493d]" : "bg-[#fff0ec] text-[#9a3e2e]"}`} role="status">
@@ -162,16 +162,17 @@ export function LeadForm({ defaultCity = "", defaultPest = "" }: { defaultCity?:
   );
 }
 
-function Field({ label, name, type = "text", inputMode, required = false, defaultValue = "" }: { label: string; name: string; type?: string; inputMode?: React.HTMLAttributes<HTMLInputElement>["inputMode"]; required?: boolean; defaultValue?: string }) {
+function Field({ label, name, type = "text", inputMode, required = false, defaultValue = "", placeholder = "", helper }: { label: string; name: string; type?: string; inputMode?: React.HTMLAttributes<HTMLInputElement>["inputMode"]; required?: boolean; defaultValue?: string; placeholder?: string; helper?: string }) {
   return (
     <label className="block">
       <span className="text-sm font-bold text-[#102337]">{label}</span>
-      <input name={name} type={type} inputMode={inputMode} required={required} defaultValue={defaultValue} className="mt-2 min-h-12 w-full rounded-[7px] border border-[#102337]/15 bg-[#f5f1e8] px-4 py-3 outline-none focus:border-[#bf593f]" />
+      <input name={name} type={type} inputMode={inputMode} required={required} defaultValue={defaultValue} placeholder={placeholder} className="mt-2 min-h-12 w-full rounded-[7px] border border-[#102337]/15 bg-[#f5f1e8] px-4 py-3 outline-none focus:border-[#bf593f]" />
+      {helper ? <span className="mt-1 block text-xs leading-5 text-[#607080]">{helper}</span> : null}
     </label>
   );
 }
 
-function Select({ label, name, options, required = false, className = "", defaultValue = "" }: { label: string; name: string; options: string[]; required?: boolean; className?: string; defaultValue?: string }) {
+function Select({ label, name, options, required = false, className = "", defaultValue = "", helper }: { label: string; name: string; options: string[]; required?: boolean; className?: string; defaultValue?: string; helper?: string }) {
   return (
     <label className={`block ${className}`}>
       <span className="text-sm font-bold text-[#102337]">{label}</span>
@@ -179,6 +180,7 @@ function Select({ label, name, options, required = false, className = "", defaul
         <option value="">Choisir</option>
         {options.map((option) => <option key={option} value={option}>{option}</option>)}
       </select>
+      {helper ? <span className="mt-1 block text-xs leading-5 text-[#607080]">{helper}</span> : null}
     </label>
   );
 }
