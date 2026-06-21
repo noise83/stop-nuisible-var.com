@@ -346,7 +346,7 @@ export default function HomePage() {
                 <Link
                   key={name}
                   href={`/villes/${city.slug}/`}
-                  className="focus-ring rounded-full border border-white/15 bg-white px-4 py-2 text-sm font-black text-[#1F4D3A] transition hover:bg-[#F2C94C]"
+                  className="focus-ring rounded-full border border-[#F2C94C]/35 bg-[#F6F1E8]/95 px-4 py-2 text-sm font-black text-[#1F2933] transition hover:bg-[#F2C94C] hover:text-[#1F2933]"
                 >
                   {name}
                 </Link>
