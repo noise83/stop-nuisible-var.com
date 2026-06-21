@@ -307,8 +307,8 @@ export default function HomePage() {
           <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
             <SectionTitle
               eyebrow="Services"
-              title="Services principaux dans le Var"
-              text="Retrouvez les pages mères existantes pour préciser les signes, les lieux touchés et les informations utiles avant rappel."
+              title="Services de traitement des nuisibles dans le Var"
+              text="Rats, souris, cafards, punaises de lit, guêpes, frelons, termites ou moustiques : chaque nuisible laisse des signes différents et ne se traite pas de la même façon. Consultez le service correspondant pour reconnaître les indices, comprendre les lieux à risque et préparer une demande de rappel plus précise dans le Var."
             />
             <Link className="font-black text-[#E86A33] hover:text-[#cf5524]" href="/traitement-nuisibles-var/">
               Voir tous les traitements -&gt;
