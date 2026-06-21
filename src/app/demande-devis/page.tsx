@@ -8,7 +8,7 @@ import { breadcrumbJsonLd } from "@/lib/jsonld";
 export const metadata: Metadata = {
   title: "Demande de rappel nuisibles Var",
   description:
-    "Formulaire court de rappel anti-nuisibles dans le Var : nuisible, ville, code postal, urgence, téléphone et consentement RGPD.",
+    "Rats, cafards, punaises de lit, guêpes ou frelons dans le Var ? Décrivez le problème, ajoutez une photo si besoin et demandez un rappel gratuit sans engagement.",
   alternates: { canonical: "/demande-devis/" },
 };
 
