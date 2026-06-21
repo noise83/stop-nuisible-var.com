@@ -28,3 +28,6 @@ Thumbs.db
 
 # Vercel local metadata
 .vercel
+
+# TypeScript build info
+tsconfig.tsbuildinfo
