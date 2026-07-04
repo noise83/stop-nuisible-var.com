@@ -57,6 +57,10 @@ export type Service = {
   contexts: string[];
   advice: string[];
   faq: FAQItem[];
+  servicePageCopy?: {
+    title: string;
+    paragraphs: string[];
+  };
 };
 
 export type City = {
@@ -304,6 +308,14 @@ export const services: Service[] = [
       "Signaler un retour de voyage, une location récente ou un logement collectif potentiellement concerné.",
       "Éviter les traitements improvisés qui dispersent les insectes et compliquent l'analyse.",
     ],
+    servicePageCopy: {
+      title: "Une suspicion à décrire sans se précipiter",
+      paragraphs: [
+        "Une suspicion de punaises de lit demande surtout de préciser le contexte : retour de voyage, location saisonnière, chambre occupée récemment, canapé-lit, chambre d'amis ou plusieurs couchages touchés. Ces détails évitent de partir sur une mauvaise piste.",
+        "Les signes utiles sont souvent discrets : piqûres au réveil, petites taches noires sur matelas ou sommier, insecte près d'un couchage, doute après un séjour ou achat de mobilier. Une photo peut aider, mais elle ne remplace pas l'avis d'un professionnel.",
+        "L'urgence n'est pas la même entre une résidence principale, un hôtel, une location de vacances ou un logement occupé à tour de rôle. Plus la demande indique les pièces concernées, les dates et le nombre de couchages, plus le rappel peut être préparé correctement.",
+      ],
+    },
     faq: [
       {
         question: "Une piqûre suffit-elle à confirmer des punaises de lit ?",
@@ -336,6 +348,14 @@ export const services: Service[] = [
       "Signaler les accès probables : vide sanitaire, toiture, local poubelle, terrasse ou canalisation.",
       "Préciser si la demande concerne un restaurant, un commerce alimentaire ou une copropriété.",
     ],
+    servicePageCopy: {
+      title: "Des indices à situer précisément",
+      paragraphs: [
+        "Une demande de dératisation n'a pas le même sens dans une cave d'immeuble à Toulon, un garage à Brignoles, une arrière-cuisine de restaurant ou une maison avec jardin. Les traces à signaler ne sont pas les mêmes selon le lieu.",
+        "Bruits dans les cloisons ou les combles, crottes près des plinthes, passages vers un local poubelle, rongements sur cartons ou gaines, odeur inhabituelle : ces éléments aident à qualifier la situation avant le rappel.",
+        "Le contexte local compte aussi. En copropriété, la demande peut concerner les parties communes ou les locaux techniques. Dans un secteur plus résidentiel autour de Draguignan, Brignoles ou Fréjus, les accès par garage, jardin, cave ou dépendance sont souvent utiles à préciser.",
+      ],
+    },
     faq: [
       {
         question: "Faut-il demander une dératisation dès les premiers signes ?",
@@ -368,6 +388,14 @@ export const services: Service[] = [
       "Éviter les traitements dispersés qui peuvent compliquer le diagnostic.",
       "Pour un restaurant, préciser l'urgence, les horaires de rappel et les contraintes d'activité.",
     ],
+    servicePageCopy: {
+      title: "Comprendre où les blattes circulent",
+      paragraphs: [
+        "Un cafard vu en pleine journée n'a pas la même signification qu'un insecte aperçu la nuit près d'une cuisine, d'une salle d'eau ou d'une gaine technique. La fréquence et le moment d'observation sont utiles à préciser.",
+        "En appartement, le problème peut venir du logement, mais aussi des parties communes, d'un réseau de gaines ou d'un local poubelle. Dans un restaurant ou un commerce alimentaire, les réserves, points d'eau et horaires d'activité changent la façon de préparer le rappel.",
+        "Les informations les plus utiles restent simples : pièce concernée, humidité, insectes morts ou vivants, présence chez des voisins, observation dans les parties communes, et contraintes si le lieu reçoit du public.",
+      ],
+    },
     faq: [
       {
         question: "Les cafards viennent-ils toujours d'un manque d'hygiène ?",
@@ -400,6 +428,14 @@ export const services: Service[] = [
       "Signaler les allergies connues ou l'exposition d'un public fragile.",
       "Indiquer si le nid gêne une terrasse, une entrée, un commerce ou un lieu avec animaux.",
     ],
+    servicePageCopy: {
+      title: "Décrire l'emplacement sans prendre de risque",
+      paragraphs: [
+        "Pour un nid de guêpes ou de frelons, l'emplacement compte autant que le nuisible lui-même : sous une toiture, dans un volet roulant, près d'une terrasse, dans un arbre, une haie ou à proximité d'un passage fréquent.",
+        "La hauteur, l'accès et les personnes exposées changent la manière de qualifier la demande. La présence d'enfants, d'animaux, de clients, de touristes ou d'une terrasse utilisée tous les jours doit être signalée dès le départ.",
+        "Il n'est pas nécessaire de s'approcher du nid. Une description claire, et éventuellement une photo prise à distance, suffit souvent à préparer un rappel sans se mettre en danger.",
+      ],
+    },
     faq: [
       {
         question: "Qui contacter pour un nid de frelon asiatique ?",

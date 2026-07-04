@@ -341,23 +341,34 @@ function ServicePage({ slug }: { slug: string }) {
       <Section>
         <div className="container grid gap-10 lg:grid-cols-[1fr_380px]">
           <article className="space-y-5 leading-8 text-[#405160]">
-            <h2 className="text-3xl font-black text-[#102337]">Une demande locale, claire et transmissible</h2>
-            <p>
-              Pour un <Link className="font-bold text-[#102337] underline decoration-[#bf593f]/35 underline-offset-4 hover:text-[#bf593f]" href="/traitement-nuisibles-var/">traitement nuisibles dans le Var</Link>, la bonne orientation dépend rarement d&apos;un seul mot-clé. Il faut comprendre la commune, le type de lieu, les signes observés, les contraintes d&apos;accès et le niveau d&apos;urgence. C&apos;est pourquoi Stop Nuisible Var structure la demande avant transmission.
-            </p>
-            <p>
-              Le service convient aux particuliers, propriétaires, locataires, syndics, commerces, restaurants, hôtels, campings, conciergeries et collectivités. Les demandes peuvent venir de secteurs urbains comme{" "}
-              <Link className="font-bold text-[#102337] underline decoration-[#bf593f]/35 underline-offset-4 hover:text-[#bf593f]" href="/villes/toulon/">Toulon</Link>, de villes littorales comme{" "}
-              <Link className="font-bold text-[#102337] underline decoration-[#bf593f]/35 underline-offset-4 hover:text-[#bf593f]" href="/villes/frejus/">Fréjus</Link> ou d&apos;autres communes listées dans les{" "}
-              <Link className="font-bold text-[#102337] underline decoration-[#bf593f]/35 underline-offset-4 hover:text-[#bf593f]" href="/zones-intervention/">zones d&apos;intervention</Link>. Votre demande est transmise à un professionnel partenaire adapté selon votre commune, le type de nuisible et le niveau d&apos;urgence.
-            </p>
-            <p>
-              Les informations envoyées permettent d&apos;éviter les échanges inutiles : type de nuisible, commune, bâtiment, disponibilités et message libre. Les pages dédiées aux{" "}
-              <ServiceInlineLink currentSlug={service.slug} href="/punaises-de-lit-var/">punaises de lit</ServiceInlineLink>, aux{" "}
-              <ServiceInlineLink currentSlug={service.slug} href="/cafards-blattes-var/">cafards et blattes</ServiceInlineLink>, aux{" "}
-              <ServiceInlineLink currentSlug={service.slug} href="/termites-var/">termites</ServiceInlineLink> ou au{" "}
-              <ServiceInlineLink currentSlug={service.slug} href="/moustique-tigre-var/">moustique tigre</ServiceInlineLink> aident à préparer une demande plus précise sans donner de consignes dangereuses.
-            </p>
+            {service.servicePageCopy ? (
+              <>
+                <h2 className="text-3xl font-black text-[#102337]">{service.servicePageCopy.title}</h2>
+                {service.servicePageCopy.paragraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </>
+            ) : (
+              <>
+                <h2 className="text-3xl font-black text-[#102337]">Une demande locale, claire et transmissible</h2>
+                <p>
+                  Pour un <Link className="font-bold text-[#102337] underline decoration-[#bf593f]/35 underline-offset-4 hover:text-[#bf593f]" href="/traitement-nuisibles-var/">traitement nuisibles dans le Var</Link>, la bonne orientation dépend rarement d&apos;un seul mot-clé. Il faut comprendre la commune, le type de lieu, les signes observés, les contraintes d&apos;accès et le niveau d&apos;urgence. C&apos;est pourquoi Stop Nuisible Var structure la demande avant transmission.
+                </p>
+                <p>
+                  Le service convient aux particuliers, propriétaires, locataires, syndics, commerces, restaurants, hôtels, campings, conciergeries et collectivités. Les demandes peuvent venir de secteurs urbains comme{" "}
+                  <Link className="font-bold text-[#102337] underline decoration-[#bf593f]/35 underline-offset-4 hover:text-[#bf593f]" href="/villes/toulon/">Toulon</Link>, de villes littorales comme{" "}
+                  <Link className="font-bold text-[#102337] underline decoration-[#bf593f]/35 underline-offset-4 hover:text-[#bf593f]" href="/villes/frejus/">Fréjus</Link> ou d&apos;autres communes listées dans les{" "}
+                  <Link className="font-bold text-[#102337] underline decoration-[#bf593f]/35 underline-offset-4 hover:text-[#bf593f]" href="/zones-intervention/">zones d&apos;intervention</Link>. Votre demande est transmise à un professionnel partenaire adapté selon votre commune, le type de nuisible et le niveau d&apos;urgence.
+                </p>
+                <p>
+                  Les informations envoyées permettent d&apos;éviter les échanges inutiles : type de nuisible, commune, bâtiment, disponibilités et message libre. Les pages dédiées aux{" "}
+                  <ServiceInlineLink currentSlug={service.slug} href="/punaises-de-lit-var/">punaises de lit</ServiceInlineLink>, aux{" "}
+                  <ServiceInlineLink currentSlug={service.slug} href="/cafards-blattes-var/">cafards et blattes</ServiceInlineLink>, aux{" "}
+                  <ServiceInlineLink currentSlug={service.slug} href="/termites-var/">termites</ServiceInlineLink> ou au{" "}
+                  <ServiceInlineLink currentSlug={service.slug} href="/moustique-tigre-var/">moustique tigre</ServiceInlineLink> aident à préparer une demande plus précise sans donner de consignes dangereuses.
+                </p>
+              </>
+            )}
           </article>
           <RelatedLinks
             links={[
