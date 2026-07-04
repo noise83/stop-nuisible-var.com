@@ -35,7 +35,7 @@ const trustItems = [
   "Photo facultative",
   "Plateforme locale dédiée au Var",
   "Transmission uniquement avec consentement",
-  "Positionnement transparent : mise en relation avec des partenaires",
+  "Votre demande sert à qualifier le problème et à organiser un rappel adapté",
   "Rappel selon commune, nuisible et disponibilité",
 ];
 

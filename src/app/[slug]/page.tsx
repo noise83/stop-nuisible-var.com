@@ -537,7 +537,7 @@ function PartnersPage() {
               Stop Nuisible Var sélectionne des professionnels et intermédiaires spécialisés selon leur zone d&apos;intervention, leur capacité de rappel, leur expérience sur le nuisible concerné et la clarté de leurs devis.
             </p>
             <p className="mt-4 leading-8 text-[#405160]">
-              Aucun partenaire nommé n&apos;est affiché sans accord signé, et aucune fausse agence locale n&apos;est inventée.
+              Le réseau de partenaires est construit progressivement, avec une priorité donnée aux zones couvertes, à la capacité de rappel et à la clarté des devis.
             </p>
           </div>
           <EmergencyPanel />
@@ -566,7 +566,7 @@ function LegalPage() {
   return <TextPage slug="mentions-legales" paragraphs={[
     "Éditeur du site : Stop Nuisible Var, plateforme locale de demande de rappel et de mise en relation anti-nuisibles dans le Var. Contact : via le formulaire du site ou l'adresse contact@stop-nuisible-var.com.",
     "Responsable de publication : propriétaire du site Stop Nuisible Var. Hébergeur : Vercel Inc., 440 N Barranca Avenue #4133, Covina, CA 91723, États-Unis.",
-    "Stop Nuisible Var est un site de demande de devis et de mise en relation locale. Il ne se présente pas comme une entreprise d'intervention directe et n'affiche aucune adresse physique fictive.",
+    "Stop Nuisible Var est un site de demande de devis et de mise en relation locale. Les demandes peuvent être transmises à un professionnel partenaire avec l'accord de l'utilisateur.",
     "Les contenus, textes, éléments graphiques et pictogrammes du site sont protégés par le droit de la propriété intellectuelle. Toute reproduction non autorisée est interdite.",
     "Les contenus ont une vocation informative et commerciale. Ils ne remplacent pas un diagnostic technique, sanitaire, réglementaire ou juridique.",
     "Les données envoyées par le formulaire peuvent être transmises à un professionnel partenaire spécialisé uniquement avec consentement explicite de l'utilisateur.",

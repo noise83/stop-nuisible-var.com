@@ -9,7 +9,7 @@ export function Footer() {
         <div>
           <p className="text-xl font-black">Stop Nuisible Var</p>
           <p className="mt-4 max-w-sm text-sm leading-7 text-white/72">
-            Plateforme locale de demande de rappel et de mise en relation. Nous ne déclarons pas intervenir directement : votre demande est transmise à un professionnel partenaire adapté.
+            Stop Nuisible Var qualifie votre demande et peut la transmettre, avec votre accord, à un professionnel partenaire adapté.
           </p>
           <a href={PHONE_HREF} className="mt-5 inline-flex rounded-[7px] bg-[#bf593f] px-4 py-3 text-sm font-black text-white" data-track-phone>
             Appeler le {PHONE_NUMBER}

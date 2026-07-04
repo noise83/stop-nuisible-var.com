@@ -4,7 +4,7 @@ const trustItems = [
   "Transmission selon votre commune, le nuisible et l’urgence",
   "Données transmises uniquement avec votre consentement",
   "Possibilité d’ajouter une photo",
-  "Positionnement transparent : mise en relation avec des partenaires",
+  "Votre demande sert à qualifier le problème et à organiser un rappel adapté",
 ];
 
 export function TrustList() {
