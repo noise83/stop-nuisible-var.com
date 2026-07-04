@@ -3,6 +3,8 @@ export const SITE_URL = "https://www.stop-nuisible-var.com";
 export const MAIN_CTA = "Demander un rappel gratuit";
 export const PHONE_NUMBER = "07 89 89 34 22";
 export const PHONE_HREF = "tel:+33789893422";
+export const CONTACT_EMAIL = "contact@stop-nuisible-var.com";
+export const CONTACT_EMAIL_HREF = `mailto:${CONTACT_EMAIL}`;
 
 export const CONSENT_TEXT =
   "J'accepte que mes informations soient transmises à une entreprise partenaire spécialisée afin d'être recontacté concernant ma demande.";

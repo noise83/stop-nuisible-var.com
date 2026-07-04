@@ -472,13 +472,13 @@ function PrivacyPage() {
     "La finalité est la qualification de la demande et la mise en relation avec un professionnel ou partenaire spécialisé dans le traitement des nuisibles dans le Var.",
     "Les destinataires sont l'administrateur du site et les partenaires de mise en relation strictement utiles au traitement de la demande. Le consentement RGPD est obligatoire avant toute transmission.",
     "Les données sont conservées pendant la durée nécessaire au suivi de la demande, puis supprimées ou archivées de manière limitée pour assurer la traçabilité du service.",
-    "Vous pouvez demander l'accès, la rectification ou la suppression de vos informations en utilisant le formulaire de contact ou l'adresse email d'administration configurée pour le site.",
+    "Vous pouvez demander l'accès, la rectification ou la suppression de vos informations en utilisant le formulaire du site ou l'adresse contact@stop-nuisible-var.com.",
   ]} />;
 }
 
 function LegalPage() {
   return <TextPage slug="mentions-legales" paragraphs={[
-    "Éditeur du site : Stop Nuisible Var, plateforme locale de demande de rappel et de mise en relation anti-nuisibles dans le Var. Contact : via le formulaire du site ou l'adresse email d'administration du projet.",
+    "Éditeur du site : Stop Nuisible Var, plateforme locale de demande de rappel et de mise en relation anti-nuisibles dans le Var. Contact : via le formulaire du site ou l'adresse contact@stop-nuisible-var.com.",
     "Responsable de publication : propriétaire du site Stop Nuisible Var. Hébergeur : Vercel Inc., 440 N Barranca Avenue #4133, Covina, CA 91723, États-Unis.",
     "Stop Nuisible Var est un site de demande de devis et de mise en relation locale. Il ne se présente pas comme une entreprise d'intervention directe et n'affiche aucune adresse physique fictive.",
     "Les contenus, textes, éléments graphiques et pictogrammes du site sont protégés par le droit de la propriété intellectuelle. Toute reproduction non autorisée est interdite.",

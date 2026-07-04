@@ -3,6 +3,7 @@ import { Breadcrumb } from "@/components/breadcrumb";
 import { JsonLd } from "@/components/json-ld";
 import { LeadForm } from "@/components/lead-form";
 import { Eyebrow, PhoneLink, Section } from "@/components/ui";
+import { CONTACT_EMAIL, CONTACT_EMAIL_HREF } from "@/lib/constants";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
@@ -70,6 +71,10 @@ export default function QuotePage() {
             </div>
             <div className="mt-6 rounded-[8px] border border-[#24493d]/15 bg-white p-5 text-sm leading-7 text-[#405160]">
               Une photo peut aider à mieux orienter la demande, mais elle reste facultative. L’analyse reste indicative et ne remplace pas l’avis d’un professionnel.
+              Pour une question administrative, vous pouvez écrire à{" "}
+              <a className="font-bold text-[#102337] underline decoration-[#bf593f]/35 underline-offset-4 hover:text-[#bf593f]" href={CONTACT_EMAIL_HREF}>
+                {CONTACT_EMAIL}
+              </a>.
             </div>
           </div>
           <div>
