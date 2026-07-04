@@ -71,6 +71,16 @@ export type City = {
   angle: string;
 };
 
+export type CityPageContent = {
+  intro?: string;
+  qualifierText: string;
+  frequentRequests: string[];
+  contextText: string;
+  nearbyText: string;
+  advice: string[];
+  faq: FAQItem[];
+};
+
 export type Guide = {
   slug: string;
   title: string;
@@ -696,6 +706,310 @@ export const extensionCities = [
   "Flassans-sur-Issole",
   "Fayence",
 ];
+
+export const cityPageContent: Record<string, CityPageContent> = {
+  toulon: {
+    intro:
+      "À Toulon, les demandes concernent souvent des immeubles anciens, des copropriétés avec locaux poubelles, des commerces de bouche ou des logements proches du centre-ville, du port, du Mourillon, du Pont du Las ou de Saint-Jean-du-Var.",
+    qualifierText:
+      "Indiquez le quartier, l'étage, le type de bâtiment et les signes visibles. Ces détails aident à comprendre si le problème semble limité au logement, aux parties communes, à un commerce ou à un local technique.",
+    frequentRequests: [
+      "Rats ou souris : bruits dans les cloisons, caves d'immeubles, rez-de-chaussée et locaux poubelles en copropriété.",
+      "Cafards : cuisines, gaines techniques, restaurants, appartements anciens ou logements proches de zones très fréquentées.",
+      "Punaises de lit : appartements, locations courtes durées, chambres occupées à tour de rôle ou logements proches du centre et du littoral.",
+      "Pigeons : balcons, rebords, façades, cours intérieures et immeubles proches du port ou des axes passants.",
+    ],
+    contextText:
+      "À Toulon, une demande n'a pas le même sens entre un appartement de centre-ville, un commerce près d'un axe passant, une cave de copropriété ou un logement côté Mourillon.",
+    nearbyText:
+      "Autour de Toulon, les demandes peuvent aussi concerner La Valette-du-Var, La Garde, Ollioules ou La Seyne-sur-Mer, selon le secteur du logement ou du local.",
+    advice: [
+      "Précisez le quartier ou un repère simple : centre-ville, port, Mourillon, Pont du Las, Sainte-Anne, La Rode ou Saint-Jean-du-Var.",
+      "Indiquez si les signes viennent d'un logement, d'un local poubelle, d'une cave, d'un restaurant ou d'une partie commune.",
+      "Pour une copropriété ou un commerce, ajoutez les contraintes d'accès, les horaires possibles et la personne à rappeler.",
+    ],
+    faq: [
+      {
+        question: "Les nuisibles sont-ils fréquents à Toulon ?",
+        answer:
+          "Oui, surtout dans les secteurs avec beaucoup d'immeubles, de commerces, de caves ou de locaux poubelles. Le centre-ville, les copropriétés et certains rez-de-chaussée peuvent être concernés selon le type de nuisible.",
+      },
+      {
+        question: "Que faut-il préciser pour une demande à Toulon ?",
+        answer:
+          "Mentionnez le quartier, le type de lieu, les signes observés et l'accès possible. Pour un immeuble, indiquez aussi si les parties communes, les caves ou le local poubelle semblent concernés.",
+      },
+    ],
+  },
+  hyeres: {
+    intro:
+      "À Hyères, les demandes peuvent concerner aussi bien le centre ancien que Giens, l'Almanarre, les secteurs résidentiels, les logements saisonniers ou les maisons avec jardin.",
+    qualifierText:
+      "Le contexte change beaucoup entre une villa avec extérieur, une résidence proche du bord de mer, une location occupée par roulement ou un jardin avec points d'eau.",
+    frequentRequests: [
+      "Moustiques : jardins, terrasses, zones humides, récupérateurs d'eau et secteurs proches du littoral.",
+      "Punaises de lit : locations saisonnières, chambres d'amis, logements occupés par roulement ou appartements proches des zones touristiques.",
+      "Guêpes et frelons : jardins, toitures, volets, abris extérieurs et maisons proches des zones végétalisées.",
+      "Chenilles processionnaires : pins, jardins, animaux exposés et abords de maisons ou résidences.",
+    ],
+    contextText:
+      "À Hyères, il est utile de distinguer une gêne extérieure liée au jardin ou au littoral d'un problème intérieur dans un logement, une résidence ou une location saisonnière.",
+    nearbyText:
+      "Selon le secteur, une demande à Hyères peut être proche de La Crau, Carqueiranne, La Londe-les-Maures ou du secteur de Giens.",
+    advice: [
+      "Indiquez le secteur : centre ancien, Giens, Almanarre, La Capte, port, quartier résidentiel ou bord de mer.",
+      "Pour les moustiques, signalez les points d'eau, le jardin, la terrasse, la piscine ou les zones humides proches.",
+      "Pour une location, précisez les dates d'occupation et si le logement est entre deux séjours.",
+    ],
+    faq: [
+      {
+        question: "Que préciser pour une demande à Hyères ?",
+        answer:
+          "Indiquez le secteur, le type de logement, les signes observés et le moment où le problème apparaît. Pour les moustiques, par exemple, la présence d'eau stagnante ou d'un jardin aide à mieux comprendre la situation.",
+      },
+      {
+        question: "Les locations saisonnières à Hyères sont-elles concernées ?",
+        answer:
+          "Oui. Une location occupée par roulement demande de préciser les dates, les pièces touchées, les couchages et les contraintes d'accès avant un rappel.",
+      },
+    ],
+  },
+  frejus: {
+    intro:
+      "À Fréjus, le contexte touristique joue beaucoup : campings, résidences secondaires, locations saisonnières et commerces peuvent avoir des contraintes différentes d'un logement occupé toute l'année.",
+    qualifierText:
+      "La demande gagne à préciser si le lieu est occupé, entre deux séjours, ouvert au public ou lié à un hébergement touristique.",
+    frequentRequests: [
+      "Rats ou souris : abords de campings, locaux techniques, réserves, garages ou zones proches de l'Argens.",
+      "Punaises de lit : locations de vacances, appartements de passage, chambres très occupées en saison.",
+      "Cafards : cuisines, restaurants, commerces, résidences et logements proches des zones touristiques.",
+      "Guêpes et frelons : terrasses, jardins, sanitaires collectifs, toitures et zones de passage.",
+    ],
+    contextText:
+      "Entre Fréjus-Plage, Port-Fréjus, Saint-Aygulf, la Base Nature ou les secteurs plus résidentiels, les accès et les contraintes ne sont pas les mêmes.",
+    nearbyText:
+      "Sur le bassin Fréjus-Saint-Raphaël, il est fréquent que les demandes concernent aussi Puget-sur-Argens, Roquebrune-sur-Argens ou Saint-Aygulf.",
+    advice: [
+      "Précisez si le lieu est un logement principal, une résidence de vacances, un camping, un commerce ou une location.",
+      "Indiquez les dates importantes : séjour en cours, arrivée prévue, fermeture du commerce ou changement d'occupants.",
+      "Pour les espaces extérieurs, mentionnez terrasses, sanitaires collectifs, réserves, jardins ou proximité de l'Argens.",
+    ],
+    faq: [
+      {
+        question: "Une demande à Fréjus est-elle différente en saison touristique ?",
+        answer:
+          "Souvent oui. Une location saisonnière, un camping ou une résidence de vacances ne se gère pas comme une maison occupée toute l'année. Il faut préciser si le logement est occupé, loué ou entre deux séjours.",
+      },
+      {
+        question: "Quels secteurs de Fréjus faut-il indiquer ?",
+        answer:
+          "Un repère comme Fréjus-Plage, Port-Fréjus, Saint-Aygulf, la Base Nature ou le centre aide à situer la demande et à comprendre les accès possibles.",
+      },
+    ],
+  },
+  draguignan: {
+    intro:
+      "À Draguignan, les demandes viennent souvent de maisons avec jardin, de garages, de caves ou de logements situés dans des secteurs plus résidentiels de l'arrière-pays varois.",
+    qualifierText:
+      "Le type de bâtiment compte beaucoup : maison ancienne, dépendance, cave, combles, local professionnel ou terrain arboré ne se décrivent pas de la même façon.",
+    frequentRequests: [
+      "Rats ou souris : garages, dépendances, caves, combles ou abords de maisons.",
+      "Guêpes et frelons : jardins, haies, toitures, abris extérieurs et zones végétalisées.",
+      "Termites : maisons anciennes, boiseries, planchers, dépendances ou biens à surveiller avant travaux.",
+      "Chenilles processionnaires : pins, jardins, animaux exposés et zones de passage.",
+    ],
+    contextText:
+      "À Draguignan, une demande peut concerner un logement occupé, une dépendance rarement visitée, un garage, un local professionnel ou un espace extérieur.",
+    nearbyText:
+      "Dans le secteur de Draguignan, les demandes peuvent aussi venir de Trans-en-Provence, Lorgues, Le Muy ou Vidauban selon les accès et le type de lieu.",
+    advice: [
+      "Décrivez les accès : garage, cave, combles, jardin, dépendance ou local à part.",
+      "Pour le bois ou les termites, évitez de retirer les éléments suspects avant d'avoir décrit les signes visibles.",
+      "Pour les rongeurs, indiquez si les bruits reviennent la nuit et si des traces sont visibles près du bâti.",
+    ],
+    faq: [
+      {
+        question: "Quels nuisibles reviennent souvent à Draguignan ?",
+        answer:
+          "Les demandes concernent souvent les rongeurs, les guêpes ou frelons, les termites et les chenilles processionnaires, surtout autour des maisons, jardins, combles ou dépendances.",
+      },
+      {
+        question: "Que signaler pour une maison à Draguignan ?",
+        answer:
+          "Précisez les zones touchées, les accès, la présence de jardin ou dépendance, et les signes observés : bruits, traces, bois abîmé, nid ou passages répétés.",
+      },
+    ],
+  },
+  "saint-raphael": {
+    intro:
+      "À Saint-Raphaël, les demandes peuvent venir aussi bien de copropriétés en bord de mer que de villas, de résidences de vacances ou de commerces ouverts en saison.",
+    qualifierText:
+      "Le rappel se prépare différemment selon qu'il s'agit d'un appartement occupé à l'année, d'une location, d'un restaurant, d'une villa ou d'une résidence entre deux séjours.",
+    frequentRequests: [
+      "Punaises de lit : logements de vacances, chambres occupées par roulement, locations saisonnières.",
+      "Cafards : cuisines, commerces, restaurants et parties communes de résidences.",
+      "Guêpes et frelons : jardins, terrasses, toitures, volets et abords de villas.",
+      "Pigeons : balcons, façades, toitures et résidences proches du littoral.",
+    ],
+    contextText:
+      "Boulouris, Agay, Valescure, le centre et le bord de mer présentent des contraintes différentes entre résidence, commerce, villa ou hébergement touristique.",
+    nearbyText:
+      "Entre Saint-Raphaël et Fréjus, certaines demandes peuvent aussi se situer côté Puget-sur-Argens, Roquebrune-sur-Argens ou Agay.",
+    advice: [
+      "Indiquez si le logement est occupé à l'année, loué en saison ou entre deux arrivées.",
+      "Pour un commerce ou un restaurant, ajoutez les horaires de rappel et les contraintes d'ouverture.",
+      "Pour un nid ou des oiseaux, décrivez la hauteur, le support et les zones de passage concernées.",
+    ],
+    faq: [
+      {
+        question: "Que préciser pour une demande à Saint-Raphaël ?",
+        answer:
+          "Indiquez le secteur, le type de lieu et les contraintes d'occupation. Une résidence de vacances, un restaurant ou une villa n'ont pas les mêmes accès ni les mêmes urgences.",
+      },
+      {
+        question: "Les demandes changent-elles pendant la saison touristique ?",
+        answer:
+          "Oui, surtout pour les locations, commerces, restaurants et résidences. Les dates d'arrivée, les horaires et l'accès au logement sont alors des informations utiles.",
+      },
+    ],
+  },
+  "la-seyne-sur-mer": {
+    intro:
+      "À La Seyne-sur-Mer, les demandes peuvent concerner des copropriétés, des commerces, des logements proches du littoral ou des maisons dans les quartiers résidentiels.",
+    qualifierText:
+      "Le contexte varie entre le centre-ville, le port, Tamaris, Les Sablettes, les parties communes d'immeuble et les maisons proches des zones arborées.",
+    frequentRequests: [
+      "Rats ou souris : locaux poubelles, caves, garages, abords d'immeubles et secteurs proches des zones très fréquentées.",
+      "Cafards : cuisines, salles d'eau, gaines techniques, parties communes et commerces.",
+      "Punaises de lit : appartements, chambres, canapés et logements occupés après un déplacement.",
+      "Guêpes et frelons : jardins, volets, toitures, abris extérieurs et maisons proches de zones arborées.",
+    ],
+    contextText:
+      "À La Seyne-sur-Mer, il est utile de séparer ce qui relève d'un logement, d'une partie commune, d'un commerce ou d'un extérieur.",
+    nearbyText:
+      "Selon le quartier, la demande peut aussi se rapprocher de Six-Fours-les-Plages, Ollioules, Sanary-sur-Mer ou Toulon.",
+    advice: [
+      "Précisez le secteur : centre-ville, port, Tamaris, Les Sablettes, quartier résidentiel ou littoral.",
+      "Indiquez si les signes viennent d'une cave, d'un local poubelle, d'une gaine technique ou seulement du logement.",
+      "Pour un commerce, ajoutez les horaires possibles et les contraintes d'accès.",
+    ],
+    faq: [
+      {
+        question: "Quels lieux sont souvent concernés à La Seyne-sur-Mer ?",
+        answer:
+          "Les demandes peuvent venir de copropriétés, caves, locaux poubelles, commerces, logements proches du littoral ou maisons avec extérieur.",
+      },
+      {
+        question: "Que préciser si la demande concerne un immeuble ?",
+        answer:
+          "Indiquez si les signes sont dans le logement, les parties communes, les caves, les gaines ou le local poubelle. Cela aide à comprendre l'étendue du problème.",
+      },
+    ],
+  },
+  brignoles: {
+    intro:
+      "À Brignoles, les demandes concernent souvent des maisons, des garages, des caves, des jardins ou des locaux professionnels en périphérie.",
+    qualifierText:
+      "Les terrains plus grands, les dépendances, le centre ancien et les secteurs périurbains demandent de bien préciser les accès et les zones touchées.",
+    frequentRequests: [
+      "Rats ou souris : caves, garages, dépendances, réserves ou abords de maisons.",
+      "Guêpes et frelons : jardins, haies, abris, toitures et zones extérieures.",
+      "Termites : maisons anciennes, bois de charpente, planchers, dépendances ou biens à surveiller avant vente ou travaux.",
+      "Chenilles processionnaires : pins, jardins, animaux domestiques et zones de passage.",
+    ],
+    contextText:
+      "À Brignoles, une demande peut partir d'un détail dans une cave, d'un bruit dans un garage, d'un nid au jardin ou d'un doute sur du bois ancien.",
+    nearbyText:
+      "Autour de Brignoles, les demandes couvrent souvent des maisons ou locaux situés dans les communes voisines du centre Var.",
+    advice: [
+      "Décrivez les dépendances, garages, caves, jardins ou réserves concernés.",
+      "Pour les chenilles, mentionnez la présence de pins, d'enfants ou d'animaux exposés.",
+      "Pour les termites ou le bois, indiquez si une vente, des travaux ou une rénovation sont prévus.",
+    ],
+    faq: [
+      {
+        question: "Quels nuisibles sont souvent signalés à Brignoles ?",
+        answer:
+          "Les demandes portent souvent sur rongeurs, guêpes ou frelons, chenilles processionnaires et termites, surtout autour des maisons, jardins, dépendances et bâtiments anciens.",
+      },
+      {
+        question: "Que faut-il décrire pour une maison à Brignoles ?",
+        answer:
+          "Précisez les accès, les dépendances, les zones extérieures, les traces visibles et depuis quand le problème revient.",
+      },
+    ],
+  },
+  "saint-tropez": {
+    intro:
+      "À Saint-Tropez, les demandes sont souvent liées à des villas, des résidences secondaires, des restaurants, des hôtels ou des logements occupés surtout pendant la saison.",
+    qualifierText:
+      "La discrétion, les dates d'occupation et les contraintes d'accès comptent souvent autant que le type de nuisible observé.",
+    frequentRequests: [
+      "Punaises de lit : locations saisonnières, chambres d'hôtes, logements haut de gamme ou hébergements très occupés en été.",
+      "Cafards : cuisines professionnelles, restaurants, réserves, commerces et logements proches des zones animées.",
+      "Guêpes et frelons : terrasses, jardins, toitures, volets, abords de piscines et espaces extérieurs.",
+      "Moustiques : jardins, terrasses, points d'eau, piscines et espaces utilisés en soirée.",
+    ],
+    contextText:
+      "Dans le centre, près du port ou dans une villa à l'écart, les informations utiles ne sont pas les mêmes : accès, créneaux, occupation et zones exposées doivent être précisés.",
+    nearbyText:
+      "Dans le golfe de Saint-Tropez, le contexte saisonnier peut aussi concerner Ramatuelle, Gassin, Cogolin ou Sainte-Maxime.",
+    advice: [
+      "Indiquez si le lieu est occupé, loué, vide entre deux séjours ou ouvert au public.",
+      "Précisez les contraintes d'accès, de discrétion et les créneaux de rappel possibles.",
+      "Pour les extérieurs, décrivez terrasses, jardins, piscine, toiture, volets ou zones de passage.",
+    ],
+    faq: [
+      {
+        question: "Que préciser pour une demande à Saint-Tropez ?",
+        answer:
+          "Indiquez le type de lieu, les dates d'occupation, les accès possibles et les contraintes de discrétion. Ces éléments sont utiles pour préparer le rappel.",
+      },
+      {
+        question: "Les hébergements saisonniers sont-ils concernés ?",
+        answer:
+          "Oui. Pour une location, un hôtel ou une résidence secondaire, il faut préciser les dates d'arrivée, les pièces concernées et la personne disponible sur place.",
+      },
+    ],
+  },
+  "six-fours-les-plages": {
+    intro:
+      "À Six-Fours-les-Plages, les demandes peuvent venir de maisons avec jardin, de résidences proches du bord de mer, de locations saisonnières ou de copropriétés.",
+    qualifierText:
+      "Entre Le Brusc, Les Lônes, Bonnegrâce, les quartiers résidentiels et les logements occupés en saison, les contraintes changent vite.",
+    frequentRequests: [
+      "Guêpes et frelons : jardins, terrasses, volets, toitures, abris extérieurs et secteurs résidentiels.",
+      "Moustiques : jardins, points d'eau, terrasses, récupérateurs d'eau et zones proches du littoral.",
+      "Cafards : appartements, cuisines, gaines techniques, copropriétés et logements occupés en saison.",
+      "Punaises de lit : locations saisonnières, chambres d'appoint, canapés-lits et logements de passage.",
+    ],
+    contextText:
+      "À Six-Fours-les-Plages, il faut souvent distinguer une gêne extérieure de jardin ou terrasse d'un problème intérieur en appartement, résidence ou location.",
+    nearbyText:
+      "Selon le secteur, la demande peut aussi concerner La Seyne-sur-Mer, Sanary-sur-Mer, Ollioules ou les quartiers proches du littoral.",
+    advice: [
+      "Indiquez le secteur : Le Brusc, Les Lônes, Bonnegrâce, bord de mer ou quartier résidentiel.",
+      "Pour les moustiques ou les guêpes, décrivez les points d'eau, jardins, terrasses, volets ou toitures.",
+      "Pour une location, précisez les dates d'occupation et les pièces concernées.",
+    ],
+    faq: [
+      {
+        question: "Quels nuisibles reviennent souvent à Six-Fours-les-Plages ?",
+        answer:
+          "Les demandes portent souvent sur guêpes ou frelons, moustiques, cafards et punaises de lit, avec des contextes différents entre maison, résidence, jardin ou location saisonnière.",
+      },
+      {
+        question: "Que signaler pour une demande proche du littoral ?",
+        answer:
+          "Précisez si le problème touche un extérieur, une terrasse, un logement occupé en saison ou une copropriété. Les accès et les dates d'occupation aident à mieux qualifier la demande.",
+      },
+    ],
+  },
+};
+
+export function getCityPageContent(slug: string) {
+  return cityPageContent[slug];
+}
 
 export const guides: Guide[] = [
   {

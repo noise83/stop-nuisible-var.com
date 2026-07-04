@@ -10,7 +10,7 @@ import { CityPageViewTracker } from "@/components/page-view-tracker";
 import { CTABand, EmergencyPanel } from "@/components/page-blocks";
 import { TrustList } from "@/components/TrustList";
 import { ButtonLink, Eyebrow, PhoneLink, Section } from "@/components/ui";
-import { getCity, localLandings, priorityCities, services } from "@/data/site";
+import { getCity, getCityPageContent, localLandings, priorityCities, services } from "@/data/site";
 import { breadcrumbJsonLd, faqJsonLd } from "@/lib/jsonld";
 import { buildPageMetadata } from "@/lib/metadata";
 
@@ -35,10 +35,18 @@ export default async function CityPage({ params }: { params: Params }) {
   const { city: slug } = await params;
   const city = getCity(slug);
   if (!city) notFound();
+  const cityContent = getCityPageContent(city.slug);
   const cityLandings = localLandings.filter((landing) => landing.citySlug === city.slug);
-  const faq = [
-    { question: `Quels nuisibles sont fréquents à ${city.name} ?`, answer: `Les demandes les plus probables concernent ${city.pests.join(", ")}, avec un contexte local marqué par ${city.angle}.` },
-    { question: `Stop Nuisible Var intervient-il directement à ${city.name} ?`, answer: "Non. Le site transmet votre demande à un professionnel partenaire adapté selon votre commune, le type de nuisible et le niveau d'urgence." },
+  const frequentRequests = cityContent?.frequentRequests ?? [
+    "Rats ou souris : bruits, crottes, caves, combles et locaux poubelles.",
+    "Cafards : cuisine, salle de bain, gaines techniques, copropriétés et restaurants.",
+    "Punaises de lit : piqûres au réveil, matelas, sommier, voyage et location saisonnière.",
+    "Guêpes ou frelons : nid en toiture, arbre, terrasse, hauteur ou passage fréquent.",
+  ];
+  const advice = cityContent?.advice ?? city.localAdvice;
+  const faq = cityContent?.faq ?? [
+    { question: `Quels nuisibles sont fréquents à ${city.name} ?`, answer: `Les demandes concernent souvent ${city.pests.join(", ")}. Le type de lieu et les signes observés aident à mieux qualifier la situation.` },
+    { question: `Comment préparer une demande à ${city.name} ?`, answer: "Indiquez la commune, le type de nuisible, les pièces ou zones touchées, les contraintes d'accès et un créneau de rappel possible." },
   ];
   const crumbs = [
     { name: "Accueil", href: "/" },
@@ -56,9 +64,9 @@ export default async function CityPage({ params }: { params: Params }) {
           <div>
             <Eyebrow>{city.zone}</Eyebrow>
             <h1 className="text-4xl font-black leading-tight text-[#102337] sm:text-5xl">Problème de nuisibles à {city.name} ? Décrivez votre situation et soyez rappelé</h1>
-            <p className="mt-6 text-lg leading-8 text-[#405160]">{city.intro}</p>
+            <p className="mt-6 text-lg leading-8 text-[#405160]">{cityContent?.intro ?? city.intro}</p>
             <p className="mt-4 leading-8 text-[#405160]">
-              La demande peut concerner {city.buildingTypes.join(", ")}. Précisez les signes observés, le type de lieu, les contraintes de rappel et l&apos;urgence afin de faciliter la mise en relation.
+              {cityContent?.qualifierText ?? `La demande peut concerner ${city.buildingTypes.join(", ")}. Précisez les signes observés, le type de lieu, les contraintes de rappel et l'urgence afin de faciliter la mise en relation.`}
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <ButtonLink />
@@ -74,32 +82,36 @@ export default async function CityPage({ params }: { params: Params }) {
           <article className="space-y-6 leading-8 text-[#405160]">
             <h2 className="text-3xl font-black text-[#102337]">Demandes fréquentes à {city.name}</h2>
             <div className="grid gap-3 sm:grid-cols-2">
-              {[
-                "Rats ou souris : bruits, crottes, caves, combles et locaux poubelles.",
-                "Cafards : cuisine, salle de bain, gaines techniques, copropriétés et restaurants.",
-                "Punaises de lit : piqûres au réveil, matelas, sommier, voyage et location saisonnière.",
-                "Guêpes ou frelons : nid en toiture, arbre, terrasse, hauteur ou passage fréquent.",
-              ].map((item) => (
+              {frequentRequests.map((item) => (
                 <div key={item} className="rounded-[7px] border border-[#102337]/10 bg-[#f5f1e8] p-4 text-sm font-semibold leading-6 text-[#102337]">
                   {item}
                 </div>
               ))}
             </div>
-            <p>
-              À {city.name}, le traitement nuisibles doit tenir compte de {city.angle}. Une demande de{" "}
-              <Link className="font-bold text-[#102337] underline decoration-[#bf593f]/35 underline-offset-4 hover:text-[#bf593f]" href="/deratisation-var/">dératisation</Link>, de{" "}
-              <Link className="font-bold text-[#102337] underline decoration-[#bf593f]/35 underline-offset-4 hover:text-[#bf593f]" href="/cafards-blattes-var/">désinsectisation contre les cafards</Link>, de{" "}
-              <Link className="font-bold text-[#102337] underline decoration-[#bf593f]/35 underline-offset-4 hover:text-[#bf593f]" href="/punaises-de-lit-var/">traitement punaises de lit</Link> ou de dépigeonnage ne se qualifie pas de la même façon selon qu&apos;elle concerne un logement, un commerce, une résidence ou un jardin.
-            </p>
-            <p>
-              Les communes proches comme {city.neighbours.join(", ")} peuvent aussi entrer dans le même bassin de rappel. Selon le secteur, les pages{" "}
-              <CityInlineLink currentSlug={city.slug} href="/villes/toulon/">nuisibles à Toulon</CityInlineLink>,{" "}
-              <CityInlineLink currentSlug={city.slug} href="/villes/frejus/">nuisibles à Fréjus</CityInlineLink> et{" "}
-              <Link className="font-bold text-[#102337] underline decoration-[#bf593f]/35 underline-offset-4 hover:text-[#bf593f]" href="/zones-intervention/">zones d&apos;intervention</Link> aident aussi à situer la demande sans inventer une agence locale fictive.
-            </p>
+            {cityContent ? (
+              <>
+                <p>{cityContent.contextText}</p>
+                <p>{cityContent.nearbyText}</p>
+              </>
+            ) : (
+              <>
+                <p>
+                  À {city.name}, le traitement nuisibles doit tenir compte de {city.angle}. Une demande de{" "}
+                  <Link className="font-bold text-[#102337] underline decoration-[#bf593f]/35 underline-offset-4 hover:text-[#bf593f]" href="/deratisation-var/">dératisation</Link>, de{" "}
+                  <Link className="font-bold text-[#102337] underline decoration-[#bf593f]/35 underline-offset-4 hover:text-[#bf593f]" href="/cafards-blattes-var/">désinsectisation contre les cafards</Link>, de{" "}
+                  <Link className="font-bold text-[#102337] underline decoration-[#bf593f]/35 underline-offset-4 hover:text-[#bf593f]" href="/punaises-de-lit-var/">traitement punaises de lit</Link> ou de dépigeonnage ne se qualifie pas de la même façon selon qu&apos;elle concerne un logement, un commerce, une résidence ou un jardin.
+                </p>
+                <p>
+                  Les communes proches comme {city.neighbours.join(", ")} peuvent aussi entrer dans le même bassin de rappel. Selon le secteur, les pages{" "}
+                  <CityInlineLink currentSlug={city.slug} href="/villes/toulon/">nuisibles à Toulon</CityInlineLink>,{" "}
+                  <CityInlineLink currentSlug={city.slug} href="/villes/frejus/">nuisibles à Fréjus</CityInlineLink> et{" "}
+                  <Link className="font-bold text-[#102337] underline decoration-[#bf593f]/35 underline-offset-4 hover:text-[#bf593f]" href="/zones-intervention/">zones d&apos;intervention</Link> aident aussi à orienter la demande vers la zone concernée.
+                </p>
+              </>
+            )}
             <h2 className="text-3xl font-black text-[#102337]">Conseils avant d&apos;envoyer la demande</h2>
             <ul className="space-y-3">
-              {city.localAdvice.map((item) => <li key={item}>- {item}</li>)}
+              {advice.map((item) => <li key={item}>- {item}</li>)}
             </ul>
           </article>
           <RelatedLinks
