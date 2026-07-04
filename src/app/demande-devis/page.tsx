@@ -41,6 +41,18 @@ export default function QuotePage() {
     "Transmission avec consentement",
     "Plateforme locale Var",
   ];
+  const afterRequestSteps = [
+    "Vous décrivez le problème : nuisible, commune, type de lieu, urgence.",
+    "La demande est vérifiée pour comprendre le contexte.",
+    "Vous pouvez être rappelé selon la commune, le nuisible et les disponibilités.",
+    "Vous restez libre d'accepter ou non la suite proposée.",
+  ];
+  const dataReassurance = [
+    "Téléphone utilisé uniquement pour organiser le rappel.",
+    "Photo facultative.",
+    "Transmission uniquement avec votre accord.",
+    "Demande gratuite et sans engagement.",
+  ];
 
   return (
     <main className="overflow-x-hidden">
@@ -88,6 +100,30 @@ export default function QuotePage() {
                   <span>{item}</span>
                 </div>
               ))}
+            </div>
+            <div className="mb-4 rounded-[8px] border border-[#24493d]/15 bg-white p-5">
+              <h2 className="text-lg font-black text-[#102337]">Ce qui se passe après votre demande</h2>
+              <ol className="mt-4 grid gap-3 text-sm leading-6 text-[#405160]">
+                {afterRequestSteps.map((item, index) => (
+                  <li key={item} className="flex gap-3">
+                    <span className="grid h-7 w-7 shrink-0 place-items-center rounded-[7px] bg-[#102337] text-xs font-black text-white">
+                      {index + 1}
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+            <div className="mb-4 rounded-[8px] border border-[#24493d]/15 bg-[#f5f1e8] p-5">
+              <h2 className="text-lg font-black text-[#102337]">Vos informations restent maîtrisées</h2>
+              <ul className="mt-4 grid gap-2 text-sm font-semibold leading-6 text-[#405160]">
+                {dataReassurance.map((item) => (
+                  <li key={item} className="flex gap-2">
+                    <span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#bf593f]" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
             <LeadForm />
           </div>
