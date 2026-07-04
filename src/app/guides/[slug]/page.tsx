@@ -10,6 +10,7 @@ import { CTABand } from "@/components/page-blocks";
 import { ButtonLink, Eyebrow, Section } from "@/components/ui";
 import { getGuide, getService, guides, type Guide, type GuideLink, type IllustratedGuidePest } from "@/data/site";
 import { articleJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/jsonld";
+import { buildPageMetadata } from "@/lib/metadata";
 
 type Params = Promise<{ slug: string }>;
 
@@ -21,11 +22,11 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const { slug } = await params;
   const guide = getGuide(slug);
   if (!guide) return {};
-  return {
+  return buildPageMetadata({
     title: guide.title,
     description: guide.description,
-    alternates: { canonical: `/guides/${guide.slug}/` },
-  };
+    path: `/guides/${guide.slug}/`,
+  });
 }
 
 export default async function GuidePage({ params }: { params: Params }) {

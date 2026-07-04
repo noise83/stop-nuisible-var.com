@@ -13,6 +13,7 @@ import { TrustList } from "@/components/TrustList";
 import { ButtonLink, Eyebrow, PhoneLink, Section } from "@/components/ui";
 import { cityProfiles, extensionCities, getCity, getLocalLanding, getService, globalPages, guides, localLandings, pestProfileByServiceSlug, priorityCities, services } from "@/data/site";
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from "@/lib/jsonld";
+import { buildPageMetadata } from "@/lib/metadata";
 
 type Params = Promise<{ slug: string }>;
 
@@ -29,28 +30,76 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const service = getService(slug);
   const landing = getLocalLanding(slug);
   if (landing) {
-    return {
+    return buildPageMetadata({
       title: landing.title,
       description: landing.description,
-      alternates: { canonical: `/${landing.slug}/` },
-    };
+      path: `/${landing.slug}/`,
+    });
   }
   if (service) {
-    return {
-      title: service.title,
-      description: service.description,
-      alternates: { canonical: `/${service.slug}/` },
-    };
+    return buildServiceMetadata(service);
   }
   const page = globalPages[slug as keyof typeof globalPages];
   if (page) {
-    return {
+    return buildPageMetadata({
       title: page.title,
       description: page.description,
-      alternates: { canonical: `/${slug}/` },
-    };
+      path: `/${slug}/`,
+    });
   }
   return {};
+}
+
+function buildServiceMetadata(service: NonNullable<ReturnType<typeof getService>>) {
+  const overrides: Record<string, { title: string; description: string }> = {
+    "deratisation-var": {
+      title: "Dératisation Var - Rats et souris, demande de rappel",
+      description:
+        "Des signes de rats ou souris dans le Var ? Décrivez la situation et demandez un rappel pour être orienté vers une solution adaptée.",
+    },
+    "punaises-de-lit-var": {
+      title: "Punaises de lit Var - Traitement et demande de rappel",
+      description:
+        "Suspicion de punaises de lit dans le Var ? Identifiez les signes, décrivez votre logement et demandez un rappel gratuit.",
+    },
+    "cafards-blattes-var": {
+      title: "Cafards et blattes Var - Traitement et demande de rappel",
+      description:
+        "Cafards ou blattes dans un logement, restaurant ou commerce du Var ? Décrivez les signes observés et demandez un rappel gratuit.",
+    },
+    "guepes-frelons-var": {
+      title: "Guêpes et frelons Var - Nid et demande de rappel",
+      description:
+        "Nid de guêpes ou frelons dans le Var ? Décrivez l'emplacement, les accès et les passages exposés pour demander un rappel gratuit.",
+    },
+    "termites-var": {
+      title: "Termites Var - Signes, bois et demande de rappel",
+      description:
+        "Bois fragilisé, galeries ou indices de termites dans le Var ? Décrivez les signes et demandez un rappel pour qualifier la situation.",
+    },
+    "moustique-tigre-var": {
+      title: "Moustique tigre Var - Jardin, terrasse et demande de rappel",
+      description:
+        "Piqûres répétées ou moustiques tigres autour d'un jardin, balcon ou hébergement dans le Var ? Décrivez le contexte et demandez un rappel.",
+    },
+    "chenilles-processionnaires-var": {
+      title: "Chenilles processionnaires Var - Pins, cocons et demande de rappel",
+      description:
+        "Cocons dans les pins ou chenilles processionnaires dans le Var ? Décrivez la zone exposée et demandez un rappel gratuit.",
+    },
+    "depigeonnage-var": {
+      title: "Dépigeonnage Var - Pigeons, goélands et demande de rappel",
+      description:
+        "Fientes, nids ou salissures de pigeons et goélands dans le Var ? Décrivez le bâtiment concerné et demandez un rappel gratuit.",
+    },
+  };
+  const seo = overrides[service.slug] ?? { title: service.title, description: service.description };
+
+  return buildPageMetadata({
+    title: seo.title,
+    description: seo.description,
+    path: `/${service.slug}/`,
+  });
 }
 
 export default async function SlugPage({ params }: { params: Params }) {

@@ -12,6 +12,7 @@ import { TrustList } from "@/components/TrustList";
 import { ButtonLink, Eyebrow, PhoneLink, Section } from "@/components/ui";
 import { getCity, localLandings, priorityCities, services } from "@/data/site";
 import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from "@/lib/jsonld";
+import { buildPageMetadata } from "@/lib/metadata";
 
 type Params = Promise<{ city: string }>;
 
@@ -23,11 +24,11 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const { city: slug } = await params;
   const city = getCity(slug);
   if (!city) return {};
-  return {
-    title: `Traitement nuisibles ${city.name} - Devis et rappel`,
-    description: `Demande de rappel anti nuisibles à ${city.name} dans le Var : ${city.pests.join(", ")}. Mise en relation avec un professionnel partenaire.`,
-    alternates: { canonical: `/villes/${city.slug}/` },
-  };
+  return buildPageMetadata({
+    title: `Traitement nuisibles ${city.name} - Rats, cafards, punaises de lit`,
+    description: `Besoin d'aide contre les nuisibles à ${city.name} ? Décrivez votre problème de rats, cafards, punaises de lit, guêpes ou frelons et demandez un rappel gratuit.`,
+    path: `/villes/${city.slug}/`,
+  });
 }
 
 export default async function CityPage({ params }: { params: Params }) {

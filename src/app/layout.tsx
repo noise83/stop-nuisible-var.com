@@ -5,31 +5,24 @@ import { StickyMobileCTA } from "@/components/sticky-mobile-cta";
 import { TrackingListener } from "@/components/tracking-listener";
 import { GoogleTagManagerConsent } from "@/components/google-tag-manager-consent";
 import { JsonLd } from "@/components/json-ld";
+import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/jsonld";
 import "./globals.css";
 
-const siteUrl = "https://www.stop-nuisible-var.com";
-
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Stop Nuisible Var - Demande de devis nuisibles dans le Var",
+    default: "Stop Nuisible Var - Traitement nuisibles dans le Var",
     template: "%s | Stop Nuisible Var",
   },
   description:
     "Plateforme locale de demande de rappel pour punaises de lit, dératisation, cafards, guêpes, termites, moustiques et autres nuisibles dans le Var.",
-  alternates: { canonical: "/" },
+  alternates: { canonical: SITE_URL },
   verification: {
     google: "SwaYKQISlrcllDu3_lpH00QZvupFIyKkXiH736JsmzM",
   },
   openGraph: {
-    type: "website",
-    locale: "fr_FR",
-    url: siteUrl,
-    siteName: "Stop Nuisible Var",
-    title: "Stop Nuisible Var - Trouver un professionnel anti-nuisibles dans le Var",
-    description:
-      "Décrivez votre problème et transmettez votre demande à un professionnel partenaire adapté à votre commune du Var.",
+    siteName: SITE_NAME,
   },
 };
 

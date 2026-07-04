@@ -5,12 +5,15 @@ import { LeadForm } from "@/components/lead-form";
 import { Eyebrow, PhoneLink, Section } from "@/components/ui";
 import { CONTACT_EMAIL, CONTACT_EMAIL_HREF } from "@/lib/constants";
 import { breadcrumbJsonLd } from "@/lib/jsonld";
+import { buildPageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = {
-  title: "Demande de rappel nuisibles Var",
-  description:
-    "Rats, cafards, punaises de lit, guêpes ou frelons dans le Var ? Décrivez le problème, ajoutez une photo si besoin et demandez un rappel gratuit sans engagement.",
-  alternates: { canonical: "/demande-devis/" },
+  ...buildPageMetadata({
+    title: "Demande de devis anti-nuisibles dans le Var",
+    description:
+      "Décrivez votre problème de nuisibles, indiquez votre commune dans le Var et demandez un rappel gratuit.",
+    path: "/demande-devis/",
+  }),
 };
 
 export default function QuotePage() {

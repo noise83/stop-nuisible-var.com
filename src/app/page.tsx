@@ -5,12 +5,15 @@ import { FAQ } from "@/components/faq";
 import { PestIcon } from "@/components/icons";
 import { PhoneLink } from "@/components/ui";
 import { priorityCities, services, type FAQItem } from "@/data/site";
+import { buildPageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = {
-  title: "Nuisibles Var : demande de rappel et identification",
-  description:
-    "Rats, souris, cafards, punaises de lit, guêpes, frelons ou doute sur le nuisible dans le Var : décrivez le problème et demandez un rappel gratuit.",
-  alternates: { canonical: "/" },
+  ...buildPageMetadata({
+    title: "Stop Nuisible Var - Traitement nuisibles dans le Var",
+    description:
+      "Demandez un rappel pour un problème de rats, cafards, punaises de lit, guêpes, frelons, termites ou moustiques dans le Var.",
+    path: "/",
+  }),
 };
 
 const pestChoices = [
