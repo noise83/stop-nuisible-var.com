@@ -158,7 +158,9 @@ export default function HomePage() {
               Un nuisible chez vous dans le Var ? Décrivez le problème et demandez un rappel
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[#51606d]">
-              Rats, souris, cafards, punaises de lit, guêpes, frelons ou doute sur le nuisible : Stop Nuisible Var vous aide à qualifier votre demande avant transmission à un professionnel partenaire.
+              Rats, souris, <Link className="font-bold text-[#1F4D3A] underline decoration-[#E86A33]/35 underline-offset-4 hover:text-[#E86A33]" href="/cafards-blattes-var/">cafards</Link>,{" "}
+              <Link className="font-bold text-[#1F4D3A] underline decoration-[#E86A33]/35 underline-offset-4 hover:text-[#E86A33]" href="/punaises-de-lit-var/">punaises de lit</Link>, guêpes, frelons ou doute sur le nuisible :
+              Stop Nuisible Var vous aide à qualifier votre demande avant transmission à un professionnel partenaire.
             </p>
             <div className="mt-7 rounded-[8px] border border-[#1F4D3A]/15 bg-white px-4 py-3 text-sm font-black text-[#1F4D3A]">
               Plateforme locale de mise en relation — pas une entreprise d’intervention directe.
@@ -310,6 +312,11 @@ export default function HomePage() {
               title="Services de traitement des nuisibles dans le Var"
               text="Rats, souris, cafards, punaises de lit, guêpes, frelons, termites ou moustiques : chaque nuisible laisse des signes différents et ne se traite pas de la même façon. Consultez le service correspondant pour reconnaître les indices, comprendre les lieux à risque et préparer une demande de rappel plus précise dans le Var."
             />
+            <p className="mt-4 max-w-3xl leading-8 text-[#51606d]">
+              Le hub <Link className="font-bold text-[#1F4D3A] underline decoration-[#E86A33]/35 underline-offset-4 hover:text-[#E86A33]" href="/traitement-nuisibles-var/">traitement nuisibles dans le Var</Link> regroupe les demandes courantes, dont les signes de{" "}
+              <Link className="font-bold text-[#1F4D3A] underline decoration-[#E86A33]/35 underline-offset-4 hover:text-[#E86A33]" href="/termites-var/">termites</Link> et les situations liées au{" "}
+              <Link className="font-bold text-[#1F4D3A] underline decoration-[#E86A33]/35 underline-offset-4 hover:text-[#E86A33]" href="/moustique-tigre-var/">moustique tigre</Link>.
+            </p>
             <Link className="font-black text-[#E86A33] hover:text-[#cf5524]" href="/traitement-nuisibles-var/">
               Voir tous les traitements -&gt;
             </Link>
@@ -368,7 +375,9 @@ export default function HomePage() {
                 <p className="text-xs font-black uppercase tracking-[.14em] text-[#E86A33]">Pages locales</p>
                 <h2 className="mt-3 text-3xl font-black leading-tight text-[#1F2933]">Demandes fréquentes dans le Var</h2>
                 <p className="mt-4 text-sm leading-7 text-[#51606d]">
-                  Quelques pages utiles pour qualifier la demande selon la ville et le nuisible, sans changer les URLs existantes.
+                  Quelques pages utiles pour qualifier la demande selon la ville et le nuisible, notamment à{" "}
+                  <Link className="font-black text-[#1F4D3A] underline decoration-[#E86A33]/35 underline-offset-4 hover:text-[#E86A33]" href="/villes/toulon/">Toulon</Link> et{" "}
+                  <Link className="font-black text-[#1F4D3A] underline decoration-[#E86A33]/35 underline-offset-4 hover:text-[#E86A33]" href="/villes/frejus/">Fréjus</Link>, sans changer les URLs existantes.
                 </p>
               </div>
               <div className="grid gap-2 sm:grid-cols-2">

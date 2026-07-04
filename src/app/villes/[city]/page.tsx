@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { Breadcrumb } from "@/components/breadcrumb";
 import { RelatedLinks } from "@/components/cards";
@@ -83,10 +85,16 @@ export default async function CityPage({ params }: { params: Params }) {
               ))}
             </div>
             <p>
-              À {city.name}, le traitement nuisibles doit tenir compte de {city.angle}. Une demande de dératisation, de désinsectisation, de traitement punaises de lit ou de dépigeonnage ne se qualifie pas de la même façon selon qu&apos;elle concerne un logement, un commerce, une résidence ou un jardin.
+              À {city.name}, le traitement nuisibles doit tenir compte de {city.angle}. Une demande de{" "}
+              <Link className="font-bold text-[#102337] underline decoration-[#bf593f]/35 underline-offset-4 hover:text-[#bf593f]" href="/deratisation-var/">dératisation</Link>, de{" "}
+              <Link className="font-bold text-[#102337] underline decoration-[#bf593f]/35 underline-offset-4 hover:text-[#bf593f]" href="/cafards-blattes-var/">désinsectisation contre les cafards</Link>, de{" "}
+              <Link className="font-bold text-[#102337] underline decoration-[#bf593f]/35 underline-offset-4 hover:text-[#bf593f]" href="/punaises-de-lit-var/">traitement punaises de lit</Link> ou de dépigeonnage ne se qualifie pas de la même façon selon qu&apos;elle concerne un logement, un commerce, une résidence ou un jardin.
             </p>
             <p>
-              Les communes proches comme {city.neighbours.join(", ")} peuvent aussi entrer dans le même bassin de rappel. Cette précision géographique aide à transmettre la demande au bon interlocuteur sans inventer une agence locale fictive.
+              Les communes proches comme {city.neighbours.join(", ")} peuvent aussi entrer dans le même bassin de rappel. Selon le secteur, les pages{" "}
+              <CityInlineLink currentSlug={city.slug} href="/villes/toulon/">nuisibles à Toulon</CityInlineLink>,{" "}
+              <CityInlineLink currentSlug={city.slug} href="/villes/frejus/">nuisibles à Fréjus</CityInlineLink> et{" "}
+              <Link className="font-bold text-[#102337] underline decoration-[#bf593f]/35 underline-offset-4 hover:text-[#bf593f]" href="/zones-intervention/">zones d&apos;intervention</Link> aident aussi à situer la demande sans inventer une agence locale fictive.
             </p>
             <h2 className="text-3xl font-black text-[#102337]">Conseils avant d&apos;envoyer la demande</h2>
             <ul className="space-y-3">
@@ -110,5 +118,23 @@ export default async function CityPage({ params }: { params: Params }) {
       </Section>
       <CTABand title={`Décrire un problème de nuisibles à ${city.name}`} text="Votre demande est transmise seulement avec votre consentement, selon votre commune, le nuisible et l'urgence." />
     </main>
+  );
+}
+
+function CityInlineLink({
+  currentSlug,
+  href,
+  children,
+}: {
+  currentSlug: string;
+  href: string;
+  children: ReactNode;
+}) {
+  if (href === `/villes/${currentSlug}/`) return <span>{children}</span>;
+
+  return (
+    <Link className="font-bold text-[#102337] underline decoration-[#bf593f]/35 underline-offset-4 hover:text-[#bf593f]" href={href}>
+      {children}
+    </Link>
   );
 }
