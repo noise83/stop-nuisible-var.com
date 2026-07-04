@@ -65,6 +65,30 @@ export default async function GuidePage({ params }: { params: Params }) {
                 <p className="mt-4 leading-8 text-[#405160]">{section.body}</p>
               </section>
             ))}
+            {guide.detailBlocks?.map((block) => (
+              <section key={block.heading} className="rounded-[8px] border border-[#102337]/10 bg-[#f5f1e8] p-5 sm:p-6">
+                <h2 className="text-2xl font-black text-[#102337] sm:text-3xl">{block.heading}</h2>
+                {block.intro ? <p className="mt-3 leading-7 text-[#405160]">{block.intro}</p> : null}
+                <div className="mt-5 grid gap-3">
+                  {block.items.map((item) => (
+                    <div key={item.label} className="rounded-[8px] bg-white p-4">
+                      <p className="font-black text-[#102337]">{item.label}</p>
+                      {item.text ? <p className="mt-2 text-sm leading-6 text-[#405160]">{item.text}</p> : null}
+                    </div>
+                  ))}
+                </div>
+                {block.cta ? (
+                  <div className="mt-6">
+                    <Link
+                      href={block.cta.href}
+                      className="focus-ring inline-flex rounded-[8px] bg-[#E86A33] px-5 py-3 text-sm font-black text-white transition hover:bg-[#c95525]"
+                    >
+                      {block.cta.label}
+                    </Link>
+                  </div>
+                ) : null}
+              </section>
+            ))}
             <FAQ items={guide.faq} />
           </div>
           <RelatedLinks

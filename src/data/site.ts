@@ -93,6 +93,12 @@ export type Guide = {
   published: string;
   updatedAt?: string;
   sections: Array<{ heading: string; body: string }>;
+  detailBlocks?: Array<{
+    heading: string;
+    intro?: string;
+    items: Array<{ label: string; text?: string }>;
+    cta?: { label: string; href: string };
+  }>;
   faq: FAQItem[];
   illustratedGuide?: IllustratedGuide;
 };
@@ -1350,9 +1356,74 @@ export const guides: Guide[] = [
     serviceSlug: "punaises-de-lit-var",
     published: "2026-06-13",
     sections: [
-      { heading: "Les signes à croiser", body: "Piqûres groupées, taches noires sur la literie, traces près des coutures et insectes visibles doivent être observés ensemble. Une piqûre isolée ne suffit pas à confirmer." },
-      { heading: "Les lieux à regarder prudemment", body: "Matelas, sommier, tête de lit, canapé et bagages sont les zones les plus parlées dans les demandes. Il faut regarder sans secouer les textiles dans tout le logement." },
-      { heading: "Quand demander un avis", body: "Si les signes reviennent plusieurs nuits ou concernent un logement loué, une demande de rappel évite de perdre du temps avec des gestes dispersés." },
+      {
+        heading: "Les signes à croiser",
+        body:
+          "Piqûres groupées, taches noires sur la literie, traces près des coutures et insectes visibles doivent être observés ensemble. Une piqûre isolée ne suffit pas à confirmer une infestation : elle peut venir d'autres causes et doit être replacée dans le contexte du logement.",
+      },
+      {
+        heading: "Les lieux à regarder prudemment",
+        body:
+          "Matelas, sommier, tête de lit, canapé, canapé-lit, chambre d'amis et bagages sont les zones les plus parlantes dans les demandes. Il faut regarder sans secouer les textiles dans tout le logement et, si possible, photographier les traces ou l'insecte sans manipuler inutilement.",
+      },
+      {
+        heading: "Quand demander un avis",
+        body:
+          "Si les signes reviennent plusieurs nuits, touchent plusieurs couchages ou concernent un logement loué, une demande de rappel permet de décrire la situation sans se lancer dans des gestes dispersés. Le rappel sert à qualifier le contexte et à orienter vers une suite adaptée.",
+      },
+    ],
+    detailBlocks: [
+      {
+        heading: "Signes à observer",
+        intro: "Ces éléments ne prouvent pas tous la même chose, mais ils aident à construire une demande claire.",
+        items: [
+          { label: "Piqûres au réveil" },
+          { label: "Taches noires sur les coutures du matelas ou du sommier" },
+          { label: "Petites traces de sang sur les draps" },
+          { label: "Insecte visible près du lit ou du canapé" },
+          { label: "Démangeaisons répétées au réveil" },
+          { label: "Retour de voyage récent" },
+          { label: "Achat ou déplacement de meuble ou de literie" },
+          { label: "Logement loué ou chambre occupée par plusieurs personnes" },
+        ],
+      },
+      {
+        heading: "Ce que chaque signe peut indiquer",
+        intro: "L'objectif n'est pas de poser un diagnostic définitif à distance, mais de repérer les indices les plus utiles.",
+        items: [
+          { label: "Piqûres seules", text: "Elles ne suffisent pas à confirmer des punaises de lit, surtout si aucun autre indice n'est visible." },
+          { label: "Taches noires sur la literie", text: "Sur les coutures du matelas, le sommier ou la tête de lit, elles constituent un indice plus fort à signaler." },
+          { label: "Insecte visible", text: "Une photo nette, prise sans manipulation risquée, peut aider à orienter la demande." },
+          { label: "Voyage ou location récente", text: "Ce contexte compte, notamment après un séjour, un changement d'occupant ou une location saisonnière." },
+          { label: "Plusieurs couchages touchés", text: "Chambre, canapé-lit ou chambre d'amis concernés en même temps renforcent le doute et méritent d'être décrits." },
+        ],
+      },
+      {
+        heading: "Erreurs à éviter",
+        intro: "Quelques gestes peuvent compliquer la situation ou disperser les indices.",
+        items: [
+          { label: "Jeter le matelas trop vite" },
+          { label: "Déplacer le linge dans toute la maison" },
+          { label: "Pulvériser plusieurs produits au hasard" },
+          { label: "Dormir dans une autre pièce sans avis" },
+          { label: "Attendre plusieurs semaines si les signes reviennent" },
+          { label: "Oublier de préciser un retour de voyage ou une location récente" },
+        ],
+      },
+      {
+        heading: "Avant de demander un rappel",
+        intro: "Préparez les informations qui permettront de comprendre rapidement le contexte.",
+        items: [
+          { label: "Commune concernée" },
+          { label: "Type de logement : appartement, maison, hôtel, location saisonnière" },
+          { label: "Nombre de couchages concernés" },
+          { label: "Date d'apparition des signes" },
+          { label: "Photos éventuelles des traces ou de l'insecte" },
+          { label: "Retour de voyage ou séjour récent" },
+          { label: "Présence d'un canapé-lit, d'une chambre d'amis ou d'une location saisonnière" },
+        ],
+        cta: { label: "Décrire ma situation", href: "/demande-devis/" },
+      },
     ],
     faq: [
       { question: "Faut-il jeter le matelas ?", answer: "Pas sans avis. Le déplacement d'un matelas peut propager le problème." },
