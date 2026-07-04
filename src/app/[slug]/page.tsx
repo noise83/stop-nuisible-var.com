@@ -12,7 +12,7 @@ import { CTABand, EmergencyPanel, ProcessSteps } from "@/components/page-blocks"
 import { TrustList } from "@/components/TrustList";
 import { ButtonLink, Eyebrow, PhoneLink, Section } from "@/components/ui";
 import { cityProfiles, extensionCities, getCity, getLocalLanding, getService, globalPages, guides, localLandings, pestProfileByServiceSlug, priorityCities, services } from "@/data/site";
-import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from "@/lib/jsonld";
+import { breadcrumbJsonLd, faqJsonLd, pestServiceJsonLd } from "@/lib/jsonld";
 import { buildPageMetadata } from "@/lib/metadata";
 
 type Params = Promise<{ slug: string }>;
@@ -135,7 +135,18 @@ function LocalLandingPage({ slug }: { slug: string }) {
   ];
   return (
     <main>
-      <JsonLd data={[breadcrumbJsonLd(crumbs), faqJsonLd(landing.faq), serviceJsonLd(landing.h1, landing.description, `/${landing.slug}/`)]} />
+      <JsonLd
+        data={[
+          breadcrumbJsonLd(crumbs),
+          faqJsonLd(landing.faq),
+          pestServiceJsonLd({
+            name: landing.h1,
+            serviceType: getServiceType(service.slug),
+            description: landing.description,
+            url: `/${landing.slug}/`,
+          }),
+        ]}
+      />
       <Breadcrumb items={crumbs} />
       <Section className="py-10 sm:py-20">
         <div className="container grid items-start gap-8 lg:grid-cols-[.9fr_1.1fr]">
@@ -292,7 +303,18 @@ function ServicePage({ slug }: { slug: string }) {
   ];
   return (
     <main>
-      <JsonLd data={[breadcrumbJsonLd(crumbs), faqJsonLd(service.faq), serviceJsonLd(service.title, service.description, `/${service.slug}/`)]} />
+      <JsonLd
+        data={[
+          breadcrumbJsonLd(crumbs),
+          faqJsonLd(service.faq),
+          pestServiceJsonLd({
+            name: service.title,
+            serviceType: getServiceType(service.slug),
+            description: service.description,
+            url: `/${service.slug}/`,
+          }),
+        ]}
+      />
       <Breadcrumb items={crumbs} />
       <Section>
         <div className="container grid gap-10 lg:grid-cols-[1fr_360px]">
@@ -356,6 +378,21 @@ function ServicePage({ slug }: { slug: string }) {
       <CTABand title={`Demander un rappel ${service.shortName.toLowerCase()} dans le Var`} text="Transmettez les informations utiles en moins d'une minute, avec téléphone, consentement clair et sans engagement." />
     </main>
   );
+}
+
+function getServiceType(serviceSlug: string) {
+  const serviceTypes: Record<string, string> = {
+    "deratisation-var": "Dératisation rats et souris",
+    "punaises-de-lit-var": "Traitement punaises de lit",
+    "cafards-blattes-var": "Traitement cafards et blattes",
+    "guepes-frelons-var": "Traitement guêpes et frelons",
+    "termites-var": "Traitement termites et insectes xylophages",
+    "moustique-tigre-var": "Traitement moustique tigre",
+    "chenilles-processionnaires-var": "Traitement chenilles processionnaires",
+    "depigeonnage-var": "Dépigeonnage",
+  };
+
+  return serviceTypes[serviceSlug] ?? "Traitement nuisibles";
 }
 
 function ServiceInlineLink({

@@ -11,7 +11,7 @@ import { CTABand, EmergencyPanel } from "@/components/page-blocks";
 import { TrustList } from "@/components/TrustList";
 import { ButtonLink, Eyebrow, PhoneLink, Section } from "@/components/ui";
 import { getCity, localLandings, priorityCities, services } from "@/data/site";
-import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from "@/lib/jsonld";
+import { breadcrumbJsonLd, faqJsonLd } from "@/lib/jsonld";
 import { buildPageMetadata } from "@/lib/metadata";
 
 type Params = Promise<{ city: string }>;
@@ -49,7 +49,7 @@ export default async function CityPage({ params }: { params: Params }) {
   return (
     <main>
       <CityPageViewTracker city={city.name} />
-      <JsonLd data={[breadcrumbJsonLd(crumbs), faqJsonLd(faq), serviceJsonLd(`Traitement nuisibles ${city.name}`, city.intro, `/villes/${city.slug}/`)]} />
+      <JsonLd data={[breadcrumbJsonLd(crumbs), faqJsonLd(faq)]} />
       <Breadcrumb items={crumbs} />
       <Section>
         <div className="container grid gap-10 lg:grid-cols-[1fr_360px]">

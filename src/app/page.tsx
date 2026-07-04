@@ -3,8 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { FAQ } from "@/components/faq";
 import { PestIcon } from "@/components/icons";
+import { JsonLd } from "@/components/json-ld";
 import { PhoneLink } from "@/components/ui";
 import { priorityCities, services, type FAQItem } from "@/data/site";
+import { breadcrumbJsonLd, faqJsonLd } from "@/lib/jsonld";
 import { buildPageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = {
@@ -148,9 +150,11 @@ function SectionTitle({ eyebrow, title, text }: { eyebrow: string; title: string
 
 export default function HomePage() {
   const cityMap = new Map(priorityCities.map((city) => [city.name, city]));
+  const crumbs = [{ name: "Accueil", href: "/" }];
 
   return (
     <main className="overflow-x-hidden bg-[#F6F1E8] text-[#1F2933]">
+      <JsonLd data={[breadcrumbJsonLd(crumbs), faqJsonLd(faqItems)]} />
       <section className="bg-[#F6F1E8] py-10 sm:py-16">
         <div className="container grid items-center gap-10 lg:grid-cols-[1fr_.92fr]">
           <div>
