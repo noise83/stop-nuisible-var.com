@@ -470,6 +470,44 @@ function HubPage() {
   );
 }
 
+const varSectors = [
+  {
+    name: "Aire toulonnaise",
+    cities: ["Toulon", "La Seyne-sur-Mer", "La Garde", "La Valette-du-Var", "Ollioules"],
+    context: "Habitat collectif, commerces, locaux poubelles, caves, restaurants et appartements.",
+  },
+  {
+    name: "Littoral hyérois",
+    cities: ["Hyères", "Carqueiranne", "La Londe-les-Maures", "Le Pradet", "Bormes-les-Mimosas"],
+    context: "Maisons avec jardin, résidences, locations saisonnières, moustiques, guêpes et punaises de lit.",
+  },
+  {
+    name: "Est Var",
+    cities: ["Fréjus", "Saint-Raphaël", "Puget-sur-Argens", "Roquebrune-sur-Argens", "Le Muy"],
+    context: "Hébergements touristiques, campings, résidences secondaires, commerces et délais courts.",
+  },
+  {
+    name: "Centre Var / Dracénie",
+    cities: ["Draguignan", "Trans-en-Provence", "Lorgues", "Vidauban", "Flayosc"],
+    context: "Maisons, caves, combles, garages, dépendances, rongeurs, termites et guêpes.",
+  },
+  {
+    name: "Provence Verte",
+    cities: ["Brignoles", "Garéoult", "Saint-Maximin-la-Sainte-Baume", "Le Luc", "Flassans-sur-Issole"],
+    context: "Maisons, jardins, dépendances, pins, chenilles processionnaires, rongeurs et guêpes.",
+  },
+  {
+    name: "Golfe de Saint-Tropez",
+    cities: ["Saint-Tropez", "Sainte-Maxime", "Cogolin", "Ramatuelle", "Gassin"],
+    context: "Locations saisonnières, hôtels, restaurants, villas et besoin de discrétion.",
+  },
+  {
+    name: "Ouest Var",
+    cities: ["Six-Fours-les-Plages", "Sanary-sur-Mer", "Bandol", "Saint-Cyr-sur-Mer", "Le Beausset"],
+    context: "Littoral, résidences, maisons avec extérieur, locations et terrasses.",
+  },
+];
+
 function ZonesPage() {
   const crumbs = [
     { name: "Accueil", href: "/" },
@@ -492,7 +530,30 @@ function ZonesPage() {
       <TrustList />
       <Section tone="white">
         <div className="container">
-          <h2 className="text-3xl font-black text-[#102337]">Villes prioritaires</h2>
+          <h2 className="text-3xl font-black text-[#102337]">Les grands secteurs couverts dans le Var</h2>
+          <p className="mt-4 max-w-3xl leading-8 text-[#405160]">
+            La demande reste possible selon le secteur : ces informations aident à qualifier la commune, le nuisible
+            concerné et les disponibilités de rappel.
+          </p>
+          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {varSectors.map((sector) => (
+              <article key={sector.name} className="rounded-[8px] border border-[#102337]/10 bg-[#f5f1e8] p-5">
+                <h3 className="text-xl font-black text-[#102337]">{sector.name}</h3>
+                <p className="mt-3 text-sm font-bold leading-6 text-[#24493d]">{sector.cities.join(", ")}</p>
+                <p className="mt-4 text-sm leading-6 text-[#405160]">{sector.context}</p>
+              </article>
+            ))}
+          </div>
+          <div className="mt-8 max-w-3xl rounded-[8px] border border-[#102337]/10 bg-white p-5">
+            <p className="leading-8 text-[#405160]">
+              Vous ne voyez pas votre commune ? Décrivez quand même votre demande : le secteur exact, le nuisible, le
+              type de lieu et l’urgence permettent de vérifier si un rappel est possible.
+            </p>
+            <div className="mt-5">
+              <ButtonLink href="/demande-devis/">Décrire ma demande</ButtonLink>
+            </div>
+          </div>
+          <h2 className="mt-12 text-3xl font-black text-[#102337]">Villes prioritaires</h2>
           <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {priorityCities.map((city) => <CityCard key={city.slug} city={city} />)}
           </div>
