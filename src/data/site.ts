@@ -404,14 +404,29 @@ export const services: Service[] = [
     },
     faq: [
       {
-        question: "Les cafards viennent-ils toujours d'un manque d'hygiène ?",
+        question: "Est-ce grave si je vois un cafard chez moi ?",
         answer:
-          "Non. L'hygiène compte, mais les blattes circulent aussi par les gaines, livraisons, cartons, parties communes et logements voisins.",
+          "Un cafard isolé ne signifie pas toujours une infestation importante, mais une observation répétée doit être prise au sérieux. Dans le Var, surtout en appartement à Toulon, précisez la pièce concernée, l'horaire, la fréquence et les éventuelles observations en cuisine, salle d'eau ou parties communes.",
       },
       {
-        question: "Une copropriété doit-elle agir collectivement ?",
+        question: "Qu'est-ce qui attire les cafards dans un logement ?",
         answer:
-          "Souvent oui lorsque les parties communes, colonnes ou plusieurs logements sont touchés. La demande doit alors préciser le contexte.",
+          "Les cafards recherchent surtout l'eau, la chaleur, les restes alimentaires, les recoins sombres et les accès par gaines ou évacuations. Les cuisines, salles d'eau, locaux poubelles et parties communes d'immeubles peuvent favoriser leur circulation, même dans un logement entretenu.",
+      },
+      {
+        question: "Qu'est-ce qui fait fuir les cafards ?",
+        answer:
+          "Limiter l'accès à l'eau et aux aliments, fermer les sacs, nettoyer les zones de passage et éviter les cartons stockés peut réduire leur présence. En revanche, multiplier les produits au hasard peut déplacer les blattes vers d'autres pièces ou appartements ; mieux vaut décrire la situation avant de demander un rappel.",
+      },
+      {
+        question: "Qui appeler quand on a des cafards ?",
+        answer:
+          "Pour des cafards dans un logement, un commerce ou un restaurant du Var, vous pouvez demander un rappel en décrivant la commune, le type de lieu, les pièces touchées et l'urgence. La demande est qualifiée selon la commune, le nuisible et les disponibilités, puis peut être transmise avec votre accord à un professionnel partenaire adapté.",
+      },
+      {
+        question: "Que faire si je vois des cafards dans un appartement à Toulon ?",
+        answer:
+          "Notez si les cafards apparaissent de nuit ou en journée, dans la cuisine, la salle d'eau, les placards, près des gaines ou du local poubelle. À Toulon, en copropriété, il est aussi utile de préciser si des parties communes, voisins, commerces ou restaurants proches semblent concernés.",
       },
     ],
   },
