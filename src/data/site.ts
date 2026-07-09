@@ -324,14 +324,34 @@ export const services: Service[] = [
     },
     faq: [
       {
-        question: "Une piqûre suffit-elle à confirmer des punaises de lit ?",
+        question: "Comment savoir si j'ai des punaises de lit ?",
         answer:
-          "Non. Les piqûres orientent le diagnostic, mais il faut croiser plusieurs signes : traces sur literie, insectes visibles, contexte de voyage ou voisinage.",
+          "Une piqûre seule ne suffit pas à confirmer une infestation. Il faut croiser plusieurs signes : piqûres au réveil, taches noires sur le matelas ou le sommier, petites traces de sang, insecte visible près d'une chambre ou d'un canapé-lit, retour de voyage ou doute après une location saisonnière.",
       },
       {
-        question: "Stop Nuisible Var envoie-t-il un technicien ?",
+        question: "Où se cachent les punaises de lit ?",
         answer:
-          "Non, la plateforme recueille votre demande et la transmet à un professionnel partenaire adapté au secteur et au type de problème.",
+          "Elles sont souvent recherchées près des zones de repos : coutures de matelas, sommiers, têtes de lit, plinthes proches, canapés-lits, bagages et textiles près du couchage. Dans le Var, le contexte compte aussi pour les appartements, hôtels, résidences et locations saisonnières.",
+      },
+      {
+        question: "Est-ce grave d'avoir des punaises de lit chez soi ?",
+        answer:
+          "La situation peut devenir pénible si les signes reviennent, mais il faut éviter la panique et les gestes dispersés. Le plus utile est de décrire les chambres touchées, le nombre de couchages, les dates d'apparition et les signes observés, sans déplacer matelas, linge ou bagages avant avis.",
+      },
+      {
+        question: "Les punaises de lit viennent-elles d'un manque d'hygiène ?",
+        answer:
+          "Non. Les punaises de lit peuvent arriver après un retour de voyage, un séjour en hôtel, une location saisonnière, un meuble déplacé ou un passage dans un logement déjà concerné. Elles peuvent toucher un appartement bien entretenu à Toulon comme une résidence ou un hébergement de passage dans le Var.",
+      },
+      {
+        question: "Qui appeler en cas de punaises de lit ?",
+        answer:
+          "Vous pouvez demander un rappel en décrivant la commune, le type de lieu, les signes observés, les chambres ou canapés-lits concernés et l'urgence. La demande est qualifiée selon la commune, le type de lieu, les signes observés et l'urgence, puis peut être transmise avec votre accord à un professionnel partenaire adapté.",
+      },
+      {
+        question: "Que faire si je pense avoir des punaises de lit dans un appartement à Toulon ?",
+        answer:
+          "Notez les pièces concernées, vérifiez prudemment matelas, sommier et canapé-lit, et prenez une photo si elle est possible sans manipulation excessive. À Toulon, précisez aussi si l'appartement est occupé, loué, en résidence ou lié à un retour de voyage, puis demandez un rappel pour décrire la situation.",
       },
     ],
   },
