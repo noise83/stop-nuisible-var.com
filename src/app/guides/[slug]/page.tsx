@@ -8,6 +8,7 @@ import { FAQ } from "@/components/faq";
 import { JsonLd } from "@/components/json-ld";
 import { CTABand } from "@/components/page-blocks";
 import { ButtonLink, Eyebrow, Section } from "@/components/ui";
+import { RodentDroppingsGuidePage } from "@/components/rodent-droppings-guide";
 import { getGuide, getService, guides, type Guide, type GuideLink, type IllustratedGuidePest } from "@/data/site";
 import { articleJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/jsonld";
 import { buildPageMetadata } from "@/lib/metadata";
@@ -39,6 +40,10 @@ export default async function GuidePage({ params }: { params: Params }) {
     { name: "Guides", href: "/traitement-nuisibles-var/" },
     { name: guide.title, href: `/guides/${guide.slug}/` },
   ];
+
+  if (guide.slug === "crottes-rat-ou-souris") {
+    return <RodentDroppingsGuidePage guide={guide} crumbs={crumbs} />;
+  }
 
   if (guide.illustratedGuide) {
     return <IllustratedGuidePage guide={guide} crumbs={crumbs} />;

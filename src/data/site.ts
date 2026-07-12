@@ -1090,6 +1090,22 @@ export function getCityPageContent(slug: string) {
 
 export const guides: Guide[] = [
   {
+    slug: "crottes-rat-ou-souris",
+    title: "Crottes de rat ou de souris : comment les reconnaître ?",
+    description:
+      "Taille, forme, emplacement : comparez les crottes de rat et de souris et les autres signes de présence de rongeurs dans le Var.",
+    serviceSlug: "deratisation-var",
+    published: "2026-07-12",
+    sections: [],
+    faq: [
+      { question: "Les crottes de rat sont-elles plus grosses que celles de souris ?", answer: "En général, oui. Les déjections de rat sont habituellement plus grandes et plus épaisses, tandis que celles de souris sont plus petites et plus fines. La taille reste un repère indicatif et doit être croisée avec d'autres signes." },
+      { question: "Peut-on reconnaître un rat uniquement grâce à ses crottes ?", answer: "Pas toujours. La forme et la taille peuvent orienter l'identification, mais l'emplacement, les bruits, les rongements et les traces de passage sont également importants." },
+      { question: "Peut-on aspirer des crottes de souris ?", answer: "Il est déconseillé d'aspirer ou de balayer à sec des déjections de rongeurs. Portez des gants, humidifiez la zone avec un désinfectant adapté et retirez les déjections avec un matériau jetable en respectant les instructions du produit." },
+      { question: "Pourquoi les crottes réapparaissent-elles après le nettoyage ?", answer: "Si de nouvelles déjections apparaissent après un nettoyage adapté, cela peut indiquer qu'un ou plusieurs rongeurs circulent encore dans la zone. Recherchez alors d'autres indices et les passages possibles." },
+      { question: "Une photo suffit-elle pour savoir s'il s'agit d'un rat ou d'une souris ?", answer: "Une photo peut aider à orienter l'identification, surtout si un élément de comparaison permet d'apprécier la taille. Elle ne garantit toutefois pas un diagnostic certain à elle seule." },
+    ],
+  },
+  {
     slug: "identifier-un-nuisible-var",
     title: "Identifier un nuisible dans le Var : rats, cafards, punaises, frelons",
     description:
