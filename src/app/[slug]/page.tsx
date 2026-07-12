@@ -347,6 +347,14 @@ function ServicePage({ slug }: { slug: string }) {
                 {service.servicePageCopy.paragraphs.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
+                {service.slug === "deratisation-var" ? (
+                  <p>
+                    Pour comparer la taille, la forme et l&apos;emplacement des déjections, consultez le guide pour{" "}
+                    <Link className="focus-ring font-bold text-[#a6422b] underline decoration-2 underline-offset-4 hover:text-[#7f2f1e]" href="/guides/crottes-rat-ou-souris/">
+                      reconnaître des crottes de rat ou de souris
+                    </Link>.
+                  </p>
+                ) : null}
               </>
             ) : (
               <>

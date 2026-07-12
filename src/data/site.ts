@@ -1149,6 +1149,7 @@ export const guides: Guide[] = [
             "Ajouter une photo des traces si elle peut être prise sans risque.",
           ],
           links: [
+            { label: "Reconnaître des crottes de rat ou de souris", href: "/guides/crottes-rat-ou-souris/" },
             { label: "Dératisation dans le Var", href: "/deratisation-var/" },
             { label: "Dératisation à Hyères", href: "/deratisation-hyeres/" },
           ],
