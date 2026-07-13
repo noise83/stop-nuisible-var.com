@@ -1550,8 +1550,8 @@ export const guides: Guide[] = [
 
 export const globalPages = {
   "traitement-nuisibles-var": {
-    title: "Traitement nuisibles Var : demande de rappel locale",
-    description: "Hub local pour trouver une solution contre les nuisibles dans le Var : dératisation, désinsectisation, termites, moustiques, guêpes et plus.",
+    title: "Traitement des nuisibles dans le Var : identifier le problème",
+    description: "Rats, cafards, punaises de lit, guêpes ou autres nuisibles : identifiez votre problème et trouvez la page adaptée dans le Var.",
     heading: "Traitement des nuisibles dans le Var",
   },
   "zones-intervention": {

@@ -4,8 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumb } from "@/components/breadcrumb";
-import { CityCard, RelatedLinks, ServiceCard } from "@/components/cards";
+import { CityCard, RelatedLinks } from "@/components/cards";
 import { FAQ } from "@/components/faq";
+import { PestIcon } from "@/components/icons";
 import { JsonLd } from "@/components/json-ld";
 import { LeadForm } from "@/components/lead-form";
 import { CTABand, EmergencyPanel, ProcessSteps } from "@/components/page-blocks";
@@ -437,43 +438,218 @@ function HubPage() {
     { name: "Accueil", href: "/" },
     { name: "Traitement nuisibles Var", href: "/traitement-nuisibles-var/" },
   ];
-  const identificationGuide = guides.find((guide) => guide.slug === "identifier-un-nuisible-var");
+  const pestEntries = [
+    {
+      title: "Rats ou souris",
+      icon: "rodent",
+      marker: "Crottes, bruits nocturnes, emballages rongés ou passages le long des murs.",
+      text: "Des bruits dans une cloison, des déjections ou des aliments endommagés peuvent évoquer la présence d'un rongeur. La taille des traces et les autres indices observés aident à orienter la situation.",
+      linkLabel: "Voir les solutions de dératisation dans le Var",
+      href: "/deratisation-var/",
+      secondaryLink: { label: "Crottes de rat ou de souris : les reconnaître", href: "/guides/crottes-rat-ou-souris/" },
+    },
+    {
+      title: "Punaises de lit",
+      icon: "bedbug",
+      marker: "Piqûres au réveil, petites taches sombres ou insectes près du lit.",
+      text: "Les signes sont souvent recherchés autour du matelas, du sommier et des zones proches du couchage. Une piqûre seule ne suffit toutefois pas à confirmer la présence de punaises de lit.",
+      linkLabel: "Voir les informations sur les punaises de lit",
+      href: "/punaises-de-lit-var/",
+    },
+    {
+      title: "Cafards ou blattes",
+      icon: "roach",
+      marker: "Insectes rapides dans la cuisine, activité nocturne ou présence près des zones humides.",
+      text: "Les cafards sont souvent remarqués près des sources de nourriture, de chaleur ou d'humidité. Une activité visible en journée peut aussi justifier une attention particulière.",
+      linkLabel: "Voir les solutions contre les cafards et blattes",
+      href: "/cafards-blattes-var/",
+    },
+    {
+      title: "Guêpes ou frelons",
+      icon: "wasp",
+      marker: "Allées et venues régulières, activité de vol concentrée ou nid visible.",
+      text: "Des insectes qui empruntent régulièrement la même trajectoire peuvent signaler un nid ou un point d'accès à proximité. Évitez d'approcher ou de manipuler un nid suspect.",
+      linkLabel: "Voir les informations sur les guêpes et frelons",
+      href: "/guepes-frelons-var/",
+    },
+    {
+      title: "Termites",
+      icon: "termite",
+      marker: "Bois fragilisé, galeries, éléments qui sonnent creux ou indices inhabituels dans le bâti.",
+      text: "Les termites peuvent rester discrets. Des dégradations du bois ou certains indices dans le bâtiment nécessitent une identification adaptée avant de conclure à leur présence.",
+      linkLabel: "Voir les informations sur les termites",
+      href: "/termites-var/",
+    },
+    {
+      title: "Moustique tigre",
+      icon: "mosquito",
+      marker: "Petit moustique sombre, activité en journée et piqûres répétées autour du logement.",
+      text: "Le moustique tigre est notamment associé aux petits volumes d'eau stagnante autour des habitations. La réduction des gîtes larvaires fait partie des premiers points à vérifier.",
+      linkLabel: "Voir les informations sur le moustique tigre",
+      href: "/moustique-tigre-var/",
+    },
+    {
+      title: "Chenilles processionnaires",
+      icon: "caterpillar",
+      marker: "Nids soyeux dans les pins ou chenilles se déplaçant en procession.",
+      text: "Les chenilles processionnaires et leurs poils urticants demandent de la prudence, notamment en présence d'enfants ou d'animaux. Évitez toute manipulation directe.",
+      linkLabel: "Voir les informations sur les chenilles processionnaires",
+      href: "/chenilles-processionnaires-var/",
+    },
+    {
+      title: "Pigeons ou goélands",
+      icon: "bird",
+      marker: "Fientes répétées, occupation d'un toit, balcon, rebord ou zone technique.",
+      text: "Une présence régulière d'oiseaux peut entraîner une accumulation de fientes et des nuisances sur certaines parties du bâtiment. Le contexte du site détermine les solutions à envisager.",
+      linkLabel: "Voir les solutions de dépigeonnage dans le Var",
+      href: "/depigeonnage-var/",
+    },
+  ];
+  const observations = [
+    {
+      title: "Des bruits dans les murs, le plafond ou les combles",
+      text: "Notez le moment où les bruits se produisent, leur fréquence et la zone concernée. Ces informations peuvent aider à distinguer une circulation ponctuelle d'une activité répétée.",
+    },
+    {
+      title: "Des crottes ou de petites déjections",
+      text: "Regardez leur taille apparente, leur forme et l'endroit où elles ont été trouvées. Ne les manipulez pas à mains nues et évitez de les balayer ou de les aspirer à sec.",
+      link: { label: "Comparer les crottes de rat et de souris", href: "/guides/crottes-rat-ou-souris/" },
+    },
+    {
+      title: "Des piqûres ou des marques au réveil",
+      text: "L'emplacement des marques et leur répétition peuvent orienter les recherches, mais l'aspect d'une piqûre ne suffit généralement pas à identifier seul un nuisible.",
+    },
+    {
+      title: "Un insecte aperçu",
+      text: "Si cela peut être fait sans risque, une photo nette et le lieu d'observation sont souvent plus utiles qu'une description approximative de couleur ou de taille.",
+    },
+    {
+      title: "Un nid ou une activité de vol",
+      text: "Observez à distance les trajectoires et le point où les insectes semblent entrer ou sortir. N'essayez pas d'ouvrir, de déplacer ou de traiter un nid suspect pour simplement l'identifier.",
+    },
+    {
+      title: "Du bois fragilisé ou dégradé",
+      text: "Repérez les éléments concernés et l'étendue apparente des dégâts. Plusieurs causes peuvent détériorer le bois : une identification correcte reste nécessaire avant de conclure.",
+    },
+  ];
+  const places = [
+    ["Dans un logement", "Précisez la pièce concernée, la proximité des aliments ou du couchage et si les signes apparaissent toujours au même endroit."],
+    ["Dans une copropriété", "Caves, gaines, locaux poubelles et parties communes peuvent créer des situations différentes d'un problème limité à un seul appartement. Indiquez si plusieurs zones semblent concernées."],
+    ["Dans un commerce ou un local professionnel", "Décrivez l'activité du lieu, les zones touchées et les contraintes d'accès ou d'horaires. Ces informations permettent de transmettre une demande plus claire."],
+    ["Dans un jardin ou autour d'une maison", "Précisez si les signes se trouvent près de végétaux, d'eau stagnante, de déchets, d'une toiture ou d'une dépendance."],
+    ["Dans un hébergement ou une location", "Indiquez les zones concernées et les signes réellement observés. En cas de suspicion de punaises de lit, évitez de déplacer inutilement des affaires d'une pièce à une autre avant d'avoir clarifié la situation."],
+  ];
+  const faq = [
+    { question: "Je ne sais pas quel nuisible est présent. Puis-je quand même faire une demande ?", answer: "Oui. Décrivez les signes observés, leur emplacement et le type de lieu concerné. Il est préférable d'indiquer ce que vous avez réellement constaté plutôt que de choisir un nuisible au hasard." },
+    { question: "Une photo permet-elle d'identifier le nuisible ?", answer: "Une photo nette peut aider à orienter la compréhension de la situation, mais elle ne garantit pas toujours une identification certaine. Le contexte et les autres signes observés restent importants." },
+    { question: "Stop Nuisible Var réalise-t-il les traitements ?", answer: "Non. Stop Nuisible Var est une plateforme locale de demande de rappel et de mise en relation. La plateforme recueille les informations utiles et peut transmettre la demande à un professionnel partenaire avec le consentement de l'utilisateur." },
+    { question: "Quels nuisibles sont couverts par le site ?", answer: "Le site oriente notamment les demandes concernant les rats et souris, punaises de lit, cafards et blattes, guêpes et frelons, termites, moustiques tigres, chenilles processionnaires ainsi que certaines problématiques liées aux pigeons et goélands." },
+    { question: "La demande est-elle payante ?", answer: "La demande effectuée sur Stop Nuisible Var est gratuite et sans engagement. Les conditions d'une éventuelle intervention relèvent ensuite du professionnel partenaire concerné." },
+  ];
+
   return (
-    <main>
-      <JsonLd data={breadcrumbJsonLd(crumbs)} />
+    <main className="overflow-x-hidden">
+      <JsonLd data={[breadcrumbJsonLd(crumbs), faqJsonLd(faq)]} />
       <Breadcrumb items={crumbs} />
-      <Section>
-        <div className="container">
-          <Eyebrow>Hub local</Eyebrow>
-          <h1 className="max-w-4xl text-5xl font-black text-[#102337]">Traitement nuisibles Var : une demande, le bon relais local</h1>
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-[#405160]">
-            Stop Nuisible Var centralise les demandes de dératisation Var, désinsectisation Var, traitement punaises de lit, termites, guêpes, moustique tigre, chenilles et dépigeonnage. Le site sert de passerelle claire entre votre situation et un professionnel partenaire.
-          </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row"><ButtonLink /><PhoneLink /></div>
-        </div>
-      </Section>
-      <TrustList />
-      <Section tone="white">
-        <div className="container grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((service) => <ServiceCard key={service.slug} service={service} />)}
-        </div>
-      </Section>
-      {identificationGuide ? (
-        <Section>
-          <div className="container rounded-[8px] border border-[#102337]/10 bg-white p-6">
-            <Eyebrow>Ressource pratique</Eyebrow>
-            <h2 className="max-w-3xl text-3xl font-black text-[#102337]">Guide utile avant de demander un rappel</h2>
-            <p className="mt-4 max-w-3xl leading-8 text-[#405160]">{identificationGuide.description}</p>
-            <Link
-              href={`/guides/${identificationGuide.slug}/`}
-              className="focus-ring mt-5 inline-flex rounded-[7px] bg-[#102337] px-5 py-3 text-sm font-bold !text-white transition hover:bg-[#18324c]"
-            >
-              Lire le guide -&gt;
-            </Link>
+      <Section className="py-12 sm:py-20">
+        <div className="container max-w-[1160px]">
+          <Eyebrow>TRAITEMENT DES NUISIBLES DANS LE VAR</Eyebrow>
+          <h1 className="max-w-4xl text-4xl font-black leading-tight text-[#102337] sm:text-5xl">Quel nuisible avez-vous repéré dans le Var ?</h1>
+          <div className="mt-6 max-w-3xl space-y-4 text-lg leading-8 text-[#405160]">
+            <p>Rat dans un garage, cafards dans une cuisine, piqûres au réveil ou activité de guêpes autour d&apos;un toit : le bon point de départ dépend d&apos;abord des signes que vous avez observés.</p>
+            <p>Choisissez le nuisible que vous soupçonnez pour consulter les informations adaptées. Si vous ne savez pas encore ce qui est présent, utilisez plutôt notre guide d&apos;identification.</p>
           </div>
-        </Section>
-      ) : null}
-      <CTABand title="Votre demande est locale et contextualisée" text="Ville, nuisible, type de lieu, téléphone et urgence : ces informations permettent une orientation plus efficace." />
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <ButtonLink href="#nuisibles">Je connais le nuisible</ButtonLink>
+            <ButtonLink href="/guides/identifier-un-nuisible-var/" variant="secondary">Je ne sais pas ce que c&apos;est</ButtonLink>
+          </div>
+          <p className="mt-5 max-w-3xl border-l-4 border-[#F2C94C] pl-4 text-sm font-semibold leading-6 text-[#405160]">Stop Nuisible Var est une plateforme locale de demande de rappel et de mise en relation. Le site n&apos;effectue pas directement les interventions.</p>
+        </div>
+      </Section>
+      <Section tone="white" className="py-12 sm:py-20">
+        <div id="nuisibles" className="container max-w-[1160px] scroll-mt-24">
+          <Eyebrow>Choisir un service</Eyebrow>
+          <h2 className="max-w-3xl text-3xl font-black text-[#102337] sm:text-4xl">Je connais ou je soupçonne le nuisible</h2>
+          <p className="mt-4 max-w-3xl leading-8 text-[#405160]">Les signes visibles donnent souvent une première orientation. Comparez votre situation avec les repères ci-dessous, puis consultez la page correspondant au problème suspecté.</p>
+          <div className="mt-10 divide-y divide-[#102337]/15 border-y border-[#102337]/15 lg:grid lg:grid-cols-2 lg:divide-y-0">
+            {pestEntries.map((entry, index) => (
+              <article key={entry.href} className={`py-7 lg:px-8 ${index % 2 === 0 ? "lg:pl-0" : "lg:border-l lg:border-[#102337]/15 lg:pr-0"} ${index > 1 ? "lg:border-t lg:border-[#102337]/15" : ""}`}>
+                <div className="flex gap-4">
+                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-[8px] bg-[#f5f1e8] text-[#24493d]"><PestIcon name={entry.icon} className="h-8 w-8" /></span>
+                  <div>
+                    <h3 className="text-xl font-black text-[#102337]">{entry.title}</h3>
+                    <p className="mt-2 font-bold leading-7 text-[#24493d]">{entry.marker}</p>
+                  </div>
+                </div>
+                <p className="mt-4 leading-7 text-[#405160]">{entry.text}</p>
+                <div className="mt-5 flex flex-col items-start gap-2">
+                  <Link href={entry.href} className="focus-ring rounded-[4px] font-black text-[#a6422b] underline decoration-2 underline-offset-4 hover:text-[#7f2f1e]">{entry.linkLabel} →</Link>
+                  {entry.secondaryLink ? <Link href={entry.secondaryLink.href} className="focus-ring rounded-[4px] text-sm font-bold text-[#24493d] underline underline-offset-4 hover:text-[#bf593f]">{entry.secondaryLink.label}</Link> : null}
+                </div>
+              </article>
+            ))}
+          </div>
+          <aside className="mt-10 border-l-4 border-[#E86A33] bg-[#f5f1e8] p-6 sm:p-8">
+            <h3 className="text-2xl font-black text-[#102337]">Vous hésitez entre plusieurs nuisibles ?</h3>
+            <p className="mt-3 max-w-3xl leading-7 text-[#405160]">Ne choisissez pas une catégorie au hasard uniquement à partir d&apos;un seul signe. Une piqûre, un bruit ou une trace sombre peut avoir plusieurs origines.</p>
+            <div className="mt-5"><ButtonLink href="/guides/identifier-un-nuisible-var/" variant="dark">Identifier un nuisible à partir des signes observés</ButtonLink></div>
+          </aside>
+        </div>
+      </Section>
+      <Section className="py-12 sm:py-20">
+        <div className="container max-w-[1160px] grid gap-10 lg:grid-cols-[.72fr_1.28fr]">
+          <div>
+            <Eyebrow>Partir d&apos;un signe</Eyebrow>
+            <h2 className="text-3xl font-black text-[#102337] sm:text-4xl">Partez de ce que vous avez observé</h2>
+            <p className="mt-4 leading-8 text-[#405160]">Vous n&apos;avez pas vu directement le nuisible ? C&apos;est fréquent. Commencez par décrire le signe le plus concret plutôt que d&apos;essayer de poser vous-même un diagnostic.</p>
+          </div>
+          <div className="divide-y divide-[#102337]/15 border-t border-[#102337]/15">
+            {observations.map((observation, index) => (
+              <article key={observation.title} className="grid gap-3 py-5 sm:grid-cols-[2.5rem_1fr]">
+                <span className="font-black text-[#bf593f]">0{index + 1}</span>
+                <div><h3 className="text-lg font-black text-[#102337]">{observation.title}</h3><p className="mt-2 leading-7 text-[#405160]">{observation.text}</p>{observation.link ? <Link href={observation.link.href} className="focus-ring mt-3 inline-flex rounded-[4px] font-bold text-[#a6422b] underline underline-offset-4">{observation.link.label}</Link> : null}</div>
+              </article>
+            ))}
+          </div>
+          <div className="lg:col-start-2">
+            <p className="leading-7 text-[#405160]">Le guide d&apos;identification regroupe les principaux signes rencontrés dans le Var et permet de poursuivre la recherche sans choisir immédiatement un traitement.</p>
+            <div className="mt-5"><ButtonLink href="/guides/identifier-un-nuisible-var/" variant="dark">Utiliser le guide d&apos;identification</ButtonLink></div>
+          </div>
+        </div>
+      </Section>
+      <Section tone="white" className="py-12 sm:py-20">
+        <div className="container max-w-[1160px]">
+          <Eyebrow>Préciser le contexte</Eyebrow>
+          <h2 className="text-3xl font-black text-[#102337] sm:text-4xl">Où avez-vous remarqué le problème ?</h2>
+          <p className="mt-4 max-w-3xl leading-8 text-[#405160]">Le même signe n&apos;a pas toujours la même signification selon l&apos;endroit où il apparaît. Le type de lieu aide aussi à mieux décrire la demande.</p>
+          <div className="mt-10 grid gap-x-10 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
+            {places.map(([title, text], index) => <article key={title} className={index === 4 ? "md:col-span-2 lg:col-span-2" : ""}><h3 className="border-t-2 border-[#24493d] pt-4 text-xl font-black text-[#102337]">{title}</h3><p className="mt-3 leading-7 text-[#405160]">{text}</p></article>)}
+          </div>
+          <Link href="/zones-intervention/" className="focus-ring mt-9 inline-flex rounded-[4px] font-bold text-[#24493d] underline decoration-2 underline-offset-4 hover:text-[#bf593f]">Voir les zones couvertes dans le Var →</Link>
+        </div>
+      </Section>
+      <Section tone="dark" className="py-12 sm:py-20">
+        <div className="container max-w-[1160px] grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[.14em] text-[#F2C94C]">Demande gratuite et sans engagement</p>
+            <h2 className="mt-3 max-w-3xl text-3xl font-black sm:text-4xl">Décrivez le problème avant de choisir une solution</h2>
+            <div className="mt-5 max-w-3xl space-y-4 leading-7 text-white/80">
+              <p>Il n&apos;est pas nécessaire de connaître avec certitude le nom du nuisible pour effectuer une demande.</p>
+              <p>La commune, le type de lieu, les signes observés et leur emplacement permettent déjà de mieux comprendre la situation. Une photo peut également être ajoutée lorsqu&apos;elle apporte un élément utile.</p>
+              <p>Stop Nuisible Var recueille ces informations afin de qualifier la demande et, avec votre consentement, de la transmettre à un professionnel partenaire susceptible de correspondre au besoin.</p>
+              <p>La plateforme n&apos;effectue pas directement les interventions et ne garantit pas un diagnostic à partir d&apos;une simple photo.</p>
+            </div>
+          </div>
+          <div className="flex flex-col gap-3 lg:min-w-72"><ButtonLink href="/demande-devis/">Décrire mon problème</ButtonLink><ButtonLink href="/comment-ca-marche/" variant="secondary">Comment fonctionne la mise en relation ?</ButtonLink></div>
+          <p className="text-sm text-white/70 lg:col-span-2">Demande gratuite et sans engagement. Les informations sont transmises à un professionnel partenaire uniquement avec votre consentement.</p>
+        </div>
+      </Section>
+      <Section className="py-12 sm:py-20">
+        <div className="container max-w-3xl">
+          <h2 className="mb-6 text-3xl font-black text-[#102337] sm:text-4xl">Questions fréquentes sur le choix d&apos;un traitement nuisible</h2>
+          <FAQ items={faq} />
+        </div>
+      </Section>
     </main>
   );
 }
