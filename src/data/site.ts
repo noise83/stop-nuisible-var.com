@@ -92,7 +92,15 @@ export type Guide = {
   serviceSlug: string;
   published: string;
   updatedAt?: string;
-  sections: Array<{ heading: string; body: string }>;
+  quickAnswer?: string;
+  sections: Array<{
+    heading: string;
+    body: string;
+    items?: string[];
+    tone?: "plain" | "highlight" | "warning";
+  }>;
+  relatedLinks?: GuideLink[];
+  cta?: { title: string; text: string };
   detailBlocks?: Array<{
     heading: string;
     intro?: string;
@@ -1376,30 +1384,61 @@ export const guides: Guide[] = [
   {
     slug: "prix-traitement-punaises-de-lit-var",
     title: "Prix d'un traitement contre les punaises de lit dans le Var",
-    description: "Comprendre les éléments qui influencent un devis punaises de lit dans le Var, sans promesse de prix fixe.",
+    description: "Quels éléments font varier le prix d'un traitement contre les punaises de lit et quelles informations préparer pour comparer un devis dans le Var.",
     serviceSlug: "punaises-de-lit-var",
     published: "2026-06-13",
+    quickAnswer: "Un prix fiable ne dépend pas seulement de la surface : le nombre de pièces et de couchages concernés, les signes observés, la préparation du logement et l'éventualité de plusieurs passages doivent être précisés avant de chiffrer.",
     sections: [
       {
-        heading: "Pourquoi les prix varient autant",
+        heading: "Les facteurs qui font varier le coût",
         body:
-          "Le coût dépend surtout du nombre de pièces, du niveau de suspicion, de l'accessibilité, du type de logement et de la nécessité de passages complémentaires. Dans un appartement occupé à Toulon, la contrainte n'est pas la même que dans une location saisonnière entre deux séjours à Fréjus.",
+          "Deux logements de même surface peuvent demander une préparation et un suivi très différents. Le chiffrage doit donc partir du contexte réel, pas d'un tarif isolé vu en ligne.",
+        items: [
+          "Surface et nombre de pièces à examiner",
+          "Nombre de chambres, lits et canapés-lits concernés",
+          "Suspicion localisée ou signes dans plusieurs zones",
+          "Logement occupé, location saisonnière ou hébergement",
+          "Préparation demandée avant le passage",
+          "Un seul passage envisagé ou suivi complémentaire",
+        ],
+        tone: "highlight",
       },
       {
-        heading: "Ce qu'il faut décrire avant le rappel",
+        heading: "Estimation rapide ou devis adapté ?",
         body:
-          "Indiquez les pièces touchées, les signes observés, la date des premières piqûres et le contexte : voyage, achat de mobilier, logement voisin ou arrivée de locataires. Plus la demande est précise, plus le professionnel partenaire peut orienter le devis.",
+          "Une estimation peut aider à situer un budget, mais elle reste fragile tant que les pièces concernées, les indices et les contraintes du lieu ne sont pas connus. Un devis doit préciser le périmètre prévu, la préparation attendue et ce qui se passe si des signes persistent.",
       },
       {
-        heading: "Eviter les faux bons plans",
+        heading: "Pourquoi un prix unique sans contexte est peu fiable",
         body:
-          "Un prix très bas annoncé sans diagnostic peut cacher une prestation incomplète. Le bon réflexe consiste à demander ce qui est inclus, les précautions avant passage et les conditions d'un éventuel suivi.",
+          "Un montant annoncé sans connaître le nombre de couchages, les pièces touchées ou les signes observés ne permet pas de comparer des prestations équivalentes. Demandez toujours ce qui est inclus et si une nouvelle évaluation est prévue lorsque la situation évolue.",
+        tone: "warning",
+      },
+      {
+        heading: "Les informations à préparer pour demander un devis",
+        body: "Une description factuelle permet d'éviter les hypothèses et d'obtenir un échange plus utile.",
+        items: [
+          "Commune et type de logement",
+          "Surface approximative et nombre de pièces",
+          "Couchages ou canapés concernés",
+          "Signes observés et date d'apparition",
+          "Voyage, déménagement ou location récente",
+          "Actions déjà réalisées dans le logement",
+        ],
       },
     ],
     faq: [
-      { question: "Stop Nuisible Var affiche-t-il un tarif fixe ?", answer: "Non. Le site transmet la demande pour permettre un devis adapté au logement et à la situation." },
-      { question: "Le devis est-il utile même en cas de doute ?", answer: "Oui, une suspicion bien décrite permet déjà d'être orienté vers le bon interlocuteur." },
+      { question: "Peut-on connaître le prix avec la surface seule ?", answer: "Non. La surface est utile, mais le nombre de pièces, de couchages, les signes observés, l'occupation du logement et le suivi envisagé influencent aussi le chiffrage." },
+      { question: "Que doit préciser un devis contre les punaises de lit ?", answer: "Il est utile de vérifier le périmètre concerné, la préparation demandée, ce qui est inclus dans la prestation et les conditions prévues si des signes persistent." },
+      { question: "Faut-il attendre d'être certain avant de demander un devis ?", answer: "Non. Vous pouvez décrire une suspicion, en indiquant clairement qu'elle n'est pas confirmée. Les signes, les pièces et le contexte aideront à orienter l'échange." },
     ],
+    relatedLinks: [
+      { label: "Traitement des punaises de lit dans le Var", href: "/punaises-de-lit-var/" },
+      { label: "Reconnaître une infestation de punaises de lit", href: "/guides/reconnaitre-infestation-punaises-de-lit/" },
+      { label: "Identifier un nuisible par les signes", href: "/guides/identifier-un-nuisible-var/" },
+      { label: "Décrire ma demande", href: "/demande-devis/" },
+    ],
+    cta: { title: "Décrire le logement pour obtenir un échange utile", text: "Indiquez les pièces, les couchages et les signes observés. La demande est gratuite et sans engagement." },
   },
   {
     slug: "reconnaitre-infestation-punaises-de-lit",
@@ -1484,67 +1523,108 @@ export const guides: Guide[] = [
   },
   {
     slug: "rats-souris-maison-signes-solutions",
-    title: "Rats ou souris dans une maison : signes et solutions",
-    description: "Bruits, traces, accès possibles et réflexes utiles avant une dératisation dans le Var.",
+    title: "Rats ou souris dans une maison : où chercher les signes ?",
+    description: "Situer les bruits, passages et dégâts de rongeurs dans une maison, puis préparer les informations utiles avant une demande dans le Var.",
     serviceSlug: "deratisation-var",
     published: "2026-06-13",
+    quickAnswer: "Dans une maison, commencez par relier chaque signe à un lieu et à un moment : bruit nocturne dans les combles, passage au garage, emballage rongé en cuisine ou activité dans une cloison. Cette chronologie aide davantage qu'un indice isolé.",
     sections: [
-      { heading: "Les indices les plus fiables", body: "Bruits nocturnes, crottes, traces grasses, emballages rongés et odeurs inhabituelles indiquent souvent une activité de rongeurs." },
-      { heading: "Les accès fréquents", body: "Vide sanitaire, toiture, canalisation, porte de garage, local poubelle ou végétation proche peuvent faciliter les passages." },
-      { heading: "Ce que la demande doit contenir", body: "Précisez la pièce, la fréquence, les accès suspectés, la présence d'enfants ou animaux et le type de bâtiment." },
+      { heading: "Situer l'activité pièce par pièce", body: "Les mêmes bruits n'ont pas la même origine selon qu'ils viennent d'un plafond, d'un doublage ou d'un garage. Notez où l'activité semble commencer et si elle se déplace.", items: ["Combles : bruits au-dessus des chambres, isolant ou cartons remués", "Garage : sacs, réserves ou bas de porte marqués", "Cuisine : emballages rongés ou passage près des plinthes", "Cloisons : grattements réguliers, surtout lorsque la maison est calme"], tone: "highlight" },
+      { heading: "Distinguer un passage ancien d'une activité actuelle", body: "Un seul dégât ancien ne prouve pas une présence active. Des bruits répétés, des traces nouvelles ou des emballages récemment atteints sont plus utiles à dater. Pour l'aspect précis des déjections, consultez le guide dédié plutôt que de conclure à partir de leur forme seule." },
+      { heading: "Repérer les accès possibles sans tout démonter", body: "Observez les jonctions entre intérieur et extérieur : bas de porte, arrivée de canalisation, passage de câble, ventilation, toiture, vide sanitaire ou végétation contre la façade. Il ne s'agit pas de condamner un accès au hasard, mais de le signaler.", items: ["Ouverture visible et pièce desservie", "Trace de passage près d'une canalisation", "Accès depuis jardin, dépendance ou local poubelle", "Jour et heure où le bruit revient"], tone: "plain" },
+      { heading: "Ce qu'il faut noter avant le rappel", body: "Préparez une courte chronologie : premier signe, pièces concernées, fréquence, dégâts récents, accès suspectés et présence d'enfants ou d'animaux. Une photo peut compléter la description sans manipuler les déjections." },
     ],
     faq: [
-      { question: "Les souris peuvent-elles passer dans les cloisons ?", answer: "Oui, elles utilisent souvent les vides, gaines et combles." },
-      { question: "Peut-on attendre ?", answer: "Mieux vaut demander conseil rapidement lorsque les signes se répètent." },
+      { question: "Un bruit dans les combles signifie-t-il forcément qu'il y a des rats ?", answer: "Non. Le bruit seul ne permet pas d'identifier l'animal. Notez son horaire, sa fréquence, sa localisation et recherchez d'autres signes sans démonter ni manipuler." },
+      { question: "Quels lieux faut-il vérifier en priorité dans une maison ?", answer: "Les combles, le garage, la cuisine, le vide sanitaire, les dépendances et les passages de réseaux sont utiles à observer selon l'endroit où les signes apparaissent." },
+      { question: "Que faut-il photographier ?", answer: "Les dégâts, emballages rongés, passages possibles ou traces visibles peuvent être photographiés à distance. Ne manipulez pas les déjections à mains nues." },
     ],
+    relatedLinks: [
+      { label: "Dératisation dans le Var", href: "/deratisation-var/" },
+      { label: "Crottes de rat ou de souris : les différencier", href: "/guides/crottes-rat-ou-souris/" },
+      { label: "Identifier un nuisible par les signes", href: "/guides/identifier-un-nuisible-var/" },
+      { label: "Décrire les signes observés", href: "/demande-devis/" },
+    ],
+    cta: { title: "Situer les signes observés dans la maison", text: "Décrivez les pièces, les horaires et les accès possibles pour préparer une demande claire." },
   },
   {
     slug: "cafards-appartement-que-faire",
     title: "Cafards dans un appartement : que faire ?",
-    description: "Comprendre l'origine possible des blattes en appartement et préparer une demande claire.",
+    description: "Comprendre si des cafards semblent limités à l'appartement ou circulent dans l'immeuble, et préparer les informations utiles.",
     serviceSlug: "cafards-blattes-var",
     published: "2026-06-13",
+    quickAnswer: "Notez d'abord où et quand les cafards sont vus : la nuit dans la cuisine, en journée dans la salle de bain, près d'une gaine ou dans les parties communes. Ces observations aident à distinguer un problème apparemment localisé d'une circulation plus collective.",
     sections: [
-      { heading: "Identifier le contexte", body: "Les blattes peuvent venir d'un logement, d'une gaine, d'un local poubelle ou de cartons. Le contexte collectif compte autant que l'appartement." },
-      { heading: "Informer sans accuser", body: "En copropriété, il est utile de signaler calmement les observations au syndic si plusieurs logements ou parties communes semblent touchés." },
-      { heading: "Préparer le rappel", body: "Indiquez la pièce, l'horaire d'apparition, la fréquence et les actions déjà tentées." },
+      { heading: "Appartement isolé ou circulation dans la copropriété ?", body: "Une observation uniquement près d'un appareil ou d'un carton ne raconte pas la même situation que des insectes vus dans une gaine, un couloir ou un local poubelle. Sans accuser un voisin, vérifiez si d'autres zones communes semblent concernées.", items: ["Une seule pièce ou plusieurs pièces", "Observations dans les parties communes", "Signalement connu du syndic ou du voisinage", "Proximité d'une gaine, évacuation ou local poubelle"], tone: "highlight" },
+      { heading: "Cuisine, salle de bain, gaines : noter les zones actives", body: "En cuisine, précisez la proximité de l'évier, des appareils, des placards ou des réserves. Dans la salle de bain, notez les points d'eau et les passages techniques. Une photo de l'insecte, si elle est possible sans manipulation, peut aider." },
+      { heading: "Le moment d'observation change le contexte", body: "Une apparition nocturne ponctuelle et des observations répétées en pleine journée ne se décrivent pas de la même façon. Notez l'heure, le nombre approximatif d'insectes et la fréquence, sans déduire seul le niveau d'infestation." },
+      { heading: "Les actions à éviter avant d'avoir décrit la situation", body: "Multiplier les aérosols ou produits dans plusieurs pièces peut déplacer les insectes et rendre les zones actives moins lisibles. Évitez aussi de déplacer des cartons ou appareils d'un logement à l'autre.", tone: "warning" },
+      { heading: "Les informations utiles pour la demande", body: "Indiquez le type d'immeuble, l'étage, les pièces touchées, les horaires d'observation, la présence éventuelle en parties communes et les actions déjà tentées." },
     ],
     faq: [
-      { question: "Une seule blatte est-elle grave ?", answer: "Pas toujours, mais une observation répétée doit être prise au sérieux." },
-      { question: "Le voisinage compte-t-il ?", answer: "Oui, surtout en immeuble avec gaines techniques partagées." },
+      { question: "Un seul cafard signifie-t-il que tout l'immeuble est touché ?", answer: "Non. Une observation isolée ne suffit pas. Le lieu, l'horaire, la répétition et la présence éventuelle dans les gaines ou parties communes permettent de mieux situer le problème." },
+      { question: "Faut-il prévenir le syndic ?", answer: "C'est utile lorsque des cafards sont aussi observés dans les parties communes, près des gaines ou dans plusieurs logements. Le signalement peut rester factuel, sans attribuer l'origine à un voisin." },
+      { question: "Quelles informations donner avant un rappel ?", answer: "Précisez la cuisine ou la salle de bain concernée, l'horaire, la fréquence, l'étage, les observations en parties communes et les produits éventuellement déjà utilisés." },
     ],
+    relatedLinks: [
+      { label: "Traitement cafards et blattes dans le Var", href: "/cafards-blattes-var/" },
+      { label: "Identifier un insecte aperçu", href: "/guides/identifier-un-nuisible-var/" },
+      { label: "Décrire la situation dans l'appartement", href: "/demande-devis/" },
+    ],
+    cta: { title: "Décrire les zones actives dans l'appartement", text: "Pièces, horaires et contexte de copropriété permettent de transmettre une demande plus précise." },
   },
   {
     slug: "nid-guepes-frelons-que-faire",
     title: "Nid de guêpes ou de frelons : que faire et qui contacter ?",
-    description: "Les bons réflexes face à un nid près d'une maison, terrasse, toiture ou commerce.",
+    description: "Les premiers réflexes de sécurité et les informations à relever à distance face à un nid de guêpes ou de frelons.",
     serviceSlug: "guepes-frelons-var",
     published: "2026-06-13",
+    quickAnswer: "Restez à distance, éloignez enfants et animaux, et ne bouchez ni ne manipulez l'entrée supposée du nid. Observez seulement le trajet de vol et l'emplacement depuis un point sûr.",
     sections: [
-      { heading: "Garder ses distances", body: "Un nid ne doit pas être secoué, brûlé ou bouché. Il faut limiter les passages à proximité et observer à distance." },
-      { heading: "Décrire l'emplacement", body: "Haie, toiture, volet, cabanon, sol ou façade : l'emplacement et la hauteur conditionnent l'intervention possible." },
-      { heading: "Évaluer l'urgence", body: "La proximité d'enfants, clients, animaux ou personnes allergiques rend la demande plus urgente." },
+      { heading: "Les premiers gestes sans s'exposer", body: "Écartez les passages à proximité et gardez portes ou fenêtres fermées si l'activité est juste à côté. Ne secouez pas le support, ne pulvérisez rien et ne tentez pas de décrocher, brûler, noyer ou boucher le nid.", tone: "warning" },
+      { heading: "Observer le trajet de vol depuis un point sûr", body: "Des allers-retours réguliers vers le même point peuvent aider à localiser l'entrée. Il n'est pas nécessaire de voir le nid lui-même ni de s'approcher pour prendre une photo." },
+      { heading: "Localiser précisément : hauteur, toiture, volet ou sol", body: "La description de l'accès est essentielle pour préparer l'échange.", items: ["Sous une tuile, une avancée de toit ou dans un conduit", "Dans un coffre de volet ou une cavité de façade", "Dans un arbre, une haie ou un cabanon", "Au sol, dans un talus ou près d'un passage", "Hauteur approximative observée sans monter", "Accès possible depuis la rue, le jardin ou une terrasse"], tone: "highlight" },
+      { heading: "Signaler les personnes et animaux exposés", body: "Précisez si le point d'activité se trouve près d'enfants, d'animaux, d'une entrée, d'une terrasse, de clients ou d'une personne allergique. En cas de réaction après une piqûre ou de danger médical immédiat, contactez les secours adaptés." },
+      { heading: "Ce qu'il faut transmettre avant le rappel", body: "Indiquez la commune, le support, la hauteur estimée, le trajet de vol, les zones de passage proches et les contraintes d'accès. Une photo prise de loin peut être jointe seulement si elle ne vous expose pas." },
     ],
     faq: [
-      { question: "Les pompiers interviennent-ils toujours ?", answer: "Non, cela dépend des communes et situations. Une mise en relation professionnelle est souvent nécessaire." },
-      { question: "Dois-je approcher pour prendre une photo ?", answer: "Non si cela expose à une piqûre. La sécurité prime." },
+      { question: "Faut-il boucher l'entrée du nid ?", answer: "Non. Boucher une entrée supposée peut modifier la circulation des insectes et augmenter l'exposition. Restez à distance et décrivez l'emplacement." },
+      { question: "Dois-je approcher pour prendre une photo ?", answer: "Non. Une photo n'est utile que si elle peut être prise depuis un endroit sûr, sans échelle, sans se pencher et sans passer près du trajet de vol." },
+      { question: "Les pompiers interviennent-ils toujours ?", answer: "Non, cela dépend des communes et du danger immédiat. Pour une situation sans urgence vitale, une mise en relation avec un professionnel adapté peut être nécessaire." },
     ],
+    relatedLinks: [
+      { label: "Nids de guêpes et frelons dans le Var", href: "/guepes-frelons-var/" },
+      { label: "Identifier un nid ou une activité de vol", href: "/guides/identifier-un-nuisible-var/" },
+      { label: "Décrire l'emplacement du nid", href: "/demande-devis/" },
+    ],
+    cta: { title: "Décrire le nid sans vous en approcher", text: "L'emplacement, la hauteur et les personnes exposées suffisent pour préparer la demande." },
   },
   {
     slug: "termites-var-signes-risques-traitement",
-    title: "Termites dans le Var : signes, risques et traitement",
-    description: "Comprendre les signes de termites ou xylophages et organiser un avis professionnel.",
+    title: "Termites dans le Var : reconnaître les signes avant de conclure",
+    description: "Observer un bois fragile, des cordonnets ou des galeries et distinguer une suspicion de termites d'autres insectes du bois.",
     serviceSlug: "termites-var",
     published: "2026-06-13",
+    quickAnswer: "Un bois creux ou fragilisé ne suffit pas à confirmer des termites. Photographiez la zone, décrivez l'aspect des traces et évitez de gratter largement : la distinction avec d'autres insectes du bois demande plusieurs indices.",
     sections: [
-      { heading: "Les signes à surveiller", body: "Bois creux, cordonnets terreux, plinthes fragiles et traces près de zones humides peuvent justifier une demande." },
-      { heading: "Ne pas détruire les indices", body: "Il vaut mieux photographier et limiter les manipulations afin de faciliter l'identification." },
-      { heading: "Traitement ou diagnostic", body: "Selon le contexte, il peut falloir un avis technique, un diagnostic réglementaire ou un traitement par professionnel qualifié." },
+      { heading: "Bois creux, fragile ou déformé : ce que cela indique vraiment", body: "Une plinthe qui cède, une huisserie fragilisée ou un bois qui sonne différemment signale une altération, mais pas son origine certaine. Notez la pièce, le type de bois, l'étendue visible et la présence éventuelle d'humidité.", tone: "highlight" },
+      { heading: "Cordonnets terreux et galeries : des indices à préserver", body: "Des traces ressemblant à de fins cordons de terre ou des galeries protégées méritent d'être photographiées avant toute manipulation. Évitez d'ouvrir largement le bois ou de nettoyer la zone : la forme et la continuité des indices peuvent aider à l'examen.", tone: "warning" },
+      { heading: "Termites, vrillettes, capricornes : ne pas confondre", body: "Trous de sortie, sciure fine, galeries dans le bois ou cordonnets n'orientent pas tous vers le même insecte. L'âge du bâtiment, la localisation et l'aspect des dégâts comptent. Une photo seule peut orienter une demande, mais ne garantit pas l'identification." },
+      { heading: "Comment documenter la zone suspecte", body: "Préparez des vues d'ensemble et des détails nets, sans visage, document personnel ni élément identifiant inutilement une personne.", items: ["Pièce et élément concerné : plinthe, poutre, huisserie, charpente", "Vue générale pour situer l'étendue", "Détail des galeries, cordonnets, trous ou poussières", "Date de découverte et évolution constatée", "Présence d'humidité ou travaux récents", "Maison, appartement, cave, annexe ou combles"], tone: "plain" },
+      { heading: "Quand demander un examen professionnel", body: "Des signes récents, plusieurs éléments fragilisés ou une suspicion dans une partie structurelle justifient un avis adapté. Pour une obligation liée à une vente ou à un diagnostic réglementaire, précisez-le : cette démarche ne se confond pas avec une simple demande de traitement." },
     ],
     faq: [
-      { question: "Le Var est-il concerné par les termites ?", answer: "Oui, certaines zones demandent une vigilance particulière, surtout sur maisons anciennes ou bois humides." },
-      { question: "Stop Nuisible Var réalise-t-il le diagnostic ?", answer: "Non, la plateforme transmet la demande à un interlocuteur adapté." },
+      { question: "Un bois qui sonne creux confirme-t-il des termites ?", answer: "Non. Il signale une altération possible, mais d'autres insectes du bois, l'humidité ou une dégradation ancienne peuvent produire des symptômes différents. Plusieurs indices doivent être examinés." },
+      { question: "Peut-on identifier des termites avec une photo ?", answer: "Une photo nette peut aider à orienter la demande, surtout avec une vue d'ensemble et un détail des traces. L'analyse reste indicative et ne remplace pas l'avis d'un professionnel." },
+      { question: "Faut-il gratter le bois pour vérifier ?", answer: "Évitez d'ouvrir ou de nettoyer largement la zone. Photographiez d'abord les traces visibles et décrivez l'élément concerné afin de préserver les indices." },
+      { question: "Stop Nuisible Var réalise-t-il un diagnostic réglementaire ?", answer: "Non. La plateforme peut transmettre une demande selon le besoin décrit. Une obligation réglementaire doit être confiée à un professionnel habilité adapté." },
     ],
+    relatedLinks: [
+      { label: "Termites et insectes xylophages dans le Var", href: "/termites-var/" },
+      { label: "Identifier un nuisible par les dégâts observés", href: "/guides/identifier-un-nuisible-var/" },
+      { label: "Décrire les signes sur le bois", href: "/demande-devis/" },
+    ],
+    cta: { title: "Documenter les signes avant toute conclusion", text: "Décrivez le bois concerné et joignez des photos si possible. L'analyse reste indicative et ne remplace pas l'avis d'un professionnel." },
   },
 ];
 

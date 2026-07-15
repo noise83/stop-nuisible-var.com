@@ -35,6 +35,11 @@ export default async function GuidePage({ params }: { params: Params }) {
   const guide = getGuide(slug);
   if (!guide) notFound();
   const service = getService(guide.serviceSlug);
+  const relatedLinks = guide.relatedLinks ?? [
+    service ? { label: service.title, href: `/${service.slug}/` } : { label: "Traitement nuisibles Var", href: "/traitement-nuisibles-var/" },
+    { label: "Demande de devis", href: "/demande-devis/" },
+    ...guides.filter((item) => item.slug !== guide.slug).slice(0, 4).map((item) => ({ label: item.title, href: `/guides/${item.slug}/` })),
+  ];
   const crumbs = [
     { name: "Accueil", href: "/" },
     { name: "Guides", href: "/traitement-nuisibles-var/" },
@@ -58,6 +63,11 @@ export default async function GuidePage({ params }: { params: Params }) {
           <Eyebrow>Guide conseil</Eyebrow>
           <h1 className="text-4xl font-black leading-tight text-[#102337] sm:text-5xl">{guide.title}</h1>
           <p className="mt-6 text-lg leading-8 text-[#405160]">{guide.description}</p>
+          {guide.quickAnswer ? (
+            <p className="mt-6 max-w-3xl border-l-4 border-[#E86A33] pl-5 text-base font-semibold leading-7 text-[#24493d]">
+              {guide.quickAnswer}
+            </p>
+          ) : null}
           <div className="mt-8"><ButtonLink /></div>
         </div>
       </Section>
@@ -65,9 +75,21 @@ export default async function GuidePage({ params }: { params: Params }) {
         <article className="container grid gap-10 lg:grid-cols-[1fr_330px]">
           <div className="space-y-8">
             {guide.sections.map((section) => (
-              <section key={section.heading}>
+              <section
+                key={section.heading}
+                className={section.tone === "warning" ? "rounded-[8px] border-l-4 border-[#E86A33] bg-[#fff8f3] p-5 sm:p-6" : section.tone === "highlight" ? "rounded-[8px] bg-[#f5f1e8] p-5 sm:p-6" : undefined}
+              >
                 <h2 className="text-3xl font-black text-[#102337]">{section.heading}</h2>
                 <p className="mt-4 leading-8 text-[#405160]">{section.body}</p>
+                {section.items?.length ? (
+                  <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+                    {section.items.map((item) => (
+                      <li key={item} className="border-l-2 border-[#24493d]/25 pl-4 text-sm font-semibold leading-6 text-[#405160]">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
               </section>
             ))}
             {guide.detailBlocks?.map((block) => (
@@ -96,16 +118,13 @@ export default async function GuidePage({ params }: { params: Params }) {
             ))}
             <FAQ items={guide.faq} />
           </div>
-          <RelatedLinks
-            links={[
-              service ? { label: service.title, href: `/${service.slug}/` } : { label: "Traitement nuisibles Var", href: "/traitement-nuisibles-var/" },
-              { label: "Demande de devis", href: "/demande-devis/" },
-              ...guides.filter((item) => item.slug !== guide.slug).slice(0, 4).map((item) => ({ label: item.title, href: `/guides/${item.slug}/` })),
-            ]}
-          />
+          <RelatedLinks links={relatedLinks} />
         </article>
       </Section>
-      <CTABand title="Besoin d'un avis adapté à votre commune ?" text="Le formulaire transmet les informations utiles sans donner de consignes dangereuses." />
+      <CTABand
+        title={guide.cta?.title ?? "Besoin d'un avis adapté à votre commune ?"}
+        text={guide.cta?.text ?? "Le formulaire transmet les informations utiles sans donner de consignes dangereuses."}
+      />
     </main>
   );
 }
